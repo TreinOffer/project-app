@@ -8,28 +8,40 @@
   </head>
   <body>
     <main>
-      <section>
-        <h1>Login</h1>
-        <table>
-          <tr>
-            <td><label for="email">Email:</label></td>
-            <td><input type="email" name="email" id="email" /></td>
-          </tr>
-          <tr>
-            <td><label for="senha">Senha:</label></td>
-            <td><input type="password" name="senha" id="senha" /></td>
-          </tr>
-          <tr>
-            <td>
-              <input type="submit" value="Entrar" />
-            </td>
-            <td><a href="#">Cadastre-se</a></td>
-          </tr>
-        </table>
+      <section class="secao_dados">
+        <div class="login_dados">
+          <h1 class="">Logue-se</h1>
+          <table>
+            <tr class="campo_matricula">
+              <td><label for="email">Matrícula:</label></td>
+              <td><input placeholder="Inserir ID" type="text" name="matricula" id="matricula" /></td>
+            </tr>
+            <tr class="campo_senha">
+              <td><label for="senha">Senha:</label></td>
+              <td><input placeholder="Inserir senha" type="password" name="senha" id="senha" /></td>
+            </tr>
+            <tr>
+              <td>
+                <input class="campo_submit" type="submit" value="Entrar" />
+              </td>
+              <br>
+            </tr>
+          </table>
+
+          <div class="campo_cadastrar">
+            Não tem uma conta?
+            <br>
+            <a href="../marco/tela.html">Cadastrar-se</a>
+          </div>
+
+        </div>
       </section>
 
-      <div></div>
-      <section></section>
+      <div class="faixa"></div>
+
+      <section class="secao_logo">
+        <h1 id="logo">Trein<span style="color: hsl(0,90%,65%);">Offer</span></h1>
+      </section>
     </main>
   </body>
 </html>

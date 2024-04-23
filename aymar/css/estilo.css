@@ -1,4 +1,80 @@
 *{
     margin: 0;
     padding: 0;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+main{
+    display: flex;
+}
+.secao_dados{
+    background-color: hsl(0,50%,98%);
+}
+section h1{
+    padding-bottom: 0.7em;
+}
+td{
+    padding-bottom: 10px;    
+}
+table tr td label{
+    background-color: hsl(255,40%,90%);
+    padding: 2px;
+}
+.faixa{
+    width: 15px; height: 59.6em;
+    background-color: black;
+}
+.login_dados{
+    filter: drop-shadow(2px 6px 2px rgba(0,0,0,0.3));
+    margin: 200px;
+    padding: 120px 50px 120px 50px;
+    border: 2px solid hsl(0,50%,80%);
+    border-radius: 50px ;
+    background-color: hsl(0,100%,98%);
+}
+.campo_matricula{
+    display: flex;
+    flex-direction: column;
+}
+#matricula, #senha{
+    
+    outline: none;
+    border-radius: 10px;
+    border: 1px solid black;
+    height: 2em; width: 20em;
+}
+#matricula::placeholder, #senha::placeholder{
+    
+    padding: 5px 10px 5px 10px;
+}
+.campo_senha{
+    display: flex;
+    flex-direction: column;
+}
+.campo_submit{
+    cursor: pointer;
+    margin-left: 6em;
+    width: 40%; height: 2em;
+    border-style: none;
+    background-color: hsl(0,50%,98%);
+    filter: drop-shadow(0 3px 2px rgba(0,0,0,0.3));
+}
+.campo_submit:active{
+    background-color: hsl(0,50%,95%);
+}
+.campo_cadastrar{
+    position: absolute;
+    top: 25em; left: 8.7em;
+}
+.campo_cadastrar a{
+    text-decoration: none;
+    color: hsl(255,40%,60%);
+}
+.secao_logo{
+    margin: 400px 0 400px 400px;
+}
+#logo{
+    font-size: 3em;
+}
+#logo::after{
+    content:'📕';
 }

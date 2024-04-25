@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", Arial, sans-serif;
+}
+.nav_bar{
+    display: flex;
+    flex-direction: column;
+    background-color: aquamarine;
+    width: 25%; height: 100vh;
+}
+#logo{
+    font-size: 250%;
+}
+#cor_logo{
+    font-family: "Montserrat", Arial;
+    background-image: linear-gradient(hsl(205,70%,50%),hsl(220,100%,90%));
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(5px 2px 2px black);
+}
+#logo::after{
+    content:'📖​';
+    filter: drop-shadow(5px 2px 2px black);
+}
+.logoNavBar{
+    background-color: hsl(205,70%,80%);
+    padding: 50px 60px 50px 100px;
+    
+}
+aside div{
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+footer p{
+    font-size: 150%;
+}
+footer a{
+    margin: 0% 0 0 35%;
+}
+footer p::after, footer p::before{
+    content: '•';
+    font-size: 120%;
+    margin: 0 2% 0 2%;
+}

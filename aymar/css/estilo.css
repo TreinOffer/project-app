@@ -57,11 +57,11 @@ table tr td label{
     outline: none;
     border-radius: 20px;
     filter: drop-shadow(1px 6px 2px rgba(0,0,0,0.3));
-    width: 100%; height: 80%;
+    width: 100%; height: 2.8vh;
     margin-bottom: 15px;
 }
 #matricula::placeholder, #senha::placeholder{
-    padding: 5% 10% 5% 10%;
+    padding: 10% 5% 10% 5%;
 }
 .campo_submit{
     cursor: pointer;
@@ -93,12 +93,12 @@ table tr td label{
 }
 .secao_logo{
     width: 49.2%;
-    background-image:linear-gradient(hsl(30,100%,95%),rgba(60,60,60,0.3));
+    background-image:linear-gradient(hsl(155,100%,92%),rgba(60,60,60,0.2));
 }
 #logo{
     display: inline-block;
     font-size: 500%;
-    margin: 40% 0 0 35%;
+    margin: 40% 20% 0 20%;
     /* background-color: hsl(220,0%,90%); */
 }
 #cor_logo{

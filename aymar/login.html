@@ -4,13 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TreinOffer - Login</title>
-    <link rel="stylesheet" href="./css/estilo.css" />
+    <link rel="stylesheet" href="./css/estilo.css"/>
+
+    <!-- Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
   </head>
   <body>
     <main>
       <section class="secao_dados">
         <div class="login_dados">
-          <h1 class="">Logue-se</h1>
+          <h1>Logue-se</h1>
           <table>
             <tr class="campo_matricula">
               <td><label for="email">Matrícula:</label></td>
@@ -30,17 +40,17 @@
 
           <div class="campo_cadastrar">
             Não tem uma conta?
-            <br>
-            <a href="#">Cadastrar-se</a>
+            <div>
+              <a class="redirecter" href="#">Cadastre-se</a>
+            </div>
           </div>
-
         </div>
       </section>
 
       <div class="faixa"></div>
 
       <section class="secao_logo">
-        <h1 id="logo">Trein<span style="color: hsl(205,70%,75%);">Offer</span></h1>
+        <h1 id="logo">Trein<span id="cor_logo">Offer</span></h1>
       </section>
     </main>
   </body>

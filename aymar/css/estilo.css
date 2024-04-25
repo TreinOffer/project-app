@@ -1,80 +1,114 @@
 *{
     margin: 0;
     padding: 0;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 main{
     display: flex;
+    flex: 1 1 100%;
+    flex-direction: row;
+    height: 100vh;
+}
+h1{
+    font-family: "Montserrat", Arial;
 }
 .secao_dados{
-    background-color: hsl(0,50%,98%);
+    background: radial-gradient(hsl(155,100%,95%),hsl(220,100%,90%));
+    width: 50%;
 }
 section h1{
-    padding-bottom: 0.7em;
+    padding-bottom: 5%;
 }
 td{
-    padding-bottom: 10px;    
+    padding-bottom: 4%;    
 }
 table tr td label{
-    background-color: hsl(255,40%,90%);
-    padding: 2px;
+    display: block;
+    font-weight: 500;
+    box-shadow: inset -1px -2px 0 hsl(20,60%,70%);
+    background-color: hsl(20,60%,95%);
+    padding: 2%;
+    border-radius: 25px;
+    color: hsl(20,60%,20%);
 }
 .faixa{
-    width: 15px; height: 59.6em;
+    width: 0.8%;
     background-color: black;
 }
 .login_dados{
+    max-width: 40%;
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: column;
     filter: drop-shadow(2px 6px 2px rgba(0,0,0,0.3));
-    margin: 200px;
-    padding: 120px 50px 120px 50px;
-    border: 2px solid hsl(0,50%,80%);
+    margin: 15% 15% 15% 15%;
+    padding: 8% 10% 8% 10%;
+    border: 2px solid hsl(220,50%,80%);
     border-radius: 50px ;
-    background-color: hsl(0,100%,98%);
+    background-color: hsl(220,100%,98%);
 }
-.campo_matricula{
+.campo_matricula,.campo_senha{
     display: flex;
     flex-direction: column;
+    margin-bottom: 5%;
 }
 #matricula, #senha{
-    
+    border: none;
     outline: none;
-    border-radius: 10px;
-    border: 1px solid black;
-    height: 2em; width: 20em;
+    border-radius: 20px;
+    filter: drop-shadow(1px 6px 2px rgba(0,0,0,0.3));
+    width: 100%; height: 80%;
+    margin-bottom: 15px;
 }
 #matricula::placeholder, #senha::placeholder{
-    
-    padding: 5px 10px 5px 10px;
-}
-.campo_senha{
-    display: flex;
-    flex-direction: column;
+    padding: 5% 10% 5% 10%;
 }
 .campo_submit{
     cursor: pointer;
-    margin-left: 6em;
+    margin-left: 30%;
     width: 40%; height: 2em;
     border-style: none;
-    background-color: hsl(0,50%,98%);
+    background-color: hsl(220,50%,98%);
     filter: drop-shadow(0 3px 2px rgba(0,0,0,0.3));
 }
+.campo_submit:hover{
+    background-color: hsl(220,50%,95%);
+}
 .campo_submit:active{
-    background-color: hsl(0,50%,95%);
+    background-color: hsl(220,50%,90%);
 }
 .campo_cadastrar{
-    position: absolute;
-    top: 25em; left: 8.7em;
+    max-width: 100%;
+    margin: 10% 10% 10% 30.5%;
+    display: flex;
+    flex-direction: column;
 }
-.campo_cadastrar a{
+.redirecter{
     text-decoration: none;
-    color: hsl(255,40%,60%);
+    color: hsl(155,40%,60%);
+    transition: 0.2s;
+}
+.redirecter:active{
+    color: hsl(155,100%,60%);    
 }
 .secao_logo{
-    margin: 400px 0 400px 400px;
+    width: 49.2%;
+    background-image:linear-gradient(hsl(30,100%,95%),rgba(60,60,60,0.3));
 }
 #logo{
-    font-size: 3em;
+    display: inline-block;
+    font-size: 500%;
+    margin: 40% 0 0 35%;
+    /* background-color: hsl(220,0%,90%); */
+}
+#cor_logo{
+    font-family: "Montserrat", Arial;
+    background-image: linear-gradient(hsl(205,70%,50%),hsl(220,100%,90%));
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(5px 2px 2px black);
 }
 #logo::after{
-    content:'📕';
+    content:'📖​';
+    filter: drop-shadow(5px 2px 2px black);
 }

@@ -6,7 +6,6 @@
 .nav_bar{
     display: flex;
     flex-direction: column;
-    background-color: aquamarine;
     width: 25%; height: 100vh;
 }
 #logo{
@@ -51,13 +50,25 @@
     font-family: "Montserrat", Arial;
     font-size: 140%;
     font-weight: 500;
-
+}
+aside .menu{
+    padding: 30% 15% 25% 15%;
+    background-color: hsl(205,100%,90%);
 }
 aside .navegacao{
-    border-bottom: 1px solid rgba(0,0,0,0.2);
+    list-style: none;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    margin: 4% 6% 6% 6%;
+}
+footer{
+    background-color: hsl(205,80%,87%);
+    border-top: 2px solid black;
+    padding: 1% 10% 2% 10%;
 }
 footer p{
     font-size: 150%;
+    margin-bottom: 3%;
 }
 footer a{
     margin: 0% 0 0 35%;
@@ -72,5 +83,5 @@ footer img{
 }
 footer img:hover{
     border-radius: 40%;
-    filter: drop-shadow(2px 2px 1px rgba(0,0,0,1));
+    filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.1));
 }

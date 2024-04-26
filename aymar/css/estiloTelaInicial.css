@@ -10,6 +10,7 @@
     width: 25%; height: 100vh;
 }
 #logo{
+    font-family: "Montserrat", Arial;
     font-size: 250%;
 }
 #cor_logo{
@@ -24,11 +25,35 @@
     filter: drop-shadow(5px 2px 2px black);
 }
 .logoNavBar{
-    background-color: hsl(205,70%,80%);
+    background-color: hsl(205,50%,80%);
     padding: 50px 60px 50px 100px;
-    
+    /* margin-bottom: 2%; */
+    box-shadow: inset 0px -5px 1px hsl(205,40%,60%);
 }
-aside div{
+.secaoUser{
+    background-color: hsl(205,70%,85%);
+}
+.user{
+    display: flex;
+    flex-direction: row;
+    padding: 0 10% 3% 10%;
+    border-bottom: 4px solid black;
+}
+.saudacoes{
+    padding: 4%;
+    font-size: 120%;
+}
+.imgUser img{
+    width: 70%; height: 3.8em;
+    border-radius: 200px;
+}
+.nomeUser{
+    font-family: "Montserrat", Arial;
+    font-size: 140%;
+    font-weight: 500;
+
+}
+aside .navegacao{
     border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 footer p{
@@ -41,4 +66,11 @@ footer p::after, footer p::before{
     content: '•';
     font-size: 120%;
     margin: 0 2% 0 2%;
+}
+footer img{
+    transition: 1s ease-in;
+}
+footer img:hover{
+    border-radius: 40%;
+    filter: drop-shadow(2px 2px 1px rgba(0,0,0,1));
 }

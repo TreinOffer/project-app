@@ -1,0 +1,67 @@
+body{
+    padding-left: 30vw;
+
+}
+.container {
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: 400px 400px;
+    grid-template-rows: 280px 280px;
+}
+
+div {
+    height: 192.734px;
+    width: 320.000px;
+    border-radius: 20px;
+}
+
+.one {
+    background-color: gray;
+}
+
+.duo {
+    background-color: gray;
+}
+
+.true {
+    background-color: gray;
+}
+
+.for {
+    background-color: gray;
+}
+
+.nou {
+    background-color: gray;
+}
+
+.seven {
+    background-color: gray;
+}
+
+.search{
+    --padding: 14px;
+
+    width: max-content;
+    display: flex;
+    align-items: center;
+    padding: var(--padding);
+    border-radius: 28px;
+    background: #f6f6f6;
+}
+.search-input{
+    font-size: 16px ;
+    font-family: 'lexend', sans-serif;
+    color: #333333;
+    margin-left: var(--padding);
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+.search{
+    height: 0;
+    width: 0;
+}

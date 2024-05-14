@@ -1,0 +1,40 @@
+.barPesquisar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 10vh;
+    background-image: linear-gradient(hsl(25,40%,80%),hsl(205,100%,80%));
+}
+.secEsq{
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    gap: 10px;
+}
+.menu{
+    width: 40px; height: 40px;
+}
+.secMeio{
+    display: flex;
+    align-items: center;
+}
+.btPesquisar img{
+    height: 100%; width: 48px
+}
+.btPesquisar input{
+    
+}
+.logo{
+    width: 300px
+}
+.secDir{
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+    justify-content: space-between;
+    gap: 20px;
+}
+.secDir img{
+    width: 24px;
+}

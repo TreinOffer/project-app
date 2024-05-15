@@ -1,40 +1,69 @@
+*{
+    font-family: "Roboto", Arial;
+    margin: 0;
+    padding: 0;
+}
 .barPesquisar{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    height: 10vh;
+    height: 80px;
     background-image: linear-gradient(hsl(25,40%,80%),hsl(205,100%,80%));
+    border-bottom: 1px solid hsl(25,70%,80%);
+    margin-bottom: 32px;
 }
 .secEsq{
     display: flex;
+    width: 340px;
     align-items: center;
-    padding-left: 10px;
-    gap: 10px;
+    padding-left: 16px;
+    gap: 14px;
 }
 .menu{
-    width: 40px; height: 40px;
+    width: 28px; height: 28px;
 }
 .secMeio{
     display: flex;
+    flex: 1;
     align-items: center;
+    max-width: 380px;
+}
+.btPesquisar{
+    height: 39px; width: 52px;
+    /* border-left: none; */
+    border: 1px solid gray;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    cursor: pointer;
 }
 .btPesquisar img{
-    height: 100%; width: 48px
+    height: 28px; width: 28px
 }
-.btPesquisar input{
-    
+input{
+    position: relative;
+    border: 1px solid gray;
+    outline: none;
+    width: 0;
+    height: 38px; width: 100%;
+    border-right: none;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+input::placeholder{
+    padding-left: 50px;
 }
 .logo{
     width: 300px
 }
 .secDir{
     display: flex;
+    width: 130px;
     align-items: center;
-    padding-right: 10px;
+    padding: 0 16px;
     justify-content: space-between;
-    gap: 20px;
+    gap: 14px;
 }
 .secDir img{
-    width: 24px;
+    width: 28px; height: 28px;
 }

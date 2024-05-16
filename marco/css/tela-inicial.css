@@ -6,9 +6,9 @@ body{
 }
 .container {
     width: 100%;
-
     margin: 100px 50px;
-    
+    border-radius: 50px; 
+    gap: 20px;
     float: left;
     display: grid;
     grid-template-columns: auto auto auto auto;
@@ -16,15 +16,17 @@ body{
 }
 
 div {
-    height: 192.734px;
+    /* height: 192.734px;
     width: 320.000px;
-    border-radius: 20px;
-    
+    border-radius: 20px; */
 }
 
 
 .one {
     /* background-color: rgba(125,125,125,0.8); */
+    border: 5px solid hsl(155,40%,60%); ;
+    border-radius: 7%;
+    width: 320px;
 }
 
 .one:hover{

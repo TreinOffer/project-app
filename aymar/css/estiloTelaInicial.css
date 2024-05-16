@@ -90,7 +90,6 @@ aside .navegacao{
 }
 aside .navegacao:hover{
     background-image: linear-gradient(hsl(205,40%,80%),hsl(205,70%,80%));
-    /* background-color: aqua; */
 }
 footer{
     background-color: hsl(205,40%,80%);

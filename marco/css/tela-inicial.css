@@ -1,7 +1,14 @@
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
+* {
+    padding: 0;
+    margin: 0;
+}
+
 body{
     margin: 0px;
     padding: 0px;
     background: radial-gradient(hsl(155,100%,95%),hsl(220,100%,90%));
+    height: 65vw;
 
 }
 .container {
@@ -12,7 +19,7 @@ body{
     float: left;
     display: grid;
     grid-template-columns: auto auto auto auto;
-    grid-template-rows: 280px 280px; 
+    grid-template-rows: 280px 280px 280px;  
 }
 
 div {
@@ -21,10 +28,27 @@ div {
     border-radius: 20px; */
 }
 
+@keyframes borderAnimation {
+    0% {
+        border-color: rgb(0, 137, 255);
+    }
+    50% {
+        border-color: rgb(0, 137, 255);
+    }
+    75% {
+        border-color: rgb(0, 255, 170);
+    }
+    100% {
+        border-color: rgb(0, 255, 170);
+    }
+}
 
 .one {
     /* background-color: rgba(125,125,125,0.8); */
-    border: 5px solid hsl(155,40%,60%); ;
+    border-bottom: 5px solid rgb(240, 198, 168);
+    border-right: 5px solid rgb(240, 198, 168);
+    border-left: 5px solid  rgb(0, 137, 255);
+    border-top: 5px solid  rgb(0, 137, 255);
     border-radius: 7%;
     width: 320px;
 }
@@ -32,6 +56,21 @@ div {
 .one:hover{
     transform: scale(1.05);
     transition: .15s;
+    animation: borderAnimationHover 1s infinite;
+    }
+    @keyframes borderAnimationHover {
+        0% {
+            border-color: rgb(240, 198, 168);
+        }
+        50% {
+            border-color: rgb(240, 198, 168);
+        }
+        75% {
+            border-color: rgb(0, 137, 255);
+        }
+        100% {
+            border-color: rgb(0, 137, 255);
+        }
     }
 
 .duo {
@@ -119,8 +158,35 @@ div {
 
 .string{
     font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    padding-left: 3px;
+    margin-top: 5px;
 
 }
 img{
     border-radius: 6%;
 }
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#00ffaa), to(#0089ff));
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(to right, #91d3d3, #91d3d3 1px, #91d3d3 1px, #fff);
+}
+
+
+.icon{
+    display: flex;
+    align-items: center;
+    margin-left: 295px;
+    vertical-align: middle;
+    margin-top: -30px;
+}
+

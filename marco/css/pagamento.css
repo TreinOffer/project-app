@@ -7,6 +7,8 @@
 body {
     background-color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
+    background: #f3f3f3;
+    height: 51vw;
 }
 
 .wrapper {
@@ -155,5 +157,18 @@ body {
 .input_box button:hover {
     cursor: pointer;
     background-color: #05b1a3;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#00ffaa), to(#0089ff));
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(to right, #91d3d3, #91d3d3 1px, #91d3d3 1px, #fff);
 }
         

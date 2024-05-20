@@ -9,10 +9,10 @@
     align-items: center;
     justify-content: space-between;
     height: 80px;
-    background-image: linear-gradient(hsla(205,100%,80%,0.4),hsl(205,100%,80%));
-    /* background-image: linear-gradient(hsl(25,40%,80%),hsl(205,100%,80%)); */
+    background-image: linear-gradient(hsl(25,40%,80%),hsl(205,100%,80%));
     /* border-bottom: 1px solid hsl(25,70%,80%);
     margin-bottom: 32px; */
+>>>>>>> 541423e937fa78c150cb3c946cbf069aefbe9d8d
 }
 .secEsq{
     display: flex;

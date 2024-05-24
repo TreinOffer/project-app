@@ -25,6 +25,7 @@ td{
 table tr td label{
     display: block;
     font-weight: 500;
+    width: 100%;
     box-shadow: inset -1px -2px 0 hsl(20,60%,70%);
     background-color: hsl(20,60%,95%);
     padding: 2%;
@@ -42,7 +43,7 @@ table tr td label{
     flex-direction: column;
     filter: drop-shadow(2px 6px 2px rgba(0,0,0,0.3));
     margin: 15% 15% 15% 15%;
-    padding: 8% 10% 8% 10%;
+    padding: 8% 10%;
     border: 2px solid hsl(220,50%,80%);
     border-radius: 50px ;
     background-color: hsl(220,100%,98%);
@@ -53,11 +54,12 @@ table tr td label{
     margin-bottom: 5%;
 }
 #matricula, #senha{
+    padding-left: 14px;
     border: none;
     outline: none;
     border-radius: 20px;
     filter: drop-shadow(1px 6px 2px rgba(0,0,0,0.3));
-    width: 100%; height: 2.8vh;
+    width: 100%; height: 24px;
     margin-bottom: 15px;
 }
 #matricula::placeholder, #senha::placeholder{
@@ -65,8 +67,9 @@ table tr td label{
 }
 .campo_submit{
     cursor: pointer;
+    position: relative;
     margin-left: 30%;
-    width: 40%; height: 2em;
+    width: 40%; height: 3vh;
     border-style: none;
     background-color: hsl(220,50%,98%);
     filter: drop-shadow(0 3px 2px rgba(0,0,0,0.3));
@@ -84,9 +87,13 @@ table tr td label{
     flex-direction: column;
 }
 .redirecter{
-    text-decoration: none;
+    cursor: pointer;
     color: hsl(155,40%,60%);
-    transition: 0.2s;
+    transition: 0.2s ease-in;
+}
+.redirecter:hover{
+    text-decoration:underline;
+    color: hsl(155,100%,30%);
 }
 .redirecter:active{
     color: hsl(155,100%,60%);    
@@ -96,19 +103,35 @@ table tr td label{
     background-image:linear-gradient(hsl(155,100%,92%),rgba(60,60,60,0.2));
 }
 #logo{
-    display: inline-block;
-    font-size: 500%;
-    margin: 40% 20% 0 20%;
-    /* background-color: hsl(220,0%,90%); */
+    margin: 40% 10% 0 10%;
+    width: 100%;
 }
-#cor_logo{
-    font-family: "Montserrat", Arial;
-    background-image: linear-gradient(hsl(205,70%,50%),hsl(220,100%,90%));
-    background-clip: text;
-    color: transparent;
-    filter: drop-shadow(5px 2px 2px black);
+@media (max-width: 760px) {
+    main{
+        flex-direction: column;
+    }
+    .secao_dados{
+        width: 100%;
+        height: 480px;
+    }
+    .login_dados{
+        margin: 2% 20% 0 20%;
+        padding: 5% 10% 0 10%;
+    }
+    .faixa{
+        width: 100%;
+        height: 0.8%;
+    }
+    .secao_logo{
+        width: 100%;
+        height: 260px;
+    }
+    #logo{
+        margin: 5% 8%;
+    }
 }
-#logo::after{
-    content:'📖​';
-    filter: drop-shadow(5px 2px 2px black);
+@media (max-width: 350px) {
+    #logo{
+        margin: 30% 8%;
+    }
 }

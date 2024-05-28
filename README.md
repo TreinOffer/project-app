@@ -1,1 +1,0 @@
-Ess é o sistema de vendas

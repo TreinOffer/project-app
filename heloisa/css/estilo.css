@@ -6,8 +6,16 @@
 }
 
 body{
-  font-size: 16px;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-  background-color: red;
+  background-color: radial-gradient(hsl(155,100%,95%),hsl(220,100%,90%));
+  color: black;
 }
+
+h1{
+  float: left;
+}
+a{
+  text-decoration: none;
+}
+
+
 

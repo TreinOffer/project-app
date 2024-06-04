@@ -13,7 +13,7 @@ h1{
     font-family: "Montserrat", Arial;
 }
 .secao_dados{
-    background: radial-gradient(hsl(155,100%,95%),hsl(220,100%,90%));
+    background: radial-gradient(hsl(155,100%,95%),hsl(220, 100%, 90%));
     width: 50%;
 }
 section h1{

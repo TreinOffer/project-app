@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+main{
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: row;
+    height: 100vh;
+}
+h1{
+    font-family: "Montserrat", Arial;
+}
+.secao_dados{
+    background: radial-gradient(hsl(155,100%,95%),hsl(220,100%,90%));
+    width: 50%;
+}
+section h1{
+    padding-bottom: 5%;
+}
+td{
+    padding-bottom: 4%;    
+}
+table tr td label{
+    display: block;
+    font-weight: 500;
+    width: 100%;
+    box-shadow: inset -1px -2px 0 hsl(20,60%,70%);
+    background-color: hsl(20,60%,95%);
+    padding: 2%;
+    border-radius: 25px;
+    color: hsl(20,60%,20%);
+}
+.faixa{
+    width: 0.8%;
+    background-color: black;
+}
+.login_dados{
+    max-width: 40%;
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: column;
+    filter: drop-shadow(2px 6px 2px rgba(0,0,0,0.3));
+    margin: 15% 15% 15% 15%;
+    padding: 8% 10%;
+    border: 2px solid hsl(220,50%,80%);
+    border-radius: 50px ;
+    background-color: hsl(220,100%,98%);
+}
+.campo_matricula,.campo_senha{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5%;
+}
+#matricula, #senha{
+    padding-left: 14px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    filter: drop-shadow(1px 6px 2px rgba(0,0,0,0.3));
+    width: 100%; height: 24px;
+    margin-bottom: 15px;
+}
+#matricula::placeholder, #senha::placeholder{
+    padding: 10% 5% 10% 5%;
+}
+.campo_submit{
+    cursor: pointer;
+    position: relative;
+    margin-left: 30%;
+    width: 40%; height: 3vh;
+    border-style: none;
+    background-color: hsl(220,50%,98%);
+    filter: drop-shadow(0 3px 2px rgba(0,0,0,0.3));
+}
+.campo_submit:hover{
+    background-color: hsl(220,50%,95%);
+}
+.campo_submit:active{
+    background-color: hsl(220,50%,90%);
+}
+.campo_cadastrar{
+    max-width: 100%;
+    margin: 10% 10% 10% 30.5%;
+    display: flex;
+    flex-direction: column;
+}
+.redirecter{
+    cursor: pointer;
+    color: hsl(155,40%,60%);
+    transition: 0.2s ease-in;
+}
+.redirecter:hover{
+    text-decoration:underline;
+    color: hsl(155,100%,30%);
+}
+.redirecter:active{
+    color: hsl(155,100%,60%);    
+}
+.secao_logo{
+    width: 49.2%;
+    background-image:linear-gradient(hsl(155,100%,92%),rgba(60,60,60,0.2));
+}
+#logo{
+    margin: 40% 10% 0 10%;
+    width: 100%;
+}
+@media (max-width: 760px) {
+
+    .main_login{
+        flex-direction: column;
+    }
+    .secao_dados{
+        width: 100%;
+        height: 480px;
+    }
+    .login_dados{
+        margin: 2% 20% 0 20%;
+        padding: 5% 10% 0 10%;
+    }
+    .faixa{
+        width: 100%;
+        height: 0.8%;
+    }
+    .secao_logo{
+        width: 100%;
+        height: 260px;
+    }
+    #logo{
+        margin: 5% 8%;
+    }
+}
+@media (max-width: 350px) {
+    #logo{
+        margin: 30% 8%;
+    }
+}

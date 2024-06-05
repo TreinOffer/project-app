@@ -5,6 +5,7 @@ import CursosEmpresa from "./views/CursosEmpresa";
 import Login from './views/Login';
 import Fatura from "./views/Fatura";
 import Pagamento from './views/pagamento';
+import FormularioEmpresa from './views/FormularioEmpresa';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Route path='/fatura' element={<Fatura />} />
         <Route path='/login' element={<Login />}></Route>
         <Route path='/pagamento' element={<Pagamento />} />
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/formularioEmpresa' element={<FormularioEmpresa />} />
         <Route path='/login' element={<Login />}></Route>
       </Routes>
     </BrowserRouter>

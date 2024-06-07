@@ -1,9 +1,13 @@
 import React from 'react'
-import "./estilo.css"
+// import "./estilo.css"
+import cabecalho from '../cabecalho'
 
 function CursosEmpresa() {
   return (
     <>
+
+      {cabecalho()}
+
       <section class="barPesquisar">
 
         <div class="secEsq">

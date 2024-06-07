@@ -1,10 +1,14 @@
 import React from 'react'
 // import './estilo.css'
 import imgs from '../../imgs/arrayImagens'
+import cabecalho from '../cabecalho';
 
 function module() {
     return (
         <>
+
+            {cabecalho()}
+
             <main ClassName="modules">
                 <div>
                     <h1 id="titulo">Importe seus cursos</h1>

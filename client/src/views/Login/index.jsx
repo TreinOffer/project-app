@@ -12,6 +12,25 @@ const msg = { // Para props
 };
 
 function Login() {
+
+    function cadastro() {
+        const documents = document.querySelectorAll('.campo_cadastrar *, .login_dados h1');
+
+        console.log(documents)
+
+        for (let i = 0; i < documents.length; i++) {
+            if (i === 0){
+                documents[i].innerHTML = msg.cadastro;
+            }
+            else if  (i === 1) {
+                documents[i].innerHTML = msg.logue_se;
+            }
+            else{
+                documents[i].innerHTML = msg.login2;
+            };
+        };
+    };
+
   return (
     <>
         <main className='main_login'>
@@ -19,26 +38,27 @@ function Login() {
                 <div className='login_dados'>
                     <h1>{msg.login}</h1>
                 <table>
-                    <tr className="campo_matricula">
-                        <td><label htmlFor="email">Matricula:</label></td>
-                        <td><input placeholder='Inserir ID' type="text" name="matricula" id="matricula" /></td>
-                    </tr>
-                    <tr className="campo_senha">
-                        <td><label htmlFor="senha">Senha:</label></td>
-                        <td><input placeholder='Inserir senha' type="password" name="senha" id="senha" /></td>
-                    </tr>
-                    <tr>
-                        <td><input className='campo_submit' type="submit" value="Entrar" /></td>
-                        <br />
-                    </tr>
+                    <tbody>
+                        <tr className="campo_matricula">
+                            <td><label htmlFor="email">Matricula:</label></td>
+                            <td><input placeholder='Inserir ID' type="text" name="matricula" id="matricula" /></td>
+                        </tr>
+                        <tr className="campo_senha">
+                            <td><label htmlFor="senha">Senha:</label></td>
+                            <td><input placeholder='Inserir senha' type="password" name="senha" id="senha" /></td>
+                        </tr>
+                        <tr>
+                            <td><input className='campo_submit' type="submit" value="Entrar" /></td>
+                        </tr>
+                    </tbody>
                 </table>
 
                     <div className="campo_cadastrar">
-                        {msg.cadastro2}
-                        <div>
-                            <text id="redirect" className='redirecter'>
+                        <span>
+                            {msg.cadastro2}
+                        </span>
+                        <div id="redirect" className='redirecter' onClick={cadastro}>
                                 {msg.cadastre_se}
-                            </text>
                         </div>
                     </div>
                 </div>

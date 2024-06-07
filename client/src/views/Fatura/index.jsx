@@ -1,9 +1,13 @@
 import React from 'react'
-import "./estilo.css"
+// import "./estilo.css"
+import cabecalho from '../cabecalho'
 
 function Fatura() {
   return (
     <>
+
+    {cabecalho()}
+
     <div class = "invoice-wrapper" id = "print-area">
             <div class = "invoice">
                 <div class = "invoice-container">

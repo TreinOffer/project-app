@@ -1,5 +1,5 @@
 import React from 'react'
-import "./estilo.css"
+// import "./estilo.css"
 
 function Pagamento() {
   return (

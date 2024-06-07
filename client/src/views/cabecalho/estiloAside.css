@@ -1,19 +1,15 @@
-*{
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto", Arial, sans-serif;
-}
 .nav_bar{
     position: fixed;
     z-index: 1;
     position: fixed;
-    left: 0%;
+    left: calc(0% - 414px);
     text-align: left;
     display: flex;
     flex-direction: column;
     width: 400px; 
-    max-height: 100vh;
+    height: 100vh;
     filter: drop-shadow(4px 0 10px black);
+    transition: 0.3s ease-out;
 }
 .logoNavBar{
     background-image: linear-gradient(hsl(205,100%,80%),hsl(25,40%,80%));
@@ -64,11 +60,14 @@
     font-weight: 500;
 }
 aside .menu{
-    padding: 8% 15%;
-    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 15%;
+    height: 100%;
     background-image: linear-gradient(hsl(205,70%,80%),hsl(205,40%,80%));
 }
-aside .navegacao{
+aside .menu .navegacao{
     display: flex;
     flex-direction: row;
     list-style: none;
@@ -92,7 +91,7 @@ aside .navegacao:hover{
 footer{
     background-color: hsl(205,40%,80%);
     border-top: 2px solid rgba(0,0,0,0.1);
-    padding: 4% 10% 0 10%;
+    padding: 4% 10%;
 }
 footer p{
     text-align: center;
@@ -113,22 +112,6 @@ footer p::after, footer p::before{
 .gitLink{
     transition: 0.25s ease-out;
 }
-.boxGit:hover .gitLink{
+.gitLink:hover{
     transform: translateY(-10%) scale(1.1);
-}
-.boxGit:hover .lgGit{
-    opacity: 1;
-    transform: translateX(110%);
-    box-shadow: inset 0 -3px 8px hsla(0,0%,100%,0.9);
-}
-.lgGit{
-    position:absolute;
-    bottom: 25%; right: 0%;
-    font-size: 110%;
-    opacity: 0;
-    background-color: rgba(0,0,0,0.7);
-    color:rgba(255,255,255,0.9);
-    padding: 5% 15% 5% 10%;
-    border-radius: 5px;
-    transition: 0.2s ease-out;
 }

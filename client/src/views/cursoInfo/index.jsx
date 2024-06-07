@@ -1,31 +1,14 @@
 import React from 'react'
 import './estilo.css'
+import cabecalho from '../cabecalho'
 
 function cursoInfo() {
     return (
     <>
-            <section class="barPesquisar">
-
-                <div class="secEsq">
-                    <img class="menu" src="imgs/menuIcon.png" alt=""/>
-                        <img class="logo" src="imgs/logoTreinOffer.png" alt="TreinOffer"/>
-                        </div>
-
-                        <div class="secMeio">
-                            <input type="text" placeholder="Buscar cursos"/>
-                                <button class="btPesquisar">
-                                    <img src="./imgs/searchIcon.png" alt="Lupa"/>
-                                </button>
-                        </div>
-
-                        <div class="secDir">
-                            <img class="uploadTreino" src="./imgs/uploadIcon.png" alt="Upload"/>
-                                <img class="menuPerfil" src="./imgs/logoEmpresa.jpeg" alt="Menu"/>
-                                </div>
-                            </section>
+            {cabecalho()};
 
                             <main className='main_curso'>
-                                <section class="informacoes">
+                                <section className="informacoes">
                                     <div>
                                         <img src="" alt="Val"/>
                                             <h4>Até 20 dezembro 2023</h4>
@@ -43,7 +26,7 @@ function cursoInfo() {
                                     <div>
                                         <img src="" alt="Especializacao economia rural"/>
                                     </div>
-                                    <div class="detalhes">
+                                    <div className="detalhes">
                                         <div>
                                             <img src="" alt="Dur"/>
                                         </div>
@@ -51,7 +34,7 @@ function cursoInfo() {
                                             <h4>6 meses</h4>
                                         </div>
                                     </div>
-                                    <div class="detalhes">
+                                    <div className="detalhes">
                                         <div>
                                             <img src="" alt="Horas semanais"/>
                                         </div>
@@ -59,7 +42,7 @@ function cursoInfo() {
                                             <h4>4~6 horas / semana</h4>
                                         </div>
                                     </div>
-                                    <div class="detalhes">
+                                    <div className="detalhes">
                                         <div>
                                             <img src="" alt="Dificuldade"/>
                                         </div>

@@ -1,21 +1,49 @@
 *{
-    margin: 0;
-    margin: 0;
-    outline: 0;
-    font-family: "Roboto", Arial, Helvetica, sans-serif;
+  margin: 0;
+  margin: 0;
+  outline: 0;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+body {
+  background: radial-gradient(hsl(155,100%,95%),hsl(220,100%,90%));
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 16px;
+
 }
 
-body{
-  background-color: radial-gradient(hsl(155,100%,95%),hsl(220,100%,90%));
-  color: black;
+#area_menu {
+  width: 720px;
+  margin: 0 auto;
+  
 }
-
-h1{
+#logo {
   float: left;
+
 }
-a{
-  text-decoration: none;
+#menu {
+  float: right;
+  padding: 15px ;
+
 }
+
+#navegacao {
+  height: 45px;
+  list-style-type: none;
+}
+#menu a:visited {
+  color: rgb(3, 3, 3);
+}
+
+#menu a:link {
+  color: rgb(12, 20, 20);
+}
+
+#menu a {
+  text-decoration: nome;
+ outline: 620px;
+ padding: 7px;
+}
+
 
 
 

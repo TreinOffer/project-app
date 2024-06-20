@@ -82,6 +82,10 @@ aside .menu .navegacao{
     cursor: pointer;
     transition: 4s;
 }
+.routes_cabecalho{
+    text-decoration: none;
+    color: black;
+}
 .navegacao img{
     width: 28px;
 }

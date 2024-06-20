@@ -2,6 +2,7 @@ import React from 'react';
 import './estiloNav.css';
 import './estiloAside.css';
 import imgs from '../../imgs/arrayImagens'
+import {Link} from 'react-router-dom'
 
 const cabecalho = () => {
 
@@ -18,6 +19,27 @@ const cabecalho = () => {
             nav.style.left = "calc(0% - 414px)";
         };
     };
+
+    // function Linkar(x) {
+    //     if (x === 1) {
+    //         return <CursosEmpresa />
+    //     }
+    //     else if (x === 2) {
+    //         return <Fatura />
+    //     }
+    //     else if (x === 3) {
+    //         return <Pagamento />
+    //     }
+    //     else if (x === 4) {
+    //         return <UploadCurso />
+    //     }
+    //     else if (x === 5) {
+    //         return <CursoInfo />
+    //     }
+    //     else {
+    //         return <CursosEmpresa />
+    //     }
+    // };
 
     return (
         <>
@@ -46,7 +68,7 @@ const cabecalho = () => {
                     </li>
                     <li className="navegacao">
                         <img src={imgs.livro} alt="" />
-                        <span>Meus cursos</span>
+                        <Link className='routes_cabecalho' to="/CursosEmpresa">Meus cursos</Link>
                     </li>
                     <ul className="tarefas">
                         <h3>Tarefas</h3>
@@ -63,7 +85,7 @@ const cabecalho = () => {
                         <h3>Financeiro</h3>
                         <li className="navegacao">
                             <img src="" alt="" />
-                            <span>Pendências</span>
+                            <Link className='routes_cabecalho' to="/Fatura">Fatura</Link>
                         </li>
                     </ul>
                     <ul className="financeira">

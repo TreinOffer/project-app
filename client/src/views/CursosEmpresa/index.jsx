@@ -8,6 +8,7 @@ function CursosEmpresa() {
 
       {cabecalho()}
 
+<<<<<<< HEAD
       <section className="barPesquisar">
 
         <div className="secEsq">
@@ -29,6 +30,8 @@ function CursosEmpresa() {
         </div>
       </section>
 
+=======
+>>>>>>> b99a757b649cbe688ddca99c4c763c97b201ab94
       {/*<section>
 <div className="search">
     <span className="search-icon material-symbols-outlined">search</span>

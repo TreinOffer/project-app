@@ -8,27 +8,6 @@ function CursosEmpresa() {
 
       {cabecalho()}
 
-      <section class="barPesquisar">
-
-        <div class="secEsq">
-          <img class="menu" src="../aymar/imgs/menuIcon.png" alt="" />
-          <img class="logo" src="../aymar/imgs/logoTreinOffer.png" alt="TreinOffer" />
-        </div>
-
-        <div class="secMeio">
-          <input type="text" placeholder="Buscar cursos" />
-          <button class="btPesquisar">
-            <img src="../aymar/imgs/searchIcon.png" alt="Lupa" />
-          </button>
-        </div>
-
-        <div class="secDir">
-          <button class="logar">Login</button>
-          <img src="../aymar/imgs/logOutIcon.png" alt="Sair" />
-          <img src="../aymar/imgs/settingsIcon.png" alt="Config" />
-        </div>
-      </section>
-
       {/*<section>
 <div class="search">
     <span class="search-icon material-symbols-outlined">search</span>

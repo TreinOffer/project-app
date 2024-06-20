@@ -1,70 +1,70 @@
 import React from 'react'
-// import "./estilo.css"
+import "./estilo.css"
 
 function Pagamento() {
   return (
     <>
-    <div class="wrapper">
+    <div className="wrapper">
         <h2>Formas de Pagamento</h2>
         <form action="" method="post">
             <h4>Conta</h4>
-            <div class="input_group">
-                <div class="input_box">
-                    <input type="text" placeholder="Login" required class="name"/>
-                    <i class="fa fa-user icon"></i>
+            <div className="input_group">
+                <div className="input_box">
+                    <input type="text" placeholder="Login" required className="name"/>
+                    <i className="fa fa-user icon"></i>
                 </div>
             </div>
-            <div class="input_group">
-                <div class="input_box">
-                    <input type="email" placeholder="Senha" required class="name"/>
-                    <i class="fa fa-envelope icon"></i>
+            <div className="input_group">
+                <div className="input_box">
+                    <input type="email" placeholder="Senha" required className="name"/>
+                    <i className="fa fa-envelope icon"></i>
                 </div>
             </div>
-            <div class="abc">
-                <div class="input_box">
+            <div className="abc">
+                <div className="input_box">
                     <h4>Detalhes do Pagamento</h4>
-                    <input type="radio" name="pay" class="radio" id="bc1" checked/>
+                    <input type="radio" name="pay" className="radio" id="bc1" checked/>
                     <label id="btCredit" for="bc1"><span>
-                            <i class="fa fa-cc-visa"></i> Cartão de crédito</span></label>
-                    <input type="radio" name="pay" class="radio" id="bc2"/>
+                            <i className="fa fa-cc-visa"></i> Cartão de crédito</span></label>
+                    <input type="radio" name="pay" className="radio" id="bc2"/>
                     <label id="btPix" for="bc2"><span>
-                            <i class="fa fa-cc-paypal"></i> Pix</span></label>
+                            <i className="fa fa-cc-paypal"></i> Pix</span></label>
                 </div>
             </div>
-            <div class="input_group" id="CardName">
-                <div class="input_box">
-                    <input type="tel" name="" class="name" placeholder="Nome do titular" required/>
-                    <i class="bi bi-person-square icon"></i>
+            <div className="input_group" id="CardName">
+                <div className="input_box">
+                    <input type="tel" name="" className="name" placeholder="Nome do titular" required/>
+                    <i className="bi bi-person-square icon"></i>
                 </div>
             </div>
-            <div class="input_group" id="CardNumber">
-                <div class="input_box">
-                    <input type="tel" name="" class="name" placeholder="Número do cartão" required/>
-                    <i class="fa fa-credit-card icon"></i>
+            <div className="input_group" id="CardNumber">
+                <div className="input_box">
+                    <input type="tel" name="" className="name" placeholder="Número do cartão" required/>
+                    <i className="fa fa-credit-card icon"></i>
                 </div>
             </div>
-            <div class="input_group" id="CardCVV">
-                <div class="input_box">
-                    <input type="tel" name="" class="name" placeholder="CVV" required/>
-                    <i class="fa fa-user icon"></i>
+            <div className="input_group" id="CardCVV">
+                <div className="input_box">
+                    <input type="tel" name="" className="name" placeholder="CVV" required/>
+                    <i className="fa fa-user icon"></i>
                 </div>
             </div>
-            <div class="input_group" id="CardMes">
-                <div class="input_box">
-                    <div class="input_box">
-                        <input type="number" placeholder="Mês" required class="name"/>
-                        <i class="fa fa-calendar icon" aria-hidden="true"></i>
+            <div className="input_group" id="CardMes">
+                <div className="input_box">
+                    <div className="input_box">
+                        <input type="number" placeholder="Mês" required className="name"/>
+                        <i className="fa fa-calendar icon" aria-hidden="true"></i>
                     </div>
                 </div>
-                <div class="input_group" id="CardAno">
-                    <div class="input_box">
-                        <input type="number" placeholder="Ano" required class="name"/>
-                        <i class="fa fa-calendar-o icon" aria-hidden="true"></i>
+                <div className="input_group" id="CardAno">
+                    <div className="input_box">
+                        <input type="number" placeholder="Ano" required className="name"/>
+                        <i className="fa fa-calendar-o icon" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
-            <div class="input_group">
-                <div class="input_box">
+            <div className="input_group">
+                <div className="input_box">
                     <button type="submit">Enviar</button>
                 </div>
             </div>

@@ -5,7 +5,7 @@ import cabecalho from '../cabecalho'
 function cursoInfo() {
     return (
     <>
-            {cabecalho()};
+            {cabecalho()}
 
                             <main className='main_curso'>
                                 <section className="informacoes">

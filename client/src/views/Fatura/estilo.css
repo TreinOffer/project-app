@@ -1,16 +1,15 @@
-
-::after,
-::before{
+.invoice,
+.invoice{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
+} 
 
-:root{
+.invoice{
     --blue-color: #0c2f54;
     --dark-color: #535b61;
     --white-color: #fff;
-}
+}  
 
 ul{
     list-style-type: none;

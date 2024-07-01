@@ -12,7 +12,7 @@
     transition: 0.3s ease-out;
 }
 .logoNavBar{
-    background-image: linear-gradient(hsl(205,100%,80%),hsl(25,40%,80%));
+    background-image: linear-gradient(white,hsl(205,100%,80%));
 }
 .menuNav{
     display: flex;
@@ -29,11 +29,11 @@
     width: 100%;
 }
 .secaoUser{
-    background-color: hsl(25,40%,80%);
+    background-color: hsl(205,100%,80%);
 }
 .user{
-    background-image: linear-gradient(hsl(205,100%,75%),hsl(205,70%,80%));
-    box-shadow: inset 0 5px 0px hsl(25,100%,90%);
+    background-image: linear-gradient(hsl(205,100%,85%),hsl(205,70%,80%));
+    box-shadow: inset 0 5px 0px hsl(205,100%,95%);
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     display: flex;
@@ -80,7 +80,7 @@ aside .menu .navegacao{
     margin: 4% 6% 6% 6%;
     box-shadow: inset -1px -1px 0 rgba(255,255,255,0.6);
     cursor: pointer;
-    transition: 4s;
+    transition: 0.5s ease-out;
 }
 .routes_cabecalho{
     text-decoration: none;
@@ -91,6 +91,7 @@ aside .menu .navegacao{
 }
 aside .navegacao:hover{
     background-image: linear-gradient(hsl(205,40%,80%),hsl(205,70%,80%));
+    transform: scale(1.2);
 }
 footer{
     background-color: hsl(205,40%,80%);

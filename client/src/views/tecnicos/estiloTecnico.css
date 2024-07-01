@@ -1,0 +1,140 @@
+.letraQuebra{
+    width: 100%;
+    text-align: center;
+    word-wrap: break-word;
+}
+.sec_func{
+    display: flex;
+    align-items: center;
+    height: 128px;
+}
+.box_colab{
+    background-color: green;
+    padding: 8px;
+    width: 20px;
+    color: white;
+    border-radius: 4px;
+}
+.func{
+    display: flex;
+    justify-content: space-between;
+}
+
+.funcoes_func{
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 4px;
+    gap: 18px;
+}
+.tab_func > h2{
+    margin: 8px;
+}
+.funcoes_func > div{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    max-width: 400px;
+}
+.buscar_func{
+    height: 36.33px; width: 39px;
+    cursor: pointer;
+    margin-right: -1px;
+    border-left: none;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-top: 1px solid hsl(0,0%,70%);
+    border-right: 1px solid hsl(0,0%,70%);
+    border-bottom: 1px solid hsl(0,0%,70%);
+    background-color: hsl(25,30%,70%);
+}
+.buscar_func > img{
+    height: 28px; width: 28px
+}
+.funcoes_func #func_mat{
+    width: calc(100% - 38.7px);
+    height: 35px;
+    padding-left: 14px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-right: none;
+    outline: none;
+    border: 1px solid hsl(25,20%,60%);
+    box-shadow: inset 1px 1px 10px hsl(25,0%,80%);
+}
+.funcoes_func > button{
+    padding: 4px;
+    background-color: hsl(150,40%,90%);
+    border: 1px solid hsl(25,0%,70%);
+    cursor: pointer;
+    transition: 0.25s ease-in-out;
+}
+.funcoes_func button > img{
+    height: 28px; width: 28px;
+}
+.funcoes_func > button:hover{
+    background-color: hsl(150,100%,90%);
+    transform: scale(1.2);
+    margin-right: 7px;
+}
+.tab_func{
+    margin: 2.5% 25%;
+    border: 1px solid black;
+    box-shadow: 0px 0px 10px black;
+    background-color: hsl(200,10%,98%);
+    min-width: 468px;
+}
+.tab_func .tit_cabec{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    /* justify-content: space-between; */
+    width: 100%;
+    padding: 8px 0;
+    background-image: linear-gradient(hsl(200,15%,70%),hsl(200,30%,90%));
+}
+.tab_func > .func{
+    display: flex;
+    flex-direction: row;
+    margin: 12px 0;
+}
+.info_pessoal{
+    flex-direction: row;
+}
+.info_pessoal .foto_func{
+    padding-left: 8px;
+    width: 128px; height: 128px;
+    margin-right: 25px;
+    border-radius: 100%;
+    filter: drop-shadow(0px 0px 1px black);
+}
+.info_pessoal .nome_func{
+    width: calc(((100% - 128px) - 8px) - 25px);
+}
+.tab_func .bot_opcoes{
+    width: 48px; height: 48px; 
+}
+.tab_func .bot_opcoes:hover{
+    cursor: pointer;
+}
+
+@media (max-width: 1770px) {
+    .tab_func .foto_func{
+        width: 64px; height: 64px;
+    }
+    .info_pessoal .nome_func{
+        width: calc(((100% - 64px) - 8px) - 25px);
+    }
+}
+@media (max-width: 1275px) {
+    .tab_func .foto_func{
+        width: 32px; height: 32px;
+    }
+    .info_pessoal .nome_func{
+        width: calc(((100% - 32px) - 8px) - 25px);
+    }
+}
+@media (max-width: 918px) {
+    .tab_func{
+        
+    }
+}

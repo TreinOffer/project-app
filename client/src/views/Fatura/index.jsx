@@ -14,7 +14,7 @@ function Fatura() {
                     <div className = "invoice-head">
                         <div className = "invoice-head-top">
                             <div className = "invoice-head-top-left text-start">
-                                <img src = "../aymar/imgs/logoTreinOffer.png"/>
+                                <img src = "../aymar/imgs/logoTreinOffer.png" alt=""/>
                             </div>
                         </div>
                         <div className = "hr"></div>

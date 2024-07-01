@@ -20,27 +20,6 @@ const cabecalho = () => {
         };
     };
 
-    // function Linkar(x) {
-    //     if (x === 1) {
-    //         return <CursosEmpresa />
-    //     }
-    //     else if (x === 2) {
-    //         return <Fatura />
-    //     }
-    //     else if (x === 3) {
-    //         return <Pagamento />
-    //     }
-    //     else if (x === 4) {
-    //         return <UploadCurso />
-    //     }
-    //     else if (x === 5) {
-    //         return <CursoInfo />
-    //     }
-    //     else {
-    //         return <CursosEmpresa />
-    //     }
-    // };
-
     return (
         <>
             <aside className="nav_bar" id='nav'>
@@ -66,31 +45,34 @@ const cabecalho = () => {
                         <img src={imgs.home} alt="" />
                         <span>Início</span>
                     </li>
-                    <li className="navegacao">
-                        <img src={imgs.livro} alt="" />
-                        <Link className='routes_cabecalho' to="/CursosEmpresa">Meus cursos</Link>
-                    </li>
+                    <ul className="tarefas">
+                        <h3>Treinamentos</h3>
+                        <li className="navegacao">
+                            <img src={imgs.livro} alt="" />
+                            <Link className='routes_cabecalho' to="/CursosEmpresa">Meus treinos</Link>
+                        </li>
+                        <li className='navegacao'>
+                            <img src={imgs.upload} alt="" />
+                            <Link className='routes_cabecalho' to="/uploadCurso">Enviar treinamento</Link>
+                        </li>
+                    </ul>
                     <ul className="tarefas">
                         <h3>Tarefas</h3>
                         <li className="navegacao">
-                            <img src={imgs.professor} alt="" />
-                            <span>Tecnicos</span>
+                            <img src={imgs.tecnicos} alt="" />
+                            <Link className='routes_cabecalho' to="/tecnicos">Tecnicos</Link>
                         </li>
                         <li className="navegacao">
-                            <img src={imgs.estudante} alt="" />
-                            <span>Colaboradores</span>
+                            <img src={imgs.colaboradores} alt="" />
+                            <Link className='routes_cabecalho' to="/colaboradores">Colaboradores</Link>
                         </li>
                     </ul>
                     <ul className="financeira">
                         <h3>Financeiro</h3>
                         <li className="navegacao">
-                            <img src="" alt="" />
+                            <img src={imgs.financas} alt="" />
                             <Link className='routes_cabecalho' to="/Fatura">Fatura</Link>
                         </li>
-                    </ul>
-                    <ul className="financeira">
-                        <h3>Financeiro</h3>
-                        <li className="navegacao">Pendências</li>
                     </ul>
                 </ul>
                 <footer>

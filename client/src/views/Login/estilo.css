@@ -47,7 +47,7 @@ table tr td label{
     margin-bottom: 5%;
     width: auto;
 }
-#matricula, #senha{
+.login_dados #matricula, .login_dados #senha{
     padding-left: 14px;
     border: none;
     outline: none;
@@ -57,7 +57,7 @@ table tr td label{
     width: calc(100% - 14px);
     margin-bottom: 15px;
 }
-#matricula::placeholder, #senha::placeholder{
+.login_dados #matricula::placeholder, .login_dados #senha::placeholder{
     padding: 10% 5% 10% 5%;
 }
 .campo_submit{

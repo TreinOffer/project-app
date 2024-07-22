@@ -1,4 +1,5 @@
 import TreinOffer from './logoTreinOffer.png';
+
 import voltar from './voltarMenu.png';
 import upload from './uploadIcon.png';
 import colaboradores from './colabIcon.png';
@@ -14,12 +15,25 @@ import financas from './finIcon.png';
 import empresa from './logoEmpresa.jpeg';
 import opcoes from "./optionsIcon.png";
 import addFunc from "./addFuncIcon.png";
+import removFunc from "./removFuncIcon.png"
 
+import treino1 from "./treinos/treino_capa1.png";
+import treino2 from "./treinos/treino_capa2.png";
+import treino3 from "./treinos/treino_capa3.png";
+import treino4 from "./treinos/treino_capa4.png";
+import treino5 from "./treinos/treino_capa5.png";
+import treino6 from "./treinos/treino_capa6.png";
+
+import tabEmpty from "./tabelas/perfilEmptyTest.png";
 import tabEduardo from "./tabelas/perfilEduardoTest.jpg";
 import tabLeila from "./tabelas/perfilLeilaTest.jpg";
 
+import confirmar from "./tabelas/Verificado.png";
+import deletar from "./tabelas/Remover.png";
+
 const imgs = {
     TreinOffer,
+
     voltar,
     upload,
     colaboradores,
@@ -34,8 +48,21 @@ const imgs = {
     financas,
     opcoes,
     addFunc,
+    removFunc,
+    confirmar,
+    deletar,
+
+    treino1,
+    treino2,
+    treino3,
+    treino4,
+    treino5,
+    treino6,
+
+    tabEmpty,
     tabEduardo,
     tabLeila,
+
     empresa
 };
 

@@ -41,38 +41,55 @@ const cabecalho = () => {
                     </section>
                 </section>
                 <ul className="menu">
+                    <Link className='routes_cabecalho' to="/">
                     <li className="navegacao">
                         <img src={imgs.home} alt="" />
                         <span>Início</span>
                     </li>
+                    </Link>
+
                     <ul className="tarefas">
                         <h3>Treinamentos</h3>
-                        <li className="navegacao">
-                            <img src={imgs.livro} alt="" />
-                            <Link className='routes_cabecalho' to="/CursosEmpresa">Meus treinos</Link>
-                        </li>
-                        <li className='navegacao'>
-                            <img src={imgs.upload} alt="" />
-                            <Link className='routes_cabecalho' to="/uploadCurso">Enviar treinamento</Link>
-                        </li>
+
+                        <Link className='routes_cabecalho' to="/treinos">
+                            <li className="navegacao">
+                                <img src={imgs.livro} alt="" />
+                                <span>Meus treinos</span>
+                            </li>   
+                        </Link>
+                        
+                        <Link className='routes_cabecalho' to="/uploadTreino">
+                            <li className="navegacao">
+                                <img src={imgs.upload} alt="" />
+                                <span>Enviar treinamento</span>
+                            </li>    
+                        </Link>
                     </ul>
                     <ul className="tarefas">
-                        <h3>Tarefas</h3>
-                        <li className="navegacao">
-                            <img src={imgs.tecnicos} alt="" />
-                            <Link className='routes_cabecalho' to="/tecnicos">Tecnicos</Link>
-                        </li>
-                        <li className="navegacao">
-                            <img src={imgs.colaboradores} alt="" />
-                            <Link className='routes_cabecalho' to="/colaboradores">Colaboradores</Link>
-                        </li>
+                        <h3>Tarefas</h3>   
+                        <Link className='routes_cabecalho' to="/tecnicos">
+                            <li className="navegacao">
+                                <img src={imgs.tecnicos} alt="" />
+                                <span>Técnicos</span>
+                            </li>    
+                        </Link>
+
+                        <Link className='routes_cabecalho' to="/colaboradores">
+                            <li className="navegacao">
+                                <img src={imgs.colaboradores} alt="" />
+                                <span>Colaboradores</span>
+                            </li>    
+                        </Link>
+                        
                     </ul>
                     <ul className="financeira">
                         <h3>Financeiro</h3>
-                        <li className="navegacao">
-                            <img src={imgs.financas} alt="" />
-                            <Link className='routes_cabecalho' to="/Fatura">Fatura</Link>
-                        </li>
+                        <Link className='routes_cabecalho' to="/fatura">
+                            <li className="navegacao">
+                                <img src={imgs.financas} alt="" />
+                                <span>Fatura</span>
+                            </li>    
+                        </Link>
                     </ul>
                 </ul>
                 <footer>

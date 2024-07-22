@@ -1,0 +1,34 @@
+/* body{
+    margin: 50%;
+} */
+/* body *, .a *{
+    width: 33px; 
+    height: 33px;
+}  */
+.a{
+    background-color: green;
+    width: 69px; height: 69px;
+    /* position: relative; */
+}
+.b{
+    background-color: blue;
+    width: 69px; height: 69px;
+    transition: ease-in 0.5s;
+    /* position: absolute; */
+    /* margin-top: 15px; */
+    /* padding: 6px; */
+}
+.b:hover{
+    /* transform: scale(1.8);
+    margin-top: 25px; */
+    transform: translateY(-25px);
+    margin: 25px;
+}
+.c{
+    /* width: calc(100% - 5px); height: calc(100% - 5px); */
+    background-color: red;
+    /* transform: rotateX(20deg) rotateY(-9deg) translateX(5px); */
+    /* position: relative; */
+    /* margin: 15px; */
+    /* height: 30px; */
+}

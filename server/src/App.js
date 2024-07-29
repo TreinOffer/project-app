@@ -1,18 +1,14 @@
 import express from "express";
-import a from "./funcionarios.js";
-
-porta = 5050;
+import EmpresaTecnicoController from "./controllers/empresaTecnicoController.js";
 
 const server = express();
+const porta = 3000;
 
-server.use(express.json("iniciando servidor "+porta));
+server.use(express.json());
 
-server.get('/tecnicos',(req,res) => {try {
-    res.send(json(a))
-} catch (error) {
-    res.send(error)    
-}});
+server.get("/tecnicos",EmpresaTecnicoController.read);
+server.post("/tecnicos",EmpresaTecnicoController.create);
 
 server.listen(porta, () => {
-    console.log("listening server em :"+porta);
+    console.debug("server listening on port " + porta);
 });

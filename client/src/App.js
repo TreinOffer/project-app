@@ -6,7 +6,7 @@ import Fatura from "./views/Fatura";
 import Pagamento from './views/pagamento';
 import UploadCurso from './views/uploadCurso';
 import CursoInfo from './views/cursoInfo';
-import Tecnicos from './views/Tecnicos';
+import Tecnicos from './views/tecnicos';
 import Ed from './views/test/ed';
 
 function App() {

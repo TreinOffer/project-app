@@ -12,5 +12,6 @@ const tecnicos =
         colabRel: [2, 'Joao', 'Alan'],
         matricula: '37B38C',
         contrato: '2 anos'
-    }
-    ];
+    }];
+
+export default tecnicos;

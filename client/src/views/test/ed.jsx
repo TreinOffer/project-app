@@ -1,38 +1,32 @@
 import React, { useState } from 'react';
+import imgs from "../../imgs/arrayImagens";
 import './estilo.css';
-import { useEffect } from "react";
-// import { useState,useEffect } from "react";
+import { useDrag,DndProvider } from "react-dnd";
+
+// const [{isDragging},drag] = useDrag((id) => {
+//   accept: "image",
+//   item
+//   collect: (monitor) => ({
+//     isDragging: monitor.isDragging(),
+//   });
+// });
 
 const Ed = () => {
 
-  function ImageUploader() {
-    const [imagem, setImagem] = useState(null);
-  
-    const handleImageUpload = (event) => {
-      const file = event.target.files[0]; // Acessando o primeiro arquivo selecionado
-      if (file) {
-        setImagem(URL.createObjectURL(file)); // Criando URL temporária para exibir a imagem
-      }
-    };
-  
-    return (
-      <div>
-        <h2>Upload de Imagem</h2>
-        <input type="file" accept=".png, .jpg, .jpeg" onChange={handleImageUpload} />
-        {imagem ? (
-          <div className="func_foto">
-            <h3>Imagem Carregada:</h3>
-            <img src={imagem} alt="Imagem Carregada" style={{ maxWidth: '100%' }} />
-          </div>
-        ) : (
-          <div className="func_foto">
-            <h3>Imagem de Exemplo:</h3>
-            <img src="caminho/para/imagem-padrao.jpg" alt="Imagem de Exemplo" style={{ maxWidth: '100%' }} />
-          </div>
-        )}
-      </div>
-    );
-  }
+  // return(
+  //   <DndProvider>
+  //     <div className="dropSection"
+  //     style={{border: "4px solid black", margin: "auto auto"}}
+  //     ref={drop}
+  //     ></div>
+  //     <div className="dragSection"
+  //     style={{border: "2px solid black"}}
+  //     ref={drag}
+  //     >
+  //       <img src={imgs.empresa} alt="" srcset="" />
+  //     </div>
+  //   </DndProvider>
+  // )
 
 }
 

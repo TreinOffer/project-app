@@ -33,8 +33,40 @@ class EmpresaTecnicoController{
             }
         );
     };
-    update(){};
-    delete(){};
+    update(req,res){
+        const matricula = req.params.matricula;
+        const nome = req.body.nome;
+        const senha = req.body.senha;
+        const tarefa = req.body.tarefa;
+        const colab = req.body.colaboradores;
+
+        EmpresaTecnicoModel.update(nome,senha,tarefa,colab,matricula).then(
+            resposta => {
+                console.debug(`Atualizando tecnico ${matricula}`);
+                res.status(resposta[0]).json(resposta[1]);
+            }
+        ).catch(
+            resposta => {
+                console.debug(`Erro: Atualizando tecnico ${matricula}`);
+                res.status(resposta[0]).json(resposta[1]);
+            }
+        );
+    };
+    delete(req,res){
+        const matricula = req.params.matricula;
+
+        EmpresaTecnicoModel.delete(matricula).then(
+            resposta => {
+                console.debug(`Deletando tecnico ${matricula}`);
+                res.status(resposta[0]).json(resposta[1]);
+            }
+        ).catch(
+            resposta => {
+                console.debug(`Erro: Deletando tecnico ${matricula}`);
+                res.status(resposta[0]).json(resposta[1]);
+            }
+        );
+    };
 };
 
 export default new EmpresaTecnicoController();

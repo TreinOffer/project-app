@@ -1,0 +1,22 @@
+.contentUpTreino{
+    margin: 3% 10%;
+    display: flex;
+    flex-direction: row;
+    column-gap: 60px;
+}
+.contentUpTreino .dragSection{
+    border: 2px solid black;
+    display: grid;
+    grid-auto-flow: row;
+    flex: 1;
+}
+.contentUpTreino .dragSection > img{
+    margin: 0 auto;
+    width: 128px;
+    cursor: grab;
+}
+.contentUpTreino .dropSection > img{
+    margin: 0 auto;
+    grid-auto-flow: row;
+    width: 128px;
+}

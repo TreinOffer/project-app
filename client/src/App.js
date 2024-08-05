@@ -7,6 +7,7 @@ import Pagamento from './views/pagamento';
 import UploadCurso from './views/uploadCurso';
 import CursoInfo from './views/cursoInfo';
 import Tecnicos from './views/tecnicos';
+import UploadTreino from './views/uploadTreino/uploadPainel';
 import Ed from './views/test/ed';
 
 function App() {
@@ -18,8 +19,9 @@ function App() {
       <Route path='/cursoInfo' element={<CursoInfo />}></Route>
       <Route path='/fatura' element={<Fatura />}></Route>
       <Route path='/pagamento' element={<Pagamento />}></Route>
-      <Route path='/uploadTreino' element={<UploadCurso/>}></Route>
+      <Route path='/uploadCurso' element={<UploadCurso/>}></Route>
       <Route path='/tecnicos' element={<Tecnicos/>}></Route>
+      <Route path='/uploadTreino' element={<UploadTreino/>}></Route>
       <Route path='/test' element={<Ed/>}></Route>
     </Routes>
     </BrowserRouter>

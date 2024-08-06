@@ -1,22 +1,33 @@
 .contentUpTreino{
-    margin: 3% 10%;
+    margin: 3% auto;
+    width: 50%;
+    /* height: 100vh; */
     display: flex;
     flex-direction: row;
-    column-gap: 60px;
+    column-gap: 240px;
+}
+.isImagem{
+    display: flex;
+    justify-content: space-around;
 }
 .contentUpTreino .dragSection{
+    width: 132px;
     border: 2px solid black;
     display: grid;
     grid-auto-flow: row;
-    flex: 1;
+    /* flex: 1; */
 }
-.contentUpTreino .dragSection > img{
+.contentUpTreino .dropSection{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.contentUpTreino .dragSection img{
     margin: 0 auto;
     width: 128px;
     cursor: grab;
 }
-.contentUpTreino .dropSection > img{
+.contentUpTreino .dropSection img{
     margin: 0 auto;
-    grid-auto-flow: row;
     width: 128px;
 }

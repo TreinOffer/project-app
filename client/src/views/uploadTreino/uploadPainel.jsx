@@ -5,33 +5,42 @@ import imgs from "../../imgs/arrayImagens";
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
-const Destino = ({ onDrop,lista }) => {
+//Reference element, call this ref on drop property of Destino 
+
+const Destino = ({ onDrop,handleRef,lista }) => {
     const [{ isOver }, drop] = useDrop({
         accept: "image",
         drop: (image) => {
             onDrop(image);
         },
-
         collect: (monitor) => ({
             isOver: monitor.isOver()
         })
     });
+    const isImagem = lista.length > 1 ? "isImagem":""
     return (
         <div
             className='dropSection'
             style={{
-                width: "100%",
-                height: "50vh",
+                width: "calc(100% - (132px + 120px))",
+                // height: "100vh",
                 border: '2px solid black',
                 backgroundColor: isOver ? "lightgreen" : "cyan"
             }}
             ref={drop}
         >
-            {
-                lista.map((item,index) => (
-                    <img key={index} id={item.id} src={item.src} alt='aa' />
-                ))
-            }
+            <div
+            className={isImagem}
+            style={{
+                width: "100%"
+            }}
+            >
+                {
+                    lista.map((item,index) => (
+                        <img key={index} id={item.id} src={item.src} alt='aa' />
+                    ))
+                }
+            </div>
         </div>
     )
 };
@@ -109,10 +118,15 @@ const UploadPainel = () => {
                         }}
                         onClick={handlePlus}
                         >
-                            +
+                            {
+                                click >= 1? 
+                                "<"
+                                : 
+                                ">"
+                            }
                         </div>
                     </section>
-                    <Destino onDrop={handleDrop} lista={objetos}/>
+                    <Destino onDrop={handleDrop} handleRef={handleDouble} lista={objetos}/>
                 </DndProvider>
             </main>
         </>

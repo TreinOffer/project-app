@@ -5,9 +5,14 @@ import imgs from "../../imgs/arrayImagens";
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
-//Reference element, call this ref on drop property of Destino 
+//Reference element, call this ref on drop property of Destino
 
-const Destino = ({ onDrop,handleRef,lista }) => {
+let tipoObjs = [
+    0, //num imagem
+    0 //num videos
+];
+
+const Destino = ({ onDrop,lista,numEl }) => {
     const [{ isOver }, drop] = useDrop({
         accept: "image",
         drop: (image) => {
@@ -17,7 +22,8 @@ const Destino = ({ onDrop,handleRef,lista }) => {
             isOver: monitor.isOver()
         })
     });
-    const isImagem = lista.length > 1 ? "isImagem":""
+    const isImagem = lista.length > 1 ? "isImagem":"isImagemSingle";
+    console.log("lista: ",lista);
     return (
         <div
             className='dropSection'
@@ -29,18 +35,28 @@ const Destino = ({ onDrop,handleRef,lista }) => {
             }}
             ref={drop}
         >
-            <div
-            className={isImagem}
-            style={{
-                width: "100%"
-            }}
-            >
-                {
+            {
+                numEl[0] >= 1 ? (
+                    <div
+                    className={isImagem}
+                    style={{
+                        width: "100%",
+                        border: isOver ? "1px solid red" : ""
+                    }}
+                    ref={drop} //Alterar para nova ref
+                    >
+                        {
+                            lista.map((item,index) => (
+                                <img key={index} id={item.id} src={item.src} alt='aa' />
+                            ))
+                        }
+                    </div>
+                ):(
                     lista.map((item,index) => (
                         <img key={index} id={item.id} src={item.src} alt='aa' />
                     ))
-                }
-            </div>
+                )
+            }
         </div>
     )
 };
@@ -48,7 +64,7 @@ const Destino = ({ onDrop,handleRef,lista }) => {
 const Arrastavel = ({ opcoes }) => {
     const [{ isDragging }, drag] = useDrag(() => ({
         type: 'image',
-        item: { id: opcoes.id, src: opcoes.src },
+        item: { id: opcoes.id, src: opcoes.src, tipo: opcoes.tipo },
         collect: (monitor) => ({
             isDragging: monitor.isDragging(),
         }),
@@ -76,14 +92,15 @@ const UploadPainel = () => {
         switch (num) {
             case 0:
                 return[
-                        { id: 1, src: imgs.empresa },
-                        { id: 2, src: imgs.tabEduardo},
-                        { id: 3, src: imgs.tabLeila}
+                        { id: 1, src: imgs.empresa, tipo: "imagem" },
+                        { id: 2, src: imgs.tabEduardo, tipo: "imagem"},
+                        { id: 3, src: imgs.tabLeila, tipo: "imagem"}
                     ]
             case 1:
                 return[
-                    { id: 4, src: imgs.git},
-                    { id: 5, src: imgs.confirmar}
+                    { id: 4, src: imgs.git, tipo: "imagem"},
+                    { id: 5, src: imgs.addFunc, tipo: "imagem"},
+                    { id: 6, src: imgs.financas, tipo: "imagem"}
                 ]
             default:
                 setClick(0);
@@ -94,6 +111,11 @@ const UploadPainel = () => {
     const handleDrop = (objeto) => {
         setObjetos((objOutros) => [...objOutros, objeto]);
         console.log("handleDrop: ",objeto);
+        if (objeto.tipo === "imagem") {
+            tipoObjs[0] += 1;
+            console.log(tipoObjs[0]);
+        }
+
     };
 
     return (
@@ -108,14 +130,7 @@ const UploadPainel = () => {
                             ))
                         }
                         <div
-                        style={{
-                            display: 'flex',
-                            border: "1px solid black",
-                            height: "100%",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            cursor: 'pointer'
-                        }}
+                        className="bt-mudar"
                         onClick={handlePlus}
                         >
                             {
@@ -126,7 +141,7 @@ const UploadPainel = () => {
                             }
                         </div>
                     </section>
-                    <Destino onDrop={handleDrop} handleRef={handleDouble} lista={objetos}/>
+                    <Destino onDrop={handleDrop} lista={objetos} numEl={tipoObjs}/>
                 </DndProvider>
             </main>
         </>

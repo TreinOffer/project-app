@@ -1,7 +1,7 @@
 .contentUpTreino{
     margin: 3% auto;
     width: 50%;
-    /* height: 100vh; */
+    height: 100vh;
     display: flex;
     flex-direction: row;
     column-gap: 240px;
@@ -10,12 +10,25 @@
     display: flex;
     justify-content: space-around;
 }
+.isImagemSingle{
+    display: flex;
+    justify-content: center;
+}
 .contentUpTreino .dragSection{
+    margin: auto 0;
     width: 132px;
     border: 2px solid black;
     display: grid;
     grid-auto-flow: row;
     /* flex: 1; */
+}
+.contentUpTreino .dragSection .bt-mudar{
+    display: flex;
+    border: 1px solid black;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 .contentUpTreino .dropSection{
     display: flex;

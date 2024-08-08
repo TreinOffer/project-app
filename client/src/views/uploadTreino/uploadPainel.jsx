@@ -36,26 +36,28 @@ const Destino = ({ onDrop,lista,numEl }) => {
             ref={drop}
         >
             {
-                numEl[0] >= 1 ? (
-                    <div
-                    className={isImagem}
-                    style={{
-                        width: "100%",
-                        border: isOver ? "1px solid red" : ""
-                    }}
-                    ref={drop} //Alterar para nova ref
-                    >
-                        {
-                            lista.map((item,index) => (
-                                <img key={index} id={item.id} src={item.src} alt='aa' />
-                            ))
-                        }
-                    </div>
-                ):(
-                    lista.map((item,index) => (
-                        <img key={index} id={item.id} src={item.src} alt='aa' />
-                    ))
-                )
+                lista.map((item,index) => {
+                    switch (item.tipo) {
+                        case "imagem":
+                           return (
+                                numEl[0] >= 1 ? (
+                                    <div ref={drop} className={isImagem}>
+                                        <img key={index} id={item.id} src={item.src} alt='aa' />
+                                    </div>
+                                )
+                                :
+                                (
+                                    <img key={index} id={item.id} src={item.src} alt='aa' />
+                                )) 
+                        case "video":
+                             return <video controls src={imgs.TreinOffer}></video>
+                        case "parag":
+                            return <p key={index}>{item.src}</p>
+                        default:
+                            console.log("unreachable: ", item);
+                            break;
+                    }
+                })
             }
         </div>
     )
@@ -69,14 +71,24 @@ const Arrastavel = ({ opcoes }) => {
             isDragging: monitor.isDragging(),
         }),
     }));
-
-    return (
-            <img id={opcoes.id} src={opcoes.src} ref={drag} alt='arrastar'
+    console.log("opcoes", opcoes);
+    switch (opcoes.tipo) {
+        case "imagem":
+            return <img ref={drag} src={opcoes.src} id={opcoes.id} alt='imagem_arrastar'
             style={{
                 opacity: isDragging ? 0.5 : 1
             }}
-            />
-    );
+            ></img>
+        case "parag":
+            return <p ref={drag} id={opcoes.id}>
+                        {opcoes.src}
+                    </p>
+        case "video":
+            return <video ref={drag} id={opcoes.id} controls src={imgs.TreinOffer}></video>
+        default:
+            console.log("unreachable: ", opcoes);
+            break;
+    }
 };
 
 const UploadPainel = () => {
@@ -87,7 +99,6 @@ const UploadPainel = () => {
         click >= 1 ? setClick(0) : 
         setClick((prevClick) => prevClick + 1);
     };
-
     const item = (num) => {
         switch (num) {
             case 0:
@@ -99,8 +110,8 @@ const UploadPainel = () => {
             case 1:
                 return[
                     { id: 4, src: imgs.git, tipo: "imagem"},
-                    { id: 5, src: imgs.addFunc, tipo: "imagem"},
-                    { id: 6, src: imgs.financas, tipo: "imagem"}
+                    { id: 5, src: "Lorem ipsum dolor sit amet consectetur adipisicing elit.", tipo: "parag"},
+                    { id: 6, src: imgs.TreinOffer , tipo: "video"}
                 ]
             default:
                 setClick(0);
@@ -113,9 +124,11 @@ const UploadPainel = () => {
         console.log("handleDrop: ",objeto);
         if (objeto.tipo === "imagem") {
             tipoObjs[0] += 1;
-            console.log(tipoObjs[0]);
-        }
-
+            console.log("img: ",tipoObjs[0]);
+        }else if (objeto.tipo === "video"){
+            tipoObjs[1] += 1;
+            console.log("video: ",tipoObjs[1]);
+        };
     };
 
     return (

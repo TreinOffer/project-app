@@ -100,7 +100,7 @@ function AddFunc() {
             } alt='*'/>
 
             <div className="botao_div">
-              <input className='addFotoFuncBt' onChange={handleUploadImagem} accept='.jpg,.png,jpeg' multiple={false} type="file" name="foto" id="foto"/>
+              <input className='addFotoFuncBt' onChange={handleUploadImagem} accept='.jpg,.png,.jpeg' multiple={false} type="file" name="foto" id="foto"/>
               <label id='forFoto' htmlFor="foto">Escolher imagem</label>
             </div>
           </div>

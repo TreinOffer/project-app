@@ -1,0 +1,43 @@
+                                        
+                                        
+                                        
+                                        
+                                        Setar imagem, so funciona a ultima colocada em drop
+
+
+
+
+
+
+
+
+    let imagem = null
+    const isImagem = lista.length > 1 ? "isImagem" : "isImagemSingle";
+    const defImagem = useRef(null);
+    const refImagem = useRef(null);
+
+    const handleImagem = () => {
+        defImagem.current.click();
+        // console.log("imagem", defImagem);
+        let keyInteracao = refImagem.current.parentElement;
+        keyInteracao.setAttribute('changing',true);
+        console.log(keyInteracao);
+        return handleSetImagem();
+    };
+
+    const handleSetImagem = (event) => {
+        const secaoDrop = document.getElementsByClassName("dropSection");
+        console.log("secaoDrop: ", secaoDrop.length);
+        for (let index = 0; index < secaoDrop.length; index++) {
+            let chaveIndex = secaoDrop[index].getAttribute("changing");
+            if (chaveIndex) {
+                console.log("deu");
+                const file = event.target.files[0];
+                if (file) {
+                    imagem = URL.createObjectURL(file);
+                    console.log("imagem: ", imagem);
+                    refImagem.src = imagem;
+                };
+            };
+        }
+    };

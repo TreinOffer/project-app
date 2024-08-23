@@ -14,14 +14,57 @@
     display: flex;
     justify-content: center;
 }
+
+.contentUpTreino {
+    perspective: 1000px;
+}
 .contentUpTreino .dragSection{
     margin: auto 0;
     width: 132px;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: grid;
     grid-auto-flow: row;
+    position: relative;
     /* flex: 1; */
+    /* animation: animate 4s infinite; */
+    transition: transform 0.4s ease, border-width 0.4s ease;
+    transform-style: preserve-3d;
 }
+
+.contentUpTreino .dragSection::before {
+    content: "";
+    position: absolute;
+    top: -4px; 
+    left: -4px; 
+    width: calc(100% + 6px);
+    height: calc(100% + 6px); 
+    border: 2px solid black;
+    transition: width 0.4s ease, height 0.4s ease; 
+    transform-origin: center; 
+    z-index: -1; 
+    }
+
+
+
+.contentUpTreino .dragSection:hover::before {
+    width: calc(100% + 4px);
+    height: calc(100% + 4px); 
+    transform: scale(1.1);
+}
+
+
+/* @keyframes animate {
+    0% {
+        transform: translateY(0); 
+    }
+    50% {
+        transform: translateY(30px); 
+    }
+    100% {
+        transform: translateY(0); 
+    }
+} */
+
 .contentUpTreino .dragSection .bt-mudar{
     display: flex;
     border: 1px solid black;
@@ -36,15 +79,24 @@
     align-items: center;
     justify-content: center;
 }
+
+.contentUpTreino .dragSection:hover::before,
+.contentUpTreino .dragSection:hover img {
+    transform: scale(1.1); 
+}
 .contentUpTreino .dragSection img{
     margin: 0 auto;
     width: 128px;
     cursor: grab;
+    transition: transform 0.6s ease;
+   
 }
+
 .contentUpTreino .dropSection img{
     margin: 0 auto;
     width: 128px;
 }
+
 .contentUpTreino .dragSection p{
     cursor: grab;
 }

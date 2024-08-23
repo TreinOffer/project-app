@@ -10,14 +10,14 @@ function Pagamento() {
             <h4>Conta</h4>
             <div className="input_group">
                 <div className="input_box">
-                    <input type="text" placeholder="Login" required className="name"/>
+                    <input type="text" placeholder="Matricula" required className="name"/>
                     <i className="fa fa-user icon"></i>
                 </div>
             </div>
             <div className="input_group">
                 <div className="input_box">
-                    <input type="email" placeholder="Senha" required className="name"/>
-                    <i className="fa fa-envelope icon"></i>
+                    <input type="password" placeholder="Senha" required className="name"/>
+                    <i className="fa fa-lock icon"></i>
                 </div>
             </div>
             <div className="abc">
@@ -68,7 +68,6 @@ function Pagamento() {
                     <button type="submit">Enviar</button>
                 </div>
             </div>
-
         </form>
     </div>
     </>

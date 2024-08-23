@@ -22,6 +22,10 @@ ul li{
 .text-dark{
     color: var(--dark-color);
 }
+
+.faturalogo{
+    width: 30px;
+}
 .text-blue{
     color: var(--blue-color);
 }
@@ -54,7 +58,6 @@ body{
 }
 .invoice-wrapper{
     min-height: 100vh;
-    background-color: rgba(0, 0, 0, 0.1);
     padding-top: 20px;
     padding-bottom: 20px;
 }

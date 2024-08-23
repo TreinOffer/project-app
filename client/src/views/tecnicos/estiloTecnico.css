@@ -116,7 +116,14 @@
     border-radius: 100%;
     border: 1px solid hsl(0,0%,20%);
     box-shadow: 2px 4px 1px hsl(200,10%,50%);
+    
 }
+
+.foto_func{
+
+}
+
+
 .info_pessoal .nome_func{
     width: calc(((100% - 128px) - 8px) - 25px);
 }

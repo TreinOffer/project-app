@@ -1,6 +1,7 @@
 import React from 'react'
 import "./estilo.css"
 import cabecalho from '../cabecalho'
+import imgs from '../../imgs/arrayImagens.jsx'
 
 function Fatura() {
   return (
@@ -14,7 +15,7 @@ function Fatura() {
                     <div className = "invoice-head">
                         <div className = "invoice-head-top">
                             <div className = "invoice-head-top-left text-start">
-                                <img src = "../aymar/imgs/logoTreinOffer.png" alt=""/>
+                            <img id="faturalogo" src={imgs.TreinOffer} alt="" />
                             </div>
                         </div>
                         <div className = "hr"></div>

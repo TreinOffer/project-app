@@ -9,6 +9,7 @@ import CursoInfo from './views/cursoInfo';
 import Tecnicos from './views/tecnicos';
 import UploadTreino from './views/uploadTreino/uploadPainel';
 import Ed from './views/test/ed';
+import Graficos from './views/graficos/estatisticas';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Route path='/tecnicos' element={<Tecnicos/>}></Route>
       <Route path='/uploadTreino' element={<UploadTreino/>}></Route>
       <Route path='/test' element={<Ed/>}></Route>
+      <Route path='/graficos' element={<Graficos />}></Route>
     </Routes>
     </BrowserRouter>
   );

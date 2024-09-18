@@ -31,6 +31,9 @@ import tabLeila from "./tabelas/perfilLeilaTest.jpg";
 import confirmar from "./tabelas/Verificado.png";
 import deletar from "./tabelas/Remover.png";
 
+import upImage from "./SubirTreino/image_placeholder.png";
+import upVideo from "./SubirTreino/video_placeholder.jpg";
+
 const imgs = {
     TreinOffer,
 
@@ -62,6 +65,9 @@ const imgs = {
     tabEmpty,
     tabEduardo,
     tabLeila,
+
+    upImage,
+    upVideo,
 
     empresa
 };

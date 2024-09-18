@@ -1,0 +1,13 @@
+.contentUpTreino{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+    & .dropSection{
+        margin-top: 20px;
+        border: 2px solid black;
+        min-width: 50%;
+        height: 100vh;
+    }
+}

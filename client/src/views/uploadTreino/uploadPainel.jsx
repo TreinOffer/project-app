@@ -1,6 +1,7 @@
-import './estiloUpTreino.css';
+import './estiloArras.css';
+import './estiloDestino.css';
 
-import cabecalho from '../cabecalho'
+import Cabecalho from '../cabecalho'
 import Arrastavel from './arrastavel';
 import Destino from './destino';
 
@@ -9,8 +10,6 @@ import imgs from "../../imgs/arrayImagens";
 
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-
-//Assim que haver elem, se drop e elemNovo compativel com target type, elemNovo into elem_dropPai
 
 const UploadPainel = () => {
 
@@ -24,15 +23,16 @@ const UploadPainel = () => {
         switch (num) {
             case 0:
                 return [
-                    { id: 1, src: imgs.empresa, tipo: "imagem" },
-                    { id: 2, src: imgs.tabEduardo, tipo: "imagem" },
-                    { id: 3, src: imgs.tabLeila, tipo: "imagem" }
+                    { src: imgs.upImage, tipo: "imagem" },
+                    { src: "Lorem ipsum dolor sit amet consectetur adipisicing elit.", tipo: "parag" },
+                    { src: imgs.upVideo, tipo: "video" }
+                    
                 ]
             case 1:
                 return [
-                    { id: 4, src: imgs.git, tipo: "imagem" },
-                    { id: 5, src: "Lorem ipsum dolor sit amet consectetur adipisicing elit.", tipo: "parag" },
-                    { id: 6, src: imgs.TreinOffer, tipo: "video" }
+                    { src: imgs.git, tipo: "imagem" },
+                    { src: imgs.tabEduardo, tipo: "imagem" },
+                    { src: imgs.tabLeila, tipo: "imagem" }
                 ]
             default:
                 setClick(0);
@@ -40,29 +40,15 @@ const UploadPainel = () => {
         }
     };
 
-    // const [objetos, setObjetos] = useState([]);
-    // const handleDrop = (objeto) => {
-    //     setObjetos((objOutros) => [...objOutros, objeto]);
-    //     console.log("handleDrop: ", objeto);
-    //     console.log("objetos: ", objetos);
-    //     if (objeto.tipo === "imagem") {
-    //         tipoObjs[0] += 1;
-    //         console.log("img: ", tipoObjs[0]);
-    //     } else if (objeto.tipo === "video") {
-    //         tipoObjs[1] += 1;
-    //         console.log("video: ", tipoObjs[1]);
-    //     };
-    // };
-
     return (
         <>
-            {cabecalho()}
+            <Cabecalho />
             <main className="contentUpTreino">
                 <DndProvider backend={HTML5Backend}>
                     <section className="dragSection">
                         {
-                            item(click).map((item) => (
-                                <Arrastavel key={item.id} opcoes={item} />
+                            item(click).map((item,index) => (
+                                <Arrastavel key={index} opcoes={item} />
                             ))
                         }
                         <div

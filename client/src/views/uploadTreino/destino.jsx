@@ -5,81 +5,62 @@ import Containers from "./Destinos/indexContainers";
 
 const Destino = () => {
 
-    const [itens,setItens] = useState([{}]);
-
-    // const onDrop = (item, contArray) => {
-    //     setItens((prevItens) => ({...prevItens, [contArray]: item}))
-    //     console.log("itens: ", itens);
-    // };
+    const [itens,setItens] = useState([]);
 
     const onDrop = (item) => {
+        const index = itens.length;
+        item.index = index;
         setItens(prevItens => ([
             ...prevItens,
-            item
+            [item]
         ]));
-        
-        itens.slice().reverse().find(item => {
-            // console.log("item: ",item);
-
-
-            if (Object.keys(item)[0]) {
-
-
-                let lastSection = Object.keys(item)[0];
-                let alteracao = lastSection ? lastSection[(lastSection.length - 1)] : null;
-                alteracao = (Number(alteracao) + 1);
-                // console.log(alteracao);
-                let keyUpdated = lastSection.slice(0,-1) + String(alteracao);
-                // console.log(keyUpdated);
-
-                const propUpdated = {
-                    [keyUpdated]: {
-                        id: item.id,
-                        src: item.src,
-                        tipo: item.tipo
-                    } 
-                }
-                return itens[(itens.length - 1)] = propUpdated;
-
-            } else
-                {return ;}
-        });
     };
 
-    const [{ isOver }, drop] = useDrop({
+    const [{ isOver },drop] = useDrop({
         accept: "image",
-        drop: (image) => {
-            onDrop({"imagem1": image});
-            console.log("onDrop",image);
+        drop: ( image ) => {
+            if (isOver) {
+                if (image.tipo === "imagem") {
+                    onDrop({"imagem": image},image.tipo); 
+                }else if (image.tipo === "parag"){
+                    onDrop({"parag": image},image.tipo);
+                } else{
+                    onDrop({"video": image},image.tipo);
+                };
+                console.log("onDrop",image);    
+            };
         },
         collect: (monitor) => ({
-            isOver: monitor.isOver(),
+            isOver: monitor.isOver({ shallow: true }),
         })
     });
-    console.log(itens);
+    console.log("ARRAY: ",itens);
 
     return (
-        <div
+        <section
             className='dropSection'
             style={{
-                width: "calc(100% - (132px + 120px))",
-                // height: "100vh",
-                border: '2px solid black',
-                backgroundColor: isOver ? "lightgreen" : "cyan"
+                backgroundColor: isOver ? "lightgreen" : "hsl(0,0%,97%)"
             }}
             ref={drop}
         >
-            
             {
                 itens.map((item,index) => {
-                    return item.imagem ? 
-                        <Containers.Imagem key={index} lista={itens}/>
-                    : 
-                        null
+                    // switch (item.tipo) {
+                    //     case "imagem":
+                            return(
+                                <Containers.Imagem index={index} key={index} itens={item} setItens={setItens}></Containers.Imagem>
+                            );
+                    //     case "parag":
+                    //         return(
+                    //             <Containers.Prgf index={index} key={index} itens={item} setItens={setItens}></Containers.Prgf>
+                    //     );
+                    //         default:
+                    //             break;
+                    // }
                 })
             }
-            
-        </div>
+        </section>
     )
 };
 

@@ -22,19 +22,20 @@ export default function App() {
     <Cabecalho/>
 
     <div className="App">
+      <div className="grafico">
       <div className="dataCard revenueCard">
         <Line
           data={{
             labels: revenueData.map((data) => data.label),
             datasets: [
               {
-                label: "Revenue",
+                label: "Tempo",
                 data: revenueData.map((data) => data.revenue),
                 backgroundColor: "#064FF0",
                 borderColor: "#064FF0",
               },
               {
-                label: "Cost",
+                label: "Mês",
                 data: revenueData.map((data) => data.cost),
                 backgroundColor: "#FF3030",
                 borderColor: "#FF3030",
@@ -48,21 +49,21 @@ export default function App() {
               },
             },
             plugins: {
-              title: {
-                text: "Monthly Revenue & Cost",
+              title: {                
+                text: "Tempo gasto na plataforma",
               },
             },
           }}
         />
       </div>
-
+          
       <div className="dataCard customerCard">
         <Bar
           data={{
             labels: sourceData.map((data) => data.label),
             datasets: [
               {
-                label: "Count",
+                label: "Diárias",
                 data: sourceData.map((data) => data.value),
                 backgroundColor: [
                   "rgba(43, 63, 229, 0.8)",
@@ -76,45 +77,14 @@ export default function App() {
           options={{
             plugins: {
               title: {
-                text: "Revenue Source",
+                text: "Check-ins diário",
               },
             },
           }}
         />
-      </div>
-
-      <div className="dataCard categoryCard">
-        <Doughnut
-          data={{
-            labels: sourceData.map((data) => data.label),
-            datasets: [
-              {
-                label: "Count",
-                data: sourceData.map((data) => data.value),
-                backgroundColor: [
-                  "rgba(43, 63, 229, 0.8)",
-                  "rgba(250, 192, 19, 0.8)",
-                  "rgba(253, 135, 135, 0.8)",
-                ],
-                borderColor: [
-                  "rgba(43, 63, 229, 0.8)",
-                  "rgba(250, 192, 19, 0.8)",
-                  "rgba(253, 135, 135, 0.8)",
-                ],
-              },
-            ],
-          }}
-          options={{
-            plugins: {
-              title: {
-                text: "Revenue Sources",
-              },
-            },
-          }}
-        />
-      </div>
+      </div>      
     </div>
-    </>
-    
+    </div>
+    </>    
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react'
 import "./estilo.css"
-import cabecalho from '../cabecalho'
+import Cabecalho from '../cabecalho'
 import imgs from '../../imgs/arrayImagens';
 import CoresRGB from '../../components/coresRGB';
 
@@ -73,7 +73,7 @@ function Treinamentos() {
 
     <>
 
-      {cabecalho()}
+      <Cabecalho />
 
       <section className="grid_treinos">
 
@@ -112,7 +112,7 @@ function Treinamentos() {
         {Treino(
           imgs.treino5,
           imgs.empresa,
-          "Congelamento de Frutas",
+          "Armazenagem de Polpas de Fruta",
           "Despensa","Básico",
           imgs.tabLeila, "Leila Pereira"
         )}

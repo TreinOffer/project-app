@@ -5,7 +5,7 @@
       "cost": 32652
     },
     {
-      "label": "Feb",
+      "label": "Fev",
       "revenue": 54628,
       "cost": 42393
     },
@@ -15,12 +15,12 @@
       "cost": 50262
     },
     {
-      "label": "Apr",
+      "label": "Abr",
       "revenue": 82830,
       "cost": 64731
     },
     {
-      "label": "May",
+      "label": "Mai",
       "revenue": 91208,
       "cost": 41893
     },
@@ -35,17 +35,17 @@
       "cost": 44772
     },
     {
-      "label": "Aug",
+      "label": "Ago",
       "revenue": 82919,
       "cost": 37590
     },
     {
-      "label": "Sep",
+      "label": "Set",
       "revenue": 62407,
       "cost": 43349
     },
     {
-      "label": "Oct",
+      "label": "Out",
       "revenue": 82528,
       "cost": 45324
     },
@@ -55,7 +55,7 @@
       "cost": 47978
     },
     {
-      "label": "Dec",
+      "label": "Dez",
       "revenue": 87436,
       "cost": 39175
     }

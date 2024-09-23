@@ -1,14 +1,14 @@
 [
     {
-      "label": "Ads",
-      "value": 32
+      "label": "Dias percorridos",
+      "value": 15
     },
     {
-      "label": "Subscriptions",
-      "value": 45
+      "label": "Dias semanais",
+      "value": 30
     },
     {
-      "label": "Sponsorships",
-      "value": 23
+      "label": "Dias Mensais",
+      "value": 25
     }
   ]

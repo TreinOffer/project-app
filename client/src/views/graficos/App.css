@@ -1,9 +1,29 @@
-.App {  
-  width: 100%;
-  display: flex;    
-  align-items: flex-start; 
-  justify-content: flex-start; 
-  padding-top: 2em; 
+.App {
+  display: flex;
+  padding-top: 4em; 
+  width: 80rem; 
+}
+
+.content-wrapper {
+  width: 900px;
+  display: flex;
+  justify-content: flex-end; 
+}
+
+.quadrado-perfil {
+  width: 250px;          
+  height: 770px;       
+  border: 2px solid black;  
+  border-radius: 10px;
+  margin-right: 20px; 
+}
+
+.quadrado-grafico {
+  width: 400px; 
+  height: 48.1rem;     
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-top: 1px; 
 }
 
 .dataCard {
@@ -11,20 +31,6 @@
   border-radius: 0.5em;    
   box-shadow: rgba(48, 46, 46, 0.2) 0px 8px 24px;
   padding: 1em;       
-  float: right; 
-}
-
-.revenueCard, .customerCard {
-  width: 62%;
-  height: 20rem;     
-  margin-bottom: 1em; 
-  margin-left: auto; 
-  margin-top: 1em; 
-}
-
-.grafico {
-  width: 30%;         
-  margin: 0 1em;
-  margin-left: 90em;
-  margin-top: 1em; 
+  margin-bottom: 10px;
+  height: 21.9rem; 
 }

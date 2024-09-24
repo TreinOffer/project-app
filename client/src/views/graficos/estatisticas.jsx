@@ -5,6 +5,7 @@ import Cabecalho from "../cabecalho";
 import "./App.css"; 
 import revenueData from "../../data/revenueData.json";
 import sourceData from "../../data/sourceData.json";
+import 'font-awesome/css/font-awesome.min.css'; 
 
 defaults.maintainAspectRatio = false;
 defaults.responsive = true;
@@ -29,7 +30,7 @@ export default function App() {
           <div className="quadrado-perfil"></div>       
           <div className="quadrado-grafico">
             <button onClick={toggleStats} className="estatisticas-button">
-              Estatísticas <span>&#9660;</span> 
+              Estatísticas <span className={showStats ? "fa fa-chevron-up" : "fa fa-chevron-down"}></span>
             </button>
 
             {showStats && (

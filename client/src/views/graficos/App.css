@@ -5,7 +5,8 @@
 }
 
 .content-wrapper {
-  width: 900px;
+  width: 100vw;
+  margin: 0 40px;
   display: flex;
   justify-content: flex-end; 
 }
@@ -19,7 +20,7 @@
 }
 
 .quadrado-grafico {
-  width: 400px; 
+  width: 81vw; 
   height: 48.1rem;     
   border: 2px solid black;
   border-radius: 10px;

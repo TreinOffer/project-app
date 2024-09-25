@@ -28,7 +28,7 @@ export default function App() {
               {/* pesquisa base ajustes de cores onFocus onBlur */}
               <input 
                 type="text" 
-                placeholder="Buscar colaboradores..." 
+                placeholder="Buscar colaboradores" 
                 value={searchTerm} 
                 onChange={(e) => setSearchTerm(e.target.value)} 
                 style={{

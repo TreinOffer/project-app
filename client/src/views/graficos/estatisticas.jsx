@@ -77,9 +77,9 @@ export default function App() {
               <img 
                 src="http://localhost:3000/static/media/perfilEduardoTest.574b9d49835217977ba4.jpg" 
                 alt="Perfil Eduardo" 
-                style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '1em', marginLeft: '0.5em' }} 
+                style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '1em', marginLeft: '0.5em', cursor: 'pointer' }} 
               />
-              <span style={{ fontSize: '1.2em', color: 'black', fontWeight: 'bold', marginLeft: '0.5em' }}>Eduardo Pereira</span>
+              <span style={{ fontSize: '1.2em', color: 'black', fontWeight: 'bold', marginLeft: '0.5em', cursor: 'pointer' }}>Eduardo Pereira</span>
             </div>
             {/* Linha do eduardo */}
             <div style={{
@@ -94,10 +94,17 @@ export default function App() {
               <img 
                 src="http://localhost:3000/static/media/perfilLeilaTest.8c8aa3515d4022ceb34d.jpg" 
                 alt="Perfil Leila" 
-                style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '1em', marginLeft: '0.5em' }} 
+                style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '1em', marginLeft: '0.5em', cursor: 'pointer' }} 
               />
-              <span style={{ fontSize: '1.2em', color: 'black', fontWeight: 'bold', marginLeft: '0.5em' }}>Leila Pereira</span>
+              <span style={{ fontSize: '1.2em', color: 'black', fontWeight: 'bold', marginLeft: '0.5em', cursor: 'pointer' }}>Leila Pereira</span>
             </div>
+            {/* linha da leila pereira */}
+            <div style={{
+              height: '1px',
+              backgroundColor: '#ccc',
+              margin: '1.5em auto',
+              width: '70%', 
+            }} />
           </div>
           
           {/* Gráficos */}

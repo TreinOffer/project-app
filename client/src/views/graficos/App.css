@@ -1,45 +1,45 @@
 .App {
   display: flex;
-  padding-top: 4em; 
-  width: 80rem; 
+  padding-top: 4em;
+  width: 80rem;
 }
 
 .content-wrapper {
   width: 100vw;
   margin: 0 40px;
   display: flex;
-  justify-content: flex-end; 
+  justify-content: flex-end;
 }
 
 .quadrado-perfil {
-  width: 250px;          
-  height: 48.2rem;       
-  border: 2px solid black;  
+  width: 250px;
+  height: 48.2rem;
+  border: 2px solid black;
   border-radius: 10px;
-  margin-right: 20px; 
+  margin-right: 20px;
   background-color: #f4f4f4;
 }
 
 .quadrado-grafico {
-  width: 81vw; 
-  height: 48.1rem;     
+  width: 81vw;
+  height: 48.1rem;
   border: 2px solid black;
   border-radius: 10px;
-  margin-top: 1px; 
-  display: flex;         
-  flex-direction: column; 
-  align-items: center;  
+  margin-top: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #f4f4f4;
 }
 
 .dataCard {
   background-color: #efefef;
-  border-radius: 0.5em;    
+  border-radius: 0.5em;
   box-shadow: rgba(48, 46, 46, 0.2) 0px 8px 24px;
-  padding: 1em;       
-  margin-bottom: 10px; 
-  height: 30rem; 
-  margin-right: -70rem;  
+  padding: 1em;
+  margin-bottom: 10px;
+  height: 30rem;
+  margin-right: -70rem;
 }
 
 .perfil-section {
@@ -54,6 +54,27 @@
 }
 
 .perfil-section img:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
 }
 
+.treinamentos-container {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start; 
+  margin: auto;
+}
+
+.treinamentos-box {
+  border: 1px solid #ccc;
+  margin: 1em 0;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 400px;
+  background-color: #f9f9f9;
+  margin-left: -35rem;
+}
+
+.treinamentos-title {
+  font-weight: bold;
+  text-align: center;
+}

@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Bar, Line } from "react-chartjs-2";
 import Cabecalho from "../cabecalho";
-import "./App.css"; 
+import "./App.css";
 import revenueData from "../../data/revenueData.json";
 import sourceData from "../../data/sourceData.json";
-import 'font-awesome/css/font-awesome.min.css'; 
+import 'font-awesome/css/font-awesome.min.css';
 
 defaults.maintainAspectRatio = false;
 defaults.responsive = true;
@@ -25,90 +25,89 @@ export default function App() {
         <div className="content-wrapper">
           <div className="quadrado-perfil">
             <div style={{ position: 'relative' }}>
-              {/* pesquisa */}
-              <input 
-                type="text" 
-                placeholder="Buscar colaboradores" 
-                value={searchTerm} 
-                onChange={(e) => setSearchTerm(e.target.value)} 
+              <input
+                type="text"
+                placeholder="Buscar colaboradores"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 style={{
-                  width: '90%', 
-                  padding: '0.5em 0.8em', 
-                  borderRadius: '20px', 
+                  width: '90%',
+                  padding: '0.5em 0.8em',
+                  borderRadius: '20px',
                   border: '1px solid #ccc',
-                  outline: 'none', 
+                  outline: 'none',
                   margin: '1em 0',
                   transition: 'border-color 0.3s'
-                }}                
-                onFocus={(e) => e.target.style.border = '1px solid #ccc'} 
-                onBlur={(e) => e.target.style.border = '1px solid #ccc'} 
+                }}
+                onFocus={(e) => e.target.style.border = '1px solid #ccc'}
+                onBlur={(e) => e.target.style.border = '1px solid #ccc'}
               />
-              {/* linha pra separa a lupa */}
               <div style={{
                 position: 'absolute',
                 right: '40px',
                 top: '50%',
-                height: '20px', 
-                width: '1px', 
-                backgroundColor: '#999', 
+                height: '20px',
+                width: '1px',
+                backgroundColor: '#999',
                 transform: 'translateY(-50%)'
               }} />
-              {/* icon pesquisa */}
-              <i className="fa fa-search" 
-                 style={{
-                   position: 'absolute', 
-                   right: '10px', 
-                   top: '50%', 
-                   transform: 'translateY(-50%)', 
-                   color: '#999',
-                   cursor: 'pointer' 
-                 }} 
+              <i className="fa fa-search"
+                style={{
+                  position: 'absolute',
+                  right: '10px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  color: '#999',
+                  cursor: 'pointer'
+                }}
               />
             </div>
-            {/* linha da pesquisa */}
             <div style={{
               height: '1px',
               backgroundColor: '#ccc',
-              margin: '0.5em 0', 
+              margin: '0.5em 0',
             }} />
 
-            {/* eduardo pereira */}
             <div className="perfil-section">
-              <img 
-                src="http://localhost:3000/static/media/perfilEduardoTest.574b9d49835217977ba4.jpg" 
-                alt="Perfil Eduardo" 
-                style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '1em', marginLeft: '0.5em', cursor: 'pointer' }} 
+              <img
+                src="http://localhost:3000/static/media/perfilEduardoTest.574b9d49835217977ba4.jpg"
+                alt="Perfil Eduardo"
+                style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '1em', marginLeft: '0.5em', cursor: 'pointer' }}
               />
               <span style={{ fontSize: '1.2em', color: 'black', fontWeight: 'bold', marginLeft: '0.5em', cursor: 'pointer' }}>Eduardo Pereira</span>
             </div>
-            {/* Linha do eduardo */}
             <div style={{
               height: '1px',
               backgroundColor: '#ccc',
               margin: '1.5em auto',
-              width: '70%', 
+              width: '70%',
             }} />
 
-            {/* Leila pereira */}
             <div className="perfil-section">
-              <img 
-                src="http://localhost:3000/static/media/perfilLeilaTest.8c8aa3515d4022ceb34d.jpg" 
-                alt="Perfil Leila" 
-                style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '1em', marginLeft: '0.5em', cursor: 'pointer' }} 
+              <img
+                src="http://localhost:3000/static/media/perfilLeilaTest.8c8aa3515d4022ceb34d.jpg"
+                alt="Perfil Leila"
+                style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '1em', marginLeft: '0.5em', cursor: 'pointer' }}
               />
               <span style={{ fontSize: '1.2em', color: 'black', fontWeight: 'bold', marginLeft: '0.5em', cursor: 'pointer' }}>Leila Pereira</span>
             </div>
-            {/* linha da leila pereira */}
             <div style={{
               height: '1px',
               backgroundColor: '#ccc',
               margin: '1.5em auto',
-              width: '70%', 
+              width: '70%',
             }} />
           </div>
-          
+
           {/* Gráficos */}
           <div className="quadrado-grafico">
+            <div className="treinamentos-container">
+              <div className="treinamentos-box">
+                <p className="treinamentos-title">TREINAMENTOS</p>
+              </div>
+            </div>
+
+
             <div className="dataCard revenueCard">
               <Line
                 data={{

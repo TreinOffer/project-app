@@ -25,7 +25,7 @@ export default function App() {
         <div className="content-wrapper">
           <div className="quadrado-perfil">
             <div style={{ position: 'relative' }}>
-              {/* pesquisa base ajustes de cores onFocus onBlur */}
+              {/* pesquisa */}
               <input 
                 type="text" 
                 placeholder="Buscar colaboradores" 
@@ -43,7 +43,7 @@ export default function App() {
                 onFocus={(e) => e.target.style.border = '1px solid #ccc'} 
                 onBlur={(e) => e.target.style.border = '1px solid #ccc'} 
               />
-              {/* linha da lupa */}
+              {/* linha pra separa a lupa */}
               <div style={{
                 position: 'absolute',
                 right: '40px',
@@ -53,7 +53,7 @@ export default function App() {
                 backgroundColor: '#999', 
                 transform: 'translateY(-50%)'
               }} />
-              {/* icon lupa */}
+              {/* icon pesquisa */}
               <i className="fa fa-search" 
                  style={{
                    position: 'absolute', 
@@ -65,14 +65,42 @@ export default function App() {
                  }} 
               />
             </div>
-            {/* Linha abaixo do campo de pesquisa */}
+            {/* linha da pesquisa */}
             <div style={{
               height: '1px',
               backgroundColor: '#ccc',
               margin: '0.5em 0', 
             }} />
+
+            {/* eduardo pereira */}
+            <div className="perfil-section">
+              <img 
+                src="http://localhost:3000/static/media/perfilEduardoTest.574b9d49835217977ba4.jpg" 
+                alt="Perfil Eduardo" 
+                style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '1em', marginLeft: '0.5em' }} 
+              />
+              <span style={{ fontSize: '1.2em', color: 'black', fontWeight: 'bold', marginLeft: '0.5em' }}>Eduardo Pereira</span>
+            </div>
+            {/* Linha do eduardo */}
+            <div style={{
+              height: '1px',
+              backgroundColor: '#ccc',
+              margin: '1.5em auto',
+              width: '70%', 
+            }} />
+
+            {/* Leila pereira */}
+            <div className="perfil-section">
+              <img 
+                src="http://localhost:3000/static/media/perfilLeilaTest.8c8aa3515d4022ceb34d.jpg" 
+                alt="Perfil Leila" 
+                style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '1em', marginLeft: '0.5em' }} 
+              />
+              <span style={{ fontSize: '1.2em', color: 'black', fontWeight: 'bold', marginLeft: '0.5em' }}>Leila Pereira</span>
+            </div>
           </div>
-          {/* graficos */}
+          
+          {/* Gráficos */}
           <div className="quadrado-grafico">
             <div className="dataCard revenueCard">
               <Line

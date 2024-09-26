@@ -41,3 +41,19 @@
   height: 30rem; 
   margin-right: -70rem;  
 }
+
+.perfil-section {
+  display: flex;
+  align-items: center;
+  margin: 1em 0;
+}
+
+.perfil-section img {
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.perfil-section img:hover {
+  transform: scale(1.1); 
+}
+

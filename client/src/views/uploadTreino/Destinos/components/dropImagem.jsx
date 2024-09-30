@@ -1,7 +1,7 @@
 import { useDrop } from "react-dnd";
 import Cartao from "../Cartoes/CartaoImg";
 
-const DropImagem = ({ itens, setItens, index }) => {
+const DropImagem = ({ itens, setItens, index }) => {  
 
     const onDropFilho = (item) => {
         setItens(prevItens => {
@@ -21,17 +21,24 @@ const DropImagem = ({ itens, setItens, index }) => {
             isOver: monitor.isOver()
         })
     });
+
     return(
-        <div ref={dropFilho_img}
+        <div ref={ dropFilho_img }
         style={{
             backgroundColor: isOver ? "red" : null,
+            width: "100%",
+            height: "500px",
+            display: "grid",
+            gridAutoFlow: "row",
+            gridTemplateColumns: "repeat(2,1fr)",
+            justifyItems: "center",
+            alignItems: "center",
         }}
         >
             {
                 itens.map((item,index) => {
                     return (
-                        //<Cartao key={index} index={index} imagem={item.imagem.src}></Cartao>
-                        <img key={index} src={item.imagem.src} alt={`Imagem`} />
+                        <Cartao key={index} index={index} imagem={item.imagem.src}></Cartao>
                     )
                 })
             }   

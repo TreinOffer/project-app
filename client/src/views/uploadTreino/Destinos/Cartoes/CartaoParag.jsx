@@ -1,14 +1,9 @@
 import React from 'react';
 
-const CartaoParag = () => {
+const CartaoParag = ({ index, mensagem }) => {
     return (
-        <div className='cartao'>
-            <div className="cartaoTras">
-                <textarea autoCapitalize='on' name="" id="pa"></textarea>
-            </div>
-            <div className="cartaoFrente">
-                <p></p>
-            </div>
+        <div id={`paragrafo${index}`} className='cartao'>
+            <textarea autoCapitalize='on' name="" id={`paragrafo${index}`} value={ mensagem }></textarea>
         </div>
     );
 }

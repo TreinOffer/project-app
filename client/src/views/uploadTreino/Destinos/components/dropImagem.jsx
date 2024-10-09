@@ -13,7 +13,7 @@ const DropImagem = ({ itens, setItens, index }) => {
       };
 
     const [{ isOver },dropFilho_img] = useDrop({
-        accept: "image",
+        accept: "item",
         drop: ( objeto ) => {
             onDropFilho({ "imagem": objeto });
         },

@@ -1,5 +1,5 @@
 import DropImagem from "./components/dropImagem";
-import DropParag from "./components/dropParag"
+import DropParag from "./Cartoes/CartaoParag"
 
 const Containers = {
     

@@ -1,7 +1,7 @@
 import './estiloArras.css';
 import './estiloDestino.css';
 
-import Cabecalho from '../cabecalho'
+import Cabecalho from '../cabecalho/cabecalho';
 import Arrastavel from './arrastavel';
 import Destino from './destino';
 

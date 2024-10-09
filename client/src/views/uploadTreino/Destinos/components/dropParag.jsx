@@ -1,9 +1,8 @@
 import Cartao from "../Cartoes/CartaoParag";
 
-function DropParag({ index }) {
-    
+function DropParag({ index, mensagem }) {
     return(
-        <Cartao index={ index }></Cartao>
+        <Cartao mensagem={} index={ index }></Cartao>
     )
 };
 

@@ -5,7 +5,7 @@ import TiposArras from "./Arrastavel/indexArrastavel"
 const Arrastavel = ({ opcoes }) => {
 
     const [, drag] = useDrag(() => ({
-        type: 'image',
+        type: 'item',
         item: {
             src: opcoes.src,
             tipo: opcoes.tipo

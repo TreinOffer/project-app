@@ -5,7 +5,7 @@ import Containers from "./Destinos/indexContainers";
 
 const Destino = () => {
 
-    const [itens,setItens] = useState([]);
+    const [ itens,setItens ] = useState([]);
 
     const onDrop = (item) => {
         const index = itens.length;
@@ -17,17 +17,17 @@ const Destino = () => {
     };
 
     const [{ isOver },drop] = useDrop({
-        accept: "image",
-        drop: ( image ) => {
+        accept: "item",
+        drop: ( item ) => {
             if (isOver) {
-                if (image.tipo === "imagem") {
-                    onDrop({"imagem": image},image.tipo); 
-                }else if (image.tipo === "parag"){
-                    onDrop({"parag": image},image.tipo);
+                if (item.tipo === "imagem") {
+                    onDrop({"imagem": item},item.tipo); 
+                }else if (item.tipo === "parag"){
+                    onDrop({"parag": item},item.tipo);
                 } else{
-                    onDrop({"video": image},image.tipo);
+                    onDrop({"video": item},item.tipo);
                 };
-                console.log("onDrop",image);    
+                console.log("onDrop",item);    
             };
         },
         collect: (monitor) => ({
@@ -42,21 +42,21 @@ const Destino = () => {
             style={{
                 backgroundColor: isOver ? "lightgreen" : "hsl(0,0%,97%)"
             }}
-            ref={drop}
+            ref={ drop }
         >
             {
                 itens.map((item,index) => {
-                    // switch (item.tipo) {
+                    // console.log(`item${index}: `,item);
+                    // console.log(`tipoItem${index}: `,Object.keys(item[index])[0]);
+                    // switch (Object.keys(item[index])[0]) {
                     //     case "imagem":
                             return(
                                 <Containers.Imagem index={index} key={index} itens={item} setItens={setItens}></Containers.Imagem>
                             );
                     //     case "parag":
                     //         return(
-                    //             <Containers.Prgf index={index} key={index} itens={item} setItens={setItens}></Containers.Prgf>
-                    //     );
-                    //         default:
-                    //             break;
+                    //             <Containers.Prgf index={index} key={index} mensagem={item.src}></Containers.Prgf>
+                    //     );    
                     // }
                 })
             }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import cabecalho from '../cabecalho';
+import Cabecalho from '../cabecalho/cabecalho';
 import imgs from '../../imgs/arrayImagens';
 import CoresRGB from '../../components/coresRGB';
 import './estiloTecnico.css';
@@ -144,7 +144,7 @@ function Tecnicos() {
 
   return (
     <>
-      {cabecalho()}
+      <Cabecalho />
 
       <section className='tab_func'>
 

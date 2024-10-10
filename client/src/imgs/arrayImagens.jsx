@@ -1,4 +1,5 @@
 import TreinOffer from './logoTreinOffer.png';
+import TreinOff from './logoTreinOff.png';
 
 import voltar from './voltarMenu.png';
 import upload from './uploadIcon.png';
@@ -36,6 +37,7 @@ import upVideo from "./SubirTreino/video_placeholder.jpg";
 
 const imgs = {
     TreinOffer,
+    TreinOff,
 
     voltar,
     upload,

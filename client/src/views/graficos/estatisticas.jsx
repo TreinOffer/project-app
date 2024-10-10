@@ -1,7 +1,7 @@
 import React from "react";
 import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
-import Cabecalho from "../cabecalho";
+import Cabecalho from "../cabecalho/cabecalho";
 
 import "./App.css";
 

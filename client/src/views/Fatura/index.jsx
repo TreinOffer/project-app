@@ -1,13 +1,13 @@
 import React from 'react'
 import "./estilo.css"
-import cabecalho from '../cabecalho'
+import Cabecalho from '../cabecalho/cabecalho.jsx';
 import imgs from '../../imgs/arrayImagens.jsx'
 
 function Fatura() {
   return (
     <>
 
-    {cabecalho()}
+    <Cabecalho />
 
     <div className = "invoice-wrapper" id = "print-area">
             <div className = "invoice">

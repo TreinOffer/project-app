@@ -1,0 +1,32 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.dropdown-item {
+    padding: 10px 15px;
+    border: none;
+    background: transparent;
+    cursor: pointer !important;
+    text-align: left;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f0f0;    
+}
+
+.bot_opcoes {
+    cursor: pointer;
+}

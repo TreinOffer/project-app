@@ -13,31 +13,53 @@ const p = 10;
 
 function Tecnicos() {
 
-  const [ tecnicos, setTecnicos ] = useState([]);
+  const [tecnicos, setTecnicos] = useState([]);
 
-  async function InserirAulas() {
+  async function postUser(user) {
+    console.log(user);
     try {
-        const resposta = await fetch('http://localhost:5000/tecnicos',{
-            method: 'GET',
-            headers: {
-                'Content-Type':'application/json'
-            }
-        });
+      const resposta = await fetch('http://localhost:5000/tecnicos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+      });
 
-        if(!resposta){
-            throw new Error("Erro ao buscar tecnicos");
-        }
-
-        const consulta = await resposta.json();
-        setTecnicos(consulta);
+      if (!resposta.ok) {
+        throw new Error(`Response diferente de 200: ${await resposta.text()}`);
+      }
+      const consulta = await resposta.json();
+      console.log(consulta);
+      setTecnicos(prev => [ prev, user ]);
     } catch (error) {
-        console.log("erro: ",error);
+      console.log("erro na api: ", error);
     }
-};
+  }
+
+  async function InserirUsers() {
+    try {
+      const resposta = await fetch('http://localhost:5000/tecnicos', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (!resposta) {
+        throw new Error("Erro ao buscar tecnicos");
+      }
+
+      const consulta = await resposta.json();
+      setTecnicos(consulta);
+    } catch (error) {
+      console.log("erro: ", error);
+    }
+  };
 
   useEffect(() => {
-    InserirAulas();
-  }, []);
+    InserirUsers();
+  }, [ tecnicos ]);
 
   const [click, setClick] = useState(false);
 
@@ -63,12 +85,12 @@ function Tecnicos() {
             </button>
           </div>
           <button type="button" style={
-            click ? ({backgroundColor: "hsl(0,50%,80%)"}) : ({backgroundColor: "hsl(150,50%,80%)"})
+            click ? ({ backgroundColor: "hsl(0,50%,80%)" }) : ({ backgroundColor: "hsl(150,50%,80%)" })
           }>
             <img src={
               click ? (imgs.removFunc) : (imgs.addFunc)
             }
-            alt="add" onClick={ handleAddFunc } />
+              alt="add" onClick={handleAddFunc} />
           </button>
         </div>
         <div className='tit_cabec'>
@@ -91,12 +113,12 @@ function Tecnicos() {
             Ações
           </h4>
         </div>
-            
+
         <section className="funcs">
-          {click && (<NewFunc />)}
+          {click && (<NewFunc handleSubmit={ postUser } click={ setClick } />)}
           {
-            tecnicos.map(( tecnico, chave ) => (
-              (<Tecnico key={ chave }
+            tecnicos.map((tecnico, chave) => (
+              (<Tecnico key={chave}
                 tecFt={tecnico.Imagem} tecNome={tecnico.Nome}
                 tarefa={tecnico.Especialidade} numColab={tecnico.Colaboradores}
                 senha={tecnico.Senha} matricula={tecnico.Matricula} />)

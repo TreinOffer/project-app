@@ -16,8 +16,14 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, idTecnico
     const [editedMatricula, setEditedMatricula] = useState(matricula);
     const dropdownRef = useRef(null);
 
-    const taskArray = tarefa.split(",").map(task => task.trim());
-
+    let arrayTarefa = [];
+  
+    if (tarefa.indexOf(",") !== -1) {
+        arrayTarefa = tarefa.split(",");
+    } else {
+        arrayTarefa = [tarefa];
+    }
+  
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
@@ -138,11 +144,11 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, idTecnico
 
             <div className='sec_func' style={{ width: `${g}%` }}>
                 <span id='nome_dep'>
-                    {taskArray.map((task, index) => (
+                    {arrayTarefa.map((tarf, index) => (
                         <span key={index} className='letraQuebra' style={{ display: "block" }}>
                             {task}
                         </span>
-                    ))}
+                    ))} */}
                 </span>
             </div>
 

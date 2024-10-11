@@ -13,11 +13,11 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula }) {
 
     let arrayTarefa = [];
   
-    if (tarefa.indexOf(",") !== -1) {
-        arrayTarefa = tarefa.split(",");
-    } else {
-        arrayTarefa = [tarefa];
-    }
+    // if (tarefa.indexOf(",") !== -1) {
+    //     arrayTarefa = tarefa.split(",");
+    // } else {
+    //     arrayTarefa = [tarefa];
+    // }
   
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
@@ -46,11 +46,12 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula }) {
 
             <div className='sec_func' style={{ width: `${g}%` }}>
                 <span id='nome_dep'>
-                    {arrayTarefa.map((tarf, index) => (
+                    {tarefa}
+                    {/* {arrayTarefa.map((tarf, index) => (
                         <span key={index} className='letraQuebra' style={{ display: "block" }}>
                             {tarf.trim()}
                         </span>
-                    ))}
+                    ))} */}
                 </span>
             </div>
 

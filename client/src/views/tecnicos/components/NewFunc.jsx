@@ -1,6 +1,7 @@
 import React from 'react'
 import imgs from "../../../imgs/arrayImagens";
 
+
 const g = 25;
 const m = 15;
 const p = 10;

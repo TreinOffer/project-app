@@ -148,7 +148,7 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, idTecnico
                         <span key={index} className='letraQuebra' style={{ display: "block" }}>
                             {task}
                         </span>
-                    ))} */}
+                    ))}
                 </span>
             </div>
 

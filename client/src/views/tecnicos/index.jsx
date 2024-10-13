@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Cabecalho from '../cabecalho';
+import CrudUser from './components/crudTecnico';
 
 import imgs from '../../imgs/arrayImagens';
 import Tecnico from './components/Tecnico';
@@ -11,61 +12,25 @@ const g = 25;
 const m = 15;
 const p = 10;
 
+const CRUD = new CrudUser();
+
 function Tecnicos() {
 
-  const [tecnicos, setTecnicos] = useState([]);
-
-  async function postUser(user) {
-    console.log(user);
-    try {
-      const resposta = await fetch('http://localhost:5000/tecnicos', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(user)
-      });
-
-      if (!resposta.ok) {
-        throw new Error(`Response diferente de 200: ${await resposta.text()}`);
-      }
-      const consulta = await resposta.json();
-      console.log(consulta);
-      setTecnicos(prev => [ prev, user ]);
-    } catch (error) {
-      console.log("erro na api: ", error);
-    }
-  }
-
-  async function InserirUsers() {
-    try {
-      const resposta = await fetch('http://localhost:5000/tecnicos', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-
-      if (!resposta) {
-        throw new Error("Erro ao buscar tecnicos");
-      }
-
-      const consulta = await resposta.json();
-      setTecnicos(consulta);
-    } catch (error) {
-      console.log("erro: ", error);
-    }
-  };
-
-  useEffect(() => {
-    InserirUsers();
-  }, [ tecnicos ]);
-
-  const [click, setClick] = useState(false);
+  const [ tecnicos, setTecnicos ] = useState([]);
+  const [ click, setClick ] = useState(false);
 
   const handleAddFunc = () => {
     setClick(!click);
   };
+
+  const handleRefresh = async () => {
+    const read = await CRUD.read();
+    setTecnicos(read);
+  };
+
+  useEffect(() => {
+    handleRefresh();
+  }, [ ]);
 
   return (
     <>
@@ -90,7 +55,7 @@ function Tecnicos() {
             <img src={
               click ? (imgs.removFunc) : (imgs.addFunc)
             }
-              alt="add" onClick={handleAddFunc} />
+              alt="add" onClick={ handleAddFunc } />
           </button>
         </div>
         <div className='tit_cabec'>
@@ -98,7 +63,7 @@ function Tecnicos() {
             Nome
           </h4>
           <h4 style={{ width: `${g}%` }}>
-            Especialidade
+            Especialização
           </h4>
           <h4 style={{ width: `${p}%`, minWidth: 121 + 'px' }}>
             Colaboradores
@@ -115,12 +80,12 @@ function Tecnicos() {
         </div>
 
         <section className="funcs">
-          {click && (<NewFunc handleSubmit={ postUser } click={ setClick } />)}
+          {click && (<NewFunc atualizaPag={ handleRefresh } click={ setClick } />)}
           {
             tecnicos.map((tecnico, chave) => (
               (<Tecnico key={chave}
                 tecFt={tecnico.Imagem} tecNome={tecnico.Nome}
-                tarefa={tecnico.Especialidade} numColab={tecnico.Colaboradores}
+                tarefa={tecnico.Especializacao} numColab={tecnico.Colaboradores}
                 senha={tecnico.Senha} matricula={tecnico.Matricula} />)
             ))}
         </section>

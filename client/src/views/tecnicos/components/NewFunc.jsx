@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import imgs from "../../../imgs/arrayImagens";
-
+import CrudUser from './crudTecnico';
 
 const g = 25;
 const m = 15;
 const p = 10;
 
-function NewFunc({ handleSubmit, click }) {
+const CRUD = new CrudUser();
 
-  const [user, setUser] = useState({
+function NewFunc({ atualizaPag, click }) {
+
+  const [ user, setUser ] = useState({
     Matricula: "",
     Imagem: "",
     Nome: "",
-    Especialidade: "",
+    Especializacao: "",
     Colaboradores: "0",
     Senha: ""
   });
@@ -41,11 +43,12 @@ function NewFunc({ handleSubmit, click }) {
   };
 
   return (
-    <form method="POST" enctype='multipart/form-data' onSubmit={(e) => {
-      e.preventDefault();
-      click(false);
-      handleSubmit(user);
-  }}>
+    <form method="POST" enctype='multipart/form-data' onSubmit={async (e) => {
+      e.preventDefault(); //not rerender the page
+      click(false); // Closes the newFunc tab
+      CRUD.create(user); // Post the new user to the database
+      atualizaPag(); //Triggers a rerender by calling useEffect
+    }}>
       <section className="func">
         <div className='sec_func info_pessoal' style={{ width: `${g}%` }}>
           <div className="func_foto">

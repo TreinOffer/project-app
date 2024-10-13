@@ -4,7 +4,7 @@
       "Matricula": "25A23BCZ",
       "Imagem": "https://www.velseg.com.br/wp-content/uploads/2018/05/funcionario_temporario.jpg",
       "Nome": "Eduardo Pereira",
-      "Especialidade": "Segurança",
+      "Especializacao": "Segurança",
       "Colaboradores": "4",
       "Senha": "******",
       "id": "f899"
@@ -13,10 +13,19 @@
       "Matricula": "33C09VVC",
       "Imagem": "https://blog.spvale.com.br/wp-content/uploads/2022/06/post_thumbnail-2d38c8ea1fef5c6900e607a2d63c9ee0-1110x508.jpeg",
       "Nome": "Leila Pereira",
-      "Especialidade": "Industrial",
+      "Especializacao": "Industrial",
       "Colaboradores": "2",
       "Senha": "******",
       "id": "447a"
+    },
+    {
+      "id": "4fda",
+      "Matricula": "22AA33ZZ",
+      "Imagem": "blob:http://localhost:3000/734a19fa-7803-4f31-b5e4-23068058bb19",
+      "Nome": "SUSTÊM",
+      "Especializacao": "Games",
+      "Colaboradores": "0",
+      "Senha": "123123"
     }
   ]
 }

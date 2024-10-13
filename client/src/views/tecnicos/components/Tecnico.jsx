@@ -1,93 +1,62 @@
 import React, { useState, useRef, useEffect } from 'react';
+
 import imgs from "../../../imgs/arrayImagens";
 import CoresRGB from "../../../components/coresRGB";
-import '../../../views/tecnicos/components/Tecnico.css'; 
+import CrudUser from './crudTecnico';
+
+import './Tecnico.css';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const g = 25;
 const m = 15;
 const p = 10;
 
-function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, idTecnico, onRemove, onUpdate }) {
+const CRUD = new CrudUser();
+
+function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula }) {
+    const { Matricula } = useParams();
+    const Navegar = useNavigate();
+
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const dropdownRef = useRef(null);
+
     const [isEditing, setIsEditing] = useState(false);
+
     const [editedNome, setEditedNome] = useState(tecNome);
     const [editedTarefa, setEditedTarefa] = useState(tarefa);
     const [editedSenha, setEditedSenha] = useState(senha);
     const [editedMatricula, setEditedMatricula] = useState(matricula);
-    const dropdownRef = useRef(null);
+
+    const handleEdit = async () => {
+        Navegar( `/tecnicos/${matricula}` );
+        return CRUD.update( Matricula, {
+            Matricula: editedMatricula,
+            Imagem: tecFt,
+            Nome: editedNome,
+            Especializacao: editedTarefa,
+            Colaboradores: numColab,
+            Senha: editedSenha
+        });
+    };
+
+    const handleDelete = async () => {
+        Navegar(`/tecnicos/${matricula}`);
+        return await CRUD.delete(Matricula);
+    };
 
     let arrayTarefa = [];
-  
+
+    //There's more than one item
     if (tarefa.indexOf(",") !== -1) {
         arrayTarefa = tarefa.split(",");
+
+        //There's only one
     } else {
         arrayTarefa = [tarefa];
     }
-  
+
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
-    };
-
-    const handleRemove = async () => {
-        try {
-            const response = await fetch(`/api/tecnicos/${idTecnico}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-
-            const responseData = await response.json(); 
-
-            if (response.ok) {
-                onRemove(idTecnico);
-                alert('Técnico removido com sucesso!');
-            } else {
-                console.error('Erro na remoção:', responseData); 
-                alert(`Erro ao remover o técnico: ${responseData.message || 'Erro desconhecido.'}`);
-            }
-        } catch (error) {
-            console.error('Erro ao remover técnico:', error); 
-            alert('Erro ao remover o técnico.');
-        }
-    };
-
-    const handleEdit = async (event) => {
-        event.preventDefault(); 
-        try {
-            const response = await fetch(`/api/tecnicos/${idTecnico}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ 
-                    nome: editedNome, 
-                    tarefa: editedTarefa, 
-                    senha: editedSenha, 
-                    matricula: editedMatricula,
-                    numColab 
-                }),
-            });
-
-            const responseData = await response.json();
-
-            if (response.ok) {
-                onUpdate(idTecnico, { 
-                    nome: editedNome, 
-                    tarefa: editedTarefa,
-                    senha: editedSenha,
-                    matricula: editedMatricula
-                });
-                alert('Técnico atualizado com sucesso!');
-                setIsEditing(false);
-            } else {
-                console.error('Erro ao editar:', responseData); 
-                alert(`Erro ao editar o técnico: ${responseData.message || 'Erro desconhecido.'}`);
-            }
-        } catch (error) {
-            console.error('Erro ao editar técnico:', error);
-            alert('Erro ao editar o técnico.');
-        }
     };
 
     useEffect(() => {
@@ -146,7 +115,7 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, idTecnico
                 <span id='nome_dep'>
                     {arrayTarefa.map((tarf, index) => (
                         <span key={index} className='letraQuebra' style={{ display: "block" }}>
-                            {task}
+                            {tarf}
                         </span>
                     ))}
                 </span>
@@ -174,7 +143,7 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, idTecnico
                             <button className="dropdown-item" onClick={() => setIsEditing(!isEditing)}>
                                 {isEditing ? 'Cancelar' : 'Editar'}
                             </button>
-                            <button className="dropdown-item" onClick={handleRemove}>Remover</button>
+                            <button className="dropdown-item" onClick={() => handleDelete()} >Remover</button>
                         </div>
                     )}
                 </div>

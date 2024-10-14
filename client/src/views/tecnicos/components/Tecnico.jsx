@@ -83,12 +83,14 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula }) {
                             value={editedNome} 
                             onChange={(e) => setEditedNome(e.target.value)} 
                             required 
+                            className="custom-input"
                         />
                         <input 
                             type="text" 
                             value={editedTarefa} 
                             onChange={(e) => setEditedTarefa(e.target.value)} 
                             required 
+                            className="custom-input"
                         />
                         <input 
                             type="text" 
@@ -96,6 +98,7 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula }) {
                             onChange={(e) => setEditedSenha(e.target.value)} 
                             required 
                             placeholder="Senha" 
+                            className="custom-input"
                         />
                         <input 
                             type="text" 
@@ -103,8 +106,9 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula }) {
                             onChange={(e) => setEditedMatricula(e.target.value)} 
                             required 
                             placeholder="Matrícula" 
+                            className="custom-input"
                         />
-                        <button type="submit">Salvar</button>
+                        <button type="submit" className="custom-button">Salvar</button>
                     </form>
                 ) : (
                     tecNome

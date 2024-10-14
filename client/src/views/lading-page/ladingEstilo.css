@@ -1,9 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto", "Montserrat";
-}
-
 .inicial {
     text-align: center;
     font-size: 16px;
@@ -15,12 +9,12 @@
     text-decoration: none;
 }
 
-img {
+.logo-treino {
     width: 20%;
     height: 20%;
 }
 
-.area_menu {
+.menu-area {
     width: 1220px;
 }
 
@@ -54,7 +48,7 @@ img {
     width: 100%;
 }
 
-h1 {
+.titulo-principal {
     text-align: center;
     padding: 10px;
     font-family: "Roboto", "Montserrat";
@@ -66,48 +60,48 @@ h1 {
     margin-left: 10%;
 }
 
-.linha {
+.linha-separadora {
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    margin: 0px auto 0.1em;
+    margin: 0 auto 0.1em;
     padding: 0.9em 20%;
 }
 
-.o {
+.bloqueio {
     padding: 10%;
     background-image: linear-gradient(to top, #c4e8ff, #1399ec);
     color: #fff;
 }
 
-h2 {
+.subtitulo {
     text-align: center;
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
 }
 
-b {
+.destaque {
     font-size: 80px;
     position: relative;
     top: -100px;
 }
 
-hr {
+.hr-separador {
     color: rgba(90, 90, 247, 0.452);
 }
 
-.linha-reta {
-    margin: 0px auto 0.1em;
+.linha-simples {
+    margin: 0 auto 0.1em;
 }
 
-.justificado {
+.texto-justificado {
     text-align: justify;
 }
 
-.set {
+.bloco-set {
     background-image: linear-gradient(to top, #bfdaee, #48b2f3);
     color: #fff;
 }
 
-div .serv {
+.servicos {
     margin-top: -150px;
 }
 
@@ -132,25 +126,25 @@ div .serv {
     font-size: 12px;
 }
 
-.serv {
+.servicos {
     text-align: center;
     padding-top: 150px;
 }
 
-.contac {
+.contato {
     padding: 10%;
     background-image: linear-gradient(to top, #bfdaee, #48b2f3);
 }
 
-.contac .color {
+.contato .texto-colorido {
     color: white;
 }
 
-.sub-menu-1 {
+.sub-menu-oculto {
     display: none;
 }
 
-form {
+.formulario {
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
@@ -159,16 +153,16 @@ form {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-label {
+.label {
     display: block;
     margin: 10px 0 5px;
 }
 
-input[type="text"],
-input[type="number"],
-input[type="tel"],
-input[type="email"],
-select {
+.input-texto,
+.input-numero,
+.input-telefone,
+.input-email,
+.select {
     width: 100%;
     padding: 15px;
     border: 1px solid #0d0e0f;
@@ -176,7 +170,7 @@ select {
     margin-bottom: 15px;
 }
 
-.alinhar {
+.alinhamento {
     display: inline-block;
     margin-right: 100px;
 }

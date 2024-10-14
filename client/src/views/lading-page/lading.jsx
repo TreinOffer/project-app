@@ -1,12 +1,12 @@
 import React from 'react';
-import '../lading-page/lading.estilo.css';
 import imgs from '../../imgs/arrayImagens';
+import '../lading-page/ladingEstilo.css';
 
 const App = () => {
   return (
-    <div className="inicial">
+    <div>
       <div className="navegacao">
-        <div className="area_menu">            
+        <div className="menu-area">
           <img src={imgs.TreinOffer} alt="logo" />
           <div className="menu">
             <a href="#">INICIO</a>
@@ -16,73 +16,73 @@ const App = () => {
             <a href="#">JÁ TEM UMA CONTA?</a>
           </div>
         </div>
-        <hr />
+        <hr className="hr-separador" />
       </div>
       <div className="logo-central">
         <img src={imgs.TreinOffer} alt="" />
       </div>
       <div style={{ margin: '0 365px', fontSize: '25px' }}>
-        <p className="justificado">
+        <p className="texto-justificado">
           Treinoffer é uma plataforma inovadora voltada para o desenvolvimento e aprimoramento contínuo dos colaboradores, oferecendo treinamentos personalizados e eficazes para elevar o desempenho individual e coletivo, contribuir para o crescimento profissional e garantir uma melhoria significativa nos resultados da sua empresa.
         </p>
       </div>
-      <div className="linha"></div>
-      <div className="o">
-        <b>Quem Somos</b>
+      <div className="linha-separadora"></div>
+      <div className="bloqueio">
+        <b className="destaque">Quem Somos</b>
         <div style={{ margin: '0 95px', fontSize: '25px' }}>
-          <p className="justificado">
+          <p className="texto-justificado">
             A Treinoffer oferece treinamentos personalizados e eficazes, projetados para atender às necessidades específicas de cada indivíduo e equipe. Nosso objetivo é impulsionar o desempenho tanto individual quanto coletivo, promovendo o crescimento profissional dos participantes e contribuindo de maneira significativa para os resultados da sua empresa. Na Treinoffer, nos dedicamos a criar um ambiente de aprendizado contínuo e de alta performance, garantindo que cada treinamento maximize o potencial e a eficácia dos nossos clientes.
           </p>
         </div>
       </div>
-      <div className="servico">
-        <div className="set">
-          <div className="serv">
+      <div className="servicos">
+        <div className="bloco-set">
+          <div className="servicos">
             <b>Serviços</b>
           </div>
           <div className="grid-container">
             <div className="grid-item">
               <img src={imgs.treino1} alt="" />
-              <h1>Equipamento de proteção individual</h1>
+              <h1 className="titulo-principal">Equipamento de proteção individual</h1>
             </div>
             <div className="grid-item">
               <img src={imgs.treino2} alt="" />
-              <h1>Treinamento de Prevenção de Incêndios</h1>
+              <h1 className="titulo-principal">Treinamento de Prevenção de Incêndios</h1>
             </div>
             <div className="grid-item">
               <img src={imgs.treino3} alt="" />
-              <h1>Processamento de extrato de Frutas</h1>
+              <h1 className="titulo-principal">Processamento de extrato de Frutas</h1>
             </div>
             <div className="grid-item">
               <img src={imgs.treino4} alt="" />
-              <h1>Treinamento Primeiro Socorros</h1>
+              <h1 className="titulo-principal">Treinamento Primeiro Socorros</h1>
             </div>
             <div className="grid-item">
               <img src={imgs.treino5} alt="" />
-              <h1>Processo de congelamento de Frutas</h1>
+              <h1 className="titulo-principal">Processo de congelamento de Frutas</h1>
             </div>
           </div>
         </div>
       </div>
-      <div className="contac">
-        <div className="color">
+      <div className="contato">
+        <div className="texto-colorido">
           <b>Contato</b>
         </div>
         <div className="campos">
           <label htmlFor="nome">Digite seu nome inteiro:</label>
-          <input type="text" name="nome" id="nome" />
+          <input className="input-texto" type="text" name="nome" id="nome" />
         </div>
         <div className="campos">
           <label htmlFor="telef">Digite seu número de telefone:</label>
-          <input type="tel" name="telef" id="telef" placeholder="Ex: 00999999999" />
+          <input className="input-telefone" type="tel" name="telef" id="telef" placeholder="Ex: 00999999999" />
         </div>
         <div className="campos">
           <label htmlFor="email">Digite seu email:</label>
-          <input type="email" name="email" id="email" placeholder="Ex: exemplo@mail.com" />
+          <input className="input-email" type="email" name="email" id="email" placeholder="Ex: exemplo@mail.com" />
         </div>
         <div className="campos">
           <label htmlFor="gen">Qual seu gênero:</label>
-          <select id="gen" name="gen">
+          <select className="select" id="gen" name="gen">
             <option value="" hidden selected></option>
             <option value="masculino">Masculino</option>
             <option value="feminino">Feminino</option>
@@ -91,7 +91,6 @@ const App = () => {
           </select>
         </div>
       </div>
-      <script type="text/javascript" src="java.js"></script>
     </div>
   );
 };

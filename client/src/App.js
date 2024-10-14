@@ -10,11 +10,13 @@ import Tecnicos from './views/tecnicos';
 import UploadTreino from './views/uploadTreino/uploadPainel';
 import Ed from './views/test/ed';
 import Graficos from './views/graficos/estatisticas';
+import LadingPage from './views/lading-page/lading';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path='/' element={<LadingPage />}></Route>
         <Route path='/treinos' element={<Treinamentos/>}/>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/cursoInfo' element={<CursoInfo />}></Route>
@@ -25,7 +27,7 @@ function App() {
         <Route path='/tecnicos/:matricula' element={<Tecnicos/>}></Route>
         <Route path='/uploadTreino' element={<UploadTreino/>}></Route>
         <Route path='/test' element={<Ed/>}></Route>
-        <Route path='/graficos' element={<Graficos />}></Route>
+        <Route path='/graficos' element={<Graficos />}></Route>        
       </Routes>
     </BrowserRouter>
   );

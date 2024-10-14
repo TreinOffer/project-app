@@ -16,11 +16,16 @@ const CRUD = new CrudUser();
 
 function Tecnicos() {
 
-  const [ tecnicos, setTecnicos ] = useState([]);
-  const [ click, setClick ] = useState(false);
+  const [tecnicos, setTecnicos] = useState([]);
+  const [click, setClick] = useState(false);
 
   const handleAddFunc = () => {
     setClick(!click);
+  };
+
+  const handleDelete = async (id) => {
+    await CRUD.delete(id);
+    setTecnicos(tecnicos.filter(tecnico => tecnico.id !== id))
   };
 
   const handleRefresh = async () => {
@@ -30,7 +35,7 @@ function Tecnicos() {
 
   useEffect(() => {
     handleRefresh();
-  }, [ ]);
+  }, []);
 
   return (
     <>
@@ -55,7 +60,7 @@ function Tecnicos() {
             <img src={
               click ? (imgs.removFunc) : (imgs.addFunc)
             }
-              alt="add" onClick={ handleAddFunc } />
+              alt="add" onClick={handleAddFunc} />
           </button>
         </div>
         <div className='tit_cabec'>
@@ -80,14 +85,16 @@ function Tecnicos() {
         </div>
 
         <section className="funcs">
-          {click && (<NewFunc atualizaPag={ handleRefresh } click={ setClick } />)}
+          {click && (<NewFunc atualizaPag={handleRefresh} click={setClick} />)}
           {
-            tecnicos.map((tecnico, chave) => (
-              (<Tecnico key={chave}
-                tecFt={tecnico.Imagem} tecNome={tecnico.Nome}
-                tarefa={tecnico.Especializacao} numColab={tecnico.Colaboradores}
-                senha={tecnico.Senha} matricula={tecnico.Matricula} />)
-            ))}
+            tecnicos.map((tecnico, chave) =>
+            (<Tecnico key={chave} id={ tecnico.id }
+              tecFt={tecnico.Imagem} tecNome={tecnico.Nome}
+              tarefa={tecnico.Especializacao} numColab={tecnico.Colaboradores}
+              senha={tecnico.Senha} matricula={tecnico.Matricula}
+              handleDelete={ handleDelete } atualizaPag={ handleRefresh }
+            />)
+          )}
         </section>
       </section>
     </>

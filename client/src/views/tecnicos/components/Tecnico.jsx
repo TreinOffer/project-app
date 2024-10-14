@@ -5,7 +5,6 @@ import CoresRGB from "../../../components/coresRGB";
 import CrudUser from './crudTecnico';
 
 import './Tecnico.css';
-import { useNavigate, useParams } from 'react-router-dom';
 
 const g = 25;
 const m = 15;
@@ -13,9 +12,7 @@ const p = 10;
 
 const CRUD = new CrudUser();
 
-function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula }) {
-    const { Matricula } = useParams();
-    const Navegar = useNavigate();
+function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handleDelete, atualizaPag }) {
 
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
@@ -28,8 +25,7 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula }) {
     const [editedMatricula, setEditedMatricula] = useState(matricula);
 
     const handleEdit = async () => {
-        Navegar( `/tecnicos/${matricula}` );
-        return CRUD.update( Matricula, {
+        return await CRUD.update( id, {
             Matricula: editedMatricula,
             Imagem: tecFt,
             Nome: editedNome,
@@ -39,18 +35,13 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula }) {
         });
     };
 
-    const handleDelete = async () => {
-        Navegar(`/tecnicos/${matricula}`);
-        return await CRUD.delete(Matricula);
-    };
-
     let arrayTarefa = [];
 
     //There's more than one item
     if (tarefa.indexOf(",") !== -1) {
         arrayTarefa = tarefa.split(",");
 
-        //There's only one
+    //There's only one
     } else {
         arrayTarefa = [tarefa];
     }
@@ -77,7 +68,12 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula }) {
             <div className='sec_func info_pessoal' style={{ width: `${g}%` }}>
                 <img className='foto_func' src={tecFt} alt="" />
                 <h3 className='nome_func letraQuebra'>{isEditing ? (
-                    <form onSubmit={handleEdit}>
+                    <form onSubmit={ async (e) => {
+                        e.preventDefault(); //not rerender the page
+                        handleEdit(); // Calls the backend
+                        setIsEditing(!isEditing); // Closes the tab update
+                        atualizaPag(); //Triggers a rerender by calling useEffect
+                    }}>
                         <input 
                             type="text" 
                             value={editedNome} 
@@ -147,7 +143,7 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula }) {
                             <button className="dropdown-item" onClick={() => setIsEditing(!isEditing)}>
                                 {isEditing ? 'Cancelar' : 'Editar'}
                             </button>
-                            <button className="dropdown-item" onClick={() => handleDelete()} >Remover</button>
+                            <button className="dropdown-item" onClick={() => handleDelete(id)} >Remover</button>
                         </div>
                     )}
                 </div>

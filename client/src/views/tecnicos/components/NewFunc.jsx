@@ -65,7 +65,7 @@ function NewFunc({ atualizaPag, click }) {
         </div>
 
         <div className='sec_func' style={{ width: `${g}%` }}>
-          <input onChange={onChange('Especialidade')} type="text" name="espec" id="tarefa" />
+          <input onChange={onChange('Especializacao')} type="text" name="espec" id="tarefa" />
         </div>
 
         <div className="sec_func" style={{ width: `${p}%` }}>

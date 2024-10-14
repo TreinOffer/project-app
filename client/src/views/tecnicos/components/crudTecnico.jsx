@@ -63,15 +63,15 @@ class CrudUser {
     async delete( idTecnico ) {
         try {
             const response = await fetch(`http://localhost:5000/tecnicos/${idTecnico}`, {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers:{
+                    'Content-Type':'application/json'
+                }
             });
 
             if (!response.ok) {
                 throw new Error(`Response diferente de 200 ${await response.text()}`);
             };
-
-            console.log(await response.json());
-            return await response.json();
 
         } catch (error) {
             console.log(`Erro na api delete: ${error}`)

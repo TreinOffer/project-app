@@ -1,31 +1,22 @@
 {
   "tecnicos": [
     {
-      "Matricula": "25A23BCZ",
+      "Matricula": "z3221VCC",
       "Imagem": "https://www.velseg.com.br/wp-content/uploads/2018/05/funcionario_temporario.jpg",
-      "Nome": "Eduardo Pereira",
-      "Especializacao": "Segurança",
+      "Nome": "aymar",
+      "Especializacao": "157",
       "Colaboradores": "4",
-      "Senha": "******",
+      "Senha": "123*abc",
       "id": "f899"
     },
     {
       "Matricula": "33C09VVC",
       "Imagem": "https://blog.spvale.com.br/wp-content/uploads/2022/06/post_thumbnail-2d38c8ea1fef5c6900e607a2d63c9ee0-1110x508.jpeg",
-      "Nome": "Leila Pereira",
+      "Nome": "Leila Pereiras",
       "Especializacao": "Industrial",
       "Colaboradores": "2",
       "Senha": "******",
       "id": "447a"
-    },
-    {
-      "Matricula": "amarmuitoofilho",
-      "Imagem": "",
-      "Nome": "greg velos",
-      "Especializacao": "ser desbloqueado",
-      "Colaboradores": "0",
-      "Senha": "123*abc123",
-      "id": "ce35"
     }
   ]
 }

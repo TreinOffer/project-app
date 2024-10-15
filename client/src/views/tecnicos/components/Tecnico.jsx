@@ -31,10 +31,16 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
         });
         setIsEditing(false);
         atualizaPag();
+        setDropdownOpen(false); 
     };
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
+    };
+
+    const handleCancel = () => {
+        setIsEditing(false);
+        setDropdownOpen(false);
     };
 
     useEffect(() => {
@@ -61,7 +67,7 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
                         onChange={(e) => setEditedNome(e.target.value)}
                         required
                         className="custom-input"
-                        style={{ marginLeft: '10px', flex: 1 }} // Ajuste para ocupar o espaço disponível
+                        style={{ marginLeft: '10px', flex: 1 }} 
                     />
                 ) : (
                     <h3 className='nome_func letraQuebra' style={{ marginLeft: '10px' }}>{tecNome}</h3>
@@ -108,17 +114,14 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
 
             <div className='sec_func' style={{ width: `${m}%`, display: 'flex', alignItems: 'center' }}>
                 {isEditing ? (
-                    <>
-                        <input
-                            type="text"
-                            value={editedMatricula}
-                            onChange={(e) => setEditedMatricula(e.target.value)}
-                            required
-                            className="custom-input"
-                            style={{ marginRight: '10px' }}
-                        />
-                        <button onClick={handleEdit} className="custom-button">Salvar</button>
-                    </>
+                    <input
+                        type="text"
+                        value={editedMatricula}
+                        onChange={(e) => setEditedMatricula(e.target.value)}
+                        required
+                        className="custom-input"
+                        style={{ marginRight: '10px' }}
+                    />
                 ) : (
                     <span className='letraQuebra'>{matricula}</span>
                 )}
@@ -129,9 +132,20 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
                     <img className='bot_opcoes' src={imgs.opcoes} alt="" />
                     {dropdownOpen && (
                         <div className="dropdown-menu">
-                            <button className="dropdown-item" onClick={() => setIsEditing(!isEditing)}>
-                                {isEditing ? 'Cancelar' : 'Editar'}
-                            </button>
+                            {isEditing ? (
+                                <>
+                                    <button className="dropdown-item" onClick={handleEdit}>
+                                        Salvar
+                                    </button>
+                                    <button className="dropdown-item" onClick={handleCancel}>
+                                        Cancelar
+                                    </button>
+                                </>
+                            ) : (
+                                <button className="dropdown-item" onClick={() => setIsEditing(true)}>
+                                    Editar
+                                </button>
+                            )}
                             <button className="dropdown-item" onClick={() => handleDelete(id)}>Remover</button>
                         </div>
                     )}

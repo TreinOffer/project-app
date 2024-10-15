@@ -1,12 +1,12 @@
 {
   "tecnicos": [
     {
-      "Matricula": "z3221VCC",
+      "Matricula": "33C12VJ",
       "Imagem": "https://www.velseg.com.br/wp-content/uploads/2018/05/funcionario_temporario.jpg",
-      "Nome": "aymard",
-      "Especializacao": "157",
+      "Nome": "pietro",
+      "Especializacao": "linde",
       "Colaboradores": "4",
-      "Senha": "123*abc",
+      "Senha": "amoomarco",
       "id": "f899"
     },
     {
@@ -17,6 +17,15 @@
       "Colaboradores": "2",
       "Senha": "******",
       "id": "447a"
+    },
+    {
+      "id": "cdbe",
+      "Matricula": "20092004",
+      "Imagem": "blob:http://localhost:3000/383cdfa0-466d-4366-bfba-d3acf7a52d09",
+      "Nome": "samara",
+      "Especializacao": "tecnica logistica",
+      "Colaboradores": "0",
+      "Senha": "123@456"
     }
   ]
 }

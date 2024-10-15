@@ -52,41 +52,38 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
 
     return (
         <section className="func">
-            <div className='sec_func info_pessoal' style={{ width: `${g}%` }}>
+            <div className='sec_func info_pessoal' style={{ width: `${g}%`, display: 'flex', alignItems: 'center' }}>
                 <img className='foto_func' src={tecFt} alt="" />
-                <h3 className='nome_func letraQuebra'>
-                    {isEditing ? (
-                        <input
-                            type="text"
-                            value={editedNome}
-                            onChange={(e) => setEditedNome(e.target.value)}
-                            required
-                            className="custom-input"
-                        />
-                    ) : (
-                        tecNome
-                    )}
-                </h3>
+                {isEditing ? (
+                    <input
+                        type="text"
+                        value={editedNome}
+                        onChange={(e) => setEditedNome(e.target.value)}
+                        required
+                        className="custom-input"
+                        style={{ marginLeft: '10px', flex: 1 }} // Ajuste para ocupar o espaço disponível
+                    />
+                ) : (
+                    <h3 className='nome_func letraQuebra' style={{ marginLeft: '10px' }}>{tecNome}</h3>
+                )}
             </div>
 
-            <div className='sec_func' style={{ width: `${g}%` }}>
-                <span id='nome_dep'>
-                    {isEditing ? (
-                        <input
-                            type="text"
-                            value={editedTarefa}
-                            onChange={(e) => setEditedTarefa(e.target.value)}
-                            required
-                            className="custom-input"
-                        />
-                    ) : (
-                        tarefa.split(",").map((tarf, index) => (
-                            <span key={index} className='letraQuebra' style={{ display: "block" }}>
-                                {tarf}
-                            </span>
-                        ))
-                    )}
-                </span>
+            <div className='sec_func' style={{ width: `${g}%`, display: 'flex', alignItems: 'center' }}>
+                {isEditing ? (
+                    <input
+                        type="text"
+                        value={editedTarefa}
+                        onChange={(e) => setEditedTarefa(e.target.value)}
+                        required
+                        className="custom-input"
+                    />
+                ) : (
+                    tarefa.split(",").map((tarf, index) => (
+                        <span key={index} className='letraQuebra' style={{ display: "block" }}>
+                            {tarf}
+                        </span>
+                    ))
+                )}
             </div>
 
             <div className="sec_func" style={{ width: `${p}%`, justifyContent: 'center' }}>
@@ -118,7 +115,7 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
                             onChange={(e) => setEditedMatricula(e.target.value)}
                             required
                             className="custom-input"
-                            style={{ marginRight: '10px' }} 
+                            style={{ marginRight: '10px' }}
                         />
                         <button onClick={handleEdit} className="custom-button">Salvar</button>
                     </>

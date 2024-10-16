@@ -19,11 +19,12 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
     const [editedTarefa, setEditedTarefa] = useState(tarefa);
     const [editedSenha, setEditedSenha] = useState(senha);
     const [editedMatricula, setEditedMatricula] = useState(matricula);
+    const [editedImage, setEditedImage] = useState(tecFt);
 
     const handleEdit = async () => {
         await CRUD.update(id, {
             Matricula: editedMatricula,
-            Imagem: tecFt,
+            Imagem: editedImage,
             Nome: editedNome,
             Especializacao: editedTarefa,
             Colaboradores: numColab,
@@ -31,7 +32,7 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
         });
         setIsEditing(false);
         atualizaPag();
-        setDropdownOpen(false); 
+        setDropdownOpen(false);
     };
 
     const toggleDropdown = () => {
@@ -41,6 +42,18 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
     const handleCancel = () => {
         setIsEditing(false);
         setDropdownOpen(false);
+        setEditedImage(tecFt);
+    };
+
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setEditedImage(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
     };
 
     useEffect(() => {
@@ -58,8 +71,25 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
 
     return (
         <section className="func">
-            <div className='sec_func info_pessoal' style={{ width: `${g}%`, display: 'flex', alignItems: 'center' }}>
-                <img className='foto_func' src={tecFt} alt="" />
+            <div className='sec_func info_pessoal' style={{ width: `${g}%`, display: 'flex', alignItems: 'center', position: 'relative' }}>
+                <div style={{ position: 'relative' }}>
+                    <img className='foto_func' src={editedImage} alt=""/>
+                    {isEditing && (
+                        <div className="botao_div">
+                            <input                                
+                                onChange={handleImageChange}
+                                accept='.jpg,.png,.jpeg'
+                                type="file"
+                                name="foto"
+                                id="foto"
+                                style={{ display: 'none' }}
+                            />
+                            <label id='forFoto' htmlFor="foto" className="label-foto escolher-imagem">
+                                Escolher imagem
+                            </label>
+                        </div>
+                    )}
+                </div>
                 {isEditing ? (
                     <input
                         type="text"
@@ -67,7 +97,7 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
                         onChange={(e) => setEditedNome(e.target.value)}
                         required
                         className="custom-input"
-                        style={{ marginLeft: '10px', flex: 1 }} 
+                        style={{ marginLeft: '10px', flex: 1 }}
                     />
                 ) : (
                     <h3 className='nome_func letraQuebra' style={{ marginLeft: '10px' }}>{tecNome}</h3>

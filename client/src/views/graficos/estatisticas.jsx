@@ -17,6 +17,11 @@ defaults.plugins.title.color = "black";
 
 export default function App() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [isDown, setIsDown] = useState(true); // Estado para controlar a direção da seta
+
+  const toggleArrow = () => {
+    setIsDown(!isDown); // Inverte a direção da seta
+  };
 
   return (
     <>
@@ -101,13 +106,17 @@ export default function App() {
 
           {/* Gráficos */}
           <div className="quadrado-grafico">
-            <div className="treinamentos-container">
-              <div className="treinamentos-box">
-                <p className="treinamentos-title">TREINAMENTOS</p>
-              </div>
+            <div className="treinamentos-box">
+              <p className="treinamentos-title">
+                TREINAMENTOS
+                <span
+                  style={{ marginLeft: '0.5em', fontSize: '1.2em', cursor: 'pointer' }}
+                  onClick={toggleArrow}
+                >
+                  <i className={`fa ${isDown ? 'fa-arrow-down' : 'fa-arrow-up'}`}></i>
+                </span>
+              </p>
             </div>
-
-
             <div className="dataCard revenueCard">
               <Line
                 data={{

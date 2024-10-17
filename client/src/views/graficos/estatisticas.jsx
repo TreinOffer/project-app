@@ -3,6 +3,7 @@ import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Bar, Line } from "react-chartjs-2";
 import Cabecalho from "../cabecalho";
 import "./App.css";
+import "./App.css";
 import revenueData from "../../data/revenueData.json";
 import sourceData from "../../data/sourceData.json";
 import 'font-awesome/css/font-awesome.min.css';
@@ -18,10 +19,11 @@ defaults.plugins.title.font.size = 20;
 defaults.plugins.title.color = "black";
 
 export default function App() {
-  const [showStats, setShowStats] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isDown, setIsDown] = useState(true); // Estado para controlar a direção da seta
 
-  const toggleStats = () => {
-    setShowStats(!showStats);
+  const toggleArrow = () => {
+    setIsDown(!isDown); // Inverte a direção da seta
   };
 
   return (

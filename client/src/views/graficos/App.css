@@ -104,27 +104,46 @@
 
 .dataCard {
   background-color: #efefef;
-  border-radius: 0.5em;    
+  border-radius: 0.5em;
   box-shadow: rgba(48, 46, 46, 0.2) 0px 8px 24px;
-  padding: 1em;       
+  padding: 1em;
   margin-bottom: 10px;
-  height: 21.9rem; 
+  height: 30rem;
+  margin-right: -70rem;
 }
 
-.estatisticas-button {
-  margin: 2px 0; 
-  padding: 0.5em 1em;
-  background-color: #064FF0;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.perfil-section {
+  display: flex;
+  align-items: center;
+  margin: 1em 0;
+}
+
+.perfil-section img {
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.perfil-section img:hover {
+  transform: scale(1.1);
+}
+
+.treinamentos-box {
+  border: 1px solid #ccc;
+  margin: 0.5em 0;
+  border-radius: 10px;
+  width: 200px;
+  max-width: 200px;
+  background-color: #f9f9f9;
+  margin-right: 35rem;
+}
+
+.treinamentos-title {
+  font-weight: bold;
   text-align: center;
-  transition: background-color 0.3s; 
 }
 
-.estatisticas-button:hover {
-  background-color: #0538b1;
+.circle{
+  border-radius: 20px;
 }
 
 .circle{

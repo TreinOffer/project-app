@@ -5,9 +5,9 @@
 } */
 
 .content-wrapper {
-  margin: 30px;
+  margin: 30px 30px 0 30px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: row;
   column-gap: 30px;
 }
@@ -27,10 +27,8 @@
   box-shadow: 0 0 10px black;
   border-radius: 10px;
   /* margin-top: 1px;  */
-  padding: 20px;
   display: grid;         
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 20px;
+  grid-template-columns: 1fr 1fr;
 }
 
 .perf-colab{
@@ -40,6 +38,7 @@
   align-items: center;
   box-shadow: 0 0 10px hsl(210,50%,50%);
   background-color: hsl(0,0%,25%);
+  margin: 20px;
   box-sizing: content-box;
 }
 
@@ -104,46 +103,27 @@
 
 .dataCard {
   background-color: #efefef;
-  border-radius: 0.5em;
+  border-radius: 0.5em;    
   box-shadow: rgba(48, 46, 46, 0.2) 0px 8px 24px;
-  padding: 1em;
+  padding: 1em;       
   margin-bottom: 10px;
-  height: 30rem;
-  margin-right: -70rem;
+  height: 21.9rem; 
 }
 
-.perfil-section {
-  display: flex;
-  align-items: center;
-  margin: 1em 0;
-}
-
-.perfil-section img {
-  border-radius: 50%;
-  transition: transform 0.3s;
-}
-
-.perfil-section img:hover {
-  transform: scale(1.1);
-}
-
-.treinamentos-box {
-  border: 1px solid #ccc;
-  margin: 0.5em 0;
-  border-radius: 10px;
-  width: 200px;
-  max-width: 200px;
-  background-color: #f9f9f9;
-  margin-right: 35rem;
-}
-
-.treinamentos-title {
-  font-weight: bold;
+.estatisticas-button {
+  margin: 2px 0; 
+  padding: 0.5em 1em;
+  background-color: #064FF0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
   text-align: center;
+  transition: background-color 0.3s; 
 }
 
-.circle{
-  border-radius: 20px;
+.estatisticas-button:hover {
+  background-color: #0538b1;
 }
 
 .circle{

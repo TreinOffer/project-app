@@ -1,58 +1,44 @@
+/* Estilo geral */
 .inicial {
     text-align: center;
     font-size: 16px;
-    background-color: white;
+    background-color: #f9f9f9;
 }
 
 .navegacao {
     background-image: linear-gradient(hsl(155, 100%, 95%), hsl(220, 100%, 90%));
     text-decoration: none;
+    padding: 10px 0;
 }
 
-.logo-treino {
-    width: 20%;
-    height: 20%;
-}
-
+/* Menu e logo */
 .menu-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 1220px;
+    margin: 0 auto;
 }
 
 .menu {
-    float: right;
     padding: 20px 0;
-}
-
-.menu a:visited {
-    color: rgb(168, 79, 79);
-}
-
-.menu a:link {
-    color: rgb(7, 7, 7);
 }
 
 .menu a {
     text-decoration: none;
-    padding: 5px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    color: #000;
 }
 
 .menu a:hover {
-    color: #000000;
     background-color: #ccddff;
 }
 
 .logo-central {
-    margin: 0 auto;
+    margin: 40px auto;
     text-align: center;
-    padding-top: 200px;
-    width: 100%;
-}
-
-.titulo-principal {
-    text-align: center;
-    padding: 10px;
-    font-family: "Roboto", "Montserrat";
-    font-style: normal; 
 }
 
 .logo-central img {
@@ -60,117 +46,220 @@
     margin-left: 10%;
 }
 
+/* Títulos */
+.titulo-principal {
+    text-align: center;
+    padding: 10px;
+    font-family: "Roboto", "Montserrat", sans-serif;
+    font-weight: bold;
+}
+
+/* Linha separadora */
 .linha-separadora {
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    margin: 0 auto 0.1em;
+    margin: 0 auto 0.5em;
     padding: 0.9em 20%;
 }
 
+/* Bloqueio e destaque */
 .bloqueio {
     padding: 10%;
     background-image: linear-gradient(to top, #c4e8ff, #1399ec);
     color: #fff;
-}
-
-.subtitulo {
-    text-align: center;
-    font-family: "Montserrat", sans-serif;
-    font-size: 20px;
+    border-radius: 8px;
 }
 
 .destaque {
     font-size: 80px;
     position: relative;
-    top: -100px;
+    top: -20px;
 }
 
-.hr-separador {
-    color: rgba(90, 90, 247, 0.452);
-}
-
-.linha-simples {
-    margin: 0 auto 0.1em;
-}
-
-.texto-justificado {
-    text-align: justify;
-}
-
-.bloco-set {
-    background-image: linear-gradient(to top, #bfdaee, #48b2f3);
-    color: #fff;
-}
-
+/* Seções de serviços e contato */
 .servicos {
-    margin-top: -150px;
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 45px; 
-    justify-items: center;
-    align-items: center; 
-}
-
-.grid-item img {
-    width: 290px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 5px;
-    transition: background-color 0.5s ease, transform 0.5s ease;
-}
-
-.grid-item {
-    text-align: center;
-    font-size: 12px;
-}
-
-.servicos {
-    text-align: center;
-    padding-top: 150px;
+    margin-top: 20px;
 }
 
 .contato {
-    padding: 10%;
-    background-image: linear-gradient(to top, #bfdaee, #48b2f3);
-}
-
-.contato .texto-colorido {
-    color: white;
-}
-
-.sub-menu-oculto {
-    display: none;
-}
-
-.formulario {
+    padding: 40px;
+    background: linear-gradient(to top, #f0f9ff, #c0e7ff);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 40px auto;
 }
 
-.label {
-    display: block;
-    margin: 10px 0 5px;
+.titulo-contato {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Formulário */
+.formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+.campo {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    color: #34495e;
 }
 
 .input-texto,
-.input-numero,
 .input-telefone,
 .input-email,
 .select {
     width: 100%;
-    padding: 15px;
-    border: 1px solid #0d0e0f;
-    border-radius: 10px;
-    margin-bottom: 15px;
+    padding: 12px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    transition: border-color 0.3s;
 }
 
-.alinhamento {
-    display: inline-block;
-    margin-right: 100px;
+.input-texto:focus,
+.input-telefone:focus,
+.input-email:focus,
+.select:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+/* Botão de envio */
+.botao-enviar {
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.botao-enviar:hover {
+    background-color: #2980b9;
+}
+
+.dropdown-toggle {
+    background-color: transparent; 
+    color: #3498db; 
+    border: 2px solid #3498db; 
+    border-radius: 5px; 
+    padding: 10px 15px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+.dropdown-toggle:hover {
+    background-color: #3498db; 
+    color: white; 
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Carousel */
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.carousel-button {
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.carousel-item {
+    display: flex;
+    transition: transform 0.3s ease;
+    width: 100%; 
+}
+
+.image-container {
+    position: relative;
+    min-width: 100%; /* Um item por vez */
+    text-align: center;
+    overflow: hidden; /* Evita que as partes da imagem fiquem visíveis */
+}
+
+.carousel img {
+    width: 50%; 
+    height: auto; 
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+}
+
+/* Efeito de hover para movimentar a imagem */
+.image-container:hover img {
+    transform: scale(1.05); 
+}
+
+.titulo-principal {
+    text-align: center;
+    padding: 10px;
+    font-family: "Roboto", "Montserrat", sans-serif;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Indicadores do carousel */
+.indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.indicator.active {
+    background-color: #007bff; 
+}
+
+/* Efeito de desfoque */
+.blurred {
+    filter: blur(5px);
+    transition: filter 0.3s ease;
 }

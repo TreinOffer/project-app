@@ -124,11 +124,11 @@ const App = () => {
         <form className="formulario">
           <div className="campo">
             <label htmlFor="nome">Nome completo:</label>
-            <input className="input-texto" type="text" name="nome" id="nome" required />
+            <input className="input-texto" type="text" name="nome" id="nome" placeholder="Ex: Aymar Silva" required />
           </div>
           <div className="campo">
             <label htmlFor="telef">Número de telefone:</label>
-            <input className="input-telefone" type="tel" name="telef" id="telef" placeholder="Ex: 00999999999" required />
+            <input className="input-telefone" type="tel" name="telef" id="telef" placeholder="Ex: 9922-1156" required />
           </div>
           <div className="campo">
             <label htmlFor="email">E-mail:</label>

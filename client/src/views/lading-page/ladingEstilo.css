@@ -211,9 +211,9 @@ label {
 
 .image-container {
     position: relative;
-    min-width: 100%; /* Um item por vez */
+    min-width: 100%; 
     text-align: center;
-    overflow: hidden; /* Evita que as partes da imagem fiquem visíveis */
+    overflow: hidden; 
 }
 
 .carousel img {
@@ -223,7 +223,6 @@ label {
     transition: transform 0.3s ease;
 }
 
-/* Efeito de hover para movimentar a imagem */
 .image-container:hover img {
     transform: scale(1.05); 
 }
@@ -237,7 +236,6 @@ label {
     margin-top: 10px;
 }
 
-/* Indicadores do carousel */
 .indicators {
     display: flex;
     justify-content: center;
@@ -258,7 +256,7 @@ label {
     background-color: #007bff; 
 }
 
-/* Efeito de desfoque */
+
 .blurred {
     filter: blur(5px);
     transition: filter 0.3s ease;

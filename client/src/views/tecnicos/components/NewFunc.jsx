@@ -33,13 +33,17 @@ function NewFunc({ atualizaPag, click }) {
 
   let imagem = null;
 
-  const handleUploadImagem = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      imagem = URL.createObjectURL(file);
-      document.getElementsByClassName("foto_func")[0].src = imagem;
-      onChangeImg('Imagem', imagem);
-    };
+  const handleUploadImagem = (e) => {
+    const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                imagem = reader.result;
+                document.getElementsByClassName("foto_func")[0].src = imagem;
+                onChangeImg('Imagem', imagem);
+            };
+            reader.readAsDataURL(file);
+        };
   };
 
   return (

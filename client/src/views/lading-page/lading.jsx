@@ -147,6 +147,9 @@ const App = () => {
           <button type="submit" className="botao-enviar">Enviar</button>
         </form>
       </div>
+      <footer className="footer">
+        <p>© {new Date().getFullYear()} TreinOffer. Todos os direitos reservados.</p>
+      </footer>
     </div>
   );
 };

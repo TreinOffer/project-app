@@ -1,63 +1,71 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-
+import React, { useMemo } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import imgs from '../../../imgs/arrayImagens';
 import './estiloNav.css';
 
 const NavBar = () => {
+    const { pathname } = useLocation();
+
+    const urls = useMemo(() => ({
+        inicio: "/",
+        treinos: "/treinos",
+        uparTreino: "/uploadTreino",
+        tecnicos: "/tecnicos",
+        colaboradores: "/colaboradores",
+        fatura: "/fatura"
+    }), []);
+
+    const activeStyles = useMemo(() => {
+        return Object.keys(urls).reduce((acc, key) => {
+            acc[key] = pathname === urls[key] ? { borderBottom: '2px solid black' } : {};
+            return acc;
+        }, {});
+    }, [pathname, urls]);
+
     return (
         <section style={{ backgroundColor: "hsl(200,80%,80%)" }}>
             <ul className="menu">
-                <Link className='routes_cabecalho' to="/">
-                    <li className="navegacao">
+                <Link className='routes_cabecalho' to={urls.inicio}>
+                    <li className="navegacao" style={activeStyles.inicio}>
                         <img src={imgs.home} alt="" />
                         <span>Início</span>
                     </li>
                 </Link>
 
-                <ul className="tarefas">
-                    {/* <h3>Treinamentos</h3> */}
+                <Link className='routes_cabecalho' to={urls.treinos}>
+                    <li className="navegacao" style={activeStyles.treinos}>
+                        <img src={imgs.livro} alt="" />
+                        <span>Meus treinos</span>
+                    </li>
+                </Link>
 
-                    <Link className='routes_cabecalho' to="/treinos">
-                        <li className="navegacao">
-                            <img src={imgs.livro} alt="" />
-                            <span>Meus treinos</span>
-                        </li>
-                    </Link>
+                <Link className='routes_cabecalho' to={urls.uparTreino}>
+                    <li className="navegacao" style={activeStyles.uparTreino}>
+                        <img src={imgs.upload} alt="" />
+                        <span>Enviar treinamento</span>
+                    </li>
+                </Link>
+                
+                <Link className='routes_cabecalho' to={urls.tecnicos}>
+                    <li className="navegacao" style={activeStyles.tecnicos}>
+                        <img src={imgs.tecnicos} alt="" />
+                        <span>Técnicos</span>
+                    </li>
+                </Link>
 
-                    <Link className='routes_cabecalho' to="/uploadTreino">
-                        <li className="navegacao">
-                            <img src={imgs.upload} alt="" />
-                            <span>Enviar treinamento</span>
-                        </li>
-                    </Link>
-                </ul>
-                <ul className="tarefas">
-                    {/* <h3>Tarefas</h3> */}
-                    <Link className='routes_cabecalho' to="/tecnicos">
-                        <li className="navegacao">
-                            <img src={imgs.tecnicos} alt="" />
-                            <span>Técnicos</span>
-                        </li>
-                    </Link>
+                <Link className='routes_cabecalho' to={urls.colaboradores}>
+                    <li className="navegacao">
+                        <img src={imgs.colaboradores} alt="" />
+                        <span>Colaboradores</span>
+                    </li>
+                </Link>
 
-                    <Link className='routes_cabecalho' to="/colaboradores">
-                        <li className="navegacao">
-                            <img src={imgs.colaboradores} alt="" />
-                            <span>Colaboradores</span>
-                        </li>
-                    </Link>
-
-                </ul>
-                <ul className="financeira">
-                    {/* <h3>Financeiro</h3> */}
-                    <Link className='routes_cabecalho' to="/fatura">
-                        <li className="navegacao">
-                            <img src={imgs.financas} alt="" />
-                            <span>Fatura</span>
-                        </li>
-                    </Link>
-                </ul>
+                <Link className='routes_cabecalho' to={urls.fatura}>
+                    <li className="navegacao" style={activeStyles.fatura}>
+                        <img src={imgs.financas} alt="" />
+                        <span>Fatura</span>
+                    </li>
+                </Link>
             </ul>
         </section>
     );

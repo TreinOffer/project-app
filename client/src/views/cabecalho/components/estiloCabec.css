@@ -37,6 +37,12 @@
     padding: 0 16px;
     justify-content: space-between;
     gap: 6px;
+    & .notf{
+        > img{
+            width: 50%;
+            cursor: pointer;
+        }
+    }
 }
 .secMeio .gitDiv{
     height: 32px; width: 32px;

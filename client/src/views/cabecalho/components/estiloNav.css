@@ -3,7 +3,6 @@ section .menu{
     flex-direction: row;
     justify-content: center;
     gap: 50px;
-    /* padding: 4px 0; */
 }
 .menu .tarefas{
     display: flex;
@@ -15,21 +14,25 @@ section .menu{
     flex-direction: row;
     gap: 10px;
     align-items: center;
-
-    background-color: hsl(200,50%,70%);
     padding: 0 4px;
-
     border-top: none;
     border-bottom: none;
+    width: 100%;
 }
 .routes_cabecalho{
     text-decoration: none;
     color: hsl(0,0%,100%);
     font-weight: bold;
 }
-.navegacao img{
-    width: 28px;
+.navegacao{
+    & > img{
+        width: 44px;
+    }
+    & > span{
+        font-size: 1.15rem;
+    }
 }
+    
 aside .navegacao:hover{
     background-image: linear-gradient(hsl(205,40%,80%),hsl(205,70%,80%));
     transform: scale(1.2);

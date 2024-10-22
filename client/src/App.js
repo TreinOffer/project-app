@@ -11,6 +11,8 @@ import UploadTreino from './views/uploadTreino/uploadPainel';
 import Ed from './views/test/ed';
 import Graficos from './views/graficos/estatisticas';
 import LadingPage from './views/lading-page/lading';
+import Certificado from './views/certificado/certi';
+import Cadastro from "./views/cadastro/cadastrar";
 
 function App() {
   return (
@@ -27,7 +29,9 @@ function App() {
         <Route path='/tecnicos/:matricula' element={<Tecnicos/>}></Route>
         <Route path='/uploadTreino' element={<UploadTreino/>}></Route>
         <Route path='/test' element={<Ed/>}></Route>
-        <Route path='/graficos' element={<Graficos />}></Route>        
+        <Route path='/graficos' element={<Graficos />}></Route> 
+        <Route path='/certificado' element={<Certificado />}></Route>      
+        <Route path='/cadastro' element={<Cadastro />}></Route>   
       </Routes>
     </BrowserRouter>
   );

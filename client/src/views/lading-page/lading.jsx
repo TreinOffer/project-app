@@ -61,7 +61,7 @@ const App = () => {
                 <a href="/login">
                   <i className="fa fa-sign-in" aria-hidden="true"></i> Logar
                 </a>
-                <a href="/login">
+                <a href="/cadastro">
                   <i className="fa fa-user-plus" aria-hidden="true"></i> Cadastrar
                 </a>
               </div>

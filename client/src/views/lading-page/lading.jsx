@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import imgs from '../../imgs/arrayImagens';
 import '../lading-page/ladingEstilo.css';
 
 const App = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const services = [
     { img: imgs.treino1, title: 'Equipamento de proteção individual' },
@@ -15,28 +15,24 @@ const App = () => {
   ];
 
   const nextSlide = () => {
+    setIsAnimating(true);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
-    setIsHovered(false);
   };
 
   const prevSlide = () => {
+    setIsAnimating(true);
     setCurrentIndex((prevIndex) => (prevIndex - 1 + services.length) % services.length);
-    setIsHovered(false);
   };
 
   const goToSlide = (index) => {
+    setIsAnimating(true);
     setCurrentIndex(index);
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isHovered) {
-        nextSlide();
-      }
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [isHovered]);
+  // Reset the animation state after the animation is done
+  const handleAnimationEnd = () => {
+    setIsAnimating(false);
+  };
 
   return (
     <div className="inicial">
@@ -88,35 +84,31 @@ const App = () => {
         </div>
       </div>
       <div className="servicos">
-        <div className="bloco-set">
-          <div className="servicos">
-            <h2 style={{ fontWeight: 'bold' }}>Serviços</h2>
-          </div>
-          <div className="carousel">
-            <button onClick={prevSlide} className="carousel-button">❮</button>
-            <div className="carousel-item">
-              <div className="image-container">
+        <h2 style={{ fontWeight: 'bold' }}>Serviços</h2>
+        <div className="carousel">
+          <button onClick={prevSlide} className="carousel-button">❮</button>
+          <div className={`carousel-item ${isAnimating ? 'animating' : ''}`} onAnimationEnd={handleAnimationEnd}>
+            {services.map((service, index) => (
+              <div className={`card ${index === currentIndex ? 'active' : ''}`} key={index}>
                 <img
-                  src={services[currentIndex].img}
-                  alt={services[currentIndex].title}
-                  className={isHovered ? '' : 'blurred'}
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
+                  src={service.img}
+                  alt={service.title}
+                  className="card-image"
                 />
-                {isHovered && <h1 className="titulo-principal">{services[currentIndex].title}</h1>}
+                <h1 className="titulo-principal">{service.title}</h1>
               </div>
-            </div>
-            <button onClick={nextSlide} className="carousel-button">❯</button>
-          </div>
-          <div className="indicators">
-            {services.map((_, index) => (
-              <span
-                key={index}
-                className={`indicator ${currentIndex === index ? 'active' : ''}`}
-                onClick={() => goToSlide(index)}
-              />
             ))}
           </div>
+          <button onClick={nextSlide} className="carousel-button">❯</button>
+        </div>
+        <div className="indicators">
+          {services.map((_, index) => (
+            <span
+              key={index}
+              className={`indicator ${currentIndex === index ? 'active' : ''}`}
+              onClick={() => goToSlide(index)}
+            />
+          ))}
         </div>
       </div>
       <div className="contato">

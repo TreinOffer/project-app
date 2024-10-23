@@ -55,7 +55,9 @@ function Cadastro() {
                 </section>
                 <div className="faixa"></div>
                 <section className="secao_logo">
-                    <img id="logo" src={imgs.TreinOffer} alt="" />
+                    <a href="/">
+                        <img id="logo" src={imgs.TreinOffer} alt="Logo" />
+                    </a>                    
                 </section>
             </main>
         </>

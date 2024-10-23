@@ -1,34 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react';
 import './estilo.css';
-import imgs from '../../imgs/arrayImagens.jsx'
+import imgs from '../../imgs/arrayImagens.jsx';
+import { Link } from 'react-router-dom';
 
-const msg = { // Para props
+const msg = {
     login: 'Login',
     cadastro: 'Cadastro',
     login2: 'Logue-se',
     cadastro2: 'Cadastre-se',
-    cadastre_se: "Eu nao tenho uma conta",
+    cadastre_se: "Eu não tenho uma conta",
     logue_se: "Eu possuo uma conta"
 };
 
 function Login() {
+    const [currentMsg, setCurrentMsg] = useState(msg.login);
+    const [isEmpresa, setIsEmpresa] = useState(false);
 
-    function cadastro() {
-        const documents = document.querySelectorAll('.campo_cadastrar *, .login_dados h1');
-
-        console.log(documents)
-
-        for (let i = 0; i < documents.length; i++) {
-            if (i === 0) {
-                documents[i].innerHTML = msg.cadastro;
-            }
-            else if (i === 1) {
-                documents[i].innerHTML = msg.logue_se;
-            }
-            else {
-                documents[i].innerHTML = msg.login2;
-            };
-        };
+    const handleOptionChange = (event) => {
+        const selectedValue = event.target.value;
+        setIsEmpresa(selectedValue === 'empresa');
+        if (selectedValue === 'empresa') {
+            setCurrentMsg('Login - Empresa');
+        } else if (selectedValue === 'funcionario') {
+            setCurrentMsg('Login - Funcionário');
+        } else {
+            setCurrentMsg(msg.login);
+        }
     };
 
     return (
@@ -36,12 +33,19 @@ function Login() {
             <main className='main_login'>
                 <section className="secao_dados">
                     <div className='login_dados'>
-                        <h1>{msg.login}</h1>
+                        <h1>{currentMsg}</h1>
                         <table>
                             <tbody>
                                 <tr className="campo_matricula">
-                                    <td><label htmlFor="email">Matricula:</label></td>
-                                    <td><input placeholder='Inserir ID' type="text" name="matricula" id="matricula" /></td>
+                                    <td><label htmlFor="matricula">{isEmpresa ? 'CNPJ:' : 'Matrícula:'}</label></td>
+                                    <td>
+                                        <input
+                                            placeholder={isEmpresa ? 'Inserir CNPJ' : 'Inserir ID'}
+                                            type="text"
+                                            name="matricula"
+                                            id="matricula"
+                                        />
+                                    </td>
                                 </tr>
                                 <tr className="campo_senha">
                                     <td><label htmlFor="senha">Senha:</label></td>
@@ -54,22 +58,35 @@ function Login() {
                         </table>
 
                         <div className="campo_cadastrar">
-                            <span>
-                                {msg.cadastro2}
-                            </span>
-                            <div id="redirect" className='redirecter' onClick={cadastro}>
-                                {msg.cadastre_se}
-                            </div>
+                            <span>{msg.cadastro2}</span>
+                            <Link to='/cadastro'>
+                                <div className='redirecter'>Eu não tenho uma conta</div>
+                            </Link>
                         </div>
                     </div>
                 </section>
                 <div className="faixa"></div>
                 <section className="secao_logo">
-                    <img id="logo" src={imgs.TreinOffer} alt="" />
+                    <a href="/">
+                        <img id="logo" src={imgs.TreinOffer} alt="Logo" />
+                    </a>
+                    <div className="opcoes_selecao_texto">
+                        <strong style={{ display: 'block', marginTop: '530px', fontSize: '24px', fontWeight: 'bold' }}>Eu sou:</strong>
+                    </div>
+                    <div className="opcoes_selecao">
+                        <label>
+                            <input type="radio" name="tipo" value="empresa" onChange={handleOptionChange} />
+                            Empresa
+                        </label>
+                        <label>
+                            <input type="radio" name="tipo" value="funcionario" onChange={handleOptionChange} />
+                            Funcionário
+                        </label>
+                    </div>
                 </section>
             </main>
         </>
-    )
+    );
 }
 
-export default Login
+export default Login;

@@ -6,6 +6,8 @@ const porta = 3000;
 
 server.use(express.json());
 
+// server.get('/cadastro', );
+
 server.get("/tecnicos",EmpresaTecnicoController.read);
 server.post("/tecnicos",EmpresaTecnicoController.create);
 server.put("/tecnicos/:matricula",EmpresaTecnicoController.update);

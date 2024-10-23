@@ -2,7 +2,7 @@ const acesso = {
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'TreinOffer'
+    database: 'treinoffer'
 };
 
 export default acesso;

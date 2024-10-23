@@ -31,7 +31,7 @@ function App() {
         <Route path='/test' element={<Ed/>}></Route>
         <Route path='/graficos' element={<Graficos />}></Route> 
         <Route path='/certificado' element={<Certificado />}></Route>      
-        <Route path='/cadastro' element={<Cadastro />}></Route>   
+        <Route path='/cadastro' element={<Cadastro />}></Route>           
       </Routes>
     </BrowserRouter>
   );

@@ -49,7 +49,6 @@ function Cadastro() {
                                     Logue-se
                                 </div>
                             </Link>
-
                         </div>
                     </div>
                 </section>

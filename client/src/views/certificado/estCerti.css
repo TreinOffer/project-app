@@ -1,0 +1,66 @@
+.certificado-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+  
+  .certificado {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    width: 600px;
+  }
+  
+  .certificado h1 {
+    font-size: 2.5rem;
+    color: #4A90E2;
+    margin-bottom: 20px;
+  }
+  
+  .certificado .subtitulo {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  .certificado .nome-participante {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #E94E77;
+    margin: 10px 0;
+  }
+  
+  .certificado .titulo-curso {
+    font-size: 1.5rem;
+    color: #7ED321;
+    margin: 10px 0;
+  }
+  
+  .certificado .data {
+    font-size: 1.2rem;
+    margin: 20px 0;
+  }
+  
+  .assinaturas {
+    margin: 40px 0;
+  }
+  
+  .btn-imprimir {
+    background-color: #4A90E2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-imprimir:hover {
+    background-color: #357ABD;
+  }  

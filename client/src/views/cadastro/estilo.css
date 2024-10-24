@@ -35,19 +35,31 @@ table tr td label {
     flex: 1 1 100%;
     flex-direction: column;
     filter: drop-shadow(2px 6px 2px rgba(0, 0, 0, 0.3));
-    margin: 5% 15% 15% 15%;
-    padding: 4% 10%;
+    margin: 2% 15% 15% 15%;
+    padding: 1% 10%;
     border: 2px solid hsl(220, 50%, 80%);
     border-radius: 50px;
     background-color: hsl(220, 100%, 98%);
 }
-.campo_senha, .campo_cep , .campo_telefone, .campo_endereco, .campo_cnpj {
+
+#estado {
+    padding-left: 14px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    filter: drop-shadow(1px 6px 2px rgba(0, 0, 0, 0.3));
+    height: 28px;
+    width: calc(45% - 18px);
+}
+
+
+.campo_senha, .campo_cep , .campo_telefone, .campo_endereco, .campo_cnpj, .campo_cidade, .campo_nome_empresa, .campo_estado{
     display: flex;
     flex-direction: column;
-    margin-bottom: 5%;
+    margin-bottom: 0%;
     width: auto;
 }
-.cadastro_dados #senha, .cadastro_dados #telefone, .cadastro_dados #endereco, .cadastro_dados #cnpj, .cadastro_dados #cep {
+.cadastro_dados #senha, .cadastro_dados #telefone, .cadastro_dados #endereco, .cadastro_dados #cnpj, .cadastro_dados #cep, .cadastro_dados #cidade, .cadastro_dados #nome_empresa {
     padding-left: 14px;
     border: none;
     outline: none;
@@ -55,9 +67,9 @@ table tr td label {
     filter: drop-shadow(1px 6px 2px rgba(0, 0, 0, 0.3));
     height: 32px;
     width: calc(100% - 14px);
-    margin-bottom: 15px;
+    margin-bottom: 0%; 
 }
-.cadastro_dados #senha::placeholder, .cadastro_dados #telefone::placeholder, .cadastro_dados #cnpj::placeholder, .cadastro_dados #cep::placeholder  {
+.cadastro_dados #senha::placeholder, .cadastro_dados #telefone::placeholder, .cadastro_dados #cnpj::placeholder, .cadastro_dados #cep::placeholder, .cadastro_dados #cidade::placeholder, .cadastro_dados #nome_empresa::placeholder  {
     padding: 10% 5% 10% 5%;
 }
 .campo_submit {

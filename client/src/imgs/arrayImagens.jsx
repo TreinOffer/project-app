@@ -31,6 +31,12 @@ import tabLeila from "./tabelas/perfilLeilaTest.jpg";
 import confirmar from "./tabelas/Verificado.png";
 import deletar from "./tabelas/Remover.png";
 
+import agropecuaria from "./lading-page/agropecuaria.png";
+import reuniao from "./lading-page/reuniao.png";
+import saude from "./lading-page/saude.png";
+import industria from "./lading-page/industria.png";
+import tecnologia from "./lading-page/tecnologia.png";
+
 const imgs = {
     TreinOffer,
 
@@ -62,6 +68,12 @@ const imgs = {
     tabEmpty,
     tabEduardo,
     tabLeila,
+
+    agropecuaria,
+    reuniao,
+    saude,
+    industria,
+    tecnologia,
 
     empresa
 };

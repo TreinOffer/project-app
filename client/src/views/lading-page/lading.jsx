@@ -7,11 +7,11 @@ const App = () => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   const services = [
-    { img: imgs.treino1, title: 'Equipamento de proteção individual' },
-    { img: imgs.treino2, title: 'Treinamento de Prevenção de Incêndios' },
-    { img: imgs.treino3, title: 'Processamento de extrato de Frutas' },
-    { img: imgs.treino4, title: 'Treinamento Primeiro Socorros' },
-    { img: imgs.treino5, title: 'Processo de congelamento de Frutas' },
+    { img: imgs.agropecuaria },
+    { img: imgs.reuniao },
+    { img: imgs.saude },
+    { img: imgs.industria },
+    { img: imgs.tecnologia },
   ];
 
   const nextSlide = () => {

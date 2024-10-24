@@ -116,15 +116,15 @@ const App = () => {
         <form className="formulario">
           <div className="campo">
             <label htmlFor="nome">Nome completo:</label>
-            <input className="input-texto" type="text" name="nome" id="nome" placeholder="Ex: Aymar Silva" required />
+            <input className="input-texto" type="text" name="nome" id="nome" placeholder="Nome" required />
           </div>
           <div className="campo">
             <label htmlFor="telef">Número de telefone:</label>
-            <input className="input-telefone" type="tel" name="telef" id="telef" placeholder="Ex: 9922-1156" required />
+            <input className="input-telefone" type="tel" name="telef" id="telef" placeholder="Número de Telefone" required />
           </div>
           <div className="campo">
             <label htmlFor="email">E-mail:</label>
-            <input className="input-email" type="email" name="email" id="email" placeholder="Ex: exemplo@mail.com" required />
+            <input className="input-email" type="email" name="email" id="email" placeholder="E-mail" required />
           </div>
           <div className="campo">
             <label htmlFor="gen">Gênero:</label>

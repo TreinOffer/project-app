@@ -30,44 +30,32 @@ export default function App() {
       <Cabecalho />
       <div className="content-wrapper">
         <section className="quadrado-perfil">
-          <div style={{ position: 'relative' }}>
+          <div className="divBuscarTecGraf" style={{ display: 'flex' }}>
             <input
               type="text"
               placeholder="Buscar colaboradores"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               style={{
-                width: '90%',
-                padding: '0.5em 0.8em',
+                width: '95%',
+                padding: '10px 20px',
                 borderRadius: '20px',
                 border: '1px solid #ccc',
                 outline: 'none',
-                margin: '1em 0',
+                margin: '20px 15px',
                 transition: 'border-color 0.3s'
               }}
               onFocus={(e) => e.target.style.border = '1px solid #ccc'}
               onBlur={(e) => e.target.style.border = '1px solid #ccc'}
-            />
-            <div style={{
-              position: 'absolute',
-              right: '80px',
-              top: '50%',
-              height: '20px',
-              width: '1px',
-              backgroundColor: '#999',
-              transform: 'translateY(-50%)'
-            }} />
-            <i className="fa fa-search"
-              style={{
-                position: 'absolute',
-                right: '40px',
-                top: '50%',
-                transform: 'translateY(-50%)',
+            />            
+            <i className="buscarTecGraf fa fa-search"
+              style={{                
                 color: '#999',
                 cursor: 'pointer'
               }}
             />
           </div>
+
           <div style={{
             height: '1px',
             backgroundColor: '#ccc',
@@ -106,27 +94,34 @@ export default function App() {
         </section>
 
         <section className="quadrado-grafico">
-          <div className="perf-colab">
-            <div className="foto-colab">
-              <img src={imgs.tabEmpty} alt="colab-foto" />
+            <div className="perf-colab">
+              <div className="foto-colab">
+                <img src={imgs.tabEmpty} alt="colab-foto" />
+              </div>
+              <div className="mat-filtro">
+                <div className="materia-filtra">
+                  <img src={imgs.filter} alt="icon-filtro" />
+                  <ul>
+                    <li>Materia 1</li>
+                    <li>Materia 2</li>
+                    <li>Materia 3</li>
+                  </ul>
+                </div>
+                <div className="mat-pontuacao circle">
+                  <h2>Best Score</h2>
+                  <p className="circle">Pontuacao</p>
+                </div>
+              </div>
             </div>
 
-            <div className="mat-filtro">
-              <div className="materia-filtra">
-                <img src={imgs.filter} alt="icon-filtro" />
-                <ul>
-                  <li>Materia 1</li>
-                  <li>Materia 2</li>
-                  <li>Materia 3</li>
-                </ul>
-              </div>
-
-              <div className="mat-pontuacao circle">
-                <h2>Best Score</h2>
-                <p className="circle">Pontuacao</p>
-              </div>
+            <div className="filtro-modulo">
+              <ul>
+                <li>Modulo 1</li>
+                <li>Modulo 2</li>
+                <li>Modulo 3</li>
+              </ul>
             </div>
-          </div>
+
 
           <div className="dataCard revenueCard">
             <Line
@@ -171,9 +166,9 @@ export default function App() {
                     label: "Diárias",
                     data: sourceData.map((data) => data.value),
                     backgroundColor: [
-                      "rgba(43, 63, 229, 0.8)",
-                      "rgba(250, 192, 19, 0.8)",
-                      "rgba(253, 135, 135, 0.8)",
+                      "rgba(43, 63, 229, 1)",
+                      "rgba(250, 192, 19, 1)",
+                      "rgba(34, 139, 34, 1)",
                     ],
                     borderRadius: 5,
                   },

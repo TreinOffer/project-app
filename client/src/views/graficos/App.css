@@ -3,6 +3,30 @@
   padding-top: 4em; 
   width: 80rem; 
 } */
+.divBuscarTecGraf{
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 40px);
+  box-sizing:content-box;
+
+  & .buscarTecGraf{
+    margin-left: -80px;
+    border-left: 1px solid black;
+    height: 100%;
+    font-size: 1.5em;
+    padding-left: 20px;
+  }
+}
+
+.filtro-modulo{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 20px;
+}
 
 .content-wrapper {
   margin: 30px 30px 0 30px;
@@ -14,8 +38,9 @@
 
 .quadrado-perfil {
   /* width: 250px;           */
+  width: 500px;
   flex: 1; /* Adiciona elemento peso 1 dentro de container */
-  min-height: 100%;    
+  /* min-height: 100%;     */
   box-shadow: 0 0 10px black;  
   border-radius: 10px;
 }
@@ -29,6 +54,12 @@
   /* margin-top: 1px;  */
   display: grid;         
   grid-template-columns: 1fr 1fr;
+  & > div{
+     box-shadow: 0 0 10px hsl(210,50%,50%);
+    background-color: hsl(0,0%,25%);
+    margin: 20px;
+    border-radius: 10px;
+  }
 }
 
 .perf-colab{
@@ -36,9 +67,6 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  box-shadow: 0 0 10px hsl(210,50%,50%);
-  background-color: hsl(0,0%,25%);
-  margin: 20px;
   box-sizing: content-box;
 }
 
@@ -110,6 +138,7 @@
   height: 21.9rem; 
 }
 
+
 .estatisticas-button {
   margin: 2px 0; 
   padding: 0.5em 1em;
@@ -128,4 +157,25 @@
 
 .circle{
   border-radius: 20px;
+}
+
+.filtro-modulo{
+  & ul {
+    color: hsl(200,100%,80%);             
+    margin: 0 auto;    
+    display: flex;
+    padding: 0 10px;
+    flex-direction: column;
+    overflow-y: scroll;
+    
+  }
+  & li:nth-child(odd){
+    cursor: pointer;
+    background-color: hsl(0, 0%, 40%); 
+    padding: 4px;        
+  }
+  & li:nth-child(even){
+    cursor: pointer;
+    padding: 4px;
+  }
 }

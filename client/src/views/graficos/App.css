@@ -3,16 +3,16 @@
   padding-top: 4em; 
   width: 80rem; 
 } */
-.divBuscarTecGraf{
+.divBuscarTecGraf {
   display: flex;
   flex-direction: row;
   flex: 1;
   align-items: center;
   justify-content: center;
   width: calc(100% - 40px);
-  box-sizing:content-box;
+  box-sizing: content-box;
 
-  & .buscarTecGraf{
+  & .buscarTecGraf {
     margin-left: -80px;
     border-left: 1px solid black;
     height: 100%;
@@ -21,7 +21,7 @@
   }
 }
 
-.filtro-modulo{
+.filtro-modulo {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -39,30 +39,33 @@
 .quadrado-perfil {
   /* width: 250px;           */
   width: 500px;
-  flex: 1; /* Adiciona elemento peso 1 dentro de container */
+  flex: 1;
+  /* Adiciona elemento peso 1 dentro de container */
   /* min-height: 100%;     */
-  box-shadow: 0 0 10px black;  
+  box-shadow: 0 0 10px black;
   border-radius: 10px;
 }
 
 .quadrado-grafico {
-  flex: 3; /* Adiciona elemento peso 3 dentro de container */
+  flex: 3;
+  /* Adiciona elemento peso 3 dentro de container */
   /* width: 400px;  */
   /* height: 48.1rem;      */
   box-shadow: 0 0 10px black;
   border-radius: 10px;
   /* margin-top: 1px;  */
-  display: grid;         
+  display: grid;
   grid-template-columns: 1fr 1fr;
-  & > div{
-     box-shadow: 0 0 10px hsl(210,50%,50%);
-    background-color: hsl(0,0%,25%);
+
+  &>div {
+    box-shadow: 0 0 10px hsl(210, 50%, 50%);
+    background-color: hsl(0, 0%, 25%);    
     margin: 20px;
-    border-radius: 10px;
+    border-radius: 10px;  
   }
 }
 
-.perf-colab{
+.perf-colab {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -70,7 +73,7 @@
   box-sizing: content-box;
 }
 
-.perf-colab .foto-colab{
+.perf-colab .foto-colab {
   width: 256px;
   margin: 15px;
   background-color: white;
@@ -78,12 +81,13 @@
   padding: 14px;
   box-sizing: content-box;
 }
-.perf-colab .foto-colab img{
+
+.perf-colab .foto-colab img {
   width: 100%;
   border-radius: 100%;
 }
 
-.perf-colab .mat-filtro{
+.perf-colab .mat-filtro {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,56 +95,74 @@
   height: 100%;
   margin: 0 20px;
 }
-.perf-colab .mat-filtro .materia-filtra{
+
+.perf-colab .mat-filtro .materia-filtra {
   align-items: flex-start;
   display: flex;
   flex-direction: row;
-  & img{
+
+  & img {
     width: 2rem;
   }
 
-  & ul{
+  & ul {
     margin: 0;
     display: flex;
     flex-direction: column;
-    color: hsl(200,100%,80%);
+    color: hsl(200, 100%, 80%);
     overflow-y: scroll;
     padding: 0 10px;
-    & li:nth-child(odd){
+
+    & li:nth-child(odd) {
       cursor: pointer;
       padding: 4px;
-      background-color: hsl(0,0%,40%);
+      background-color: hsl(0, 0%, 40%);
     }
-    & li:nth-child(even){
+
+    & li:nth-child(even) {
       cursor: pointer;
       padding: 4px;
     }
   }
 }
-.perf-colab .mat-filtro .mat-pontuacao{
-  color: hsl(200,100%,80%);
 
-  & p{
+.perf-colab .mat-filtro .mat-pontuacao {
+  color: hsl(200, 100%, 80%);
+
+  & p {
     text-align: center;
-    color: hsl(150,100%,70%);
+    color: hsl(150, 100%, 70%);
     margin-top: 10px;
     padding: 10px;
-    background-color: hsl(0,0%,40%);
+    background-color: hsl(0, 0%, 40%);
   }
+}
+
+.perfil-section {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.nome-colab-graf {
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 15px;
 }
 
 .dataCard {
   background-color: #efefef;
-  border-radius: 0.5em;    
+  border-radius: 0.5em;
   box-shadow: rgba(48, 46, 46, 0.2) 0px 8px 24px;
-  padding: 1em;       
+  padding: 1em;
   margin-bottom: 10px;
-  height: 21.9rem; 
+  height: 21.9rem;
 }
 
-
 .estatisticas-button {
-  margin: 2px 0; 
+  margin: 2px 0;
   padding: 0.5em 1em;
   background-color: #064FF0;
   color: white;
@@ -148,33 +170,35 @@
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
-  transition: background-color 0.3s; 
+  transition: background-color 0.3s;
 }
 
 .estatisticas-button:hover {
   background-color: #0538b1;
 }
 
-.circle{
+.circle {
   border-radius: 20px;
 }
 
-.filtro-modulo{
+.filtro-modulo {
   & ul {
-    color: hsl(200,100%,80%);             
-    margin: 0 auto;    
+    color: hsl(200, 100%, 80%);
+    margin: 0 auto;
     display: flex;
     padding: 0 10px;
     flex-direction: column;
     overflow-y: scroll;
-    
+
   }
-  & li:nth-child(odd){
+
+  & li:nth-child(odd) {
     cursor: pointer;
-    background-color: hsl(0, 0%, 40%); 
-    padding: 4px;        
+    background-color: hsl(0, 0%, 40%);
+    padding: 4px;
   }
-  & li:nth-child(even){
+
+  & li:nth-child(even) {
     cursor: pointer;
     padding: 4px;
   }

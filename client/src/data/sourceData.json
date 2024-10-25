@@ -1,14 +1,14 @@
 [
-    {
-      "label": "Dias percorridos",
-      "value": 15
-    },
-    {
-      "label": "Dias semanais",
-      "value": 30
-    },
-    {
-      "label": "Dias Mensais",
-      "value": 25
-    }
-  ]
+  {
+    "label": "Dias percorridos",
+    "value": 15
+  },
+  {
+    "label": "Dias semanais",
+    "value": 30
+  },
+  {
+    "label": "Dias Mensais",
+    "value": 25
+  }
+]

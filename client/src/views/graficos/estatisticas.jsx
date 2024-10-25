@@ -6,7 +6,6 @@ import "./App.css";
 import revenueData from "../../data/revenueData.json";
 import sourceData from "../../data/sourceData.json";
 import 'font-awesome/css/font-awesome.min.css';
-
 import imgs from "../../imgs/arrayImagens";
 
 defaults.maintainAspectRatio = false;
@@ -15,7 +14,7 @@ defaults.responsive = true;
 defaults.plugins.title.display = true;
 defaults.plugins.title.align = "start";
 defaults.plugins.title.font.size = 20;
-defaults.plugins.title.color = "black";
+defaults.plugins.title.color = '#ffffff';
 
 export default function App() {
   const [showStats, setShowStats] = useState(false);
@@ -47,9 +46,9 @@ export default function App() {
               }}
               onFocus={(e) => e.target.style.border = '1px solid #ccc'}
               onBlur={(e) => e.target.style.border = '1px solid #ccc'}
-            />            
+            />
             <i className="buscarTecGraf fa fa-search"
-              style={{                
+              style={{
                 color: '#999',
                 cursor: 'pointer'
               }}
@@ -68,7 +67,9 @@ export default function App() {
               alt="Perfil Eduardo"
               style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '1em', marginLeft: '0.5em', cursor: 'pointer', marginTop: '10px' }}
             />
-            <span style={{ fontSize: '1.2em', color: 'black', fontWeight: 'bold', marginLeft: '0.5em', cursor: 'pointer', marginTop: '-10px' }}>Eduardo Pereira</span>
+            <div className="nome-colab-graf">
+              <span>Eduardo Pereira</span>
+            </div>
           </div>
           <div style={{
             height: '1px',
@@ -83,7 +84,9 @@ export default function App() {
               alt="Perfil Leila"
               style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '1em', marginLeft: '0.5em', cursor: 'pointer' }}
             />
-            <span style={{ fontSize: '1.2em', color: 'black', fontWeight: 'bold', marginLeft: '0.5em', cursor: 'pointer', marginTop: '10px' }}>Leila Pereira</span>
+            <div className="nome-colab-graf">
+              <span>Leila Pereira</span>
+            </div>
           </div>
           <div style={{
             height: '1px',
@@ -94,33 +97,33 @@ export default function App() {
         </section>
 
         <section className="quadrado-grafico">
-            <div className="perf-colab">
-              <div className="foto-colab">
-                <img src={imgs.tabEmpty} alt="colab-foto" />
+          <div className="perf-colab">
+            <div className="foto-colab">
+              <img src={imgs.tabEmpty} alt="colab-foto" />
+            </div>
+            <div className="mat-filtro">
+              <div className="materia-filtra">
+                <img src={imgs.filter} alt="icon-filtro" />
+                <ul>
+                  <li>Materia 1</li>
+                  <li>Materia 2</li>
+                  <li>Materia 3</li>
+                </ul>
               </div>
-              <div className="mat-filtro">
-                <div className="materia-filtra">
-                  <img src={imgs.filter} alt="icon-filtro" />
-                  <ul>
-                    <li>Materia 1</li>
-                    <li>Materia 2</li>
-                    <li>Materia 3</li>
-                  </ul>
-                </div>
-                <div className="mat-pontuacao circle">
-                  <h2>Best Score</h2>
-                  <p className="circle">Pontuacao</p>
-                </div>
+              <div className="mat-pontuacao circle">
+                <h2>Best Score</h2>
+                <p className="circle">Pontuacao</p>
               </div>
             </div>
+          </div>
 
-            <div className="filtro-modulo">
-              <ul>
-                <li>Modulo 1</li>
-                <li>Modulo 2</li>
-                <li>Modulo 3</li>
-              </ul>
-            </div>
+          <div className="filtro-modulo">
+            <ul>
+              <li>Modulo 1</li>
+              <li>Modulo 2</li>
+              <li>Modulo 3</li>
+            </ul>
+          </div>
 
 
           <div className="dataCard revenueCard">
@@ -131,14 +134,14 @@ export default function App() {
                   {
                     label: "Tempo",
                     data: revenueData.map((data) => data.revenue),
-                    backgroundColor: "#064FF0",
-                    borderColor: "#064FF0",
+                    backgroundColor: "#4491c8",
+                    borderColor: "#4491c8",
                   },
                   {
                     label: "Mês",
                     data: revenueData.map((data) => data.cost),
-                    backgroundColor: "#FF3030",
-                    borderColor: "#FF3030",
+                    backgroundColor: "#ec0001",
+                    borderColor: "#ec0001",
                   },
                 ],
               }}
@@ -151,6 +154,30 @@ export default function App() {
                 plugins: {
                   title: {
                     text: "Tempo gasto na plataforma",
+                    color: "hsl(20,90%,85%)",
+                  },
+                  legend: {
+                    labels: {
+                      color: 'white',
+                    },
+                  },
+                },
+                scales: {
+                  x: {
+                    ticks: {
+                      color: 'white',
+                    },
+                    grid: {
+                      color: '#888888',
+                    },
+                  },
+                  y: {
+                    ticks: {
+                      color: 'white',
+                    },
+                    grid: {
+                      color: '#888888',
+                    },
                   },
                 },
               }}
@@ -166,7 +193,7 @@ export default function App() {
                     label: "Diárias",
                     data: sourceData.map((data) => data.value),
                     backgroundColor: [
-                      "rgba(43, 63, 229, 1)",
+                      "#4491c8",
                       "rgba(250, 192, 19, 1)",
                       "rgba(34, 139, 34, 1)",
                     ],
@@ -178,6 +205,30 @@ export default function App() {
                 plugins: {
                   title: {
                     text: "Check-ins diário",
+                    color: "hsl(20,90%,85%)",
+                  },
+                  legend: {
+                    labels: {
+                      color: 'white',
+                    },
+                  },
+                },
+                scales: {
+                  x: {
+                    ticks: {
+                      color: 'white',
+                    },
+                    grid: {
+                      color: '#888888',
+                    },
+                  },
+                  y: {
+                    ticks: {
+                      color: 'white',
+                    },
+                    grid: {
+                      color: '#888888',
+                    },
                   },
                 },
               }}

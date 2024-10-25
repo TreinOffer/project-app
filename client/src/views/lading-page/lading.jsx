@@ -77,7 +77,7 @@ const App = () => {
       <div className="linha-separadora"></div>
       <div className="bloqueio">
         <b className="destaque">Quem Somos</b>
-        <div style={{ margin: '0 95px', fontSize: '25px' }}>
+        <div style={{ margin: '0 95px', fontSize: '25px'  }}>
           <p className="texto-justificado">
             A Treinoffer oferece treinamentos personalizados e eficazes, projetados para atender às necessidades específicas de cada indivíduo e equipe. Nosso objetivo é impulsionar o desempenho tanto individual quanto coletivo, promovendo o crescimento profissional dos participantes e contribuindo de maneira significativa para os resultados da sua empresa. Na Treinoffer, nos dedicamos a criar um ambiente de aprendizado contínuo e de alta performance, garantindo que cada treinamento maximize o potencial e a eficácia dos nossos clientes.
           </p>

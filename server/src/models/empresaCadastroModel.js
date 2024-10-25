@@ -1,13 +1,34 @@
 import mysql from "mysql2/promise";
 import acesso from "../acesso.js";
 
-function postEmpresa(empresa) {
+const conection = mysql.createPool(acesso);
+
+async function duplicateId(id) {
+    const sql = `SELECT CNPJ FROM empresa WHERE CNPJ = ? `;
+    const [rows] = await conection.query(sql, [id]);
+    console.log("duplicateId: ",rows);
+    return rows.length > 0
+};
+
+export async function postEmpresa(empresa) {
     const sql = `INSERT INTO empresa (
-    CNPJ, Fantasia, Senha, CEP, Telefone, Estado, Cidade, Endereco
+    CNPJ, Fantasia, Senha, CEP, Estado, Telefone, Endereco, Cidade
     ) VALUES(
     ?,?,?,?,?,?,?,?
     )`
-    const params = [ empresa.cnpj, empresa.nomeFant, empresa.Senha, empresa.cep,
-        empresa.telefone, empresa.estado, empresa.cidade, empresa.endereco
+    const params = [empresa.CNPJ, empresa.Fantasia, empresa.Senha, empresa.CEP,
+    empresa.Telefone, empresa.Estado, empresa.Cidade, empresa.Endereco
     ];
+    try {
+        console.log("entrada: ",empresa.CNPJ);
+
+        if (await duplicateId(empresa.CNPJ)) {
+            return [409, `CNPJ já existe`];
+        };
+
+        const [retorno] = await conection.query(sql,params);
+        return [201,retorno];
+    } catch (error) {
+        return [500, error];
+    };
 }

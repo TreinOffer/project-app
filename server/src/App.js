@@ -1,12 +1,15 @@
 import express from "express";
 import EmpresaTecnicoController from "./controllers/empresaTecnicoController.js";
+import { criarEmpresa } from "./controllers/empresaCadastroController.js";
+import cors from 'cors';
 
 const server = express();
-const porta = 3000;
+const porta = 5000;
 
 server.use(express.json());
+server.use(cors());
 
-// server.get('/cadastro', );
+server.post('/cadastro', criarEmpresa);
 
 server.get("/tecnicos",EmpresaTecnicoController.read);
 server.post("/tecnicos",EmpresaTecnicoController.create);

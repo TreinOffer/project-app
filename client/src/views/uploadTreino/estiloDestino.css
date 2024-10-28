@@ -36,7 +36,7 @@
             }
         }
         & .dropSection{
-            width: 100em;
+            width: 90em;
             box-sizing: content-box;
             min-height: 85vh;
             box-shadow: inset 0 0 6px black;

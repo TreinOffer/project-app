@@ -15,7 +15,8 @@ import financas from './finIcon.png';
 import empresa from './logoEmpresa.jpeg';
 import opcoes from "./optionsIcon.png";
 import addFunc from "./addFuncIcon.png";
-import removFunc from "./removFuncIcon.png"
+import removFunc from "./removFuncIcon.png";
+import arrowUp from "./arrowUpward.svg";
 
 import treino1 from "./treinos/treino_capa1.png";
 import treino2 from "./treinos/treino_capa2.png";
@@ -54,6 +55,7 @@ const imgs = {
     removFunc,
     confirmar,
     deletar,
+    arrowUp,
 
     treino1,
     treino2,

@@ -41,7 +41,7 @@ const UploadPainel = () => {
                 return setItens([
                     { src: imgs.upImage, tipo: "imagem" },
                     { src: imgs.upVideo, tipo: "video" },
-                    { src: "Exemplo parágrafo", tipo: "parag"},
+                    { src: "Exemplo parágrafo", tipo: "parag" },
                     { src: "Exemplo título", tipo: "tit" }
                 ]);
             case 1:
@@ -73,16 +73,9 @@ const UploadPainel = () => {
                         }
                         <div
                             className="bt-mudar"
-                            onClick={ () => handlePlus(click) }
+                            onClick={() => handlePlus(click)}
                             style={{ justifyContent: click > 0 ? `space-around` : null }}
                         >
-                            {
-                                click >= 1 && (
-                                    <div>
-                                        {`>`}
-                                    </div>
-                                )
-                            }
                             <div>
                                 {
                                     click >= 1 ?
@@ -91,6 +84,13 @@ const UploadPainel = () => {
                                         ">"
                                 }
                             </div>
+                            {
+                                click >= 1 && (
+                                    <div>
+                                        {`>`}
+                                    </div>
+                                )
+                            }
                         </div>
                     </section>
                     <div className='wrap-section-destino'>

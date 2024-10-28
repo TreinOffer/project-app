@@ -1,14 +1,11 @@
-import React, { useState, createRef, useEffect } from 'react';
+import React, { useState, createRef } from 'react';
 import imgs from "../../../../imgs/arrayImagens";
-// import './CartaoImg2.css';
 import './CartaoImg.css';
 
 const CartaoImg = ({ imagem, index, deletar, handleImage, setItens, isFlipped }) => {
     const refFileName = createRef();
 
     const [newImagem, setNewImagem] = useState();
-
-    useEffect(() => console.log("trava ", trava), [trava])
 
     function actionExpanse() {
 
@@ -32,7 +29,6 @@ const CartaoImg = ({ imagem, index, deletar, handleImage, setItens, isFlipped })
                 handleImage(index, url);
                 return newImagem;
             });
-            trava = false;
         };
     };
 
@@ -42,8 +38,12 @@ const CartaoImg = ({ imagem, index, deletar, handleImage, setItens, isFlipped })
             <div className='div-imagem'>
                 <img src={imagem} alt={`Imagem${index}`} />
                 <div onClick={actionExpanse} className='btn-expanse'
-                style={{ transform: 'rotateX(-180deg)' }}
-                >{'>'}</div>
+                >
+                    <img src={imgs.arrowUp} alt="arrow"
+                    style={{ transition: '0.3s ease-in-out', 
+                        transform: isFlipped ? 'rotateX(180deg)' : 'rotateX(0deg)' }}
+                    />
+                </div>
             </div>
             <div className='opcoes-img'>
                 {

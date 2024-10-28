@@ -4,14 +4,43 @@
     align-items: center;
     justify-content: center;
     
-    & .dropSection{
-        /* position: relative; */
+    & .wrap-section-destino{
         display: flex;
         flex-direction: column;
-        /* justify-content: space-between; */
-        margin-top: 20px;
-        border: 2px solid black;
         min-width: 50%;
-        height: 100vh;
+
+        & .botao-modulo{
+            display: flex;
+            margin: 20px 0 0 0;
+            border: 2mm ridge black;
+            width: 10rem;
+            column-gap: 8px;
+            & > * {
+                font-weight: bold;
+                font-size: 1.2em;
+            }
+            & button{
+                flex: 1;
+                background: none;
+                border: none;
+                cursor: pointer;
+                transition: ease-out 0.2s;
+            }
+            & button:hover{
+                background-color: hsl(0,0%,90%);
+                color: gray;
+            }
+            & button:active{
+                background-color: black;
+                color: white;
+            }
+        }
+        & .dropSection{
+            width: 100em;
+            box-sizing: content-box;
+            min-height: 85vh;
+            box-shadow: inset 0 0 6px black;
+            padding-top: 20px;
+        }
     }
 }

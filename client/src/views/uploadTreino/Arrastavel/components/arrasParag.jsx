@@ -1,15 +1,13 @@
 const ArrasParag = ({ mensagem, arrastar }) => {
-    return(
+    return (
         <>
-            <section id="DragParag">  
+            <section id="DragParag">
+                <h4>Parágrafo</h4>
                 <div className="div-border">
                     <div>
-                        <div>
-                            <p ref={arrastar}>{mensagem}</p>
-                        </div>
+                        <p ref={arrastar}>{mensagem}</p>
                     </div>
                 </div>
-                <h4>Parágrafo</h4>
             </section>
         </>
     )

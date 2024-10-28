@@ -1,15 +1,13 @@
 const ArrasVideo = ({ imagem, arrastar }) => {
-    return(
+    return (
         <>
-            <section id="DragVideo">  
+            <section id="DragVideo">
+                <h4>Vídeo</h4>
                 <div className="div-border">
-                    <div>
-                        <div >
-                            <img src={imagem} alt="video" />
-                        </div>
+                    <div >
+                        <img src={imagem} alt="video" />
                     </div>
                 </div>
-                <h4>Vídeo</h4>
             </section>
         </>
     )

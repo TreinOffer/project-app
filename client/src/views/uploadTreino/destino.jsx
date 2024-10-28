@@ -1,63 +1,116 @@
 import { useDrop } from "react-dnd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Containers from "./Destinos/indexContainers";
 
-const Destino = () => {
+const Destino = ({ modulos }) => {
 
-    const [ itens,setItens ] = useState([]);
+    const [itens, setItens] = useState([]);
 
-    const onDrop = (item) => {
-        const index = itens.length;
-        item.index = index;
-        setItens(prevItens => ([
-            ...prevItens,
-            [item]
-        ]));
+    useEffect(() => console.log("useffect: ",itens[modulos]), [itens]);
+
+    const handleChanges = (index, state) => {
+        console.log("handleChanges: ", index, state);
+        setItens(prevItens => {
+            const itens = [...prevItens];
+            itens[modulos].map((item, i) =>
+                i === index ? item.src = state : item
+            )
+            return itens;
+        });
     };
 
-    const [{ isOver },drop] = useDrop({
-        accept: "item",
-        drop: ( item ) => {
-            if (isOver) {
-                if (item.tipo === "imagem") {
-                    onDrop({"imagem": item},item.tipo); 
-                }else if (item.tipo === "parag"){
-                    onDrop({"parag": item},item.tipo);
-                } else{
-                    onDrop({"video": item},item.tipo);
+    const handlePost = (item) => {
+        if (item.tipo === 'imagem') {
+            setItens((prevItens) => {
+                const novosItens = [...prevItens];
+
+                const novoItem = {
+                    ...item,
+                    index: (novosItens[modulos]?.length || 0),
+                    isOpen: false,
                 };
-                console.log("onDrop",item);    
-            };
+
+                novosItens[modulos] = [...(novosItens[modulos] || []), novoItem];
+                return novosItens;
+            });
+        } else {
+            setItens((prevItens) => {
+                const novosItens = [...prevItens];
+
+                const novoItem = {
+                    ...item,
+                    index: (novosItens[modulos]?.length || 0),
+                };
+
+                novosItens[modulos] = [...(novosItens[modulos] || []), novoItem];
+                return novosItens;
+            });
+        };
+    };
+
+    const handleDelete = (imagem) => {
+        setItens((prevItens) => {
+            const novosItens = [...prevItens];
+
+            novosItens[modulos] = novosItens[modulos].filter(item => {
+                // console.log(`itemIndexArray: ${item.index}, itemIndexClickado: ${imagem}, isTrue?: ${item.index !== imagem}`);
+                return item.index !== imagem;
+            });
+            return novosItens;
+        });
+    };
+
+    const [{ isOver }, drop] = useDrop({
+        accept: "item", 
+        drop: (item) => {
+            console.log('qual o item: ', item);
+            handlePost(item);
+
+            //Fora usado para diferenciar div drop filho para pai
+            // if (isOver) {
+            //     if (item.tipo === "imagem") {
+            //         onDrop( item );
+            //     } else if (item.tipo === "parag") {
+            //         onDrop({ "parag": item });
+            //     } else {
+            //         onDrop({ "video": item });
+            //     };
+            //     console.log("onDrop", item);
+            // };
         },
         collect: (monitor) => ({
             isOver: monitor.isOver({ shallow: true }),
         })
     });
-    console.log("ARRAY: ",itens);
+
+    console.log("ARRAY: ", itens);
 
     return (
+
         <section
             className='dropSection'
             style={{
-                backgroundColor: isOver ? "lightgreen" : "hsl(0,0%,97%)"
+                backgroundColor: isOver ? "lightgreen" : "hsl(0,0%,97%)",
+                display: 'flex', flexDirection: 'column', alignItems: 'center'
             }}
-            ref={ drop }
+            ref={drop}
         >
             {
-                itens.map((item,index) => {
-                    // console.log(`item${index}: `,item);
-                    // console.log(`tipoItem${index}: `,Object.keys(item[index])[0]);
-                    // switch (Object.keys(item[index])[0]) {
-                    //     case "imagem":
-                            return(
-                                <Containers.Imagem index={index} key={index} itens={item} setItens={setItens}></Containers.Imagem>
-                            );
-                    //     case "parag":
-                    //         return(
-                    //             <Containers.Prgf index={index} key={index} mensagem={item.src}></Containers.Prgf>
-                    //     );    
-                    // }
+                itens[modulos]?.map((item, index) => {
+                    console.log("TIPO DO ITEM,", item.index);
+                    switch (item.tipo) {
+                        case 'imagem':
+                            return <Containers.Imagem deletar={handleDelete} handleImage={handleChanges}
+                                index={item.index} key={index} imagem={item.src} setItens={[modulos,setItens]} isFlipped={item.isOpen}/>
+
+                        case 'parag':
+                            return <Containers.Prgf deletar={handleDelete} index={item.index} key={index} mensagem={item.src} />
+
+                        default:
+                            alert(`Tipo de item não existe ${item}`);
+                            break;
+                    };
                 })
             }
         </section>

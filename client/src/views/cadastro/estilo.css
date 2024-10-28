@@ -4,6 +4,10 @@
     flex-direction: row;
     height: 100vh;
 }
+/* .cadastro_dados form{
+    width: 100%;
+    
+} */
 .secao_dados {
     background: radial-gradient(hsl(155, 100%, 95%), hsl(220, 100%, 90%));
     width: 50%;

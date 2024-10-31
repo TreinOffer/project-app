@@ -11,7 +11,7 @@ function Certificado() {
 
   return (
     <>
-      <div className="certificado-container">,
+      <div className="certificado-container">
         <div className="certificado">
           <h1>Certificado</h1>
           <p className="subtitulo">Este certificado é concedido a:</p>

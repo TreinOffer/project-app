@@ -4,16 +4,15 @@
     align-items: center;
     min-height: 100vh;
     background-color: #f4f4f4;
-    padding: 20px;
+    padding: 1px;
   }
   
-  .certificado {
-    background: white;
+  .certificado {    
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 50px;
+    padding: 200px;
     text-align: center;
-    width: 600px;
+    width: 1200px;
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, rgba(199, 27, 27, 0.226) 50%, transparent 50%);
@@ -36,9 +35,10 @@
   }
   
   .certificado .nome-participante {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: bold;
     color: #3b8da3;
+    font-family: 'Montserrat  Italic';
     margin: 10px 0;
   }
   

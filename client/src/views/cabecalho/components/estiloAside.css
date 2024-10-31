@@ -2,7 +2,7 @@
     position: fixed;
     z-index: 1;
     position: fixed;
-    left: calc(0% - 414px);
+    left: calc(0% - 500px);
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -30,6 +30,18 @@
 }
 .secaoUser{
     background-color: hsl(220,50%,70%);
+}
+form table{
+    width: 100%;
+    align-items: center;
+    & input{
+        outline: none;
+        border: none;
+        border-top-right-radius: 20px;
+        padding: 2px 2px 2px 4px;
+        height: 1.7em;
+        box-shadow: inset -2px -2px 2px hsl(20,100%,85%);
+    }
 }
 .user{
     background-image: linear-gradient(hsl(20,100%,90%),hsl(220,50%,70%));

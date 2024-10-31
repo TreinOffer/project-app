@@ -18,6 +18,7 @@ import opcoes from "./optionsIcon.png";
 import addFunc from "./addFuncIcon.png";
 import removFunc from "./removFuncIcon.png";
 import notificao from "./notificacao.png";
+import editar from "./editNote.png";
 
 import treino1 from "./treinos/treino_capa1.png";
 import treino2 from "./treinos/treino_capa2.png";
@@ -57,6 +58,7 @@ const imgs = {
     removFunc,
     confirmar,
     deletar,
+    editar,
 
     treino1,
     treino2,

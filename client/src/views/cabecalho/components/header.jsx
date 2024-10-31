@@ -3,13 +3,13 @@ import imgs from '../../../imgs/arrayImagens';
 import './estiloCabec.css';
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ handleSecEsq }) => {
     return (
         <section className="barPesquisar">
             <div className="secEsq">
                 {/* <img className="menu" src={imgs.menu} alt="" onClick={handleMenuCabecalho} /> */}
                 <div className="fundoFoto">
-                    <img className="menuPerfil" src={imgs.empresa} alt="Menu" /></div>
+                    <img onClick={handleSecEsq} className="menuPerfil" src={imgs.empresa} alt="Menu" /></div>
             </div>
 
             <div className="secMeio">

@@ -31,6 +31,9 @@ const ToastNotification = () => {
   };
 
   useEffect(() => {
+    
+    showToast();
+
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
@@ -39,9 +42,8 @@ const ToastNotification = () => {
 
   return (
     <div>
-      <button onClick={showToast}>Show Toast</button>
       <div className={`toast ${isActive ? 'active' : ''}`}>
-        <span>Your notification message here!</span>
+        <span>logado com sucesso!</span>
         <span className="close" onClick={closeToast}>
           <i className="fas fa-times"></i>
         </span>

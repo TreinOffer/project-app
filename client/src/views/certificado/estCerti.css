@@ -1,74 +1,91 @@
 .certificado-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f4f4f4;
-    padding: 1px;
-  }
-  
-  .certificado {    
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 200px;
-    text-align: center;
-    width: 1200px;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(135deg, rgba(199, 27, 27, 0.226) 50%, transparent 50%);
-    font-family: 'Courier New', Courier, monospace;
-  }
-  
-  .certificado h1 {
-    font-size: 3.5rem;
-    color: #0d0d0e;
-    margin-bottom: 25px;
-    font-family: 'Franklin Gothic', Arial, sans-serif, 'Montserrat  Italic', 'Montaga';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  padding: 1px;
+}
 
+.certificado {    
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 200px;
+  text-align: center;
+  width: 1200px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(199, 27, 27, 0.226) 50%, transparent 50%);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.certificado h1 {
+  font-size: 3.5rem;
+  color: #0d0d0e;
+  margin-bottom: 25px;
+  font-family: 'Franklin Gothic', Arial, sans-serif, 'Montserrat Italic', 'Montaga';
+}
+
+.certificado .subtitulo {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 10px 0;
+  font-family: 'Montez';
+}
+
+.certificado .nome-participante {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #3b8da3;
+  font-family: 'Pacifico', cursive;
+  margin: 10px 0;
+}
+
+.certificado .titulo-curso {
+  font-size: 1.5rem;
+  color: #000000;
+  margin: 10px 0;
+}
+
+.certificado .data {
+  font-size: 1.2rem;
+  margin: 20px 0;
+}
+
+.assinaturas {
+  margin: 40px 0;
+}
+
+.btn-imprimir {
+  background-color: #4A90E2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-imprimir:hover {
+  background-color: #357ABD;
+}
+
+
+@media print {
+  body {
+      margin: 0; 
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact; 
   }
-  
-  .certificado .subtitulo {
-    font-size: 1.5rem;
-    color: #333;
-    margin: 10px 0;
-    font-family: 'Montez';
+
+  .certificado {
+      background: linear-gradient(135deg, rgba(199, 27, 27, 1), transparent 50%); 
+      color: black; 
+      box-shadow: none; 
   }
-  
-  .certificado .nome-participante {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #3b8da3;
-    font-family: 'Montserrat  Italic';
-    margin: 10px 0;
-  }
-  
-  .certificado .titulo-curso {
-    font-size: 1.5rem;
-    color: #000000;
-    margin: 10px 0;
-  }
-  
-  .certificado .data {
-    font-size: 1.2rem;
-    margin: 20px 0;
-  }
-  
-  .assinaturas {
-    margin: 40px 0;
-  }
-  
+
   .btn-imprimir {
-    background-color: #4A90E2;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+      display: none; 
   }
-  
-  .btn-imprimir:hover {
-    background-color: #357ABD;
-  }  
- 
+}

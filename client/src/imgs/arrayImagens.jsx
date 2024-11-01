@@ -31,11 +31,11 @@ import tabLeila from "./tabelas/perfilLeilaTest.jpg";
 import confirmar from "./tabelas/Verificado.png";
 import deletar from "./tabelas/Remover.png";
 
-import agropecuaria from "./lading-page/agropecuaria.png";
-import reuniao from "./lading-page/reuniao.png";
-import saude from "./lading-page/saude.png";
-import industria from "./lading-page/industria.png";
-import tecnologia from "./lading-page/tecnologia.png";
+import certificado from "./lading-page/certificado.png";
+import suporte from "./lading-page/suporte.png";
+import ensino from "./lading-page/ensino.png";
+import modulos from "./lading-page/modulos.png";
+import crescimento from "./lading-page/crescimento.png";
 
 const imgs = {
     TreinOffer,
@@ -69,11 +69,11 @@ const imgs = {
     tabEduardo,
     tabLeila,
 
-    agropecuaria,
-    reuniao,
-    saude,
-    industria,
-    tecnologia,
+    certificado,
+    suporte,
+    ensino,
+    modulos,
+    crescimento,
 
     empresa
 };

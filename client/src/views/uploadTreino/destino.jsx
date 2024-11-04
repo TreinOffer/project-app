@@ -7,7 +7,7 @@ const Destino = ({ modulos }) => {
 
     const [itens, setItens] = useState([]);
 
-    useEffect(() => console.log("useffect: ",itens[modulos]), [itens]);
+    useEffect(() => console.log("useffect: ", itens[modulos]), [itens]);
 
     const handleChanges = (index, state) => {
         console.log("handleChanges: ", index, state);
@@ -21,7 +21,23 @@ const Destino = ({ modulos }) => {
     };
 
     const handlePost = (item) => {
-        if (item.tipo === 'imagem') {
+        if (item.tipo === 'imagem' ||
+            item.tipo === 'parag' ||
+            item.tipo === 'tit'
+        ) {
+            setItens((prevItens) => {
+                const novosItens = [...prevItens];
+
+                const novoItem = {
+                    ...item,
+                    index: (novosItens[modulos]?.length || 0),
+                    isOpen: false
+                };
+
+                novosItens[modulos] = [...(novosItens[modulos] || []), novoItem];
+                return novosItens;
+            });
+        } else if (item.tipo === "video") {
             setItens((prevItens) => {
                 const novosItens = [...prevItens];
 
@@ -29,6 +45,8 @@ const Destino = ({ modulos }) => {
                     ...item,
                     index: (novosItens[modulos]?.length || 0),
                     isOpen: false,
+                    isUrl: true,
+                    isHovered: false
                 };
 
                 novosItens[modulos] = [...(novosItens[modulos] || []), novoItem];
@@ -62,7 +80,7 @@ const Destino = ({ modulos }) => {
     };
 
     const [{ isOver }, drop] = useDrop({
-        accept: "item", 
+        accept: "item",
         drop: (item) => {
             console.log('qual o item: ', item);
             handlePost(item);
@@ -101,11 +119,20 @@ const Destino = ({ modulos }) => {
                     console.log("TIPO DO ITEM,", item.index);
                     switch (item.tipo) {
                         case 'imagem':
-                            return <Containers.Imagem deletar={handleDelete} handleImage={handleChanges}
-                                index={item.index} key={index} imagem={item.src} setItens={[modulos,setItens]} isFlipped={item.isOpen}/>
+                            return <Containers.Imagem deletar={handleDelete} handleImage={handleChanges} isHovered={item.isHovered}
+                                index={item.index} key={index} imagem={item.src} setItens={[modulos, setItens]} isFlipped={item.isOpen} />
 
                         case 'parag':
-                            return <Containers.Prgf deletar={handleDelete} index={item.index} key={index} mensagem={item.src} />
+                            return <Containers.Prgf deletar={handleDelete} index={item.index} setItens={[modulos, setItens]}
+                            key={index} mensagem={item.src} updateParag={handleChanges} isEditting={item.isOpen} />
+
+                        case 'video':
+                            return <Containers.Video isFlipped={item.isOpen} deletar={handleDelete}
+                            setItens={[modulos, setItens]} index={item.index} key={index}
+                            url={item.src} isUrl={item.isUrl} />
+                        case 'tit':
+                            return <Containers.Tit key={index} index={item.index} mensagem={item.src} setItens={[modulos, setItens]}
+                            deletar={handleDelete} updateTit={handleChanges} isEditting={item.isOpen} />
 
                         default:
                             alert(`Tipo de item não existe ${item}`);

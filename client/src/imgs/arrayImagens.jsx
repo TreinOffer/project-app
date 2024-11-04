@@ -31,6 +31,7 @@ import tabLeila from "./tabelas/perfilLeilaTest.jpg";
 
 import confirmar from "./tabelas/Verificado.png";
 import deletar from "./tabelas/Remover.png";
+import trash from "./trashCan.png";
 
 import upImage from "./SubirTreino/image_placeholder.png";
 import upVideo from "./SubirTreino/video_placeholder.jpg";
@@ -55,6 +56,7 @@ const imgs = {
     removFunc,
     confirmar,
     deletar,
+    trash,
     arrowUp,
 
     treino1,

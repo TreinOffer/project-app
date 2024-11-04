@@ -3,7 +3,7 @@ import Cartao from "../Cartoes/CartaoImg";
 
 const DropImagem = ({ imagem
     // , itens, setItens
-    , index, deletar, handleImage, setItens, isFlipped}) => {
+    , index, deletar, handleImage, setItens, isFlipped, isHovered}) => {
 
     // const onDropFilho = (item) => {
     //     setItens(prevItens => {
@@ -37,7 +37,7 @@ const DropImagem = ({ imagem
         //         alignItems: "center",
         //     }}
         // >
-        <Cartao deletar={deletar} isFlipped={isFlipped} setItens={setItens} handleImage={handleImage} key={index} index={index} imagem={imagem}></Cartao>
+        <Cartao deletar={deletar} isHovered={isHovered} isFlipped={isFlipped} setItens={setItens} handleImage={handleImage} key={index} index={index} imagem={imagem}></Cartao>
         // </div>
     )
 };

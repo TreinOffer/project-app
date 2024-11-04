@@ -38,9 +38,10 @@
         & .dropSection{
             width: 90em;
             box-sizing: content-box;
-            min-height: 85vh;
+            height: 75vh;
             box-shadow: inset 0 0 6px black;
             padding-top: 20px;
+            overflow-y: scroll;
         }
     }
 }

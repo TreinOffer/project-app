@@ -27,37 +27,45 @@ const UploadPainel = () => {
         }
     };
 
-    const xxx = () => {
-        click >= 1 ? setClick(0) :
-            setClick((prevClick) => prevClick + 1);
-    };
+    // const xxx = () => {
+    //     click >= 1 ? setClick(0) :
+    //         setClick((prevClick) => prevClick + 1);
+    // };
+
     const handlePlus = (num) => {
 
-        click >= 1 ? setClick(0) :
-            setClick((prevClick) => prevClick + 1);
+        setClick(0);
+        // click >= 1 ? setClick(0) :
+        //     setClick((prevClick) => prevClick + 1);
 
         switch (num) {
             case 0:
                 return setItens([
                     { src: imgs.upImage, tipo: "imagem" },
-                    { src: imgs.upVideo, tipo: "video" },
+                    { src: "https://www.youtube.com/embed/ugxIP7kTxQw",
+                        /*
+                            Colocar video da lolo aqui
+                            url: https://www.youtube.com/watch?v=EXEMPLOxxx
+                            urlEmbuida: https://www.youtube.com/embed/EXEMPLOxxx
+                        */
+                        placeHolder: imgs.upVideo, tipo: "video" },
                     { src: "Exemplo parágrafo", tipo: "parag" },
                     { src: "Exemplo título", tipo: "tit" }
                 ]);
-            case 1:
-                return setItens([
-                    // { src: "Exemplo titulo",
-                    //     tipo: "tit" },
-                    {
-                        src: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                        tipo: "parag"
-                    },
-                    // { src: imgs.tabLeila, tipo: "imagem" }
-                ]);
+            // case 1:
+            //     return setItens([
+            //         // { src: "Exemplo titulo",
+            //         //     tipo: "tit" },
+            //         {
+            //             src: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            //             tipo: "parag"
+            //         },
+            //         // { src: imgs.tabLeila, tipo: "imagem" }
+            //     ]);
             default:
                 setClick(0);
                 break;
-        }
+        };
     };
 
     return (
@@ -84,13 +92,13 @@ const UploadPainel = () => {
                                         ">"
                                 }
                             </div>
-                            {
+                            {/* {
                                 click >= 1 && (
                                     <div>
                                         {`>`}
                                     </div>
                                 )
-                            }
+                            } */}
                         </div>
                     </section>
                     <div className='wrap-section-destino'>

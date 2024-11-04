@@ -1,7 +1,7 @@
 import React from 'react';
 import './CartaoParag.css';
 
-const CartaoParag = ({ index, mensagem, deletar, updateParag, isEditting, setItens }) => {
+const CartaoTit = ({ index, mensagem, deletar, updateTit, isEditting, setItens }) => {
 
     function actionEdit() {
 
@@ -17,20 +17,20 @@ const CartaoParag = ({ index, mensagem, deletar, updateParag, isEditting, setIte
     const onChange = (e) => {
         e.preventDefault();
         const texto = e.target.value;
-        return updateParag(index, texto);
+        return updateTit(index, texto);
     };
 
     return (
-        <div id={`paragrafo${index}`} className='cartao-parag'>
+        <div id={`Tit${index}`} className='cartao-parag'>
             {
                 isEditting ? (
-                    <p onClick={actionEdit} style={{ textAlign: 'center' }}>
+                    <h1 onClick={actionEdit} style={{ textAlign: 'left' }}>
                         {mensagem}
-                    </p>
+                    </h1>
                 ) : (
                     <>
-                        <textarea style={{ width: '100%', height: "300px"}}
-                            autoCapitalize='on' name="" id={`paragrafo${index}`}
+                        <textarea style={{ width: '100%', height: "50px", resize: 'none'}}
+                            autoCapitalize='on' name="" id={`Titulo${index}`}
                             onChange={onChange} value={mensagem}></textarea>
                         <div className='actions-parag'>
                             <button onClick={actionEdit} className='button-ok' type="button">OK</button>
@@ -44,4 +44,4 @@ const CartaoParag = ({ index, mensagem, deletar, updateParag, isEditting, setIte
     );
 }
 
-export default CartaoParag;
+export default CartaoTit;

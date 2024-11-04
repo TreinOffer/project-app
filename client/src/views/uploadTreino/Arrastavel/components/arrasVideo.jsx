@@ -5,7 +5,7 @@ const ArrasVideo = ({ imagem, arrastar }) => {
                 <h4>Vídeo</h4>
                 <div className="div-border">
                     <div >
-                        <img src={imagem} alt="video" />
+                        <img src={imagem} alt="video" ref={arrastar}/>
                     </div>
                 </div>
             </section>

@@ -13,6 +13,7 @@ import Graficos from './views/graficos/estatisticas';
 import LadingPage from './views/lading-page/lading';
 import Certificado from './views/certificado/certi';
 import Cadastro from "./views/cadastro/cadastrar";
+import PopUp from "./components/popUp/popUp";
 
 function App() {
   return (
@@ -31,7 +32,8 @@ function App() {
         <Route path='/test' element={<Ed/>}></Route>
         <Route path='/graficos' element={<Graficos />}></Route> 
         <Route path='/certificado' element={<Certificado />}></Route>      
-        <Route path='/cadastro' element={<Cadastro />}></Route>           
+        <Route path='/cadastro' element={<Cadastro />}></Route>    
+        <Route path='/popup' element={<PopUp />}></Route>         
       </Routes>
     </BrowserRouter>
   );

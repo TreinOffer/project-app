@@ -1,0 +1,17 @@
+.box-popup {
+    display: flex;
+    flex-direction: column;
+    border: 8px solid black;
+    align-items: center;
+    
+    & .box-logo {
+        width: 100%;
+
+        & img {
+            width: 124px;
+        }
+    }
+    & .box-img {
+
+    }
+}

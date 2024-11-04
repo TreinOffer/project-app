@@ -35,36 +35,37 @@ class EmpresaGraficoModel {
             });
         });
     }
-
-    update(pontuacao, treino, colaborador) {
-        let sql = `UPDATE Pontuacao SET pontuacao = ?, treino = ? WHERE colaborador = ?`;
-
-        return new Promise((resolve, reject) => {
-            this.conexao.query(sql, [pontuacao, treino, colaborador], (erro, resposta) => {
-                if (erro) {
-                    console.error("Erro ao atualizar pontuação:", erro);
-                    reject({ status: 400, message: "Erro ao atualizar pontuação", error: erro });
-                } else {
-                    resolve({ status: 200, message: `Colaborador ${colaborador} atualizado`, data: resposta });
-                }
-            });
-        });
-    }
-
-    delete(colaborador) {
-        let sql = `DELETE FROM Pontuacao WHERE colaborador = ?`;
-
-        return new Promise((resolve, reject) => {
-            this.conexao.query(sql, [colaborador], (erro, resposta) => {
-                if (erro) {
-                    console.error("Erro ao deletar pontuação:", erro);
-                    reject({ status: 400, message: "Erro ao deletar pontuação", error: erro });
-                } else {
-                    resolve({ status: 200, message: `Colaborador ${colaborador} deletado`, data: resposta });
-                }
-            });
-        });
-    }
 }
+
+//     update(pontuacao, treino, colaborador) {
+//         let sql = `UPDATE Pontuacao SET pontuacao = ?, treino = ? WHERE colaborador = ?`;
+
+//         return new Promise((resolve, reject) => {
+//             this.conexao.query(sql, [pontuacao, treino, colaborador], (erro, resposta) => {
+//                 if (erro) {
+//                     console.error("Erro ao atualizar pontuação:", erro);
+//                     reject({ status: 400, message: "Erro ao atualizar pontuação", error: erro });
+//                 } else {
+//                     resolve({ status: 200, message: `Colaborador ${colaborador} atualizado`, data: resposta });
+//                 }
+//             });
+//         });
+//     }
+
+//     delete(colaborador) {
+//         let sql = `DELETE FROM Pontuacao WHERE colaborador = ?`;
+
+//         return new Promise((resolve, reject) => {
+//             this.conexao.query(sql, [colaborador], (erro, resposta) => {
+//                 if (erro) {
+//                     console.error("Erro ao deletar pontuação:", erro);
+//                     reject({ status: 400, message: "Erro ao deletar pontuação", error: erro });
+//                 } else {
+//                     resolve({ status: 200, message: `Colaborador ${colaborador} deletado`, data: resposta });
+//                 }
+//             });
+//         });
+//     }
+// }
 
 export default new EmpresaGraficoModel();

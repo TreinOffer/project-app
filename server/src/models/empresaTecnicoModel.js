@@ -30,30 +30,32 @@ class EmpresaTecnicoModel{
             });
         });
     };
-    update(nome,senha,tarefa,colab,matricula){
-        let sql = `UPDATE tecnicos SET nome="${nome}",senha="${senha}",tarefa="${tarefa}",colaboradores="${colab}" where matricula = "${matricula}" `;
+}
 
-        return new Promise((resolve, reject) => {
-            this.conexao.query(sql, (erro, resposta) => {
-                if (erro) {
-                    reject([400,erro]);
-                }
-                resolve([200,`Tecnico ${matricula} atualizado`]);
-            });
-        });
-    };
-    delete(matricula){
-        let sql = `DELETE FROM tecnicos where matricula= "${matricula}"`;
+//     update(nome,senha,tarefa,colab,matricula){
+//         let sql = `UPDATE tecnicos SET nome="${nome}",senha="${senha}",tarefa="${tarefa}",colaboradores="${colab}" where matricula = "${matricula}" `;
 
-        return new Promise((resolve, reject) => {
-            this.conexao.query(sql, (erro, resposta) => {
-                if (erro) {
-                    reject([400,erro]);
-                }
-                resolve([200,`Tecnico ${matricula} deletado`]);
-            });
-        });
-    };
-};
+//         return new Promise((resolve, reject) => {
+//             this.conexao.query(sql, (erro, resposta) => {
+//                 if (erro) {
+//                     reject([400,erro]);
+//                 }
+//                 resolve([200,`Tecnico ${matricula} atualizado`]);
+//             });
+//         });
+//     };
+//     delete(matricula){
+//         let sql = `DELETE FROM tecnicos where matricula= "${matricula}"`;
+
+//         return new Promise((resolve, reject) => {
+//             this.conexao.query(sql, (erro, resposta) => {
+//                 if (erro) {
+//                     reject([400,erro]);
+//                 }
+//                 resolve([200,`Tecnico ${matricula} deletado`]);
+//             });
+//         });
+//     };
+// };
 
 export default new EmpresaTecnicoModel;

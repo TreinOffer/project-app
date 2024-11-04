@@ -13,10 +13,10 @@ server.put("/tecnicos/:matricula", EmpresaTecnicoController.update);
 server.delete("/tecnicos/:matricula", EmpresaTecnicoController.delete);
 
 
-server.post('/pontuacoes', EmpresaGraficoController.create);
 server.get('/pontuacoes', EmpresaGraficoController.read);
-server.put('/pontuacoes', EmpresaGraficoController.update);
-server.delete('/pontuacoes', EmpresaGraficoController.delete);
+server.post('/pontuacoes', EmpresaGraficoController.create);
+// server.put('/pontuacoes', EmpresaGraficoController.update);
+// server.delete('/pontuacoes', EmpresaGraficoController.delete);
 
 
 server.listen(porta, () => {

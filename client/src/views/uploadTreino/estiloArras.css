@@ -9,8 +9,8 @@
         justify-content: center;
         align-items: center;
         & .div-border{
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
+        border-top: 1px solid (hsl(205,100%,85%),hsl(205, 83%, 77%));
+        border-bottom: 1px solid rgb(118, 162, 219);
         width: 100%;
         text-align: center;
         & > div{
@@ -22,8 +22,9 @@
             } 
         }
         h4{
-            font-size: 1.15em;
+            font-size: 1.20em;
             margin: 4px 0;
+            font-family: "Lato";
         }
     }
     & img{
@@ -32,14 +33,14 @@
     & .bt-mudar{
         display: flex;
         flex-direction: row;
-        background-color: hsl(200,0%,93%);
+        background-color: hsl(209, 64%, 73%);
         & > div {
             cursor: pointer;
             margin: 5px 0;
             padding: 0 10px;
-            background-color: hsl(200,50%,55%);
+            background-color: hsl(200, 55%, 62%);
             border-radius: 20px;
-            color: white;
+            color: rgb(2, 2, 2);
             font-weight: bolder;
             font-size: 1.8rem;
         }

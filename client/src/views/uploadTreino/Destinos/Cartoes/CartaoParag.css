@@ -30,7 +30,7 @@
             transition: 0.1s ease-in;
         }
         & button[class="button-ok"]{
-            background-color: hsl(160,70%,45%);
+            background-color: hsl(163, 10%, 13%);
             color: white;
         }
 

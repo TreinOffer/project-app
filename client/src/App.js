@@ -14,6 +14,7 @@ import LadingPage from './views/lading-page/lading';
 import Certificado from './views/certificado/certi';
 import Cadastro from "./views/cadastro/cadastrar";
 import PopUp from "./components/popUp/popUp";
+import Notificacao from './views/notificacao/notificacao.module';
 
 function App() {
   return (
@@ -33,7 +34,8 @@ function App() {
         <Route path='/graficos' element={<Graficos />}></Route> 
         <Route path='/certificado' element={<Certificado />}></Route>      
         <Route path='/cadastro' element={<Cadastro />}></Route>    
-        <Route path='/popup' element={<PopUp />}></Route>         
+        <Route path='/popup' element={<PopUp />}></Route>      
+        <Route path='/notificacao' element={<Notificacao />}></Route>     
       </Routes>
     </BrowserRouter>
   );

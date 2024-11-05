@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './estilo.notification.css'; 
-import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css';
+import './estilo.notificacao.css'; 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const ToastNotification = () => {
   const [isActive, setIsActive] = useState(false);
@@ -31,7 +32,6 @@ const ToastNotification = () => {
   };
 
   useEffect(() => {
-    
     showToast();
 
     return () => {
@@ -43,9 +43,9 @@ const ToastNotification = () => {
   return (
     <div>
       <div className={`toast ${isActive ? 'active' : ''}`}>
-        <span>logado com sucesso!</span>
+        <span>Logado com sucesso!</span>
         <span className="close" onClick={closeToast}>
-          <i className="fas fa-times"></i>
+          <FontAwesomeIcon icon={faCheck} /> 
         </span>
         <div className={`progress ${isProgressActive ? 'active' : ''}`}></div>
       </div>

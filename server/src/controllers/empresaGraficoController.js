@@ -1,55 +1,45 @@
-import EmpresaGraficoModel from "../models/empresaGraficoModel.js";
+import { createPontuacao, readPontuacoes, showOnePontuacao } from "../models/empresaGraficoModel.js";
 
-class EmpresaGraficoController {
-    async create(req, res) {
-        const { pontuacao, colaborador, treino } = req.body;
+export async function criarPontuacao(req, res) {
+  console.log('EmpresaGraficoController :: Criando pontuação');
 
-        try {
-            const novaPontuacao = await EmpresaGraficoModel.create(pontuacao, treino, colaborador);
-            console.debug("Pontuação criada:", novaPontuacao);
-            res.status(201).json(novaPontuacao);
-        } catch (error) {
-            console.debug("Erro: Criar Pontuação", error);
-            res.status(500).json({ message: "Erro ao criar pontuação", error });
-        }
-    }
+  const { pontuacao, colaborador, treino } = req.body;
 
-    async read(req, res) {
-        try {
-            const pontuacoes = await EmpresaGraficoModel.read();
-            console.debug("Pontuações recuperadas:", pontuacoes);
-            res.status(200).json(pontuacoes);
-        } catch (error) {
-            console.debug("Erro: Ler Pontuações", error);
-            res.status(500).json({ message: "Erro ao ler pontuações", error });
-        }
-    }
+  if (!pontuacao || !colaborador || !treino) {
+    return res.status(400).json({ message: 'Pontuação, colaborador e treino são obrigatórios' });
+  }
 
-    async update(req, res) {
-        const { pontuacao, treino, colaborador } = req.body;
-
-        try {
-            const resposta = await EmpresaGraficoModel.update(pontuacao, treino, colaborador);
-            console.debug("Pontuação atualizada:", resposta);
-            res.status(200).json(resposta);
-        } catch (error) {
-            console.debug("Erro: Atualizar Pontuação", error);
-            res.status(500).json({ message: "Erro ao atualizar pontuação", error });
-        }
-    }
-
-    async delete(req, res) {
-        const { colaborador } = req.body;
-
-        try {
-            const resposta = await EmpresaGraficoModel.delete(colaborador);
-            console.debug("Pontuação deletada:", resposta);
-            res.status(200).json(resposta);
-        } catch (error) {
-            console.debug("Erro: Deletar Pontuação", error);
-            res.status(500).json({ message: "Erro ao deletar pontuação", error });
-        }
-    }
+  try {
+    const [status, resposta] = await createPontuacao(pontuacao, treino, colaborador);
+    res.status(status).json(resposta);
+  } catch (error) {
+    console.error('Erro ao criar pontuação:', error);
+    res.status(500).json({ message: 'Erro ao criar pontuação' });
+  }
 }
 
-export default new EmpresaGraficoController();
+export async function mostrarPontuacoes(req, res) {
+  console.log('EmpresaGraficoController :: Mostrando todas as pontuações');
+
+  try {
+    const [status, resposta] = await readPontuacoes(); 
+    res.status(status).json(resposta);  
+  } catch (error) {
+    console.error('Erro ao ler pontuações:', error);
+    res.status(500).json({ message: 'Erro ao mostrar as pontuações' });
+  }
+}
+
+export async function mostrarUmaPontuacao(req, res) {
+  console.log('EmpresaGraficoController :: Mostrando uma pontuação específica');
+
+  const { id_pontuacao } = req.params;  
+
+  try {
+    const [status, resposta] = await showOnePontuacao(id_pontuacao);  
+    res.status(status).json(resposta); 
+  } catch (error) {
+    console.error('Erro ao buscar a pontuação:', error);
+    res.status(500).json({ message: 'Erro ao mostrar a pontuação específica' });
+  }
+}

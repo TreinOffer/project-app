@@ -73,7 +73,7 @@ const MenuUser = ({ handleClick, handleAside }) => {
                 )
             }
 
-            <article style={{ transition: '0.3s ease-in-out' }}>
+            <article style={{ height: isEditting ? "100%" : null,transition: '0.3s ease-in-out' }}>
                 {
                     isEditting && (
 
@@ -85,20 +85,20 @@ const MenuUser = ({ handleClick, handleAside }) => {
                         >
                             <table>
                                 <tbody>
-                                    <tr className="campo_nome_empresa">
-                                        <td><label htmlFor="nome_empresa">Nome da Empresa:</label ></td>
+                                    <tr>
+                                        <td className='campo_update'><label htmlFor="nome_empresa">Nome da Empresa:</label ></td>
                                         <td><input onChange={onChange('Fantasia')} placeholder='Inserir Nome da Empresa' type="text" name="nome_empresa" id="nome_empresa" /></td>
                                     </tr>
-                                    <tr className="campo_senha">
-                                        <td><label htmlFor="senha">Senha:</label></td>
+                                    <tr>
+                                        <td className='campo_update'><label htmlFor="senha">Senha:</label></td>
                                         <td><input onChange={onChange('Senha')} placeholder='Inserir senha' type="password" name="senha" id="senha" /></td>
                                     </tr>
-                                    <tr className="campo_cep">
-                                        <td><label htmlFor="cep">CEP:</label></td>
+                                    <tr>
+                                        <td className='campo_update'><label htmlFor="cep">CEP:</label></td>
                                         <td><input onChange={onChange('CEP')} placeholder='Inserir CEP' type="text" name="cep" id="cep" /></td>
                                     </tr>
-                                    <tr className="campo_estado">
-                                        <td><label htmlFor="estados" id='estados'>Estado:</label></td>
+                                    <tr>
+                                        <td className='campo_update'><label htmlFor="estados" id='estados'>Estado:</label></td>
                                         <td>
                                             <select name="estado" id="estado" onChange={onChange('Estado')} >
                                                 <option value="" id='select'>Selecionar Estado</option>
@@ -132,20 +132,20 @@ const MenuUser = ({ handleClick, handleAside }) => {
                                             </select>
                                         </td>
                                     </tr>
-                                    <tr className="campo_telefone">
-                                        <td><label htmlFor="telefone">Telefone:</label></td>
+                                    <tr>
+                                        <td className='campo_update'><label htmlFor="telefone">Telefone:</label></td>
                                         <td><input placeholder='Inserir Telefone' type="text" name="telefone" id="telefone" onChange={onChange('Telefone')} /></td>
                                     </tr>
-                                    <tr className="campo_endereco">
-                                        <td><label htmlFor="endereco">Endereço:</label></td>
+                                    <tr>
+                                        <td className='campo_update'><label htmlFor="endereco">Endereço:</label></td>
                                         <td><input placeholder='Inserir Endereço' type="text" name="endereco" id="endereco" onChange={onChange('Endereco')} /></td>
                                     </tr>
-                                    <tr className="campo_cidade">
-                                        <td><label htmlFor="cidade">Cidade:</label></td>
+                                    <tr>
+                                        <td className='campo_update'><label htmlFor="cidade">Cidade:</label></td>
                                         <td><input placeholder='Inserir Cidade' type="text" name="cidade" id="cidade" onChange={onChange('Cidade')} /></td>
                                     </tr>
-                                    <tr>
-                                        <td><button onClick={() => setIsEditting(!isEditting)} type="button">Cancelar</button></td>
+                                    <tr className='actions-menuUser'>
+                                        <td className='campo-reset'><button style={{ background: 'none', border: 'none' }} onClick={() => setIsEditting(!isEditting)} type="button">Cancelar</button></td>
                                         <td><input className='campo_submit' type="submit" value="Atualizar" /></td>
                                     </tr>
                                 </tbody>
@@ -154,7 +154,6 @@ const MenuUser = ({ handleClick, handleAside }) => {
                     )
                 }
             </article>
-
 
             <footer>
                 <a href="https://github.com/TreinOffer">

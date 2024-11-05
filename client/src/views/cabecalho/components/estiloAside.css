@@ -1,4 +1,4 @@
-.nav_bar{
+.nav_bar {
     position: fixed;
     z-index: 1;
     position: fixed;
@@ -6,46 +6,55 @@
     text-align: left;
     display: flex;
     flex-direction: column;
-    width: 400px; 
+    width: 400px;
     height: 100vh;
     filter: drop-shadow(4px 0 10px black);
     transition: 0.3s ease-out;
 }
-.logoNavBar{
-    background-image: linear-gradient(hsl(220,50%,80%),hsl(220,50%,70%));
+
+.logoNavBar {
+    background-image: linear-gradient(hsl(220, 50%, 80%), hsl(220, 50%, 70%));
 }
-.menuNav{
+
+.menuNav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 1%;
 }
-.escape,.opcoes{
+
+.escape,
+.opcoes {
     cursor: pointer;
     width: 10%;
 }
-.logoTreinOffer{
+
+.logoTreinOffer {
     padding: 4% 8%;
     width: 100%;
 }
-.secaoUser{
-    background-color: hsl(220,50%,70%);
+
+.secaoUser {
+    background-color: hsl(220, 50%, 70%);
 }
-form table{
+
+form table {
     width: 100%;
     align-items: center;
-    & input{
+
+    & input {
         outline: none;
         border: none;
         border-top-right-radius: 20px;
         padding: 2px 2px 2px 4px;
         height: 1.7em;
-        box-shadow: inset -2px -2px 2px hsl(20,100%,85%);
+        box-shadow: inset -2px -2px 2px hsl(20, 100%, 85%);
     }
 }
-.user{
-    background-image: linear-gradient(hsl(20,100%,90%),hsl(220,50%,70%));
-    box-shadow: inset 0 5px 0px hsl(20,100%,92%);
+
+.user {
+    background-image: linear-gradient(hsl(20, 100%, 90%), hsl(220, 50%, 70%));
+    box-shadow: inset 0 5px 0px hsl(20, 100%, 92%);
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     display: flex;
@@ -56,45 +65,81 @@ form table{
     padding: 7% 5% 3% 5%;
     /* border-bottom: 4px solid hsl(205,100%,85%); */
 }
-.imgUser{
-    filter: drop-shadow(0px 0px 10px hsl(25,100%,95%));
+
+.imgUser {
+    filter: drop-shadow(0px 0px 10px hsl(25, 100%, 95%));
     padding-right: 5%;
-    border-right: 2px solid hsla(205,20%,10%,0.5);
+    border-right: 2px solid hsla(205, 20%, 10%, 0.5);
 }
-.imgUser img{
-    width: 80px; height: 80px;
+
+.imgUser img {
+    width: 80px;
+    height: 80px;
     border-radius: 50px;
 }
-.nomeUser{ 
+
+.nomeUser {
     font-family: "Montserrat", Arial;
     font-size: 120%;
-    color: hsl(205,40%,10%);
+    color: hsl(205, 40%, 10%);
     font-weight: 500;
 }
-footer{
-    background-color: hsl(220,40%,75%);
-    border-top: 2px solid rgba(0,0,0,0.1);
+
+.campo_update>label {
+    border-radius: 0;
+    border-top-left-radius: 50px;
+    padding: 2% 14px;
+}
+
+table .actions-menuUser .campo-reset {
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    height: 3vh;
+}
+
+table .actions-menuUser .campo-reset {
+    cursor: pointer;
+    position: relative;
+    margin-left: 30%;
+    width: 84px;
+    height: 28px;
+    border-style: none;
+    background-color: hsl(220, 50%, 98%);
+    filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.3));
+}
+
+footer {
+    background-color: hsl(220, 40%, 75%);
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
     padding: 4% 10%;
 }
-footer p{
+
+footer p {
     text-align: center;
     font-size: 110%;
     padding: 2% 0;
 }
-footer a{
+
+footer a {
     margin: 0 0 0 35%;
 }
-footer p::after, footer p::before{
+
+footer p::after,
+footer p::before {
     content: '•';
     font-size: 120%;
     margin: 0 2% 0 2%;
 }
-.boxGit{
+
+.boxGit {
     display: inline-block;
 }
-.gitLink{
+
+.gitLink {
     transition: 0.25s ease-out;
 }
-.gitLink:hover{
+
+.gitLink:hover {
     transform: translateY(-10%) scale(1.1);
 }

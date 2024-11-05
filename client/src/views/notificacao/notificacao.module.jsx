@@ -41,7 +41,7 @@ const ToastNotification = () => {
   }, []);
 
   return (
-    <div>
+    <div className='box-notf'>
       <div className={`toast ${isActive ? 'active' : ''}`}>
         <span>Logado com sucesso!</span>
         <span className="close" onClick={closeToast}>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './estilo.css';
+import './login.estilo.css';
 import imgs from '../../imgs/arrayImagens.jsx';
 import { Link } from 'react-router-dom';
 

@@ -14,7 +14,7 @@ import LadingPage from './views/lading-page/lading';
 import Certificado from './views/certificado/certi';
 import Cadastro from "./views/cadastro/cadastrar";
 import PopUp from "./components/popUp/popUp";
-import Notificacao from './views/notificacao/notificacao.module';
+import Notificacao from './components/notificacao/notificacao.module';
 
 function App() {
   return (

@@ -72,8 +72,9 @@ const App = () => {
           <p className="texto-justificado">
             A Treinoffer oferece treinamentos personalizados e eficazes, projetados para atender às necessidades específicas de cada indivíduo e equipe. Nosso objetivo é impulsionar o desempenho tanto individual quanto coletivo, promovendo o crescimento profissional dos participantes e contribuindo de maneira significativa para os resultados da sua empresa. Na Treinoffer, nos dedicamos a criar um ambiente de aprendizado contínuo e de alta performance, garantindo que cada treinamento maximize o potencial e a eficácia dos nossos clientes.
           </p>
-        </div>
+        </div>        
       </div>
+      <div className="linha-separadora"></div>
       <div className="servicos">
         <h2 style={{ fontWeight: 'bold' }}>Serviços</h2>
         <div className="carousel">
@@ -107,6 +108,7 @@ const App = () => {
           ))}
         </div>
       </div>
+      <div className="linha-separadora"></div>
       <div className="contato">
         <h2 className="titulo-contato">Contato</h2>
         <form className="formulario">
@@ -134,7 +136,8 @@ const App = () => {
           </div>
           <button type="submit" className="botao-enviar">Enviar</button>
         </form>
-      </div>
+      </div>      
+      <div className="linha-separadora"></div>
       <footer className="footer">
         <p>© {new Date().getFullYear()} TreinOffer. Todos os direitos reservados.</p>
       </footer>

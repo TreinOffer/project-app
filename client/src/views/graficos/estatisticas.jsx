@@ -190,7 +190,7 @@ export default function App() {
                 labels: sourceData.map((data) => data.label),
                 datasets: [
                   {
-                    label: "Diárias",
+                    label: "Tempo diário",
                     data: sourceData.map((data) => data.value),
                     backgroundColor: [
                       "#4491c8",

@@ -90,23 +90,44 @@ form table {
     border-top-left-radius: 50px;
     padding: 2% 14px;
 }
+.aside form table{
+    align-items: center;
+}
 
-table .actions-menuUser .campo-reset {
-    display: flex;
-    justify-content: center;
-    width: 40%;
-    height: 3vh;
+td > #estado{
+    width: 168px;
+    background-color: hsl(0,0%,95%);
+    outline: none;
+    border: none;
+    border-top-right-radius: 20px;
+    padding: 2px 2px 2px 4px;
+    height: 1.7em;
+    box-shadow: inset -2px -2px 2px hsl(20, 100%, 92%);
 }
 
 table .actions-menuUser .campo-reset {
+    display: flex;
+    flex-direction: center;
     cursor: pointer;
     position: relative;
-    margin-left: 30%;
-    width: 84px;
-    height: 28px;
     border-style: none;
-    background-color: hsl(220, 50%, 98%);
     filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.3));
+
+    & > button{
+        cursor: pointer;
+        width: 40%;
+        height: 3vh;
+        margin: 0 auto;
+        background-color: hsl(220,50%,98%);
+        filter: drop-shadow(0 3px 2px rgba(0,0,0,0.3));
+        border-style: none;
+        border-top-left-radius: 50px;
+        padding: 0 14px;
+        box-shadow: inset -2px -2px 0 hsl(20, 100%, 90%);
+    }
+    & > button:hover{
+        background-color: hsl(220,50%,95%);
+    }
 }
 
 footer {

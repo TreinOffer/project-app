@@ -4,12 +4,16 @@ import imgs from '../../../imgs/arrayImagens';
 import './estiloAside.css';
 
 const MenuUser = ({ handleClick, handleAside }) => {
-    const [isEditting, setIsEditting] = useState(false)
+    const [isEditting, setIsEditting] = useState(0)
     const [user, setUser] = useState([{
         Fantasia: '',
         Senha: '', Telefone: '',
         CEP: '', Estado: '', Cidade: '', Endereco: ''
     }]);
+    
+    // Enquanto não possuí web token, ao fazer login é enviado o id do banco para cá e armazenada
+    // Para assim executar as funções delete e update;
+    const [ idUser, setIdUser ] = useState(0);
 
     function onChange(tipo) {
         return (e) => (
@@ -17,8 +21,26 @@ const MenuUser = ({ handleClick, handleAside }) => {
         )
     };
 
-    async function submituser(user) {
-        console.log("Empresa: ", user);
+    function updateUser(id, body) {
+        try {
+            const response = fetch(`http://localhost:5000/${id}`,{
+                method: 'PUT',
+                headers: {
+                    'Content-Type':'application/json'
+                }
+            });
+            // const resposta
+        } catch (error) {
+            throw new Error("Erro na Api: ", error);
+        }
+    };
+
+    // function delUser(id) {
+        
+    // };
+
+    async function submitUser(user) {
+        console.log("user: ", user);
         try {
             const consulta = await fetch(`http://localhost:5000/cadastro`, {
                 method: 'POST',
@@ -59,29 +81,41 @@ const MenuUser = ({ handleClick, handleAside }) => {
             </section>
 
             {
-                !isEditting && (
-                    <div style={{
-                        display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center',
-                        background: 'linear-gradient(hsl(220,50%,70%),hsl(220,40%,75%)', height: '100%'
-                    }} onClick={() => setIsEditting(!isEditting)}
-                    >
-                        <div style={{ display: 'flex', flexDirection: 'row', gap: '2%' }}>
-                            <img src={imgs.editar} alt="" style={{ width: '24px' }} />
-                            <h3 style={{ color: 'white', cursor: 'pointer' }} >Editar</h3>
+                isEditting === 0 && (
+                    < >
+                        <div style={{
+                            display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center',
+                            background: 'linear-gradient(hsl(220,50%,70%),hsl(220,40%,65%)', height: '100%'
+                        }} onClick={() => setIsEditting(1)}
+                        >
+                            <div style={{ display: 'flex', flexDirection: 'row', gap: '2%' }}>
+                                <img src={imgs.editar} alt="" style={{ width: '24px' }} />
+                                <h3 style={{ color: 'white', cursor: 'pointer' }} >Editar</h3>
+                            </div>
                         </div>
-                    </div>
+                        <div style={{
+                            display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center',
+                            background: 'linear-gradient(hsl(220,40%,65%),hsl(220,40%,60%)', height: '100%'
+                        }} onClick={() => setIsEditting(2)}
+                        >
+                            <div onClick={() => console.log("deletar") }style={{ display: 'flex', alignItems: 'center', gap: '2%', cursor: 'pointer' }}>
+                                <img style={{ width: '20%' }} src={imgs.deletar} />
+                                <span style={{ color: 'white' }}>Desabilitar conta</span>
+                            </div>
+                        </div>
+                    </>
                 )
             }
 
-            <article style={{ height: isEditting ? "100%" : null,transition: '0.3s ease-in-out' }}>
+            <article style={{ height: isEditting ? "100%" : null, transition: '0.3s ease-in-out' }}>
                 {
-                    isEditting && (
+                    isEditting === 1 && (
 
                         <form action="PUT" onSubmit={(e) => {
                             e.preventDefault();
-                            // submitEmpresa(empresa);
+                            submitUser(user);
                         }}
-                            style={{ height: '100%',width: '100%', background: 'linear-gradient(hsl(220,50%,70%),hsl(220,40%,75%)' }}
+                            style={{ height: '100%', width: '100%', background: 'linear-gradient(hsl(220,50%,70%),hsl(220,40%,75%)' }}
                         >
                             <table>
                                 <tbody>
@@ -145,7 +179,7 @@ const MenuUser = ({ handleClick, handleAside }) => {
                                         <td><input placeholder='Inserir Cidade' type="text" name="cidade" id="cidade" onChange={onChange('Cidade')} /></td>
                                     </tr>
                                     <tr className='actions-menuUser'>
-                                        <td className='campo-reset'><button style={{ background: 'none', border: 'none' }} onClick={() => setIsEditting(!isEditting)} type="button">Cancelar</button></td>
+                                        <td className='campo-reset'><button onClick={() => setIsEditting(0)} type="button">Cancelar</button></td>
                                         <td><input className='campo_submit' type="submit" value="Atualizar" /></td>
                                     </tr>
                                 </tbody>

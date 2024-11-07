@@ -1,14 +1,30 @@
 [
   {
-    "label": "Dias percorridos",
-    "value": 15
+    "label": "Segunda-feira",
+    "value": 28
   },
   {
-    "label": "Dias semanais",
-    "value": 30
+    "label": "Terça-feira",
+    "value": 34
   },
   {
-    "label": "Dias Mensais",
-    "value": 25
+    "label": "Quarta-feira",
+    "value": 29
+  },
+  {
+    "label": "Quinta-feira",
+    "value": 40
+  },
+  {
+    "label": "Sexta-feira",
+    "value": 38
+  },
+  {
+    "label": "Sábado",
+    "value": 45
+  },
+  {
+    "label": "Domingo",
+    "value": 36
   }
 ]

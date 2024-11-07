@@ -129,19 +129,13 @@ export default function App() {
           <div className="dataCard revenueCard">
             <Line
               data={{
-                labels: revenueData.map((data) => data.label),
+                labels: revenueData.map((data) => data.label), 
                 datasets: [
                   {
-                    label: "Tempo",
-                    data: revenueData.map((data) => data.revenue),
+                    label: "Tempo Gasto",
+                    data: revenueData.map((data) => data.revenue), 
                     backgroundColor: "#4491c8",
                     borderColor: "#4491c8",
-                  },
-                  {
-                    label: "Mês",
-                    data: revenueData.map((data) => data.cost),
-                    backgroundColor: "#ec0001",
-                    borderColor: "#ec0001",
                   },
                 ],
               }}
@@ -174,6 +168,11 @@ export default function App() {
                   y: {
                     ticks: {
                       color: 'white',
+                      callback: function (value) {                        
+                        const hours = Math.floor(value / 60); 
+                        const minutes = value % 60; 
+                        return `${hours}:${minutes < 10 ? '0' : ''}${minutes}`; 
+                      }
                     },
                     grid: {
                       color: '#888888',
@@ -183,6 +182,7 @@ export default function App() {
               }}
             />
           </div>
+
 
           <div className="dataCard customerCard">
             <Bar

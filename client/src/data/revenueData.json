@@ -1,62 +1,50 @@
 [
   {
     "label": "Jan",
-    "revenue": 64854,
-    "cost": 32652
+    "revenue": 480
   },
   {
     "label": "Fev",
-    "revenue": 54628,
-    "cost": 42393
+    "revenue": 555
   },
   {
     "label": "Mar",
-    "revenue": 117238,
-    "cost": 50262
+    "revenue": 600
   },
   {
     "label": "Abr",
-    "revenue": 82830,
-    "cost": 64731
+    "revenue": 465
   },
   {
     "label": "Mai",
-    "revenue": 91208,
-    "cost": 41893
+    "revenue": 690
   },
   {
     "label": "Jun",
-    "revenue": 103609,
-    "cost": 83809
+    "revenue": 530
   },
   {
     "label": "Jul",
-    "revenue": 90974,
-    "cost": 44772
+    "revenue": 540
   },
   {
     "label": "Ago",
-    "revenue": 82919,
-    "cost": 37590
+    "revenue": 615
   },
   {
     "label": "Set",
-    "revenue": 62407,
-    "cost": 43349
+    "revenue": 450
   },
   {
     "label": "Out",
-    "revenue": 82528,
-    "cost": 45324
+    "revenue": 720
   },
   {
     "label": "Nov",
-    "revenue": 56979,
-    "cost": 47978
+    "revenue": 840
   },
   {
     "label": "Dez",
-    "revenue": 87436,
-    "cost": 39175
+    "revenue": 510
   }
 ]

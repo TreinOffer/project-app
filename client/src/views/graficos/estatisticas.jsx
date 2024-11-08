@@ -193,9 +193,13 @@ export default function App() {
                     label: "Tempo diário",
                     data: sourceData.map((data) => data.value),
                     backgroundColor: [
-                      "#4491c8",
-                      "rgba(250, 192, 19, 1)",
-                      "rgba(34, 139, 34, 1)",
+                      "rgba(255, 255, 255, 1)",
+                      "rgba(255, 0, 0, 1)",
+                      "rgba(247, 255, 0, 1)",
+                      "rgba(162, 0, 255, 1)",
+                      "rgba(0, 255, 26, 1)",
+                      "rgba(159, 159, 159, 1)",
+                      "rgba(255, 213, 0, 1)"
                     ],
                     borderRadius: 5,
                   },

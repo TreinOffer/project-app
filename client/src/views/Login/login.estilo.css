@@ -60,7 +60,7 @@ table tr td label{
 .login_dados #matricula::placeholder, .login_dados #senha::placeholder{
     padding: 10% 5% 10% 5%;
 }
-.campo_submit{
+.campo_entrar{
     cursor: pointer;
     position: relative;
     margin-left: 30%;

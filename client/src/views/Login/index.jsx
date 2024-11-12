@@ -52,7 +52,7 @@ function Login() {
                                     <td><input placeholder='Inserir senha' type="password" name="senha" id="senha" /></td>
                                 </tr>
                                 <tr>
-                                    <td><input className='campo_submit' type="submit" value="Entrar" /></td>
+                                    <td><input className='campo_entrar' type="submit" value="Entrar" /></td>
                                 </tr>
                             </tbody>
                         </table>

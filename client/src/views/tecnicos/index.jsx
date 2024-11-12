@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Cabecalho from '../cabecalho';
-import CrudUser from './components/crudTecnico';
-
+import Cabecalho from "../cabecalho/cabecalho";
 import imgs from '../../imgs/arrayImagens';
 import Tecnico from './components/Tecnico';
 import NewFunc from './components/NewFunc';
 
 import './estiloTecnico.css';
+import CrudUser from './components/crudTecnico';
 
 const g = 25;
 const m = 15;

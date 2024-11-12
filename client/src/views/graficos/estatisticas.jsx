@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Chart as ChartJS, defaults } from "chart.js/auto";
-import { Bar, Line } from "react-chartjs-2";
-import Cabecalho from "../cabecalho";
-import "./App.css"; 
+import { Bar, Doughnut, Line } from "react-chartjs-2";
+import Cabecalho from "../cabecalho/cabecalho";
+
+import "./App.css";
+
 import revenueData from "../../data/revenueData.json";
 import sourceData from "../../data/sourceData.json";
 import 'font-awesome/css/font-awesome.min.css'; 

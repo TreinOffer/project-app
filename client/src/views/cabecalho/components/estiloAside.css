@@ -1,0 +1,166 @@
+.nav_bar {
+    position: fixed;
+    z-index: 1;
+    position: fixed;
+    left: calc(0% - 500px);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 100vh;
+    filter: drop-shadow(4px 0 10px black);
+    transition: 0.3s ease-out;
+}
+
+.logoNavBar {
+    background-image: linear-gradient(hsl(220, 50%, 80%), hsl(220, 50%, 70%));
+}
+
+.menuNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1%;
+}
+
+.escape,
+.opcoes {
+    cursor: pointer;
+    width: 10%;
+}
+
+.logoTreinOffer {
+    padding: 4% 8%;
+    width: 100%;
+}
+
+.secaoUser {
+    background-color: hsl(220, 50%, 70%);
+}
+
+form table {
+    width: 100%;
+    align-items: center;
+
+    & input {
+        outline: none;
+        border: none;
+        border-top-right-radius: 20px;
+        padding: 2px 2px 2px 4px;
+        height: 1.7em;
+        box-shadow: inset -2px -2px 2px hsl(20, 100%, 85%);
+    }
+}
+
+.user {
+    background-image: linear-gradient(hsl(20, 100%, 90%), hsl(220, 50%, 70%));
+    box-shadow: inset 0 5px 0px hsl(20, 100%, 92%);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    gap: 5%;
+    align-items: center;
+    padding: 7% 5% 3% 5%;
+    /* border-bottom: 4px solid hsl(205,100%,85%); */
+}
+
+.imgUser {
+    filter: drop-shadow(0px 0px 10px hsl(25, 100%, 95%));
+    padding-right: 5%;
+    border-right: 2px solid hsla(205, 20%, 10%, 0.5);
+}
+
+.imgUser img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+}
+
+.nomeUser {
+    font-family: "Montserrat", Arial;
+    font-size: 120%;
+    color: hsl(205, 40%, 10%);
+    font-weight: 500;
+}
+
+.campo_update>label {
+    border-radius: 0;
+    border-top-left-radius: 50px;
+    padding: 2% 14px;
+}
+.aside form table{
+    align-items: center;
+}
+
+td > #estado{
+    width: 168px;
+    background-color: hsl(0,0%,95%);
+    outline: none;
+    border: none;
+    border-top-right-radius: 20px;
+    padding: 2px 2px 2px 4px;
+    height: 1.7em;
+    box-shadow: inset -2px -2px 2px hsl(20, 100%, 92%);
+}
+
+table .actions-menuUser .campo-reset {
+    display: flex;
+    flex-direction: center;
+    cursor: pointer;
+    position: relative;
+    border-style: none;
+    filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.3));
+
+    & > button{
+        cursor: pointer;
+        width: 40%;
+        height: 3vh;
+        margin: 0 auto;
+        background-color: hsl(220,50%,98%);
+        filter: drop-shadow(0 3px 2px rgba(0,0,0,0.3));
+        border-style: none;
+        border-top-left-radius: 50px;
+        padding: 0 14px;
+        box-shadow: inset -2px -2px 0 hsl(20, 100%, 90%);
+    }
+    & > button:hover{
+        background-color: hsl(220,50%,95%);
+    }
+}
+
+footer {
+    background-color: hsl(220, 40%, 75%);
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+    padding: 4% 10%;
+}
+
+footer p {
+    text-align: center;
+    font-size: 110%;
+    padding: 2% 0;
+}
+
+footer a {
+    margin: 0 0 0 35%;
+}
+
+footer p::after,
+footer p::before {
+    content: '•';
+    font-size: 120%;
+    margin: 0 2% 0 2%;
+}
+
+.boxGit {
+    display: inline-block;
+}
+
+.gitLink {
+    transition: 0.25s ease-out;
+}
+
+.gitLink:hover {
+    transform: translateY(-10%) scale(1.1);
+}

@@ -1,9 +1,16 @@
-const ArrasImg = ({id,imagem,arrastar}) => {
+const ArrasImg = ({ imagem, arrastar }) => {
     return (
         <>
-            <div>
-                <img id={id} src={imagem} alt="Imagem" ref={arrastar}/>
-            </div>
+            <section id="DragImagem">  
+                <div className="div-border">
+                    <div>
+                        <div>
+                            <img src={imagem} alt="Imagem" ref={arrastar}/>
+                        </div>
+                    </div>
+                </div>
+                <h4>Imagem</h4>
+            </section>
         </>
     )
 };

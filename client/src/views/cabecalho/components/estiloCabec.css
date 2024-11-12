@@ -1,0 +1,73 @@
+.barPesquisar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    background-image: linear-gradient(to right, hsl(0,0%,20%), hsl(0,0%,30%));
+}
+.secEsq{
+    display: flex;
+    width: 100px;
+    align-items: center;
+    padding-left: 16px;
+    gap: 14px;
+}
+.secMeio{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    max-width: 380px;
+}
+.logo{
+    width: 300px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 0 black);
+    transform: scale(1);
+    transition: 0.3s ease-in-out;
+}
+.logo:hover{
+    filter: drop-shadow(0 0 2px hsl(20,50%,70%));
+    transform: scale(1.05);
+}
+.secDir{
+    display: flex;
+    width: 130px;
+    align-items: center;
+    padding: 0 16px;
+    justify-content: space-between;
+    gap: 6px;
+    & .notf{
+        > img{
+            width: 50%;
+            cursor: pointer;
+        }
+    }
+}
+.secMeio .gitDiv{
+    height: 32px; width: 32px;
+    box-sizing: border-box;
+    padding: 6px;
+    border-radius: 25px;
+    transition: 0.3s ease-in;
+    cursor: pointer;
+    background-color: hsl(0,0%,92%);
+}
+.secMeio .gitDiv > img{
+    width: 100%;
+}
+.secEsq .menuPerfil{
+    width: 44px; height: 44px;
+    border-radius: 25px;
+    transition: 0.3s ease-in;
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,0.4);
+}
+.secMeio .gitDiv:hover, .secDir .menu:hover{
+    box-shadow: 0 2px 10px hsl(25,40%,90%);
+    width: 48px; height: 48px;
+}
+.secEsq .menuPerfil:hover{
+    filter: drop-shadow(0px 0px 5px hsl(30, 17%, 2%));
+    border-color: rgba(0,0,0,0.1);
+}

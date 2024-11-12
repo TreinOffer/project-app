@@ -1,4 +1,5 @@
 import TreinOffer from './logoTreinOffer.png';
+import TreinOff from './logoTreinOff.png';
 
 import voltar from './voltarMenu.png';
 import upload from './uploadIcon.png';
@@ -15,7 +16,9 @@ import financas from './finIcon.png';
 import empresa from './logoEmpresa.jpeg';
 import opcoes from "./optionsIcon.png";
 import addFunc from "./addFuncIcon.png";
-import removFunc from "./removFuncIcon.png"
+import removFunc from "./removFuncIcon.png";
+import notificao from "./notificacao.png";
+import editar from "./editNote.png";
 
 import treino1 from "./treinos/treino_capa1.png";
 import treino2 from "./treinos/treino_capa2.png";
@@ -31,14 +34,12 @@ import tabLeila from "./tabelas/perfilLeilaTest.jpg";
 import confirmar from "./tabelas/Verificado.png";
 import deletar from "./tabelas/Remover.png";
 
-import certificado from "./lading-page/certificado.png";
-import suporte from "./lading-page/suporte.png";
-import ensino from "./lading-page/ensino.png";
-import modulos from "./lading-page/modulos.png";
-import crescimento from "./lading-page/crescimento.png";
+import upImage from "./SubirTreino/image_placeholder.png";
+import upVideo from "./SubirTreino/video_placeholder.jpg";
 
 const imgs = {
     TreinOffer,
+    TreinOff,
 
     voltar,
     upload,
@@ -57,6 +58,7 @@ const imgs = {
     removFunc,
     confirmar,
     deletar,
+    editar,
 
     treino1,
     treino2,
@@ -69,11 +71,10 @@ const imgs = {
     tabEduardo,
     tabLeila,
 
-    certificado,
-    suporte,
-    ensino,
-    modulos,
-    crescimento,
+    upImage,
+    upVideo,
+    notificao,
+    
 
     empresa
 };

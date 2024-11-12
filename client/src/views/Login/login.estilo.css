@@ -38,7 +38,7 @@ table tr td label{
     margin: 15% 15% 15% 15%;
     padding: 8% 10%;
     border: 2px solid hsl(220,50%,80%);
-    border-radius: 50px ;
+    border-radius: 50px;
     background-color: hsl(220,100%,98%);
 }
 .campo_matricula,.campo_pass{
@@ -89,7 +89,7 @@ table tr td label{
     transition: 0.2s ease-in;
 }
 .redirecter:hover{
-    text-decoration:underline;
+    text-decoration: underline;
     color: hsl(155,100%,30%);
 }
 .redirecter:active{

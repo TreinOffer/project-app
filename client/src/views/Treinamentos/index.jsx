@@ -1,6 +1,6 @@
 import React from 'react'
 import "./estilo.css"
-import Cabecalho from '../cabecalho'
+import Cabecalho from '../cabecalho/cabecalho';
 import imgs from '../../imgs/arrayImagens';
 import CoresRGB from '../../components/coresRGB';
 
@@ -73,6 +73,7 @@ function Treinamentos() {
 
     <>
 
+      <Cabecalho />
       <Cabecalho />
 
       <section className="grid_treinos">

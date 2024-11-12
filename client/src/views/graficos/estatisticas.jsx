@@ -129,13 +129,14 @@ export default function App() {
           <div className="dataCard revenueCard">
             <Line
               data={{
-                labels: revenueData.map((data) => data.label), 
+                labels: revenueData.map((data) => data.label),
                 datasets: [
                   {
-                    label: "Tempo Gasto",
-                    data: revenueData.map((data) => data.revenue), 
+                    label: "Tempo Gasto (em minutos)",
+                    data: revenueData.map((data) => data.revenue),
                     backgroundColor: "#4491c8",
                     borderColor: "#4491c8",
+                    fill: false,
                   },
                 ],
               }}
@@ -147,12 +148,20 @@ export default function App() {
                 },
                 plugins: {
                   title: {
-                    text: "Tempo gasto na plataforma",
+                    display: true,
+                    text: "Tempo Gasto por Mês",
                     color: "hsl(20,90%,85%)",
+                    font: {
+                      size: 16,
+                      weight: 'bold',
+                    },
                   },
                   legend: {
                     labels: {
                       color: 'white',
+                      font: {
+                        size: 12,
+                      },
                     },
                   },
                 },
@@ -160,6 +169,9 @@ export default function App() {
                   x: {
                     ticks: {
                       color: 'white',
+                      font: {
+                        size: 12,
+                      },
                     },
                     grid: {
                       color: '#888888',
@@ -168,21 +180,28 @@ export default function App() {
                   y: {
                     ticks: {
                       color: 'white',
+                      font: {
+                        size: 12,
+                      },
                       callback: function (value) {                        
-                        const hours = Math.floor(value / 60); 
-                        const minutes = value % 60; 
-                        return `${hours}:${minutes < 10 ? '0' : ''}${minutes}`; 
-                      }
+                        const limitedValue = Math.min(value, 1440);                      
+                        const hours = Math.floor(limitedValue / 60);
+                        const minutes = limitedValue % 60;                        
+                        if (hours === 24) {
+                          return `00:${minutes < 10 ? '0' : ''}${minutes}`;
+                        }                        
+                        return `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+                      },
                     },
                     grid: {
                       color: '#888888',
                     },
+                    suggestedMax: 1440,
                   },
                 },
               }}
             />
           </div>
-
 
           <div className="dataCard customerCard">
             <Bar
@@ -233,6 +252,7 @@ export default function App() {
                     grid: {
                       color: '#888888',
                     },
+                    max: 31,
                   },
                 },
               }}

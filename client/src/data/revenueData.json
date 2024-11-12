@@ -1,50 +1,14 @@
 [
-  {
-    "label": "Jan",
-    "revenue": 480
-  },
-  {
-    "label": "Fev",
-    "revenue": 555
-  },
-  {
-    "label": "Mar",
-    "revenue": 600
-  },
-  {
-    "label": "Abr",
-    "revenue": 465
-  },
-  {
-    "label": "Mai",
-    "revenue": 690
-  },
-  {
-    "label": "Jun",
-    "revenue": 530
-  },
-  {
-    "label": "Jul",
-    "revenue": 540
-  },
-  {
-    "label": "Ago",
-    "revenue": 615
-  },
-  {
-    "label": "Set",
-    "revenue": 450
-  },
-  {
-    "label": "Out",
-    "revenue": 720
-  },
-  {
-    "label": "Nov",
-    "revenue": 840
-  },
-  {
-    "label": "Dez",
-    "revenue": 510
-  }
+  { "label": "Jan", "revenue": 480, "time": "00:00" },
+  { "label": "Fev", "revenue": 555, "time": "01:00" },
+  { "label": "Mar", "revenue": 600, "time": "02:00" },
+  { "label": "Abr", "revenue": 465, "time": "03:00" },
+  { "label": "Mai", "revenue": 690, "time": "04:00" },
+  { "label": "Jun", "revenue": 530, "time": "05:00" },
+  { "label": "Jul", "revenue": 540, "time": "06:00" },
+  { "label": "Ago", "revenue": 615, "time": "07:00" },
+  { "label": "Set", "revenue": 450, "time": "08:00" },
+  { "label": "Out", "revenue": 720, "time": "09:00" },
+  { "label": "Nov", "revenue": 840, "time": "10:00" },
+  { "label": "Dez", "revenue": 510, "time": "11:00" }
 ]

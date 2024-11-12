@@ -41,13 +41,13 @@ table tr td label{
     border-radius: 50px ;
     background-color: hsl(220,100%,98%);
 }
-.campo_matricula,.campo_senha{
+.campo_matricula,.campo_pass{
     display: flex;
     flex-direction: column;
     margin-bottom: 5%;
     width: auto;
 }
-.login_dados #matricula, .login_dados #senha{
+.login_dados #matricula, .login_dados #pass{
     padding-left: 14px;
     border: none;
     outline: none;
@@ -57,7 +57,7 @@ table tr td label{
     width: calc(100% - 14px);
     margin-bottom: 15px;
 }
-.login_dados #matricula::placeholder, .login_dados #senha::placeholder{
+.login_dados #matricula::placeholder, .login_dados #pass::placeholder{
     padding: 10% 5% 10% 5%;
 }
 .campo_entrar{

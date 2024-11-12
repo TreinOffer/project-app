@@ -47,9 +47,9 @@ function Login() {
                                         />
                                     </td>
                                 </tr>
-                                <tr className="campo_senha">
-                                    <td><label htmlFor="senha">Senha:</label></td>
-                                    <td><input placeholder='Inserir senha' type="password" name="senha" id="senha" /></td>
+                                <tr className="campo_pass">
+                                    <td><label htmlFor="pass">Senha:</label></td>
+                                    <td><input placeholder='Inserir senha' type="password" name="senha" id="pass" /></td>
                                 </tr>
                                 <tr>
                                     <td><input className='campo_entrar' type="submit" value="Entrar" /></td>

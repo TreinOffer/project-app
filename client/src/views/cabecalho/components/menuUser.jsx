@@ -4,7 +4,8 @@ import imgs from '../../../imgs/arrayImagens';
 import './estiloAside.css';
 
 const MenuUser = ({ handleClick, handleAside }) => {
-    const [isEditting, setIsEditting] = useState(0)
+    const [isEditting, setIsEditting] = useState(0);
+
     const [user, setUser] = useState([{
         Fantasia: '',
         Senha: '', Telefone: '',
@@ -21,25 +22,23 @@ const MenuUser = ({ handleClick, handleAside }) => {
         )
     };
 
-    function updateUser(id, body) {
+    async function updateUser(id) {
         try {
-            const response = fetch(`http://localhost:5000/${id}`,{
+            const response = await fetch(`http://localhost:5000/cadastro/${id}`,{
                 method: 'PUT',
                 headers: {
                     'Content-Type':'application/json'
-                }
+                },
+                body: JSON.stringify(user)
             });
-            // const resposta
+            const resposta = await response.json();
+            return resposta;
         } catch (error) {
             throw new Error("Erro na Api: ", error);
         }
     };
 
-    // function delUser(id) {
-        
-    // };
-
-    async function submitUser(user) {
+    async function submitUser(id,user) {
         console.log("user: ", user);
         try {
             const consulta = await fetch(`http://localhost:5000/cadastro`, {
@@ -49,7 +48,6 @@ const MenuUser = ({ handleClick, handleAside }) => {
             });
             console.log(consulta);
             if (consulta.status === 409) {
-
                 alert(`CNPJ já existe`);
             };
 
@@ -113,7 +111,7 @@ const MenuUser = ({ handleClick, handleAside }) => {
 
                         <form action="PUT" onSubmit={(e) => {
                             e.preventDefault();
-                            submitUser(user);
+                            submitUser(idUser,user);
                         }}
                             style={{ height: '100%', width: '100%', background: 'linear-gradient(hsl(220,50%,70%),hsl(220,40%,75%)' }}
                         >

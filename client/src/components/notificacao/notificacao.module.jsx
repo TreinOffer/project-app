@@ -43,7 +43,7 @@ const ToastNotification = () => {
   return (
     <div className='box-notf'>
       <div className={`toast ${isActive ? 'active' : ''}`}>
-        <span>Logado com sucesso!</span>
+        <span className='fonte'>Logado com sucesso!</span>
         <span className="close" onClick={closeToast}>
           <FontAwesomeIcon icon={faCheck} /> 
         </span>

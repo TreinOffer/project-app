@@ -20,37 +20,16 @@ export async function readPontuacao() {
 }
 
 
-export async function readPontuacaoByColaborador() {
+export async function createPontuacao(pontuacao, treino, colaborador) {
     const conexao = mysql.createPool(db);
-    const sql = `
-        SELECT colaborador, AVG(pontuacao) AS media_pontuacao
-        FROM Pontuacao
-        GROUP BY colaborador
-        ORDER BY colaborador
-    `;
-
-    try {
-        const [resultado] = await conexao.query(sql);
-        return [200, resultado];
-    } catch (error) {
-        console.error("Erro ao ler pontuações por colaborador:", error);
-        return [500, { message: "Erro ao ler pontuações por colaborador", error }];
-    }
-}
-
-export async function updatePontuacao(pontuacao, treino, colaborador) {
-    const conexao = mysql.createPool(db);
-    const sql = `UPDATE Pontuacao SET pontuacao = ?, treino = ? WHERE colaborador = ?`;
+    const sql = `INSERT INTO Pontuacao (pontuacao, treino, colaborador) VALUES (?, ?, ?)`;
     const params = [pontuacao, treino, colaborador];
 
     try {
         const [resultado] = await conexao.query(sql, params);
-        if (resultado.affectedRows < 1) {
-            return [404, { message: "Pontuação não encontrada" }];
-        }
-        return [200, { message: "Pontuação atualizada" }];
+        return [201, { message: "Pontuação criada com sucesso", id: resultado.insertId }];
     } catch (error) {
-        console.error("Erro ao atualizar pontuação:", error);
-        return [500, { message: "Erro ao atualizar pontuação", error }];
+        console.error("Erro ao criar pontuação:", error);
+        return [500, { message: "Erro ao criar pontuação", error }];
     }
 }

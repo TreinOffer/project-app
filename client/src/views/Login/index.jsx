@@ -12,6 +12,16 @@ const msg = {
     logue_se: "Eu possuo uma conta"
 };
 
+const logar_se = (login, senha) => {
+    try {
+        // const response = await fetch(); 
+        //json web token aqui para prosseguir
+    } catch (error) {
+        throw new Error(`Erro na API: ${error}`);
+        
+    };
+};
+
 function Login() {
     const [currentMsg, setCurrentMsg] = useState(msg.login);
     const [isEmpresa, setIsEmpresa] = useState(false);
@@ -52,7 +62,7 @@ function Login() {
                                     <td><input placeholder='Inserir senha' type="password" name="senha" id="pass" /></td>
                                 </tr>
                                 <tr>
-                                    <td><input className='campo_entrar' type="submit" value="Entrar" /></td>
+                                    <td><input onClick={logar_se} className='campo_entrar' type="submit" value="Entrar" /></td>
                                 </tr>
                             </tbody>
                         </table>

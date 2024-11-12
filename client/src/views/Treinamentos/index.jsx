@@ -72,8 +72,6 @@ function Treinamentos() {
   return (
 
     <>
-
-      <Cabecalho />
       <Cabecalho />
 
       <section className="grid_treinos">

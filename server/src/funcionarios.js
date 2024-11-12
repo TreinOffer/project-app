@@ -13,5 +13,7 @@ const tecnicos =
         matricula: '37B38C',
         contrato: '2 anos'
     }];
+    
+    const LINK = "https://autoglassestagio.gupy.io/jobs/8026006?jobBoardSource=gupy_public_page";
 
 export default tecnicos;

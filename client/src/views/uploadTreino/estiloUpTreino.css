@@ -9,6 +9,7 @@
 .isImagem{
     display: flex;
     justify-content: space-around;
+
 }
 .isImagemSingle{
     display: flex;
@@ -52,11 +53,12 @@
 
 .contentUpTreino .dragSection .bt-mudar{
     display: flex;
-    border: 1px solid black;
+    border: 1px solid rgb(17, 16, 16);
     height: 100%;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    background-color: aquamarine;
 }
 .contentUpTreino .wrap-section-destino{
     display: flex;
@@ -74,6 +76,7 @@
     width: 128px;
     cursor: grab;
     transition: transform 0.6s ease;
+
    
 }
 

@@ -20,6 +20,13 @@ import removFunc from "./removFuncIcon.png";
 import notificao from "./notificacao.png";
 import editar from "./editNote.png";
 
+import certificado from "./lading-page/certificado.png"
+import crescimento from "./lading-page/crescimento.png"
+import ensino from "./lading-page/ensino.png"
+import modulos from "./lading-page/modulos.png"
+import suporte from "./lading-page/suporte.png"
+
+
 import treino1 from "./treinos/treino_capa1.png";
 import treino2 from "./treinos/treino_capa2.png";
 import treino3 from "./treinos/treino_capa3.png";
@@ -36,6 +43,7 @@ import deletar from "./tabelas/Remover.png";
 
 import upImage from "./SubirTreino/image_placeholder.png";
 import upVideo from "./SubirTreino/video_placeholder.jpg";
+
 
 const imgs = {
     TreinOffer,
@@ -74,6 +82,12 @@ const imgs = {
     upImage,
     upVideo,
     notificao,
+    
+    certificado,
+    crescimento,
+    ensino,
+    modulos,
+    suporte,
     
 
     empresa

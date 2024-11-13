@@ -78,11 +78,10 @@ function TelaModule() {
     <>
       <Cabecalho />
       <section className="grid_module">
-        <div className="modules-controls centered">
-          <button id="module1" className="module-button">Módulo 1</button>
-          <button id="module2" className="module-button">Módulo 2</button>
-          <button id="module3" className="module-button">Módulo 3</button>
-        </div>
+        <button id="module1" className="module-button">Módulo 1</button>
+        <button id="module2" className="module-button">Módulo 2</button>
+        <button id="module3" className="module-button">Módulo 3</button>
+        <div className="modules-controls centered"></div>        
         <div className="flipbook centered" id="flipbook">
           <div className="leaf">
             <div

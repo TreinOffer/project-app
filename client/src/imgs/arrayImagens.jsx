@@ -43,6 +43,7 @@ import deletar from "./tabelas/Remover.png";
 
 import upImage from "./SubirTreino/image_placeholder.png";
 import upVideo from "./SubirTreino/video_placeholder.jpg";
+import TreinOfferblack from "./logoTreinOfferblack.png";
 
 
 const imgs = {
@@ -88,6 +89,7 @@ const imgs = {
     ensino,
     modulos,
     suporte,
+    TreinOfferblack,
     
 
     empresa

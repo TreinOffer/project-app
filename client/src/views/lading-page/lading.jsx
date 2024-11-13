@@ -31,7 +31,7 @@ const App = () => {
         <div className="menu-area">
           <a href="/" rel="noopener noreferrer">
             <img
-              src={imgs.TreinOffer}
+              src={imgs.TreinOfferblack}
               alt="Logo do TreinOffer"
               className="logo-treino"
               style={{ width: '300px', height: 'auto' }}
@@ -58,7 +58,7 @@ const App = () => {
         <hr className="hr-separador" />
       </div>
       <div className="logo-central">
-        <img src={imgs.TreinOffer} alt="" />
+        <img src={imgs.TreinOfferblack} alt="" />
       </div>
       <div style={{ margin: '0 365px', fontSize: '25px' }}>
         <p className="texto-justificado">

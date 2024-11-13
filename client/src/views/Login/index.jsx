@@ -78,7 +78,7 @@ function Login() {
                 <div className="faixa"></div>
                 <section className="secao_logo">
                     <a href="/">
-                        <img id="logo" src={imgs.TreinOffer} alt="Logo" />
+                        <img id="logo" src={imgs.TreinOfferblack} alt="Logo" />
                     </a>
                     <div className="opcoes_selecao_texto">
                         <strong style={{ display: 'block', marginTop: '530px', fontSize: '24px', fontWeight: 'bold' }}>Eu sou:</strong>

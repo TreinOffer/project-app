@@ -5,8 +5,9 @@ import Cabecalho from '../cabecalho/cabecalho';
 function TelaModule() {        
   return (
     <>
-      <Cabecalho />
+      <Cabecalho /> 
       <div className="book-container">
+        
       <div className="book">
         <div className="book-cover front"></div>
         <div className="book-cover back"></div>

@@ -45,6 +45,8 @@ import upImage from "./SubirTreino/image_placeholder.png";
 import upVideo from "./SubirTreino/video_placeholder.jpg";
 import TreinOfferblack from "./logoTreinOfferblack.png";
 
+import Livro from "./livro.png";
+
 
 const imgs = {
     TreinOffer,
@@ -90,6 +92,7 @@ const imgs = {
     modulos,
     suporte,
     TreinOfferblack,
+    Livro,
     
 
     empresa

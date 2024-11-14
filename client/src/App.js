@@ -16,8 +16,6 @@ import Cadastro from "./views/cadastro/cadastrar";
 import PopUp from "./components/popUp/popUp";
 import Notificacao from './components/notificacao/notificacao.module';
 import Treino from './views/tela-treino/telaModule';
-import Empresa from './views/empresa/Empresa'; 
-import Funcionario from './views/funcionario/Funcionario';
 
 function App() {
   return (
@@ -25,9 +23,7 @@ function App() {
       <Routes>
         <Route path='/' element={<LadingPage />}></Route>
         <Route path='/treinos' element={<Treinamentos />}></Route>
-        <Route path='/login' element={<Login />}></Route> 
-        <Route path='/login/empresa' element={<Empresa />}></Route> 
-        <Route path='/login/funcionario' element={<Funcionario />}></Route> 
+        <Route path='/login' element={<Login />}></Route>
         <Route path='/cursoInfo' element={<CursoInfo />}></Route>
         <Route path='/fatura' element={<Fatura />}></Route>
         <Route path='/pagamento' element={<Pagamento />}></Route>

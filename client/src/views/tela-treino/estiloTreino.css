@@ -21,6 +21,7 @@
   position: relative;
   transform-style: preserve-3d;
   perspective: 1000px;
+  cursor: pointer;
 }
 
 .flipbook .leaf {
@@ -163,35 +164,6 @@ body[onload] div.leaf:nth-child(4)>div:nth-child(1) {
 
 .pagination-button:last-child {
   margin-right: 0;
-}
-
-.prev-button {
-  background: linear-gradient(45deg, #2a9d8f, #1d6f60);
-  color: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.prev-button:hover {
-  background: linear-gradient(45deg, #1d6f60, #2a9d8f);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-}
-
-.next-button {
-  background: linear-gradient(45deg, #f4a261, #e76f51);
-  color: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.next-button:hover {
-  background: linear-gradient(45deg, #e76f51, #f4a261);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-}
-
-.pagination-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(72, 161, 147, 0.5);
 }
 
 .module-button {

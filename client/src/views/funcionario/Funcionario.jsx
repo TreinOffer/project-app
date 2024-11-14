@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import './login.estilo.css';
+import './funcionario.css'; 
 import imgs from '../../imgs/arrayImagens.jsx';
 import { Link, useNavigate } from 'react-router-dom';
 
-
 const msg = {
-    login: 'Login',
+    login: 'Login - Funcionário', 
     cadastro: 'Cadastro',
     login2: 'Logue-se',
     cadastro2: 'Cadastre-se',
@@ -14,45 +13,28 @@ const msg = {
 };
 
 const logar_se = (login, senha) => {
-    try {
-       
+    try {        
     } catch (error) {
         throw new Error(`Erro na API: ${error}`);
     }
 };
 
 function Login() {
-    const [currentMsg, setCurrentMsg] = useState(msg.login);
-    const [isEmpresa, setIsEmpresa] = useState(false);
-    const navigate = useNavigate(); 
-
-    const handleOptionChange = (event) => {
-        const selectedValue = event.target.value;
-        setIsEmpresa(selectedValue === 'empresa');
-        if (selectedValue === 'empresa') {
-            setCurrentMsg('Login - Empresa');
-            navigate('/login/empresa'); 
-        } else if (selectedValue === 'funcionario') {
-            setCurrentMsg('Login - Funcionário');
-            navigate('/login/funcionario'); 
-        } else {
-            setCurrentMsg(msg.login);
-        }
-    };
-
+    const [currentMsg] = useState(msg.login);  
+    const navigate = useNavigate();   
     return (
         <>
             <main className='main_login'>
                 <section className="secao_dados">
                     <div className='login_dados'>
-                        <h1>{currentMsg}</h1>
+                        <h1>{currentMsg}</h1> 
                         <table>
                             <tbody>
                                 <tr className="campo_matricula">
-                                    <td><label htmlFor="matricula">{isEmpresa ? 'CNPJ:' : 'Matrícula:'}</label></td>
+                                    <td><label htmlFor="matricula">Matrícula:</label></td>
                                     <td>
                                         <input
-                                            placeholder={isEmpresa ? 'Inserir CNPJ' : 'Inserir ID'}
+                                            placeholder="Inserir ID"
                                             type="text"
                                             name="matricula"
                                             id="matricula"
@@ -72,7 +54,7 @@ function Login() {
                         <div className="campo_cadastrar">
                             <span>{msg.cadastro2}</span>
                             <Link to='/cadastro'>
-                                <div className='redirecter'>Eu não tenho uma conta</div>
+                                <div className='redirecter'>{msg.cadastre_se}</div>
                             </Link>
                         </div>
                     </div>
@@ -82,19 +64,6 @@ function Login() {
                     <a href="/">
                         <img id="logo" src={imgs.TreinOfferblack} alt="Logo" />
                     </a>
-                    <div className="opcoes_selecao_texto">
-                        <strong style={{ display: 'block', marginTop: '530px', fontSize: '24px', fontWeight: 'bold' }}>Eu sou:</strong>
-                    </div>
-                    <div className="opcoes_selecao">
-                        <label>
-                            <input type="radio" name="tipo" value="empresa" onChange={handleOptionChange} />
-                            Empresa
-                        </label>
-                        <label>
-                            <input type="radio" name="tipo" value="funcionario" onChange={handleOptionChange} />
-                            Funcionário
-                        </label>
-                    </div>
                 </section>
             </main>
         </>

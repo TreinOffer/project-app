@@ -57,7 +57,6 @@ function TelaModule() {
           const front = page.querySelector(".page.front");
           const back = page.querySelector(".page.back");
 
-          
           front.addEventListener("click", () => {
             this.turnPage(1);
           });
@@ -82,6 +81,15 @@ function TelaModule() {
         <button id="module1" className="module-button">Módulo 1</button>
         <button id="module2" className="module-button">Módulo 2</button>
         <button id="module3" className="module-button">Módulo 3</button>
+
+        
+        <div className="checkbox-container">
+          <label>
+            <input type="checkbox" id="acceptTerms" />
+            Eu nao sou um robo!
+          </label>
+        </div>
+
         <div className="modules-controls centered"></div>        
         <div className="flipbook centered" id="flipbook">
           <div className="leaf">

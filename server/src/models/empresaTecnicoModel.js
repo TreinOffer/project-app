@@ -1,5 +1,5 @@
 import mysql from "mysql2";
-import acesso from "../acesso.js";
+import acesso from "../config/acesso.js";
 
 class EmpresaTecnicoModel{
     constructor(){

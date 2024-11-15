@@ -1,17 +1,17 @@
 import mysql from "mysql2/promise";
-import acesso from "../acesso.js";
+import acesso from "../config/acesso.js";
 
 const conection = mysql.createPool(acesso);
 
 async function duplicateId(id) {
-    const sql = `SELECT CNPJ FROM empresa WHERE CNPJ = ? `;
+    const sql = `SELECT CNPJ FROM empresas WHERE CNPJ = ? `;
     const [rows] = await conection.query(sql, [id]);
     console.log("duplicateId: ",rows);
     return rows.length > 0
 };
 
 export async function postEmpresa(empresa) {
-    const sql = `INSERT INTO empresa (
+    const sql = `INSERT INTO empresas (
     CNPJ, Fantasia, Senha, CEP, Estado, Telefone, Endereco, Cidade
     ) VALUES(
     ?,?,?,?,?,?,?,?

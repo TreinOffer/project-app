@@ -1,4 +1,4 @@
-import acesso from "../acesso";
+import acesso from "../config/acesso.js";
 import mysql from "mysql2/promise";
 
 const conexao = mysql.createPool(acesso);

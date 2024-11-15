@@ -1,4 +1,4 @@
-import { updateEmpresa } from "../models/empresa.model";
+import { updateEmpresa } from "../models/empresa.model.js";
 
 export async function AtualizarEmpresa(req, res) {
   const empresa = req.body;

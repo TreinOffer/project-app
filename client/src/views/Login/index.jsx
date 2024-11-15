@@ -13,28 +13,47 @@ const msg = {
     logue_se: "Eu possuo uma conta"
 };
 
-const logar_se = (login, senha) => {
-    try {
-       
-    } catch (error) {
-        throw new Error(`Erro na API: ${error}`);
-    }
-};
-
 function Login() {
     const [currentMsg, setCurrentMsg] = useState(msg.login);
     const [isEmpresa, setIsEmpresa] = useState(false);
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
+
+    const [login, setLogin] = useState();
+    const [senha, setSenha] = useState();
+
+    const logar_se = async () => {
+        const dados = { login, senha };
+        console.log("seis lados: ", dados);
+        try {
+            const request = await fetch(`http://localhost:5000/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'  // Certifique-se de incluir o cabeçalho Content-Type
+                },
+                body: JSON.stringify(dados)
+            });
+            console.log("request é: ", request);
+            if (request.status === 203) {
+                alert("CNPJ ou Matrícula inexistente");
+            } else {
+                alert("JWT: ");
+                navigate('/treinos');
+            };
+
+        } catch (error) {
+            throw new Error(`Erro na API: ${error}`);
+        }
+    };
 
     const handleOptionChange = (event) => {
         const selectedValue = event.target.value;
         setIsEmpresa(selectedValue === 'empresa');
         if (selectedValue === 'empresa') {
             setCurrentMsg('Login - Empresa');
-            navigate('/login/empresa'); 
+            navigate('/login/empresa');
         } else if (selectedValue === 'funcionario') {
             setCurrentMsg('Login - Funcionário');
-            navigate('/login/funcionario'); 
+            navigate('/login/funcionario');
         } else {
             setCurrentMsg(msg.login);
         }
@@ -56,12 +75,18 @@ function Login() {
                                             type="text"
                                             name="matricula"
                                             id="matricula"
+                                            onChange={(e) => setLogin(e.target.value)}
                                         />
                                     </td>
                                 </tr>
                                 <tr className="campo_pass">
                                     <td><label htmlFor="pass">Senha:</label></td>
-                                    <td><input placeholder='Inserir senha' type="password" name="senha" id="pass" /></td>
+                                    <td><input
+                                        placeholder='Inserir senha'
+                                        type="password"
+                                        name="senha"
+                                        id="pass"
+                                        onChange={(e) => setSenha(e.target.value)} /></td>
                                 </tr>
                                 <tr>
                                     <td><input onClick={logar_se} className='campo_entrar' type="submit" value="Entrar" /></td>

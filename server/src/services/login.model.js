@@ -28,14 +28,17 @@ export async function logar_se(user, senha) {
 
   // Une tabelas mantendo campos de nome iguais
   const sql = `
-    SELECT CNPJ FROM empresas WHERE Fantasia = ? AND Senha = ?
+    SELECT CNPJ, 'empresas' AS role FROM empresas WHERE Fantasia = ? AND Senha = ?
     UNION ALL
-    SELECT Matricula FROM colaboradores WHERE Nome = ? AND Senha = ?
+    SELECT Matricula, 'colaboradores' AS role FROM colaboradores WHERE Nome = ? AND Senha = ?
     UNION ALL
-    SELECT Matricula FROM tecnicos WHERE Nome = ? AND Senha = ?`;
+    SELECT Matricula, 'tecnicos' AS role FROM tecnicos WHERE Nome = ? AND Senha = ?`;
 
   try {
     const isIdExist = await conexao.query(sql, params);
+
+    const destruturacao = isIdExist[0];
+    const { role } = destruturacao[0];
 
     // Verifica se há retorno do banco
 
@@ -45,7 +48,7 @@ export async function logar_se(user, senha) {
 
     const payload = {
       user: user,
-      cargo: "empresa",
+      cargo: role,
       exp: Math.floor(Date.now() / 1000) + 60 * 60,
     };
 

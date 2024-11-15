@@ -188,3 +188,12 @@ body[onload] div.leaf:nth-child(4)>div:nth-child(1) {
   outline: none;
   box-shadow: 0 0 0 3px rgba(72, 161, 147, 0.5);
 }
+
+.checkbox-container {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.checkbox-container input {
+  margin-right: 5px;
+}

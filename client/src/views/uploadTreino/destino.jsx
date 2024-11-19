@@ -129,7 +129,7 @@ const Destino = ({ modulos }) => {
                         case 'video':
                             return <Containers.Video isFlipped={item.isOpen} deletar={handleDelete}
                             setItens={[modulos, setItens]} index={item.index} key={index}
-                            url={item.src} isUrl={item.isUrl} />
+                            url={item.src} isUrl={item.isUrl} handleVideo={handleChanges}/>
                         case 'tit':
                             return <Containers.Tit key={index} index={item.index} mensagem={item.src} setItens={[modulos, setItens]}
                             deletar={handleDelete} updateTit={handleChanges} isEditting={item.isOpen} />

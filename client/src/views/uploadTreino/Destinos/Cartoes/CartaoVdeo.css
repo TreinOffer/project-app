@@ -1,7 +1,7 @@
 .cartaoVideo{
     .div-video{
-        width: 100% !important;
-        height: 150% !important;
+        width: 660px !important;
+        height: 295px !important;
     }    
 }
 
@@ -10,6 +10,8 @@
         position: absolute;
         right: 18px;
         top: 39%;
+        
+      
     }
 } 
     

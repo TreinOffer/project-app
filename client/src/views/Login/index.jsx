@@ -35,11 +35,15 @@ function Login() {
             console.log("request é: ", request);
             if (request.status === 203) {
                 alert("CNPJ ou Matrícula inexistente");
-            } else {
-                alert("JWT: ");
+            } else if(request.status === 202) {
+                const { token } = await request.json();
+                console.log("sim ",token);
+                localStorage.setItem('token', token);
                 navigate('/treinos');
-            };
 
+            }else{
+                alert("Erro ao conectar no server");
+            };
         } catch (error) {
             throw new Error(`Erro na API: ${error}`);
         }

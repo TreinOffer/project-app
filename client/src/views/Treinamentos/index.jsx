@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./estilo.css"
 import Cabecalho from '../cabecalho/cabecalho';
 import imgs from '../../imgs/arrayImagens';

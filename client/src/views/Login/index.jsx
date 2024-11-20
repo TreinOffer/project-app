@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './login.estilo.css';
 import imgs from '../../imgs/arrayImagens.jsx';
 import { Link, useNavigate } from 'react-router-dom';
-
+import { popUp } from "../../components/popUp/services/popUp.classes.js";
 
 const msg = {
     login: 'Login',
@@ -14,8 +14,10 @@ const msg = {
 };
 
 function Login() {
-    const [currentMsg, setCurrentMsg] = useState(msg.login);
-    const [isEmpresa, setIsEmpresa] = useState(false);
+    const [popState, setPopState] = useState(null);
+
+    // const [currentMsg, setCurrentMsg] = useState(msg.login);
+    // const [isEmpresa, setIsEmpresa] = useState(false);
     const navigate = useNavigate();
 
     const [login, setLogin] = useState();
@@ -23,61 +25,75 @@ function Login() {
 
     const logar_se = async () => {
         const dados = { login, senha };
-        console.log("seis lados: ", dados);
+        setPopState(null);
+        // console.log("seis lados: ", dados);
+
         try {
             const request = await fetch(`http://localhost:5000/login`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'  // Certifique-se de incluir o cabeçalho Content-Type
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(dados)
             });
             console.log("request é: ", request);
             if (request.status === 203) {
-                alert("CNPJ ou Matrícula inexistente");
-            } else if(request.status === 202) {
+
+                setPopState(
+                    popUp.erro("CNPJ ou Matrícula inexistente")
+                );
+
+            } else if (request.status === 202) {
                 const { token } = await request.json();
-                console.log("sim ",token);
+                console.log("sim ", token);
                 localStorage.setItem('token', token);
                 navigate('/treinos');
 
-            }else{
-                alert("Erro ao conectar no server");
+            } else {
+
+                setPopState(
+                    popUp.erro("Não foi possível processar sua solicitação")
+                );
+
             };
         } catch (error) {
-            throw new Error(`Erro na API: ${error}`);
+
+            setPopState(
+                popUp.erro("Não foi possível conectar ao servidor")
+            );
         }
     };
 
-    const handleOptionChange = (event) => {
-        const selectedValue = event.target.value;
-        setIsEmpresa(selectedValue === 'empresa');
-        if (selectedValue === 'empresa') {
-            setCurrentMsg('Login - Empresa');
-            navigate('/login/empresa');
-        } else if (selectedValue === 'funcionario') {
-            setCurrentMsg('Login - Funcionário');
-            navigate('/login/funcionario');
-        } else {
-            setCurrentMsg(msg.login);
-        }
-    };
+    // const handleOptionChange = (event) => {
+    //     const selectedValue = event.target.value;
+    //     setIsEmpresa(selectedValue === 'empresa');
+    //     if (selectedValue === 'empresa') {
+    //         setCurrentMsg('Login - Empresa');
+    //         navigate('/login/empresa');
+    //     } else if (selectedValue === 'funcionario') {
+    //         setCurrentMsg('Login - Funcionário');
+    //         navigate('/login/funcionario');
+    //     } else {
+    //         setCurrentMsg(msg.login);
+    //     }
+    // };
 
     return (
         <>
+            {true && popState}
             <main className='main_login'>
                 <section className="secao_dados">
                     <div className='login_dados'>
-                        <h1>{currentMsg}</h1>
+                        <h1>{msg.login}</h1>
                         <table>
                             <tbody>
                                 <tr className="campo_matricula">
-                                    <td><label htmlFor="matricula">{isEmpresa ? 'CNPJ:' : 'Matrícula:'}</label></td>
+                                    <td><label htmlFor="matricula">Nome:</label></td>
                                     <td>
                                         <input
-                                            placeholder={isEmpresa ? 'Inserir CNPJ' : 'Inserir ID'}
+                                            placeholder='Inserir nome'
                                             type="text"
-                                            name="matricula"
+                                            name="nome"
                                             id="matricula"
                                             onChange={(e) => setLogin(e.target.value)}
                                         />
@@ -106,24 +122,25 @@ function Login() {
                         </div>
                     </div>
                 </section>
+
                 <div className="faixa"></div>
                 <section className="secao_logo">
                     <a href="/">
                         <img id="logo" src={imgs.TreinOfferblack} alt="Logo" />
                     </a>
-                    <div className="opcoes_selecao_texto">
+                    {/* <div className="opcoes_selecao_texto">
                         <strong style={{ display: 'block', marginTop: '530px', fontSize: '24px', fontWeight: 'bold' }}>Eu sou:</strong>
                     </div>
                     <div className="opcoes_selecao">
                         <label>
-                            <input type="radio" name="tipo" value="empresa" onChange={handleOptionChange} />
+                            <input type="radio" name="tipo" value="empresa"onChange={handleOptionChange} />
                             Empresa
                         </label>
                         <label>
                             <input type="radio" name="tipo" value="funcionario" onChange={handleOptionChange} />
                             Funcionário
                         </label>
-                    </div>
+                    </div> */}
                 </section>
             </main>
         </>

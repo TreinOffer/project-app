@@ -40,15 +40,19 @@ function Login() {
             if (request.status === 203) {
 
                 setPopState(
-                    popUp.erro("CNPJ ou Matrícula inexistente")
+                    popUp.erro("Nome ou senha não conferem")
                 );
 
             } else if (request.status === 202) {
                 const { token } = await request.json();
                 console.log("sim ", token);
                 localStorage.setItem('token', token);
-                navigate('/treinos');
-
+                setPopState(
+                    popUp.aviso("Login realizado")
+                );
+                setTimeout(() => {
+                    navigate('/treinos');
+                }, 2000);
             } else {
 
                 setPopState(

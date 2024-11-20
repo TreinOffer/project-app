@@ -1,9 +1,9 @@
-import { verTipo, logar_se } from "../services/login.model.js";
+import { logar_se } from "../services/login.model.js";
 
 export async function loginJWT(req, res) {
   // const { role } = req.query;
   const { login, senha } = req.body;
-  console.log("sim: ",login, senha)
+  // console.log("sim: ",login, senha)
 
   try {
     // Define se validação de user é empresa || tec || colab

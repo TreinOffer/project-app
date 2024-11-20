@@ -6,18 +6,6 @@ const { sign } = jwt;
 
 const conexao = mysql.createPool(acesso);
 
-export async function verTipo(role) {
-  const sql = String();
-  if (role === "empresa") {
-    sql = `SELECT CNPJ FROM empresa WHERE Fantasia = ? AND Senha = ?`;
-  } else if (role === "tecnico") {
-    sql = `SELECT Matricula FROM professor WHERE Nome = ? AND Senha = ?`;
-  } else {
-    sql = `SELECT Matricula FROM aluno WHERE Nome = ? AND Senha = ?`;
-  };
-  return sql;
-};
-
 export async function logar_se(user, senha) {
 
   const params = [
@@ -28,11 +16,11 @@ export async function logar_se(user, senha) {
 
   // Une tabelas mantendo campos de nome iguais
   const sql = `
-    SELECT CNPJ, 'empresas' AS role FROM empresa WHERE Fantasia = ? AND Senha = ?
+    SELECT CNPJ, 'empresa' AS role FROM empresas WHERE Fantasia = ? AND Senha = ?
     UNION ALL
-    SELECT Matricula, 'colaboradores' AS role FROM aluno WHERE Nome = ? AND Senha = ?
+    SELECT Matricula, 'colaborador' AS role FROM colaboradores WHERE Nome = ? AND Senha = ?
     UNION ALL
-    SELECT Matricula, 'tecnicos' AS role FROM professor WHERE Nome = ? AND Senha = ?`;
+    SELECT Matricula, 'tecnico' AS role FROM tecnicos WHERE Nome = ? AND Senha = ?`;
 
   try {
     const isIdExist = await conexao.query(sql, params);

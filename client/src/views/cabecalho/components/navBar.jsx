@@ -1,13 +1,10 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import imgs from '../../../imgs/arrayImagens';
 import './estiloNav.css';
-import { RequestToken } from '../../../components/fetchToken/token';
 
 const NavBar = () => {
     const { pathname } = useLocation();
-    const role = RequestToken();
-    console.log("role: ",role);
 
     const urls = useMemo(() => ({
         inicio: "/",
@@ -24,8 +21,6 @@ const NavBar = () => {
             return acc;
         }, {});
     }, [pathname, urls]);
-
-    // useEffect(() => { RequestToken() });
 
     return (
         <section style={{ backgroundColor: "hsl(200,80%,80%)" }}>

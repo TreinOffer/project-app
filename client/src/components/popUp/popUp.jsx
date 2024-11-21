@@ -16,7 +16,7 @@ function PopUp({ condicao, mensagem }) {
         
         if (!render) {
             filhoRoot.map(filho => filho.className !== 'box-popup' ?
-                filho.style.filter = 'blur(8px)' : null)
+                filho.style.filter = 'blur(25px)' : null)
                 // console.log(filhoRoot);
                 setRender(!render);
             } else {

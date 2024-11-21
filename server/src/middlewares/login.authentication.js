@@ -10,7 +10,7 @@ export function authenticateToken(req, res, next) {
 
   verify(token, 'isTreinOffer_or_TreinOff', (err, decoded) => {
     if (err) {
-      return res.status(403).json({ message: 'Token inválido' });
+      return res.status(403).json({ message: 'Token inválido', status: 403 });
     }
 
     req.user = decoded;

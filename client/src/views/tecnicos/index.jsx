@@ -34,7 +34,7 @@ function Tecnicos() {
 
   useEffect(() => {
     handleRefresh();
-  }, []);
+  }, [tecnicos]);
 
   return (
     <>

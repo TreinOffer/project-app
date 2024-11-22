@@ -1,7 +1,7 @@
 export async function RequestToken() {
     try {
         const token = localStorage.getItem('token');
-        if (!token || typeof token !== String) {
+        if (!token) {
             return false;
         };
         //   console.log("oi: ",token);

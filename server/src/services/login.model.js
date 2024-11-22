@@ -31,7 +31,8 @@ export async function logar_se(user, senha) {
 
     console.log(isIdExist);
     const destruturacao = isIdExist[0];
-    console.log(destruturacao);
+    console.log("ola: ",destruturacao);
+    const id = destruturacao[0].CNPJ || destruturacao[0].Matricula;
     const { role } = destruturacao[0];
 
     // Verifica se há retorno do banco
@@ -39,13 +40,14 @@ export async function logar_se(user, senha) {
     const payload = {
       user: user,
       cargo: role,
+      primKey: id,
       exp: Math.floor(Date.now() / 1000) + 60 * 60,
     };
 
     //Cria token autenticacao
-    let token = sign(payload, "isTreinOffer_or_TreinOff");
-    console.log("meu token: ", token);
-    console.log("meu pyl: ", payload);
+    const token = sign(payload, "isTreinOffer_or_TreinOff");
+    // console.log("meu token: ", token);
+    // console.log("meu pyl: ", payload);
     return [202, { token: token }];
   } catch (error) {
     console.log(error);

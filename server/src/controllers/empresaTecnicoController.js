@@ -2,13 +2,13 @@ import EmpresaTecnicoModel from "../models/empresaTecnicoModel.js";
 
 class EmpresaTecnicoController{
     create(req,res){
+        const empresa = req.user.primKey;
         const nome = req.body.nome;
         const matricula = req.body.matricula;
         const senha = req.body.senha;
         const tarefa = req.body.tarefa;
-        const colab = req.body.colaboradores;
 
-        EmpresaTecnicoModel.create(nome,matricula,senha,tarefa,colab).then(
+        EmpresaTecnicoModel.create(nome,matricula,senha,tarefa,empresa).then(
             resposta => {
                 console.debug("Tecnico criado");
                 res.status(resposta[0]).json(resposta[1]);

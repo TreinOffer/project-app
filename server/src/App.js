@@ -10,10 +10,10 @@ const server = express();
 const porta = 5000;
 
 const corsOptions = {
-    origin: 'http://localhost:3000',
-    methods: 'GET,POST',
-    allowedHeaders: 'Content-Type,Authorization',
-    credentials: true,
+    origin: 'http://localhost:3000',  // Permitir apenas essa origem
+    methods: 'GET, POST, PUT, DELETE',  // Métodos permitidos
+    allowedHeaders: 'Content-Type, Authorization, authentication, X-Requested-With, Accept',  // Cabeçalhos permitidos
+    credentials: true,  // Permitir o envio de cookies/credenciais
   };
 
 server.use(express.json());
@@ -21,19 +21,19 @@ server.use(cors(corsOptions));
 
 server.post('/cadastro', criarEmpresa);
 
-server.get("/tecnicos",EmpresaTecnicoController.read);
-server.post("/tecnicos",EmpresaTecnicoController.create);
-server.put("/tecnicos/:matricula",EmpresaTecnicoController.update);
-server.delete("/tecnicos/:matricula",EmpresaTecnicoController.delete);
+server.get("/tecnicos", authenticateToken, EmpresaTecnicoController.read);
+server.post("/tecnicos", authenticateToken, EmpresaTecnicoController.create);
+server.put("/tecnicos/:matricula", EmpresaTecnicoController.update);
+server.delete("/tecnicos/:matricula", EmpresaTecnicoController.delete);
 
 server.post("/login", loginJWT);
 
 server.get('/treinos', authenticateToken
-    , async(req,res) => {
-    const token = req.user;
-    console.log("token: ",token);
-    res.status(202).send(token);
-}
+    , async (req, res) => {
+        const token = req.user;
+        console.log("token: ", token);
+        res.status(202).send(token);
+    }
 );
 
 server.put("/cadastro/:id", AtualizarEmpresa);

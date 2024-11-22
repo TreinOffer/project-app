@@ -6,9 +6,9 @@ class EmpresaTecnicoModel{
         this.conexao = mysql.createConnection(acesso);
     };
 
-    create(nome,matricula,senha,tarefa,colab){
-        let sql = `INSERT INTO tecnicos values("${nome}","${matricula}","${senha}","${tarefa}",${colab})`;
-
+    create(nome,matricula,senha,tarefa,imagem, idEmpresa){
+        let sql = `INSERT INTO Tecnicos values("${matricula}","${nome}","${tarefa}","${senha}",${idEmpresa},"${imagem}")`;
+        console.log("chave estr: ",idEmpresa);
         return new Promise((resolve, reject) => {
             this.conexao.query(sql, (erro, resposta) => {
                 if (erro) {
@@ -18,6 +18,7 @@ class EmpresaTecnicoModel{
             });
         });
     };
+
     read(){
         let sql = `SELECT * FROM tecnicos`;
 
@@ -26,12 +27,13 @@ class EmpresaTecnicoModel{
                 if (erro) {
                     reject([400,erro]);
                 }
+                console.log(resposta);
                 resolve([200,resposta]);
             });
         });
     };
     update(nome,senha,tarefa,colab,matricula){
-        let sql = `UPDATE tecnicos SET nome="${nome}",senha="${senha}",tarefa="${tarefa}",colaboradores="${colab}" where matricula = "${matricula}" `;
+        let sql = `UPDATE tecnicos SET nome="${nome}",senha="${senha}",tarefa="${tarefa}",colaboradores="${colab}" where Matricula = "${matricula}" `;
 
         return new Promise((resolve, reject) => {
             this.conexao.query(sql, (erro, resposta) => {
@@ -43,7 +45,7 @@ class EmpresaTecnicoModel{
         });
     };
     delete(matricula){
-        let sql = `DELETE FROM tecnicos where matricula= "${matricula}"`;
+        let sql = `DELETE FROM tecnicos where Matricula= "${matricula}"`;
 
         return new Promise((resolve, reject) => {
             this.conexao.query(sql, (erro, resposta) => {

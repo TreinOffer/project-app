@@ -15,7 +15,7 @@ const Cabecalho = () => {
     async function Sessao() {
         const sessao = await RequestToken();
         console.log(sessao);
-        if (sessao.status === 403) {
+        if (!sessao || sessao.status === 403) {
             setPop(
                 popUp.erro("Acesso negado")
             );

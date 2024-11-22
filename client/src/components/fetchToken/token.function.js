@@ -1,9 +1,8 @@
-
 export async function RequestToken() {
     try {
         const token = localStorage.getItem('token');
-        if (!token) {
-            throw new Error({ Token: `Token inexistente` });
+        if (!token || typeof token !== String) {
+            return false;
         };
         //   console.log("oi: ",token);
         const request = await fetch(`http://localhost:5000/treinos`, {

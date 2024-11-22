@@ -2,7 +2,7 @@ class CrudUser {
 
     async create(user) {
         try {
-            const resposta = await fetch('http://localhost:5001/tecnicos', {
+            const resposta = await fetch('http://localhost:5000/tecnicos', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -21,7 +21,7 @@ class CrudUser {
 
     async read() {
         try {
-            const resposta = await fetch('http://localhost:5001/tecnicos', {
+            const resposta = await fetch('http://localhost:5000/tecnicos', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -40,7 +40,7 @@ class CrudUser {
     async update( idTecnico, user ) {
         try {
             console.log(idTecnico)
-            const response = await fetch(`http://localhost:5001/tecnicos/${idTecnico}`, {
+            const response = await fetch(`http://localhost:5000/tecnicos/${idTecnico}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ class CrudUser {
 
     async delete( idTecnico ) {
         try {
-            const response = await fetch(`http://localhost:5001/tecnicos/${idTecnico}`, {
+            const response = await fetch(`http://localhost:5000/tecnicos/${idTecnico}`, {
                 method: 'DELETE',
                 headers:{
                     'Content-Type':'application/json'

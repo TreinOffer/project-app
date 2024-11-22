@@ -15,7 +15,7 @@ function NewFunc({ atualizaPag, click }) {
     Imagem: "",
     Nome: "",
     Especializacao: "",
-    Colaboradores: "0",
+    // Colaboradores: "0",
     Senha: ""
   });
 

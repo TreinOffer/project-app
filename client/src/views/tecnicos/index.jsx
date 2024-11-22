@@ -34,7 +34,7 @@ function Tecnicos() {
 
   useEffect(() => {
     handleRefresh();
-  }, [tecnicos]);
+  }, []);
 
   return (
     <>
@@ -69,13 +69,15 @@ function Tecnicos() {
           <h4 style={{ width: `${g}%` }}>
             Especialização
           </h4>
-          <h4 style={{ width: `${p}%`, minWidth: 121 + 'px' }}>
-            Colaboradores
-          </h4>
+          {
+            // <h4 style={{ width: `${p}%`, minWidth: 121 + 'px' }}>
+            //   Colaboradores
+            // </h4>
+          }
           <h4 style={{ width: `${m}%` }}>
             Senha
           </h4>
-          <h4 style={{ width: `${m}%` }}>
+          <h4 style={{ width: `${g}%` }}>
             Matricula
           </h4>
           <h4 style={{ width: `${p}%` }}>
@@ -86,14 +88,14 @@ function Tecnicos() {
         <section className="funcs">
           {click && (<NewFunc atualizaPag={handleRefresh} click={setClick} />)}
           {
-            tecnicos.map((tecnico, chave) =>
-            (<Tecnico key={chave} id={ tecnico.id }
+            tecnicos?.map((tecnico, chave) =>
+            (<Tecnico key={chave} id={tecnico.id}
               tecFt={tecnico.Imagem} tecNome={tecnico.Nome}
               tarefa={tecnico.Especializacao} numColab={tecnico.Colaboradores}
               senha={tecnico.Senha} matricula={tecnico.Matricula}
-              handleDelete={ handleDelete } atualizaPag={ handleRefresh }
+              handleDelete={handleDelete} atualizaPag={handleRefresh}
             />)
-          )}
+            )}
         </section>
       </section>
     </>

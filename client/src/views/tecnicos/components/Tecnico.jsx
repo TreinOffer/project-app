@@ -122,11 +122,11 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
                 )}
             </div>
 
-            <div className="sec_func" style={{ width: `${p}%`, justifyContent: 'center' }}>
+            {/* <div className="sec_func" style={{ width: `${p}%`, justifyContent: 'center' }}>
                 <span className='letraQuebra box_colab' style={{ cursor: "pointer", backgroundColor: 'hsl(200,15%,70%)' }}>
                     {numColab}
                 </span>
-            </div>
+            </div> */}
 
             <div className='sec_func' style={{ width: `${m}%` }}>
                 {isEditing ? (
@@ -142,7 +142,7 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
                 )}
             </div>
 
-            <div className='sec_func' style={{ width: `${m}%`, display: 'flex', alignItems: 'center' }}>
+            <div className='sec_func' style={{ width: `${g}%`, display: 'flex', alignItems: 'center' }}>
                 {isEditing ? (
                     <input
                         type="text"

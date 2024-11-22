@@ -1,6 +1,7 @@
 import express from "express";
 import EmpresaTecnicoController from "./controllers/empresaTecnicoController.js";
-import { readPontuacao, createPontuacao } from './controllers/empresaGraficoController.js';
+import { mostrarPontuacoes } from './controllers/empresaGraficoController.js';
+import { criarPontuacao, getPontucacao } from './controllers/colaborador.treinoController.js';
 
 const server = express();
 const porta = 3000;
@@ -13,10 +14,13 @@ server.put("/tecnicos/:matricula", EmpresaTecnicoController.update);
 server.delete("/tecnicos/:matricula", EmpresaTecnicoController.delete);
 
 
-server.get('/pontuacoes', readPontuacao);
-server.get('/pontuacoes', createPontuacao);
+server.get('/pontuacoes', mostrarPontuacoes);
 // server.put('/pontuacoes', EmpresaGraficoController.update);
 // server.delete('/pontuacoes', EmpresaGraficoController.delete);
+
+server.post('/pontuacoes', criarPontuacao);
+
+server.get('/pontuacoes', getPontucacao);
 
 
 server.listen(porta, () => {

@@ -16,6 +16,7 @@ import Cadastro from "./views/cadastro/cadastrar";
 import PopUp from "./components/popUp/popUp";
 import Notificacao from './components/notificacao/notificacao.module';
 import Treino from './views/tela-treino/telaModule';
+import Confirmacao from './components/confirmar/confirmacao';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path='/popup' element={<PopUp />}></Route>
         <Route path='/notificacao' element={<Notificacao />}></Route>
         <Route path='/treino' element={<Treino />}></Route>
+        <Route path='/confirmar' element={<Confirmacao />}></Route>
       </Routes>
     </BrowserRouter>
   );

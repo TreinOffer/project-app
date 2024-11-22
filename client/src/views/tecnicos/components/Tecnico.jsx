@@ -14,12 +14,12 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
     const [isEditing, setIsEditing] = useState(false);
-
     const [editedNome, setEditedNome] = useState(tecNome);
     const [editedTarefa, setEditedTarefa] = useState(tarefa);
     const [editedSenha, setEditedSenha] = useState(senha);
     const [editedMatricula, setEditedMatricula] = useState(matricula);
     const [editedImage, setEditedImage] = useState(tecFt);
+    const [showPopUp, setShowPopUp] = useState(false); 
 
     const handleEdit = async () => {
         await CRUD.update(id, {
@@ -37,6 +37,19 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
+    };
+
+    const confirmar = () => {
+        setShowPopUp(true); 
+    };
+
+    const handleNao = () => {
+        setShowPopUp(false); 
+    };
+
+    const handleSim = () => {
+        handleDelete(id); 
+        setShowPopUp(false); 
     };
 
     const handleCancel = () => {
@@ -71,6 +84,22 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
 
     return (
         <section className="func">
+            {/* Renderiza o pop-up apenas se showPopUp for true */}
+            {showPopUp && (
+                <div className="box-confir">
+                    <div className="confir-container">
+                        <img className="logo" src={imgs.TreinOfferblack} alt="TreinOffer" />
+                        <div className="popup-body">
+                            <h2>Deseja continuar?</h2>
+                        </div>
+                        <div className="popup-buttons">
+                            <button onClick={handleSim} className="btn-sim">Sim</button>
+                            <button onClick={handleNao} className="btn-nao">Não</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             <div className='sec_func info_pessoal' style={{ width: `${g}%`, display: 'flex', alignItems: 'center', position: 'relative' }}>
                 <div style={{ position: 'relative' }}>
                     <img className='foto_func' src={editedImage} alt=""/>
@@ -122,12 +151,6 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
                 )}
             </div>
 
-            {/* <div className="sec_func" style={{ width: `${p}%`, justifyContent: 'center' }}>
-                <span className='letraQuebra box_colab' style={{ cursor: "pointer", backgroundColor: 'hsl(200,15%,70%)' }}>
-                    {numColab}
-                </span>
-            </div> */}
-
             <div className='sec_func' style={{ width: `${m}%` }}>
                 {isEditing ? (
                     <input
@@ -176,7 +199,7 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
                                     Editar
                                 </button>
                             )}
-                            <button className="dropdown-item" onClick={() => handleDelete(id)}>Remover</button>
+                            <button className="dropdown-item" onClick={confirmar}>Inativar</button>
                         </div>
                     )}
                 </div>

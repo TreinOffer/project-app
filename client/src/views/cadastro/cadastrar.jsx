@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './estilo.cadastro.css';
 import imgs from '../../imgs/arrayImagens.jsx';
 import { Link } from 'react-router-dom';
+import { popUp } from "../../components/popUp/services/popUp.classes.js";
 
 const msg = {
     cadastro: 'Cadastro',
@@ -29,12 +30,24 @@ function Cadastro() {
             });
 
             if (consulta.status === 409) {
-                alert(`CNPJ já existe`);
+                setPopState(
+                    popUp.erro("CNPJ já existe")
+                );
+            } else if (consulta.status === 400) {
+                setPopState(
+                    popUp.erro("Erro nos dados fornecidos. Verifique os campos e tente novamente.")
+                );
+            } else {
+                setPopState(
+                    popUp.aviso("Cadastro efetuado com sucesso!")
+                );
             }
 
             console.log(consulta);
         } catch (error) {
-            alert(`Erro ao cadastrar empresa: ${error}`);
+            setPopState(
+                popUp.erro("Erro ao cadastrar empresa: " + error)
+            );
         }
     };
 
@@ -71,7 +84,33 @@ function Cadastro() {
                                         <select name="estado" id="estado" onChange={onChange('Estado')}>
                                             <option value="">Selecionar Estado</option>
                                             <option value="SP">São Paulo</option>
-                                            {/* ...outros estados */}
+                                            <option value="AC">Acre</option>
+                                            <option value="AL">Alagoas</option>
+                                            <option value="AP">Amapá</option>
+                                            <option value="AM">Amazonas</option>
+                                            <option value="BA">Bahia</option>
+                                            <option value="CE">Ceará</option>
+                                            <option value="DF">Distrito Federal</option>
+                                            <option value="ES">Espírito Santo</option>
+                                            <option value="GO">Goiás</option>
+                                            <option value="MA">Maranhão</option>
+                                            <option value="MT">Mato Grosso</option>
+                                            <option value="MS">Mato Grosso do Sul</option>
+                                            <option value="MG">Minas Gerais</option>
+                                            <option value="PA">Pará</option>
+                                            <option value="PB">Paraíba</option>
+                                            <option value="PR">Paraná</option>
+                                            <option value="PE">Pernambuco</option>
+                                            <option value="PI">Piauí</option>
+                                            <option value="RJ">Rio de Janeiro</option>
+                                            <option value="RN">Rio Grande do Norte</option>
+                                            <option value="RS">Rio Grande do Sul</option>
+                                            <option value="RO">Rondônia</option>
+                                            <option value="RR">Roraima</option>
+                                            <option value="SC">Santa Catarina</option>
+                                            <option value="SP">São Paulo</option>
+                                            <option value="SE">Sergipe</option>
+                                            <option value="TO">Tocantins</option>
                                         </select>
                                     </td>
                                 </tr>

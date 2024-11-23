@@ -16,6 +16,8 @@ function Cadastro() {
         CEP: '', Estado: '', Cidade: '', Endereco: ''
     });
 
+    const [popState, setPopState] = useState(null);  
+
     const onChange = (tipo) => (e) => {
         setEmpresa(prev => ({ ...prev, [tipo]: e.target.value }));
     };
@@ -30,24 +32,16 @@ function Cadastro() {
             });
 
             if (consulta.status === 409) {
-                setPopState(
-                    popUp.erro("CNPJ já existe")
-                );
+                setPopState(popUp.erro("CNPJ já existe"));
             } else if (consulta.status === 400) {
-                setPopState(
-                    popUp.erro("Erro nos dados fornecidos. Verifique os campos e tente novamente.")
-                );
+                setPopState(popUp.erro("Erro nos dados fornecidos. Verifique os campos e tente novamente."));
             } else {
-                setPopState(
-                    popUp.aviso("Cadastro efetuado com sucesso!")
-                );
+                setPopState(popUp.aviso("Cadastro efetuado com sucesso!"));
             }
 
             console.log(consulta);
         } catch (error) {
-            setPopState(
-                popUp.erro("Erro ao cadastrar empresa: " + error)
-            );
+            setPopState(popUp.erro("Erro ao cadastrar empresa: " + error));
         }
     };
 
@@ -83,7 +77,6 @@ function Cadastro() {
                                     <td>
                                         <select name="estado" id="estado" onChange={onChange('Estado')}>
                                             <option value="">Selecionar Estado</option>
-                                            <option value="SP">São Paulo</option>
                                             <option value="AC">Acre</option>
                                             <option value="AL">Alagoas</option>
                                             <option value="AP">Amapá</option>
@@ -141,6 +134,13 @@ function Cadastro() {
                     </div>
                 </div>
             </section>
+
+            
+            {popState && (
+                <div className={`pop-up ${popState.type}`}>
+                    {popState.message}
+                </div>
+            )}
 
             <div className="faixa"></div>
             <section className="secao_logo">

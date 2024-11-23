@@ -134,10 +134,23 @@ function Cadastro() {
                     </div>
                 </div>
             </section>
-
             
+                      
             {popState && (
-                <div className={`pop-up ${popState.type}`}>
+                <div style={{
+                    position: 'fixed',
+                    top: '20px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    padding: '10px 20px',
+                    borderRadius: '5px',
+                    color: 'white',
+                    fontWeight: 'bold',
+                    zIndex: 1000,
+                    backgroundColor: popState.type === 'error' ? 'red' : 'orange',
+                    display: 'flex',
+                    alignItems: 'center'
+                }}>
                     {popState.message}
                 </div>
             )}

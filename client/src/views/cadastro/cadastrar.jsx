@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './estilo.cadastro.css';
 import imgs from '../../imgs/arrayImagens.jsx';
 import { Link } from 'react-router-dom';
@@ -44,6 +44,17 @@ function Cadastro() {
             setPopState(popUp.erro("Erro ao cadastrar empresa: " + error));
         }
     };
+    
+    useEffect(() => {
+        if (popState) {
+            const timer = setTimeout(() => {
+                setPopState(null);
+            }, 5000); 
+
+           
+            return () => clearTimeout(timer);
+        }
+    }, [popState]);
 
     return (
         <main className='main_login'>
@@ -134,8 +145,7 @@ function Cadastro() {
                     </div>
                 </div>
             </section>
-            
-                      
+
             {popState && (
                 <div style={{
                     position: 'fixed',

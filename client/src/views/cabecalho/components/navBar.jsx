@@ -1,31 +1,52 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import imgs from '../../../imgs/arrayImagens';
 import './estiloNav.css';
+import { corCabecalho, rotasCabecalho } from './functions/cabecalho.nav';
 
-const NavBar = () => {
+const NavBar = ({ cargo }) => {
+    const [corNav, setCorNav] = useState(String('gray'));
+    const [rotas, setRotas] = useState([]);
     const { pathname } = useLocation();
 
-    const urls = useMemo(() => ({
-        inicio: "/",
-        treinos: "/treinos",
-        uparTreino: "/uploadTreino",
-        tecnicos: "/tecnicos",
-        colaboradores: "/colaboradores",
-        fatura: "/fatura"
-    }), []);
+    async function renderIt() {
+        const routes = await rotasCabecalho(cargo);
+        setRotas(routes);
+        console.log("rotas: ",rotas);
+
+        const color = await corCabecalho(cargo);
+        setCorNav(color);
+        console.log(corNav);
+    };
+
+    useEffect(() => {
+        renderIt();
+    }, [cargo]);
 
     const activeStyles = useMemo(() => {
-        return Object.keys(urls).reduce((acc, key) => {
-            acc[key] = pathname === urls[key] ? { borderBottom: '2px solid black' } : {};
+        return rotas?.reduce((acc, item) => {
+            const key = item.tit ? item.tit.toLowerCase() : '';  // Usa o título da rota como chave
+            if (key) {
+                acc[key] = pathname === item.rota ? { borderBottom: '2px solid black' } : {};  // Define o estilo ativo se a rota corresponder ao pathname
+            }
             return acc;
         }, {});
-    }, [pathname, urls]);
+    }, [pathname, rotas]);  // Só recalcula se o pathname ou rotas mudarem
+    
 
     return (
-        <section style={{ backgroundColor: "hsl(200,80%,80%)" }}>
+        <section style={{ backgroundColor: corNav }}>
             <ul className="menu">
-                <Link className='routes_cabecalho' to={urls.inicio}>
+                {
+                    rotas?.map((rota, chave) => (
+                        <Link key={chave} className='routes_cabecalho' to={rota.rota}>
+                            <li className="navegacao" style={activeStyles[rota.tit.toLowerCase()]}>
+                                <img src={rota.imagem} alt="" />
+                                <span>{rota.tit}</span>
+                            </li>
+                        </Link>
+                    ))
+                }
+                {/* <Link className='routes_cabecalho' to={activeStyles.inicio}>
                     <li className="navegacao" style={activeStyles.inicio}>
                         <img src={imgs.home} alt="" />
                         <span>Início</span>
@@ -37,9 +58,10 @@ const NavBar = () => {
                         <img src={imgs.livro} alt="" />
                         <span>Meus treinos</span>
                     </li>
-                </Link>
+                </Link> */}
 
-                <Link className='routes_cabecalho' to={urls.uparTreino}>
+
+                {/* <Link className='routes_cabecalho' to={urls.uparTreino}>
                     <li className="navegacao" style={activeStyles.uparTreino}>
                         <img src={imgs.upload} alt="" />
                         <span>Enviar treinamento</span>
@@ -65,7 +87,7 @@ const NavBar = () => {
                         <img src={imgs.financas} alt="" />
                         <span>Fatura</span>
                     </li>
-                </Link>
+                </Link> */}
             </ul>
         </section>
     );

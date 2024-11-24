@@ -25,7 +25,7 @@ import crescimento from "./lading-page/crescimento.png"
 import ensino from "./lading-page/ensino.png"
 import modulos from "./lading-page/modulos.png"
 import suporte from "./lading-page/suporte.png"
-
+import monitorar from "./monitorar.png";
 
 import treino1 from "./treinos/treino_capa1.png";
 import treino2 from "./treinos/treino_capa2.png";
@@ -64,6 +64,7 @@ const imgs = {
     sair,
     git,
     financas,
+    monitorar,
     opcoes,
     addFunc,
     removFunc,

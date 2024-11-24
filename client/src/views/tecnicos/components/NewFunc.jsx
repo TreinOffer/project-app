@@ -15,7 +15,6 @@ function NewFunc({ atualizaPag, click }) {
     Imagem: "",
     Nome: "",
     Especializacao: "",
-    // Colaboradores: "0",
     Senha: ""
   });
 
@@ -72,15 +71,15 @@ function NewFunc({ atualizaPag, click }) {
           <input onChange={onChange('Especializacao')} type="text" name="espec" id="tarefa" />
         </div>
 
-        <div className="sec_func" style={{ width: `${p}%` }}>
+        {/* <div className="sec_func" style={{ width: `${p}%` }}>
           <input readOnly value="0" name="colab" id="colaboradores" />
-        </div>
+        </div> */}
 
         <div className='sec_func' style={{ width: `${m}%` }}>
           <input required onChange={onChange('Senha')} type="password" name="senha" id="senha" />
         </div>
 
-        <div className='sec_func' style={{ width: `${m}%` }}>
+        <div className='sec_func' style={{ width: `${g}%` }}>
           <input onChange={onChange('Matricula')} required type="text" name="matricula" id="matricula" />
         </div>
 

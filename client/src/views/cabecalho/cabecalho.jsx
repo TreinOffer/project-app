@@ -11,6 +11,7 @@ const Cabecalho = () => {
     const [expanse, setExpanse] = useState(false);
     const navegar = useNavigate();
     const [pop, setPop] = useState(null);
+    const [role, setRole] = useState(null);
 
     async function Sessao() {
         const sessao = await RequestToken();
@@ -19,22 +20,39 @@ const Cabecalho = () => {
             setPop(
                 popUp.erro("Acesso negado")
             );
-            setTimeout(() => {
+            return setTimeout(() => {
                 navegar('/');
             }, 1500);
         };
+        const cargo = sessao.cargo;
+        console.log("SESSAO::: ",cargo);
+        return cargo;
     };
 
+    
     useEffect(() => {
-        Sessao();
+        const getRole = async() => {
+            const cargo = await Sessao();
+            // console.log("SESSAO DEPOIS::: ",cargo);
+            setRole(cargo);
+            // console.log("SECTION STATE::: ",role)
+        };
+        getRole();
+        // console.log("getRole: ",getRole);
+        // console.log("SECTION STATE DEPOIS::: ",role);
     }, []);
+    
+    if (role === null) {
+        return <div>Loading...</div>;
+    }
 
+    // O problema é que aqui está retornando um valor null
     return (
         <>
             {true && pop}
             <MenuUser handleClick={() => setExpanse(!expanse)} handleAside={expanse} />
             <Header handleSecEsq={() => setExpanse(!expanse)} />
-            <NavBar />
+            <NavBar cargo={ role }/>
         </>
     );
 };

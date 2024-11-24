@@ -3,6 +3,7 @@ import './estilo.css';
 import Cabecalho from '../cabecalho/cabecalho.jsx';
 import imgs from '../../imgs/arrayImagens.jsx';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import { Link } from 'react-router-dom';
 
 function Fatura() {
   return (
@@ -20,7 +21,7 @@ function Fatura() {
               <div className="hr"></div>
               <div className="invoice-head-middle">
                 <div className="invoice-head-middle-left text-start">
-                  <p><span className="text-bold">Data</span>: 05/07/2025</p>
+                  <p><span className="text-bold">Data</span>: 05/12/2024</p>
                 </div>
                 <div className="invoice-head-middle-right text-end"></div>
               </div>
@@ -99,7 +100,9 @@ function Fatura() {
                     <i className="fa-solid fa-credit-card"></i> {/* Ícone de Cartão de Crédito */}
                   </span>
                   <span>
-                    <a href="./pagamentos.html">Pagar</a>
+                    <Link to='/pagamento'>
+                      <a href="">Pagar</a>
+                    </Link>
                   </span>
                 </button>
               </div>

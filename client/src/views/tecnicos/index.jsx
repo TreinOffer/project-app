@@ -24,7 +24,7 @@ function Tecnicos() {
 
   const handleDelete = async (id) => {
     await CRUD.delete(id);
-    setTecnicos(tecnicos.filter(tecnico => tecnico.id !== id))
+    // setTecnicos(tecnicos.filter(tecnico => tecnico.id !== id))
   };
 
   const handleRefresh = async () => {

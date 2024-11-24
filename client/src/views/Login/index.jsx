@@ -23,7 +23,7 @@ function Login() {
     const [login, setLogin] = useState();
     const [senha, setSenha] = useState();
 
-    const logar_se = async () => {
+    async function logar_se(){
         const dados = { login, senha };
         setPopState(null);
         // console.log("seis lados: ", dados);

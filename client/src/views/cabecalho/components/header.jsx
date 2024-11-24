@@ -37,7 +37,9 @@ const Header = ({ handleSecEsq }) => {
                     </Link>
 
                     <div className="gitDiv">
-                        <img className="uploadTreino" src={imgs.git} alt="Git" />
+                        <img className="uploadTreino" src={imgs.git} alt="Git"
+                        onClick={() => {window.location.href = 'https://github.com/TreinOffer'}}
+                        />
                     </div>
                 </div>
 

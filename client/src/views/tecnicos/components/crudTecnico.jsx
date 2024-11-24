@@ -1,11 +1,15 @@
 class CrudUser {
+    static get token () {
+        return localStorage.getItem('token');
+    };
 
     async create(user) {
         try {
             const resposta = await fetch('http://localhost:5000/tecnicos', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${CrudUser.token}`
                 },
                 body: JSON.stringify(user)
             });
@@ -24,13 +28,15 @@ class CrudUser {
             const resposta = await fetch('http://localhost:5000/tecnicos', {
                 method: 'GET',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${CrudUser.token}`
                 }
             });
 
             if (!resposta) {
                 throw new Error("Erro ao buscar tecnicos");
-            }
+            };
+
             return await resposta.json();
         } catch (error) {
             console.log("erro: ", error);
@@ -44,6 +50,7 @@ class CrudUser {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${CrudUser.token}`
                 },
                 body: JSON.stringify(user)
             });

@@ -32,6 +32,7 @@ export async function logar_se(user, senha) {
     console.log(isIdExist);
     const destruturacao = isIdExist[0];
     console.log(destruturacao);
+    const id = destruturacao[0].CNPJ || destruturacao.Matricula;
     const { role } = destruturacao[0];
 
     // Verifica se há retorno do banco
@@ -39,6 +40,7 @@ export async function logar_se(user, senha) {
     const payload = {
       user: user,
       cargo: role,
+      primKey: id,
       exp: Math.floor(Date.now() / 1000) + 60 * 60,
     };
 

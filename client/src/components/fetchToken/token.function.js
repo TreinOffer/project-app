@@ -1,8 +1,6 @@
 export async function RequestToken() {
     try {
         const token = localStorage.getItem('token');
-        console.log("RequestToken: ",token);
-        
         if (!token) {
             return false;
         };

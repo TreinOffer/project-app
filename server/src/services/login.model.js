@@ -41,13 +41,14 @@ export async function logar_se(user, senha) {
       user: user,
       cargo: role,
       primKey: id,
+      primKey: id,
       exp: Math.floor(Date.now() / 1000) + 60 * 60,
     };
 
     //Cria token autenticacao
-    let token = sign(payload, "isTreinOffer_or_TreinOff");
-    console.log("meu token: ", token);
-    console.log("meu pyl: ", payload);
+    const token = sign(payload, "isTreinOffer_or_TreinOff");
+    // console.log("meu token: ", token);
+    // console.log("meu pyl: ", payload);
     return [202, { token: token }];
   } catch (error) {
     console.log(error);

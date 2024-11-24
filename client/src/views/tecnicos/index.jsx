@@ -38,7 +38,7 @@ function Tecnicos() {
 
   return (
     <>
-      <Cabecalho />
+      <Cabecalho /> 
 
       <section className='tab_func'>
 

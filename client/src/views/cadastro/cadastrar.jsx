@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './estilo.cadastro.css';
 import imgs from '../../imgs/arrayImagens.jsx';
 import { Link } from 'react-router-dom';
+import { popUp } from "../../components/popUp/services/popUp.classes.js";
 
 const msg = {
     cadastro: 'Cadastro',
@@ -14,6 +15,8 @@ function Cadastro() {
         CNPJ: '', Fantasia: '', Senha: '', Telefone: '',
         CEP: '', Estado: '', Cidade: '', Endereco: ''
     });
+
+    const [popState, setPopState] = useState(null);  
 
     const onChange = (tipo) => (e) => {
         setEmpresa(prev => ({ ...prev, [tipo]: e.target.value }));
@@ -29,14 +32,29 @@ function Cadastro() {
             });
 
             if (consulta.status === 409) {
-                alert(`CNPJ já existe`);
+                setPopState(popUp.erro("CNPJ já existe"));
+            } else if (consulta.status === 400) {
+                setPopState(popUp.erro("Erro nos dados fornecidos. Verifique os campos e tente novamente."));
+            } else {
+                setPopState(popUp.aviso("Cadastro efetuado com sucesso!"));
             }
 
             console.log(consulta);
         } catch (error) {
-            alert(`Erro ao cadastrar empresa: ${error}`);
+            setPopState(popUp.erro("Erro ao cadastrar empresa: " + error));
         }
     };
+    
+    useEffect(() => {
+        if (popState) {
+            const timer = setTimeout(() => {
+                setPopState(null);
+            }, 5000); 
+
+           
+            return () => clearTimeout(timer);
+        }
+    }, [popState]);
 
     return (
         <main className='main_login'>
@@ -70,8 +88,33 @@ function Cadastro() {
                                     <td>
                                         <select name="estado" id="estado" onChange={onChange('Estado')}>
                                             <option value="">Selecionar Estado</option>
+                                            <option value="AC">Acre</option>
+                                            <option value="AL">Alagoas</option>
+                                            <option value="AP">Amapá</option>
+                                            <option value="AM">Amazonas</option>
+                                            <option value="BA">Bahia</option>
+                                            <option value="CE">Ceará</option>
+                                            <option value="DF">Distrito Federal</option>
+                                            <option value="ES">Espírito Santo</option>
+                                            <option value="GO">Goiás</option>
+                                            <option value="MA">Maranhão</option>
+                                            <option value="MT">Mato Grosso</option>
+                                            <option value="MS">Mato Grosso do Sul</option>
+                                            <option value="MG">Minas Gerais</option>
+                                            <option value="PA">Pará</option>
+                                            <option value="PB">Paraíba</option>
+                                            <option value="PR">Paraná</option>
+                                            <option value="PE">Pernambuco</option>
+                                            <option value="PI">Piauí</option>
+                                            <option value="RJ">Rio de Janeiro</option>
+                                            <option value="RN">Rio Grande do Norte</option>
+                                            <option value="RS">Rio Grande do Sul</option>
+                                            <option value="RO">Rondônia</option>
+                                            <option value="RR">Roraima</option>
+                                            <option value="SC">Santa Catarina</option>
                                             <option value="SP">São Paulo</option>
-                                            {/* ...outros estados */}
+                                            <option value="SE">Sergipe</option>
+                                            <option value="TO">Tocantins</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -102,6 +145,25 @@ function Cadastro() {
                     </div>
                 </div>
             </section>
+
+            {popState && (
+                <div style={{
+                    position: 'fixed',
+                    top: '20px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    padding: '10px 20px',
+                    borderRadius: '5px',
+                    color: 'white',
+                    fontWeight: 'bold',
+                    zIndex: 1000,
+                    backgroundColor: popState.type === 'error' ? 'red' : 'orange',
+                    display: 'flex',
+                    alignItems: 'center'
+                }}>
+                    {popState.message}
+                </div>
+            )}
 
             <div className="faixa"></div>
             <section className="secao_logo">

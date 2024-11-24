@@ -4,6 +4,8 @@ class CrudUser {
     };
 
     async create(user) {
+        const token = localStorage.getItem('token');
+        console.log(token);
         try {
             const resposta = await fetch('http://localhost:5000/tecnicos', {
                 method: 'POST',
@@ -17,6 +19,9 @@ class CrudUser {
             if (!resposta.ok) {
                 throw new Error(`Response diferente de 200: ${await resposta.text()}`);
             };
+
+            const json = resposta.json();
+            return json;
             
         } catch (error) {
             console.log("erro na api: ", error);
@@ -24,6 +29,8 @@ class CrudUser {
     };
 
     async read() {
+        const token = localStorage.getItem('token');
+        console.log(token);
         try {
             const resposta = await fetch('http://localhost:5000/tecnicos', {
                 method: 'GET',

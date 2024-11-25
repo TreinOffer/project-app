@@ -4,8 +4,6 @@ class CrudUser {
     };
 
     async create(user) {
-        const token = localStorage.getItem('token');
-        console.log(token);
         try {
             const resposta = await fetch('http://localhost:5000/tecnicos', {
                 method: 'POST',
@@ -29,8 +27,6 @@ class CrudUser {
     };
 
     async read() {
-        const token = localStorage.getItem('token');
-        console.log(token);
         try {
             const resposta = await fetch('http://localhost:5000/tecnicos', {
                 method: 'GET',
@@ -41,10 +37,11 @@ class CrudUser {
             });
 
             if (!resposta) {
-                throw new Error("Erro ao buscar tecnicos");
+                console.log("Erro ao buscar tecnicos");
             };
 
             return await resposta.json();
+
         } catch (error) {
             console.log("erro: ", error);
         }
@@ -65,9 +62,6 @@ class CrudUser {
             if (!response.ok) {
                 throw new Error(`Response diferente de 200 ${ await response.text() }`);
             };
-
-            const responseData = await response.json();
-            console.log(responseData);
             
         } catch (error) {
             console.error('Erro na api put:', error);
@@ -76,10 +70,11 @@ class CrudUser {
 
     async delete( idTecnico ) {
         try {
-            const response = await fetch(`http://localhost:5000/tecnicos/${idTecnico}`, {
-                method: 'DELETE',
+            const response = await fetch(`http://localhost:5000/tecnicos/${idTecnico}/inativar`, {
+                method: 'PUT',
                 headers:{
-                    'Content-Type':'application/json'
+                    'Content-Type':'application/json',
+                    'Authorization': `Bearer ${CrudUser.token}`
                 }
             });
 

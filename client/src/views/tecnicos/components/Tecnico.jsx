@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import imgs from "../../../imgs/arrayImagens";
-import CoresRGB from "../../../components/coresRGB";
 import CrudUser from './crudTecnico';
 import './Tecnico.css';
 
@@ -22,7 +21,7 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
     const [showPopUp, setShowPopUp] = useState(false); 
 
     const handleEdit = async () => {
-        await CRUD.update(id, {
+        await CRUD.update(matricula, {
             Matricula: editedMatricula,
             Imagem: editedImage,
             Nome: editedNome,
@@ -40,7 +39,8 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
     };
 
     const confirmar = () => {
-        setShowPopUp(true); 
+        setShowPopUp(true);
+
     };
 
     const handleNao = () => {
@@ -48,7 +48,7 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
     };
 
     const handleSim = () => {
-        handleDelete(id); 
+        handleDelete(matricula); 
         setShowPopUp(false); 
     };
 
@@ -159,6 +159,7 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
                         onChange={(e) => setEditedSenha(e.target.value)}
                         required
                         className="custom-input"
+                        disabled
                     />
                 ) : (
                     <span className='letraQuebra'>{senha}</span>
@@ -174,6 +175,7 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
                         required
                         className="custom-input"
                         style={{ marginRight: '10px' }}
+                        disabled
                     />
                 ) : (
                     <span className='letraQuebra'>{matricula}</span>

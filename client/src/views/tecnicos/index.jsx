@@ -92,7 +92,7 @@ function Tecnicos() {
             (<Tecnico key={chave} id={tecnico.id}
               tecFt={tecnico.Imagem} tecNome={tecnico.Nome}
               tarefa={tecnico.Especializacao} numColab={tecnico.Colaboradores}
-              senha={tecnico.Senha} matricula={tecnico.Matricula}
+              senha={tecnico.Senha} matricula={tecnico.Matricula} disabled={tecnico.disabled}
               handleDelete={handleDelete} atualizaPag={handleRefresh}
             />)
             )}

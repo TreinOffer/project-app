@@ -3,7 +3,6 @@ const properties = [
     "Nome",
     "Especializacao",
     "Senha",
-    "idEmpresa",
     "Imagem"
 ];
 

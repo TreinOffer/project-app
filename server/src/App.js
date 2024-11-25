@@ -5,7 +5,7 @@ import { criarEmpresa } from "./controllers/empresa.controller.js";
 
 import { loginJWT } from "./controllers/login.controller.js";
 import { authenticateToken } from "./middlewares/login.authentication.js";
-import { criarTecnico, listarTecnicos } from "./controllers/tecnico.controller.js";
+import { atualizarTecnico, criarTecnico, inativarTecnico, listarTecnicos } from "./controllers/tecnico.controller.js";
 
 const server = express();
 const porta = 5000;
@@ -33,6 +33,8 @@ server.get('/treinos', authenticateToken
 
 server.get("/tecnicos", authenticateToken, listarTecnicos)
 server.post("/tecnicos", authenticateToken, criarTecnico);
+server.put("/tecnicos/:idTecnico", authenticateToken, atualizarTecnico);
+server.put("/tecnicos/:idTecnico/inativar", authenticateToken, inativarTecnico);
 
 server.listen(porta, () => {
     console.debug("server listening on port " + porta);

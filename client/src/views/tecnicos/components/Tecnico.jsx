@@ -9,7 +9,7 @@ const p = 10;
 
 const CRUD = new CrudUser();
 
-function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handleDelete, atualizaPag }) {
+function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, disabled, handleDelete, atualizaPag }) {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
     const [isEditing, setIsEditing] = useState(false);
@@ -82,9 +82,10 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
         };
     }, []);
 
+    const isDisabled = disabled === 1 ? true : false;
     return (
-        <section className="func">
-            {/* Renderiza o pop-up apenas se showPopUp for true */}
+
+        <section className="func" style={{ opacity: isDisabled ? `0.3`: `1`}}>
             {showPopUp && (
                 <div className="box-confir">
                     <div className="confir-container">
@@ -100,6 +101,11 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, id, handl
                 </div>
             )}
 
+            {/* {
+                disabled === 1 ? (
+
+                ) : ()
+            } */}
             <div className='sec_func info_pessoal' style={{ width: `${g}%`, display: 'flex', alignItems: 'center', position: 'relative' }}>
                 <div style={{ position: 'relative' }}>
                     <img className='foto_func' src={editedImage} alt=""/>

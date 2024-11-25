@@ -34,7 +34,7 @@ function Tecnicos() {
 
   useEffect(() => {
     handleRefresh();
-  }, []);
+  }, [tecnicos]);
 
   return (
     <>
@@ -89,10 +89,9 @@ function Tecnicos() {
           {click && (<NewFunc atualizaPag={handleRefresh} click={setClick} />)}
           {
             tecnicos?.map((tecnico, chave) =>
-            (<Tecnico key={chave} id={tecnico.id}
-              tecFt={tecnico.Imagem} tecNome={tecnico.Nome}
+            (<Tecnico key={chave} tecFt={tecnico.Imagem} tecNome={tecnico.Nome}
               tarefa={tecnico.Especializacao} numColab={tecnico.Colaboradores}
-              senha={tecnico.Senha} matricula={tecnico.Matricula} disabled={tecnico.disabled}
+              senha={tecnico.Senha} matricula={tecnico.Matricula} disabled={tecnico.Disabled}
               handleDelete={handleDelete} atualizaPag={handleRefresh}
             />)
             )}

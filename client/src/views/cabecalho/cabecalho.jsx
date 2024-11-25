@@ -23,7 +23,15 @@ const Cabecalho = () => {
             return setTimeout(() => {
                 navegar('/');
             }, 1500);
+        }else if(sessao.status === 401){
+            setPop(
+                popUp.aviso("Sessão expirada")
+            )
+            return setTimeout(() => {
+                navegar('/login');
+            }, 1500);
         };
+            
         const cargo = sessao.cargo;
         console.log("SESSAO::: ",cargo);
         return cargo;

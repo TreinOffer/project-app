@@ -78,6 +78,16 @@ form table {
     border-radius: 50px;
 }
 
+.editLabel {
+    display: block;
+    text-align: center;
+    color: #000000;
+    margin-top: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
 .nomeUser {
     font-family: "Montserrat", Arial;
     font-size: 120%;

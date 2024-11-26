@@ -28,7 +28,7 @@ const Header = ({ handleSecEsq }) => {
                 <div className="secEsq">
                     {/* <img className="menu" src={imgs.menu} alt="" onClick={handleMenuCabecalho} /> */}
                     <div className="fundoFoto">
-                        <img onClick={handleSecEsq} className="menuPerfil" src={imgs.empresa} alt="Menu" /></div>
+                        <img onClick={handleSecEsq} className="menuPerfil" src={imgs.tabEmpty} alt="Menu" /></div>
                 </div>
 
                 <div className="secMeio">

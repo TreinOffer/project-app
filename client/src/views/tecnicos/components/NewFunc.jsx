@@ -12,17 +12,17 @@ function NewFunc({ atualizaPag, click }) {
 
   const [ user, setUser ] = useState({
     Matricula: "",
-    Imagem: "",
+    // Imagem: "",
     Nome: "",
     Especializacao: "",
     Senha: ""
   });
 
-  function onChangeImg(tipo, imagem) {
-    return (
-      setUser((prev) => ({ ...prev, [tipo]: imagem }))
-    )
-  };
+  // function onChangeImg(tipo, imagem) {
+  //   return (
+  //     setUser((prev) => ({ ...prev, [tipo]: imagem }))
+  //   )
+  // };
 
   function onChange(tipo) {
     return (e) => (
@@ -39,14 +39,14 @@ function NewFunc({ atualizaPag, click }) {
             reader.onloadend = () => {
                 imagem = reader.result;
                 document.getElementsByClassName("foto_func")[0].src = imagem;
-                onChangeImg('Imagem', imagem);
+                // onChangeImg('Imagem', imagem);
             };
             reader.readAsDataURL(file);
         };
   };
 
   return (
-    <form method="POST" enctype='multipart/form-data' onSubmit={async (e) => {
+    <form action='/tecnicos' method="POST" enctype='multipart/form-data' onSubmit={async (e) => {
       e.preventDefault(); //not rerender the page
       click(false); // Closes the newFunc tab
       CRUD.create(user); // Post the new user to the database

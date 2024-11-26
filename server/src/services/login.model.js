@@ -2,6 +2,7 @@ import mysql from "mysql2/promise";
 import acesso from "../config/acesso.js";
 
 import jwt from "jsonwebtoken";
+import { idDisabled, userDisabled } from "../models/validations/login.desabilitado.js";
 const { sign } = jwt;
 
 const conexao = mysql.createPool(acesso);
@@ -29,14 +30,16 @@ export async function logar_se(user, senha) {
       return [203, { message: `CNPJ/Matricula inexistente` }];
     };
 
-    console.log(isIdExist);
+    console.log("existe? ",isIdExist);
     const destruturacao = isIdExist[0];
     console.log(destruturacao);
     const id = destruturacao[0].CNPJ || destruturacao.Matricula;
     const { role } = destruturacao[0];
 
-    // Verifica se há retorno do banco
+    // Verifica se user está desabilitado
+    if (await idDisabled(id, `${role}s`)) return userDisabled(id);
 
+    // Verifica se há retorno do banco
     const payload = {
       user: user,
       cargo: role,

@@ -14,7 +14,7 @@ import properties from "./properties.tecnico.js";
 export async function getTecnicos(entidade, idEmpresa) {
   try {
     const sql = `SELECT * FROM ${entidade}
-    WHERE idEmpresa = ?ORDER BY Disabled ASC`;
+    WHERE idEmpresa = ? ORDER BY Disabled ASC`;
     
     const [ tecnicos ] = await conexao.query(sql,idEmpresa);
     return [200, tecnicos];

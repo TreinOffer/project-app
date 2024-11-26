@@ -18,6 +18,8 @@ export async function listarTecnicos(req, res) {
 export async function criarTecnico(req, res) {
   const tecnico = req.body;
   const idEmpresa = req.user.primKey;
+  const filename = req.file;
+  console.log("File ::: ",filename, file)
 
   console.log("TecnicoPOST :: Controller");
   console.log("tecnico: ", tecnico);

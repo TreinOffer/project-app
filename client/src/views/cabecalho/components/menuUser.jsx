@@ -5,16 +5,32 @@ import './estiloAside.css';
 
 const MenuUser = ({ handleClick, handleAside }) => {
     const [isEditting, setIsEditting] = useState(0);
-
     const [user, setUser] = useState([{
         Fantasia: '',
         Senha: '', Telefone: '',
         CEP: '', Estado: '', Cidade: '', Endereco: ''
     }]);
-    
-    // Enquanto não possuí web token, ao fazer login é enviado o id do banco para cá e armazenada
-    // Para assim executar as funções delete e update;
-    const [ idUser, setIdUser ] = useState(0);
+    const [idUser, setIdUser] = useState(0);
+
+    const [profileImage, setProfileImage] = useState(imgs.tabEmpty);
+    const [originalProfileImage, setOriginalProfileImage] = useState(imgs.tabEmpty);
+
+    const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setProfileImage(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+
+    const handleCancelEdit = () => {
+        setProfileImage(originalProfileImage);
+        setIsEditting(0);
+    };
 
     function onChange(tipo) {
         return (e) => (
@@ -24,10 +40,10 @@ const MenuUser = ({ handleClick, handleAside }) => {
 
     async function updateUser(id) {
         try {
-            const response = await fetch(`http://localhost:5000/cadastro/${id}`,{
+            const response = await fetch(`http://localhost:5000/cadastro/${id}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type':'application/json'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(user)
             });
@@ -38,7 +54,7 @@ const MenuUser = ({ handleClick, handleAside }) => {
         }
     };
 
-    async function submitUser(id,user) {
+    async function submitUser(id, user) {
         console.log("user: ", user);
         try {
             const consulta = await fetch(`http://localhost:5000/cadastro`, {
@@ -58,19 +74,39 @@ const MenuUser = ({ handleClick, handleAside }) => {
     };
 
     return (
-        <aside className="nav_bar" id='nav'
-            style={{ left: handleAside ? '0%' : null }} >
+        <aside className="nav_bar" id='nav' style={{ left: handleAside ? '0%' : null }} >
             <section className="logoNavBar">
                 <section className="menuNav">
                     <img src={imgs.voltar} onClick={handleClick} alt="Fechar" className="escape" />
-                    {/* <img src={imgs.menu} alt="Menu" className="opcoes" /> */}
                 </section>
                 <img className="logoTreinOffer" src={imgs.TreinOffer} alt="" />
             </section>
             <section className="secaoUser">
                 <section className="user">
                     <div className="imgUser">
-                        <img src={imgs.empresa} alt="N/A" />
+                        <img
+                            src={profileImage}
+                            alt="N/A"
+                            style={{ cursor: isEditting === 1 ? 'pointer' : 'default' }}
+                            onClick={() => isEditting === 1 && document.getElementById("fileInput").click()}
+                        />
+                        {isEditting === 1 && (
+                            <label className="editLabel">
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handleImageChange}
+                                    style={{ display: 'none' }}
+                                    id="fileInput"
+                                />
+                                <span
+                                    style={{ cursor: 'pointer' }}
+                                    htmlFor="fileInput"
+                                >
+                                    Editar Imagem
+                                </span>
+                            </label>
+                        )}
                     </div>
                     <div className="nomeUser">
                         Agro Indústria Polpa de Fruta LTDA
@@ -80,7 +116,7 @@ const MenuUser = ({ handleClick, handleAside }) => {
 
             {
                 isEditting === 0 && (
-                    < >
+                    <>
                         <div style={{
                             display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center',
                             background: 'linear-gradient(hsl(220,50%,70%),hsl(220,40%,65%)', height: '100%'
@@ -96,7 +132,7 @@ const MenuUser = ({ handleClick, handleAside }) => {
                             background: 'linear-gradient(hsl(220,40%,65%),hsl(220,40%,60%)', height: '100%'
                         }} onClick={() => setIsEditting(2)}
                         >
-                            <div onClick={() => console.log("deletar") }style={{ display: 'flex', alignItems: 'center', gap: '2%', cursor: 'pointer' }}>
+                            <div onClick={() => console.log("deletar")} style={{ display: 'flex', alignItems: 'center', gap: '2%', cursor: 'pointer' }}>
                                 <img style={{ width: '20%' }} src={imgs.deletar} />
                                 <span style={{ color: 'white' }}>Desabilitar conta</span>
                             </div>
@@ -108,10 +144,9 @@ const MenuUser = ({ handleClick, handleAside }) => {
             <article style={{ height: isEditting ? "100%" : null, transition: '0.3s ease-in-out' }}>
                 {
                     isEditting === 1 && (
-
                         <form action="PUT" onSubmit={(e) => {
                             e.preventDefault();
-                            submitUser(idUser,user);
+                            submitUser(idUser, user);
                         }}
                             style={{ height: '100%', width: '100%', background: 'linear-gradient(hsl(220,50%,70%),hsl(220,40%,75%)' }}
                         >
@@ -177,7 +212,7 @@ const MenuUser = ({ handleClick, handleAside }) => {
                                         <td><input placeholder='Inserir Cidade' type="text" name="cidade" id="cidade" onChange={onChange('Cidade')} /></td>
                                     </tr>
                                     <tr className='actions-menuUser'>
-                                        <td className='campo-reset'><button onClick={() => setIsEditting(0)} type="button">Cancelar</button></td>
+                                        <td className='campo-reset'><button onClick={handleCancelEdit} type="button">Cancelar</button></td>
                                         <td><input className='campo_submit' type="submit" value="Atualizar" /></td>
                                     </tr>
                                 </tbody>

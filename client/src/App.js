@@ -17,6 +17,7 @@ import PopUp from "./components/popUp/popUp";
 import Notificacao from './components/notificacao/notificacao.module';
 import Treino from './views/tela-treino/telaModule';
 import Confirmacao from './components/confirmar/confirmacao';
+import Redefinir from './components/resetSenha/reset';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route path='/notificacao' element={<Notificacao />}></Route>
         <Route path='/treino' element={<Treino />}></Route>
         <Route path='/confirmar' element={<Confirmacao />}></Route>
+        <Route path='/redefinir' element={<Redefinir />}></Route>
       </Routes>
     </BrowserRouter>
   );

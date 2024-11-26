@@ -25,8 +25,7 @@ function Login() {
 
     async function logar_se(){
         const dados = { login, senha };
-        setPopState(null);
-        // console.log("seis lados: ", dados);
+        setPopState(null);        
 
         try {
             const request = await fetch(`http://localhost:5000/login`, {
@@ -36,13 +35,14 @@ function Login() {
                 },
                 body: JSON.stringify(dados)
             });
-            console.log("request é: ", request);
+        
+            console.log("request é: ", request);        
+           
             if (request.status === 203) {
-
                 setPopState(
                     popUp.erro("Nome ou senha não conferem")
-                );
-
+                );        
+            
             } else if (request.status === 202) {
                 const { token } = await request.json();
                 console.log("sim ", token);
@@ -52,21 +52,26 @@ function Login() {
                 );
                 setTimeout(() => {
                     navigate('/treinos');
-                }, 2000);
+                }, 2000);        
+            
+            } else if (request.status === 401) {
+                setPopState(
+                    popUp.erro("Usuário indisponível")
+                );        
+            
             } else {
-
                 setPopState(
                     popUp.erro("Não foi possível processar sua solicitação")
                 );
-
-            };
+            }
+        
         } catch (error) {
-
             setPopState(
                 popUp.erro("Não foi possível conectar ao servidor")
             );
         }
     };
+        
 
     // const handleOptionChange = (event) => {
     //     const selectedValue = event.target.value;

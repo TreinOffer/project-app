@@ -67,7 +67,7 @@ const Destino = ({ modulos }) => {
     <section
       className='dropSection'
       style={{
-        backgroundColor: isOver ? "lightgreen" : "hsl(0,0%,97%)",
+        // backgroundColor: isOver ? "lightgreen" : "hsl(0,0%,97%)",
         display: 'flex', flexDirection: 'column', alignItems: 'center'
       }}
       ref={drop}

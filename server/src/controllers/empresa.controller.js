@@ -7,7 +7,7 @@ export async function criarEmpresa(req,res) {
     console.log("empresa model: ",empresa)
     try {
         const [ statusCode, resposta ] = await postEmpresa(empresa, entidade);
-        res.status(statusCode).json({message: resposta});
+        res.status(statusCode).json(resposta);
     } catch (error) {
         res.status(500).json(error);
     };

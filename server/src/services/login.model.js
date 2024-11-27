@@ -44,7 +44,6 @@ export async function logar_se(user, senha) {
       user: user,
       cargo: role,
       primKey: id,
-      primKey: id,
       exp: Math.floor(Date.now() / 1000) + 60 * 60,
     };
 

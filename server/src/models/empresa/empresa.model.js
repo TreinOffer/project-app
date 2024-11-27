@@ -10,12 +10,16 @@ import {
 } from "../validations/common/emptyFields.validation.js";
 
 import erro from "../validations/common/erro.message.js";
+import { cnpjInvalid, cnpjMessage } from "../validations/empresa/cnpj.validation.js";
 
 import properties from "./properties.empresa.js";
 
 export async function postEmpresa(empresa, entidade) {
   try {
     if (await isEmptyField(empresa, properties)) return mensagem;
+
+    if (await cnpjInvalid(empresa.CNPJ))
+      return cnpjMessage(empresa.CNPJ);
 
     if (await duplicateId(empresa.CNPJ, conexao, [entidade, properties[0]], null))
       return duplicado('CNPJ');

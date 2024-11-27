@@ -4,9 +4,9 @@ export async function idDisabled(id, tabela) {
 
     const coluna = tabela === 'empresas' ? `CNPJ` : `Matricula`;
 
-    const whereClause = ` WHERE ${coluna} = ? AND Disabled = 1`;
+    const whereClause = `WHERE ${coluna} = ? AND Disabled = 1`;
 
-    const sql = `SELECT ${id} FROM ${tabela} ${whereClause} `;
+    const sql = `SELECT '${id}' FROM ${tabela} ${whereClause} `;
 
     const [[retorno]] = await conexao.query(sql, [id]);
     console.log("lei do retorno: ",retorno);

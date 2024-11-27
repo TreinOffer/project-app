@@ -7,16 +7,11 @@ import { loginJWT } from "./controllers/login.controller.js";
 import { authenticateToken } from "./middlewares/login.authentication.js";
 import { atualizarTecnico, criarTecnico, inativarTecnico, listarTecnicos } from "./controllers/tecnico.controller.js";
 import { upload } from "./services/apiImagem.js";
+import { apiCep } from "./services/apiCEP.js";
+import { corsOptions } from "./config/cors.options.js";
 
 const server = express({ limit: '10mb' });
 const porta = 5000;
-
-const corsOptions = {
-    origin: 'http://localhost:3000',
-    methods: 'GET,POST,PUT',
-    allowedHeaders: 'Content-Type,Authorization',
-    credentials: true,
-  };
 
 server.use(express.json());
 server.use(cors(corsOptions));
@@ -39,6 +34,7 @@ server.get('/treinos', authenticateToken
         server.post("/tecnicos", upload.single("foto"), authenticateToken, criarTecnico);
         server.put("/tecnicos/:idTecnico", authenticateToken, atualizarTecnico);
         server.put("/tecnicos/:idTecnico/inativar", authenticateToken, inativarTecnico);
+
 server.post ("/test", upload.single("eduardo"), function(req,res){
     const arquivo = req.file;
     if (arquivo) {
@@ -46,6 +42,9 @@ server.post ("/test", upload.single("eduardo"), function(req,res){
     }
     res.status(400).send("Sem arquivo")
 })
+
+server.get("/buscarCep/:cep", apiCep);
+
 server.listen(porta, () => {
     console.debug("server listening on port " + porta);
 });

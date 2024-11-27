@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './estilo.cadastro.css';
 import imgs from '../../imgs/arrayImagens.jsx';
 import { Link } from 'react-router-dom';
-import { popUp } from "../../components/popUp/services/popUp.classes.js";
+// import { popUp } from "../../components/popUp/services/popUp.classes.js";
+import { submitEmpresa } from './services/postEmpresa.api.js';
+import { buscarCep } from './services/fetchCep.api.js';
 
 const msg = {
     cadastro: 'Cadastro',
@@ -19,42 +21,43 @@ function Cadastro() {
     const [popState, setPopState] = useState(null);  
 
     const onChange = (tipo) => (e) => {
-        setEmpresa(prev => ({ ...prev, [tipo]: e.target.value }));
-    };
-
-    const submitEmpresa = async (empresa) => {
-        console.log("Empresa: ", empresa);
-        try {
-            const consulta = await fetch(`http://localhost:5000/cadastro`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(empresa)
-            });
-
-            if (consulta.status === 409) {
-                setPopState(popUp.erro("CNPJ já existe"));
-            } else if (consulta.status === 400) {
-                setPopState(popUp.erro("Erro nos dados fornecidos. Verifique os campos e tente novamente."));
-            } else {
-                setPopState(popUp.aviso("Cadastro efetuado com sucesso!"));
-            }
-
-            console.log(consulta);
-        } catch (error) {
-            setPopState(popUp.erro("Erro ao cadastrar empresa: " + error));
-        }
+        const pastedValue = e.clipboardData?.getData(e.target.value);
+        if (pastedValue) {
+            setEmpresa(prev => ({ ...prev, [tipo]: pastedValue }));
+        }else{
+            setEmpresa(prev => ({ ...prev, [tipo]: e.target.value }));
+        };
     };
     
+    const fetchCep = async(item) => {
+        const { state, city, neighborhood, street } = await buscarCep(item);
+
+            setEmpresa(prev => {
+                return{
+                    ...prev,
+                    Estado: state,
+                    Cidade: city,
+                    Endereco: `${neighborhood}, ${street}`
+                };
+            });
+    };
+
     useEffect(() => {
+        const cepLimpo = empresa.CEP?.replace(/\s+/g, "");
+        if (((cepLimpo.length === 8 && /^\d{8}$/.test(cepLimpo))
+            || (cepLimpo.length === 9 && /^\d{5}-\d{3}$/.test(cepLimpo)))) {
+            fetchCep(empresa.CEP);
+        };
+
         if (popState) {
             const timer = setTimeout(() => {
                 setPopState(null);
             }, 5000); 
-
            
             return () => clearTimeout(timer);
         }
-    }, [popState]);
+        
+    }, [popState, empresa.CEP]);
 
     return (
         <main className='main_login'>
@@ -86,7 +89,7 @@ function Cadastro() {
                                 <tr className="campo_estado">
                                     <td><label htmlFor="estado">Estado:</label></td>
                                     <td>
-                                        <select name="estado" id="estado" onChange={onChange('Estado')}>
+                                        <select value={empresa.Estado} name="estado" id="estado" onChange={onChange('Estado')}>
                                             <option value="">Selecionar Estado</option>
                                             <option value="AC">Acre</option>
                                             <option value="AL">Alagoas</option>
@@ -124,11 +127,11 @@ function Cadastro() {
                                 </tr>
                                 <tr className="campo_endereco">
                                     <td><label htmlFor="endereco">Endereço:</label></td>
-                                    <td><input placeholder='Inserir Endereço' type="text" name="endereco" id="endereco" onChange={onChange('Endereco')} /></td>
+                                    <td><input value={empresa.Endereco} placeholder='Inserir Endereço'  type="text" name="endereco" id="endereco" onChange={onChange('Endereco')} /></td>
                                 </tr>
                                 <tr className="campo_cidade">
                                     <td><label htmlFor="cidade">Cidade:</label></td>
-                                    <td><input placeholder='Inserir Cidade' type="text" name="cidade" id="cidade" onChange={onChange('Cidade')} /></td>
+                                    <td><input placeholder='Inserir Cidade' value={empresa.Cidade} type="text" name="cidade" id="cidade" onChange={onChange('Cidade')} /></td>
                                 </tr>
                                 <tr>
                                     <td><input className='campo_submit' type="submit" value="Cadastrar" /></td>

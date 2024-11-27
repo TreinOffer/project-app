@@ -18,33 +18,40 @@ import Notificacao from './components/notificacao/notificacao.module';
 import Treino from './views/tela-treino/telaModule';
 import Confirmacao from './components/confirmar/confirmacao';
 import Redefinir from './components/resetSenha/reset';
+import ProtectedRoute from './protectRoute';
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<LadingPage />}></Route>
-        <Route path='/treinos' element={<Treinamentos />}></Route>
-        <Route path='/login' element={<Login />}></Route>
-        <Route path='/cursoInfo' element={<CursoInfo />}></Route>
-        <Route path='/fatura' element={<Fatura />}></Route>
-        <Route path='/pagamento' element={<Pagamento />}></Route>
-        <Route path='/uploadCurso' element={<UploadCurso />}></Route>
-        <Route path='/tecnicos' element={<Tecnicos />}></Route>
-        <Route path='/tecnicos/:matricula' element={<Tecnicos />}></Route>
-        <Route path='/uploadTreino' element={<UploadTreino />}></Route>
-        <Route path='/test' element={<Ed />}></Route>
-        <Route path='/graficos' element={<Graficos />}></Route>
-        <Route path='/certificado' element={<Certificado />}></Route>
-        <Route path='/cadastro' element={<Cadastro />}></Route>
-        <Route path='/popup' element={<PopUp />}></Route>
-        <Route path='/notificacao' element={<Notificacao />}></Route>
-        <Route path='/treino' element={<Treino />}></Route>
-        <Route path='/confirmar' element={<Confirmacao />}></Route>
-        <Route path='/redefinir' element={<Redefinir />}></Route>
-      </Routes>
-    </BrowserRouter>
-  );
-}
+  function App() {
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<LadingPage />}></Route>
+          <Route path='/treinos' element={<Treinamentos />}></Route>
+          <Route path='/login' element={<Login />}></Route>
+          <Route path='/cursoInfo' element={<CursoInfo />}></Route>
 
-export default App;
+          <Route 
+          path='/fatura' 
+          element={
+            <ProtectedRoute 
+              element={<Fatura />} allowedRoles={['empresa']}/>}
+            />
+          <Route path='/pagamento' element={<Pagamento />}></Route>
+          <Route path='/uploadCurso' element={<UploadCurso />}></Route>
+          <Route path='/tecnicos' element={<Tecnicos />}></Route>
+          <Route path='/tecnicos/:matricula' element={<Tecnicos />}></Route>
+          <Route path='/uploadTreino' element={<UploadTreino />}></Route>
+          <Route path='/test' element={<Ed />}></Route>
+          <Route path='/graficos' element={<Graficos />}></Route>
+          <Route path='/certificado' element={<Certificado />}></Route>
+          <Route path='/cadastro' element={<Cadastro />}></Route>
+          <Route path='/popup' element={<PopUp />}></Route>
+          <Route path='/notificacao' element={<Notificacao />}></Route>
+          <Route path='/treino' element={<Treino />}></Route>
+          <Route path='/confirmar' element={<Confirmacao />}></Route>
+          <Route path='/redefinir' element={<Redefinir />}></Route>
+        </Routes>
+      </BrowserRouter>
+    );
+  }
+
+  export default App;

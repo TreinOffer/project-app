@@ -8,15 +8,14 @@ export const submitEmpresa = async (empresa) => {
         });
 
         if (consulta.status === 409) {
-            setPopState(popUp.erro("CNPJ já existe"));
+            return [409,"CNPJ já existe"];
         } else if (consulta.status === 400) {
-            setPopState(popUp.erro("Erro nos dados fornecidos. Verifique os campos e tente novamente."));
+            return [400,"Erro nos dados fornecidos. Verifique os campos e tente novamente."];
         } else {
-            setPopState(popUp.aviso("Cadastro efetuado com sucesso!"));
+            return [201,"Cadastro efetuado com sucesso!"];
         }
-
-        console.log(consulta);
     } catch (error) {
-        setPopState(popUp.erro("Erro ao cadastrar empresa: " + error));
+        console.log(error);
+        return [500,"Erro ao cadastrar empresa"];
     }
 };

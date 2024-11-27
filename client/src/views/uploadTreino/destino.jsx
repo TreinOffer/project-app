@@ -5,6 +5,7 @@ import './estiloLivro.css'
 
 const Destino = ({ modulos }) => {
   const [itens, setItens] = useState([]);
+  const [flipStates, setFlipStates] = useState([false, false, false, false, false, false]); // 6 folha der certo!!
 
   useEffect(() => console.log("useffect: ", itens[modulos]), [itens]);
 
@@ -20,55 +21,22 @@ const Destino = ({ modulos }) => {
   };
 
   const handlePost = (item) => {
-    if (item.tipo === 'imagem' ||
-        item.tipo === 'parag' ||
-        item.tipo === 'tit') {
-      setItens((prevItens) => {
-        const novosItens = [...prevItens];
+    setItens((prevItens) => {
+      const novosItens = [...prevItens];
+      const novoItem = {
+        ...item,
+        index: (novosItens[modulos]?.length || 0),
+        isOpen: false
+      };
 
-        const novoItem = {
-          ...item,
-          index: (novosItens[modulos]?.length || 0),
-          isOpen: false
-        };
-
-        novosItens[modulos] = [...(novosItens[modulos] || []), novoItem];
-        return novosItens;
-      });
-    } else if (item.tipo === "video") {
-      setItens((prevItens) => {
-        const novosItens = [...prevItens];
-
-        const novoItem = {
-          ...item,
-          index: (novosItens[modulos]?.length || 0),
-          isOpen: false,
-          isUrl: true,
-          isHovered: false
-        };
-
-        novosItens[modulos] = [...(novosItens[modulos] || []), novoItem];
-        return novosItens;
-      });
-    } else {
-      setItens((prevItens) => {
-        const novosItens = [...prevItens];
-
-        const novoItem = {
-          ...item,
-          index: (novosItens[modulos]?.length || 0),
-        };
-
-        novosItens[modulos] = [...(novosItens[modulos] || []), novoItem];
-        return novosItens;
-      });
-    }
+      novosItens[modulos] = [...(novosItens[modulos] || []), novoItem];
+      return novosItens;
+    });
   };
 
   const handleDelete = (imagem) => {
     setItens((prevItens) => {
       const novosItens = [...prevItens];
-
       novosItens[modulos] = novosItens[modulos].filter(item => item.index !== imagem);
       return novosItens;
     });
@@ -85,19 +53,37 @@ const Destino = ({ modulos }) => {
     })
   });
 
+  const handlePageClick = (index) => {
+    setFlipStates(prevStates => {
+      const newStates = [...prevStates];
+      newStates[index] = !newStates[index];
+      return newStates;
+    });
+  };
+
   console.log("ARRAY: ", itens);
 
   return (
     <section
       className='dropSection'
       style={{
-        // backgroundColor: isOver ? "lightgreen" : "hsl(0,0%,97%)",
+        backgroundColor: isOver ? "lightgreen" : "hsl(0,0%,97%)",
         display: 'flex', flexDirection: 'column', alignItems: 'center'
       }}
       ref={drop}
-    >      
+    >
       <div className="flipbook centered" id="flipbook">
-        <div className="leaf">
+        {/* Primeira folha */}
+        <div className="leaf"
+          onClick={() => handlePageClick(0)}
+          style={{
+            position: 'absolute',
+            left: '30%',
+            transformOrigin: 'left 0px',
+            transform: flipStates[0] ? 'rotate3d(0, 1, 0, -180deg)' : 'rotate3d(0, 1, 0, 0deg)',
+            transition: 'transform 1s ease-in-out'
+          }}
+        >
           <div
             className="page front title internal"
             style={{
@@ -107,67 +93,186 @@ const Destino = ({ modulos }) => {
               boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
             }}
           >
-            
             <h2></h2>
             <p></p>
             <div className="pageNumber">1</div>
           </div>
-          <div className="page back" style={{
-            backgroundColor: 'rgb(163, 218, 245)',
-            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-          }}>
+          <div
+            className="page back"
+            style={{
+              backgroundColor: 'rgb(163, 218, 245)',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+            }}
+          >
             <div className="pageNumber">2</div>
           </div>
         </div>
 
-        <div className="leaf">
-          <div className="page front" style={{
-            backgroundColor: 'rgb(163, 218, 245)',
-            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-          }}>
+        {/* Segunda folha */}
+        <div className="leaf"
+          onClick={() => handlePageClick(1)}
+          style={{
+            position: 'absolute',
+            left: '30%',
+            transformOrigin: 'left 0px',
+            transform: flipStates[1] ? 'rotate3d(0, 1, 0, -180deg)' : 'rotate3d(0, 1, 0, 0deg)',
+            transition: 'transform 1s ease-in-out'
+          }}
+        >
+          <div
+            className="page front"
+            style={{
+              backgroundColor: 'rgb(163, 218, 245)',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+            }}
+          >
             <h3></h3>
             <p></p>
             <div className="pageNumber">3</div>
           </div>
-          <div className="page back" style={{
-            backgroundColor: 'rgb(163, 218, 245)',
-            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-          }}>
+          <div
+            className="page back"
+            style={{
+              backgroundColor: 'rgb(163, 218, 245)',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+            }}
+          >
             <div className="pageNumber">4</div>
           </div>
         </div>
 
-        <div className="leaf">
-          <div className="page front" style={{
-            backgroundColor: 'rgb(163, 218, 245)',
-            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-          }}>
+        {/* Terceira folha */}
+        <div className="leaf"
+          onClick={() => handlePageClick(2)}
+          style={{
+            position: 'absolute',
+            left: '30%',
+            transformOrigin: 'left 0px',
+            transform: flipStates[2] ? 'rotate3d(0, 1, 0, -180deg)' : 'rotate3d(0, 1, 0, 0deg)',
+            transition: 'transform 1s ease-in-out'
+          }}
+        >
+          <div
+            className="page front"
+            style={{
+              backgroundColor: 'rgb(163, 218, 245)',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+            }}
+          >
             <h3></h3>
             <p></p>
-          </div>
-          <div className="page back" style={{
-            backgroundColor: 'rgb(163, 218, 245)',
-            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-          }}>
             <div className="pageNumber">5</div>
           </div>
-        </div>
-
-        <div className="leaf">
-          <div className="page front" style={{
-            backgroundColor: 'rgb(163, 218, 245)',
-            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-          }}>
-            <h3></h3>
-            <p></p>
-          </div>
-          <div className="page back" style={{
-            backgroundColor: 'rgb(163, 218, 245)',
-            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-          }}>
+          <div
+            className="page back"
+            style={{
+              backgroundColor: 'rgb(163, 218, 245)',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+            }}
+          >
             <div className="pageNumber">6</div>
           </div>
         </div>
+
+        {/* Quarta folha */}
+        <div className="leaf"
+          onClick={() => handlePageClick(3)}
+          style={{
+            position: 'absolute',
+            left: '30%',
+            transformOrigin: 'left 0px',
+            transform: flipStates[3] ? 'rotate3d(0, 1, 0, -180deg)' : 'rotate3d(0, 1, 0, 0deg)',
+            transition: 'transform 1s ease-in-out'
+          }}
+        >
+          <div
+            className="page front"
+            style={{
+              backgroundColor: 'rgb(163, 218, 245)',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+            }}
+          >
+            <h3></h3>
+            <p></p>
+            <div className="pageNumber">7</div>
+          </div>
+          <div
+            className="page back"
+            style={{
+              backgroundColor: 'rgb(163, 218, 245)',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+            }}
+          >
+            <div className="pageNumber">8</div>
+          </div>
+        </div>
+
+        {/* Quinta folha */}
+        <div className="leaf"
+          onClick={() => handlePageClick(4)}
+          style={{
+            position: 'absolute',
+            left: '30%',
+            transformOrigin: 'left 0px',
+            transform: flipStates[4] ? 'rotate3d(0, 1, 0, -180deg)' : 'rotate3d(0, 1, 0, 0deg)',
+            transition: 'transform 1s ease-in-out'
+          }}
+        >
+          <div
+            className="page front"
+            style={{
+              backgroundColor: 'rgb(163, 218, 245)',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+            }}
+          >
+            <h3></h3>
+            <p></p>
+            <div className="pageNumber">9</div>
+          </div>
+          <div
+            className="page back"
+            style={{
+              backgroundColor: 'rgb(163, 218, 245)',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+            }}
+          >
+            <div className="pageNumber">10</div>
+          </div>
+        </div>
+
+        {/* Sexta folha */}
+        <div className="leaf"
+          onClick={() => handlePageClick(5)}
+          style={{
+            position: 'absolute',
+            left: '30%',
+            transformOrigin: 'left 0px',
+            transform: flipStates[5] ? 'rotate3d(0, 1, 0, -180deg)' : 'rotate3d(0, 1, 0, 0deg)',
+            transition: 'transform 1s ease-in-out'
+          }}
+        >
+          <div
+            className="page front"
+            style={{
+              backgroundColor: 'rgb(163, 218, 245)',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+            }}
+          >
+            <h3></h3>
+            <p></p>
+            <div className="pageNumber">1</div>
+          </div>
+          <div
+            className="page back"
+            style={{
+              backgroundColor: 'rgb(163, 218, 245)',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+            }}
+          >
+            <div className="pageNumber">12</div>
+          </div>
+        </div>
+
       </div>
 
       {

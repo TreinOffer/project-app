@@ -91,7 +91,7 @@ const Destino = ({ modulos }) => {
     <section
       className='dropSection'
       style={{
-        backgroundColor: isOver ? "lightgreen" : "hsl(0,0%,97%)",
+        // backgroundColor: isOver ? "lightgreen" : "hsl(0,0%,97%)",
         display: 'flex', flexDirection: 'column', alignItems: 'center'
       }}
       ref={drop}
@@ -107,31 +107,16 @@ const Destino = ({ modulos }) => {
               boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
             }}
           >
+            
             <h2></h2>
             <p></p>
-          </div>
-          <div className="page back" style={{
-            backgroundColor: 'rgb(163, 218, 245)',
-            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-          }}>
             <div className="pageNumber">1</div>
           </div>
-        </div>
-
-        <div className="leaf">
-          <div className="page front" style={{
-            backgroundColor: 'rgb(163, 218, 245)',
-            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-          }}>
-            <h3></h3>
-            <p></p>
-            <div className="pageNumber">2</div>
-          </div>
           <div className="page back" style={{
             backgroundColor: 'rgb(163, 218, 245)',
             boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
           }}>
-            <div className="pageNumber">3</div>
+            <div className="pageNumber">2</div>
           </div>
         </div>
 
@@ -142,6 +127,7 @@ const Destino = ({ modulos }) => {
           }}>
             <h3></h3>
             <p></p>
+            <div className="pageNumber">3</div>
           </div>
           <div className="page back" style={{
             backgroundColor: 'rgb(163, 218, 245)',
@@ -164,6 +150,22 @@ const Destino = ({ modulos }) => {
             boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
           }}>
             <div className="pageNumber">5</div>
+          </div>
+        </div>
+
+        <div className="leaf">
+          <div className="page front" style={{
+            backgroundColor: 'rgb(163, 218, 245)',
+            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+          }}>
+            <h3></h3>
+            <p></p>
+          </div>
+          <div className="page back" style={{
+            backgroundColor: 'rgb(163, 218, 245)',
+            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+          }}>
+            <div className="pageNumber">6</div>
           </div>
         </div>
       </div>

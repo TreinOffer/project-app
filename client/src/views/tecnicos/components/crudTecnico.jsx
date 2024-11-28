@@ -4,14 +4,14 @@ class CrudUser {
     };
 
     async create(user) {
+        console.log(user);
         try {
             const resposta = await fetch('http://localhost:5000/tecnicos', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${CrudUser.token}`
                 },
-                body: JSON.stringify(user)
+                body: user
             });
 
             if (!resposta.ok) {
@@ -48,15 +48,15 @@ class CrudUser {
     };
 
     async update( idTecnico, user ) {
+        console.log(user);
         try {
             console.log(idTecnico)
             const response = await fetch(`http://localhost:5000/tecnicos/${idTecnico}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${CrudUser.token}`
                 },
-                body: JSON.stringify(user)
+                body: user
             });
 
             if (!response.ok) {

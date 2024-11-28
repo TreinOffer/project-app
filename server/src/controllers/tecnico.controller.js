@@ -18,13 +18,15 @@ export async function listarTecnicos(req, res) {
 export async function criarTecnico(req, res) {
   const tecnico = req.body;
   const idEmpresa = req.user.primKey;
-  const filename = req.file;
-  console.log("File ::: ",filename, file)
+  const filename = req.file.filename;
+  console.log(tecnico);
+  console.log("imagemNome: ",tecnico.Imagem);
+  console.log("File ::: ",filename)
 
   console.log("TecnicoPOST :: Controller");
   console.log("tecnico: ", tecnico);
 
-  const [statusCode, retorno] = await postTecnico(tecnico, entidade, idEmpresa);
+  const [statusCode, retorno] = await postTecnico(tecnico, entidade, idEmpresa, filename);
   res.status(statusCode).json(retorno);
 }
 
@@ -32,6 +34,8 @@ export async function atualizarTecnico(req, res) {
   const tecnico = req.body;
   const { idTecnico } = req.params;
   const idEmpresa = req.user.primKey;
+  console.log("file: ", req.file);
+  const fileName = req.file.filename;
 
   console.log("TecnicoUPDATE ::: Controller");
   console.log("tecnico: ", tecnico, "id: ", idTecnico, "empresa: ", idEmpresa);
@@ -40,7 +44,8 @@ export async function atualizarTecnico(req, res) {
     tecnico,
     entidade,
     idTecnico,
-    idEmpresa
+    idEmpresa,
+    fileName
   );
   
   res.status(statusCode).json(retorno);

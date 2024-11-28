@@ -25,7 +25,7 @@ export async function getTecnicos(entidade, idEmpresa) {
   };
 };
 
-export async function postTecnico(tecnico, entidade, idEmpresa) {
+export async function postTecnico(tecnico, entidade, idEmpresa, nomeImagem) {
   try {
     if (await isEmptyField(tecnico, properties)) return mensagem;
 
@@ -45,7 +45,7 @@ export async function postTecnico(tecnico, entidade, idEmpresa) {
       tecnico.Especializacao,
       tecnico.Senha,
       idEmpresa,
-      tecnico.Imagem,
+      nomeImagem,
     ];
 
     await conexao.query(sql, params);
@@ -57,7 +57,7 @@ export async function postTecnico(tecnico, entidade, idEmpresa) {
   };
 };
 
-export async function updateTecnico(tecnico, entidade, idTecnico, idEmpresa) {
+export async function updateTecnico(tecnico, entidade, idTecnico, idEmpresa, nomeImagem) {
   console.log("TecnicoUPDATE ::: Model");
   try {
 
@@ -71,7 +71,7 @@ export async function updateTecnico(tecnico, entidade, idTecnico, idEmpresa) {
 
     const params = [
       tecnico.Matricula, tecnico.Nome, tecnico.Especializacao,
-      tecnico.Senha, idEmpresa, tecnico.Imagem, 
+      tecnico.Senha, idEmpresa, nomeImagem, 
       idTecnico, idEmpresa
     ];
 

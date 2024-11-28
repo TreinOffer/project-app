@@ -8,21 +8,21 @@ const p = 10;
 
 const CRUD = new CrudUser();
 
-function NewFunc({ atualizaPag, click }) {
+function NewFunc({ atualizaPag, click, transForm }) {
 
   const [ user, setUser ] = useState({
     Matricula: "",
-    // Imagem: "",
+    Imagem: "",
     Nome: "",
     Especializacao: "",
     Senha: ""
   });
 
-  // function onChangeImg(tipo, imagem) {
-  //   return (
-  //     setUser((prev) => ({ ...prev, [tipo]: imagem }))
-  //   )
-  // };
+  function onChangeImg(tipo, imagem) {
+    return (
+      setUser((prev) => ({ ...prev, [tipo]: imagem }))
+    )
+  };
 
   function onChange(tipo) {
     return (e) => (
@@ -39,7 +39,7 @@ function NewFunc({ atualizaPag, click }) {
             reader.onloadend = () => {
                 imagem = reader.result;
                 document.getElementsByClassName("foto_func")[0].src = imagem;
-                // onChangeImg('Imagem', imagem);
+                onChangeImg('Imagem', file);
             };
             reader.readAsDataURL(file);
         };
@@ -49,7 +49,8 @@ function NewFunc({ atualizaPag, click }) {
     <form action='/tecnicos' method="POST" enctype='multipart/form-data' onSubmit={async (e) => {
       e.preventDefault(); //not rerender the page
       click(false); // Closes the newFunc tab
-      CRUD.create(user); // Post the new user to the database
+      const form = await transForm(user);
+      CRUD.create(form); // Post the new user to the database
       atualizaPag(); //Triggers a rerender by calling useEffect
     }}>
       <section className="func">
@@ -60,7 +61,7 @@ function NewFunc({ atualizaPag, click }) {
             } alt='*' />
 
             <div className="botao_div">
-              <input className='addFotoFuncBt' onChange={handleUploadImagem} accept='.jpg,.png,.jpeg' multiple={false} type="file" name="foto" id="foto" />
+              <input className='addFotoFuncBt' onChange={handleUploadImagem} accept='.jpg,.png,.jpeg' multiple={false} type="file" name="Imagem" id="foto" />
               <label id='forFoto' htmlFor="foto">Escolher imagem</label>
             </div>
           </div>

@@ -1,5 +1,8 @@
 import express from "express";
 import cors from 'cors';
+import path from "path";import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 import { criarEmpresa } from "./controllers/empresa.controller.js"; 
 
@@ -12,7 +15,9 @@ import { corsOptions } from "./config/cors.options.js";
 
 const server = express({ limit: '10mb' });
 const porta = 5000;
+const imgDirectory = path.join(__dirname, "imgs");
 
+server.use("/imgs", express.static(imgDirectory));
 server.use(express.json());
 server.use(cors(corsOptions));
 server.use(express.urlencoded({ limit: '10mb', extended: true }));
@@ -31,8 +36,8 @@ server.get('/treinos', authenticateToken
 // Rota empresa
     //Rota Tecnicos
         server.get("/tecnicos", authenticateToken, listarTecnicos)
-        server.post("/tecnicos", upload.single("foto"), authenticateToken, criarTecnico);
-        server.put("/tecnicos/:idTecnico", authenticateToken, atualizarTecnico);
+        server.post("/tecnicos", upload.single("Imagem"), authenticateToken, criarTecnico);
+        server.put("/tecnicos/:idTecnico", upload.single("Imagem"), authenticateToken, atualizarTecnico);
         server.put("/tecnicos/:idTecnico/inativar", authenticateToken, inativarTecnico);
 
 server.post ("/test", upload.single("eduardo"), function(req,res){

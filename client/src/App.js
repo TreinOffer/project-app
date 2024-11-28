@@ -18,7 +18,7 @@ import Notificacao from './components/notificacao/notificacao.module';
 import Treino from './views/tela-treino/telaModule';
 import Confirmacao from './components/confirmar/confirmacao';
 import Redefinir from './components/resetSenha/reset';
-import ProtectedRoute from './protectRoute';
+// import ProtectedRoute from './protectRoute';
 
   function App() {
     return (
@@ -29,12 +29,7 @@ import ProtectedRoute from './protectRoute';
           <Route path='/login' element={<Login />}></Route>
           <Route path='/cursoInfo' element={<CursoInfo />}></Route>
 
-          <Route 
-          path='/fatura' 
-          element={
-            <ProtectedRoute 
-              element={<Fatura />} allowedRoles={['empresa']}/>}
-            />
+          <Route path='/fatura'element={ <Fatura />} />
           <Route path='/pagamento' element={<Pagamento />}></Route>
           <Route path='/uploadCurso' element={<UploadCurso />}></Route>
           <Route path='/tecnicos' element={<Tecnicos />}></Route>

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './estilo.css';
+import Treino from '../../views/Treinamentos/functions/treino.treinamento';
+import imgs from '../../imgs/arrayImagens';
 
 const App = () => {
   const [media, setMedia] = useState(null);
@@ -47,7 +49,8 @@ const App = () => {
     <div className={`popup ${isPopupOpen ? 'open' : 'closed'}`}> 
       <div className="popup-content">
         <button className="close-btn" onClick={closePopup}>X</button>
-        <h2 className="titulo-adicionar-treinamento">Adicionar Treinamento</h2>        
+        <h2 className="titulo-adicionar-treinamento">Adicionar Treinamento</h2>  
+        <Treino capaTreino={imgs.upImage} empresaFT={imgs.empresa} titTreino={'exemplo: titulo'} tag1={'tag 1'} tag2={'tag 2'} autorFt={imgs.tabEduardo} autorNome={'eduardo pinto'}/>     
         <div className="separator"></div>
 
         <div className="inputs-container">

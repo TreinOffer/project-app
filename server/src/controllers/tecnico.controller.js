@@ -9,16 +9,23 @@ const entidade = "tecnicos";
 
 export async function listarTecnicos(req, res) {
   const idEmpresa = req.user.primKey;
+  const { Unique } = req.query;
+
   console.log("TecnicoGET :: Controller");
 
-  const [statusCode, tecnicos] = await getTecnicos(entidade, idEmpresa);
+  const [statusCode, tecnicos] = await getTecnicos(
+    entidade,
+    idEmpresa,
+    Unique
+  );
+
   return res.status(statusCode).json(tecnicos);
 }
 
 export async function criarTecnico(req, res) {
   const tecnico = req.body;
   const idEmpresa = req.user.primKey;
-  const filename = req.file.filename;
+  const filename = req.file?.filename;
   console.log(tecnico);
   console.log("imagemNome: ",tecnico.Imagem);
   console.log("File ::: ",filename)
@@ -35,7 +42,7 @@ export async function atualizarTecnico(req, res) {
   const { idTecnico } = req.params;
   const idEmpresa = req.user.primKey;
   console.log("file: ", req.file);
-  const fileName = req.file.filename;
+  const fileName = req.file?.filename;
 
   console.log("TecnicoUPDATE ::: Controller");
   console.log("tecnico: ", tecnico, "id: ", idTecnico, "empresa: ", idEmpresa);

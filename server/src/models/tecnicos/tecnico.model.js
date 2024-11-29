@@ -10,13 +10,13 @@ import {
 import erro from "../validations/common/erro.message.js";
 import { hasNotChanged, nadaMudou } from "../validations/common/linhasAfetadas.validation.js";
 import properties from "./properties.tecnico.js";
+import { returnSQL } from "./return.sql.js";
 
-export async function getTecnicos(entidade, idEmpresa) {
+export async function getTecnicos(entidade, idEmpresa, unique) {
   try {
-    const sql = `SELECT * FROM ${entidade}
-    WHERE idEmpresa = ? ORDER BY Disabled ASC`;
+    const [params, sql] = await returnSQL(entidade, idEmpresa, unique);
     
-    const [ tecnicos ] = await conexao.query(sql,idEmpresa);
+    const [ tecnicos ] = await conexao.query(sql,params);
     return [200, tecnicos];
 
   } catch (error) {

@@ -1,0 +1,305 @@
+.letraQuebra {
+    width: 100%;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.tab_func .func * > * {
+    cursor: default;
+}
+
+.sec_func {
+    display: flex;
+    align-items: center;
+    height: 128px;
+    justify-content: center;
+}
+
+.box_colab {
+    cursor: pointer;
+    padding: 8px;
+    width: 20px;
+    color: white;
+    border-radius: 4px;
+}
+
+.funcs {
+    margin: 14px 0 14px 8px;
+}
+
+.func {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.funcoes_func {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 4px;
+    gap: 18px;
+}
+
+.tab_func > .tit_tab {
+    padding: 8px;
+    border-bottom: 4px solid black;
+}
+
+.funcoes_func > div {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    max-width: 400px;
+}
+
+.buscar_func {
+    height: 36.33px;
+    width: 39px;
+    cursor: pointer;
+    margin-right: -1px;
+    border-left: none;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-top: 1px solid hsl(0, 0%, 70%);
+    border-right: 1px solid hsl(0, 0%, 70%);
+    border-bottom: 1px solid hsl(0, 0%, 70%);
+    background-color: hsl(25, 30%, 70%);
+}
+
+.buscar_func > img {
+    height: 28px;
+    width: 28px;
+}
+
+.funcoes_func #func_mat {
+    width: calc(100% - 38.7px);
+    height: 35px;
+    padding-left: 14px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-right: none;
+    outline: none;
+    border: 1px solid hsl(25, 20%, 60%);
+    box-shadow: inset 1px 1px 10px hsl(25, 0%, 80%);
+}
+
+.funcoes_func > button {
+    padding: 4px;
+    border: 1px solid hsl(25, 0%, 60%);
+    cursor: pointer;
+    transition: 0.25s ease-in-out;
+}
+
+.funcoes_func button > img {
+    height: 28px;
+    width: 28px;
+}
+
+.funcoes_func > button:hover {
+    opacity: 0.75;
+    transform: scale(1.2);
+    margin: 7px;
+}
+
+.tab_func {
+    margin: 2.5% 20%;
+    border: 1px solid black;
+    box-shadow: 0px 0px 10px black;
+    background-color: hsl(200, 10%, 98%);
+    min-width: 468px;
+}
+
+.tab_func .tit_cabec {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    width: 100%;
+    padding: 8px 0;
+    background-image: linear-gradient(hsl(200, 15%, 70%), hsl(200, 30%, 90%));
+}
+
+.tab_func > .func {
+    display: flex;
+    flex-direction: row;
+    margin: 12px 0;
+}
+
+.info_pessoal {
+    flex-direction: row;
+}
+
+.info_pessoal .foto_func {
+    width: 128px;
+    height: 128px;
+    margin-right: 25px;
+    border-radius: 100%;
+    border: 1px solid hsl(0, 0%, 20%);
+    box-shadow: 2px 4px 1px hsl(200, 10%, 50%);
+}
+
+.info_pessoal .nome_func {
+    width: calc(((100% - 128px) - 8px) - 25px);
+}
+
+.tab_func .sec_func #nome_dep {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+}
+
+.tab_func .bot_opcoes {
+    width: 48px;
+    height: 48px;
+}
+
+.tab_func .bot_opcoes:hover {
+    cursor: pointer;
+}
+
+.func .desabilitado {
+    position: absolute;
+    top: 35%;
+    right: 38%;
+}
+
+@media (max-width: 1770px) {
+    .tab_func .foto_func {
+        width: 64px;
+        height: 64px;
+    }
+
+    .info_pessoal .nome_func {
+        width: calc(((100% - 64px) - 8px) - 25px);
+    }
+
+    .addFotoFuncBt {
+        width: 0;
+        height: 0;
+    }
+
+    #foto {
+        width: 62px;
+        height: 40px;
+        margin: 31px 0 0 -8px;
+    }
+
+    #forFoto {
+        font-size: 10px;
+        margin: 38px 0 0 4px;
+    }
+
+    .tab_func .sec_func #nome {
+        width: calc(100% - (25px + 69px));
+    }
+}
+
+@media (max-width: 1275px) {
+    .tab_func .foto_func {
+        width: 32px;
+        height: 32px;
+    }
+
+    .info_pessoal .nome_func {
+        width: calc(((100% - 32px) - 8px) - 25px);
+    }
+
+    .addFotoFuncBt {
+        width: 0;
+        height: 0;
+    }
+
+    #foto {
+        width: 32px;
+        height: 21px;
+        margin: 50px 0 0 -10px;
+    }
+
+    #forFoto {
+        opacity: 0;
+    }
+
+    .tab_func .sec_func #nome {
+        width: calc(100% - (25px + 34px));
+    }
+
+    .func .desabilitado {
+        right: 28%;
+    }
+}
+
+.tab_func .func .sec_func input {
+    cursor: text;
+}
+
+.sec_func > input {
+    text-align: center;
+    outline: none;
+    width: 50%;
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    box-shadow: inset 0 0 10px hsl(200, 30%, 90%);
+    height: 20%;
+}
+
+.sec_func > input::placeholder {
+    margin: 4px;
+}
+
+.addFotoFunc {
+    position: relative;
+}
+
+.botao_div {
+    width: 0;
+    position: absolute;
+    background-color: yellow;
+    margin: -76px 0 0 11px;
+}
+
+.tab_func .func .botao_div > label {
+    position: absolute;
+    width: 100%;
+    margin: 22px 0 0 30px;
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.addFotoFuncBt {
+    width: 110px;
+    height: 72px;
+    position: absolute;
+    background-color: hsla(0, 0%, 0%, 0.3);
+    border-radius: 100%;
+}
+
+#foto[type="file"] {
+    color: transparent;
+    font-size: 0;
+    cursor: pointer;
+}
+
+.sec_func #nome {
+    width: calc(100% - (25px + 128px));
+}
+
+.func_submit > button {
+    width: 28px;
+    height: 28px;
+    border: none;
+    box-shadow: inset -2px -2px 1px hsl(0, 0%, 20%);
+    background-color: hsl(150, 50%, 50%);
+    transition: ease-out 0.15s;
+}
+
+.func_submit > button:hover {
+    transform: scale(1.2);
+    background-color: hsl(150, 50%, 70%);
+}
+
+.func_submit button > img {
+    width: 100%;
+    height: 100%;
+}

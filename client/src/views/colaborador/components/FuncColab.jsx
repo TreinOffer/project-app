@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import imgs from "../../../imgs/arrayImagens";
-import CrudUser from './crudTecnico';
+import CrudUser from './crudColaborador';
 
 const g = 25;
 const m = 15;
@@ -8,9 +8,9 @@ const p = 10;
 
 const CRUD = new CrudUser();
 
-function NewFunc({ atualizaPag, click, transForm }) {
+function NewColab({ atualizaPag, click, transForm }) {  
 
-  const [ user, setUser ] = useState({
+  const [colaborador, setColaborador] = useState({  
     Matricula: "",
     Imagem: "",
     Nome: "",
@@ -20,13 +20,13 @@ function NewFunc({ atualizaPag, click, transForm }) {
 
   function onChangeImg(tipo, imagem) {
     return (
-      setUser((prev) => ({ ...prev, [tipo]: imagem }))
+      setColaborador((prev) => ({ ...prev, [tipo]: imagem }))
     )
   };
 
   function onChange(tipo) {
     return (e) => (
-      setUser((prev) => ({ ...prev, [tipo]: e.target.value }))
+      setColaborador((prev) => ({ ...prev, [tipo]: e.target.value }))
     )
   };
 
@@ -46,10 +46,10 @@ function NewFunc({ atualizaPag, click, transForm }) {
   };
 
   return (
-    <form action='/tecnicos' method="POST" enctype='multipart/form-data' onSubmit={async (e) => {
-      e.preventDefault();
+    <form action='/colaboradores' method="POST" enctype='multipart/form-data' onSubmit={async (e) => { 
+      e.preventDefault(); 
       click(false); 
-      const form = await transForm(user);
+      const form = await transForm(colaborador);  
       CRUD.create(form); 
       atualizaPag(); 
     }}>
@@ -94,4 +94,4 @@ function NewFunc({ atualizaPag, click, transForm }) {
   )
 };
 
-export default NewFunc
+export default NewColab;  

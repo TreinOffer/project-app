@@ -1,56 +1,86 @@
 import React, { useState } from 'react';
 import './estilo.css';
 import Treino from '../../views/Treinamentos/functions/treino.treinamento';
-import imgs from '../../imgs/arrayImagens';
+import imgs from '../../imgs/arrayImagens'; 
 
 const App = () => {
-  const [media, setMedia] = useState(null);
+  const [media, setMedia] = useState({
+    capaTreino: imgs.upImage,
+    empresaFT: imgs.empresa,
+    autorFt: imgs.tabEduardo,
+  });
   const [mediaType, setMediaType] = useState('');
   const [error, setError] = useState('');
-  const [isPopupOpen, setIsPopupOpen] = useState(true); 
+  const [isPopupOpen, setIsPopupOpen] = useState(true);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const fileType = file.type.split('/')[0]; 
+      const fileType = file.type.split('/')[0];
       if (fileType === 'image') {
-        setMedia(URL.createObjectURL(file)); 
+        
+        const newImage = URL.createObjectURL(file);
+        setMedia((prevMedia) => ({
+          ...prevMedia,
+          capaTreino: newImage, 
+        }));
         setMediaType(fileType);
         setError('');
       } else {
         setError('Apenas imagens são permitidas.');
-        setMedia(null);
+        setMedia((prevMedia) => ({
+          ...prevMedia,
+          capaTreino: imgs.upImage, 
+        }));
       }
     }
   };
 
+  
   const handleVideoChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const fileType = file.type.split('/')[0];
       if (fileType === 'video') {
-        setMedia(URL.createObjectURL(file)); 
+        setMedia((prevMedia) => ({
+          ...prevMedia,
+          capaTreino: URL.createObjectURL(file), 
+        }));
         setMediaType(fileType);
         setError('');
       } else {
         setError('Apenas vídeos são permitidos.');
-        setMedia(null);
       }
     }
   };
 
+ 
   const closePopup = () => {
-    setIsPopupOpen(false); 
-    setMedia(null);  
+    setIsPopupOpen(false);
+    setMedia({
+      capaTreino: imgs.upImage,
+      empresaFT: imgs.empresa,
+      autorFt: imgs.tabEduardo,
+    });
     setError('');
   };
 
   return (
-    <div className={`popup ${isPopupOpen ? 'open' : 'closed'}`}> 
+    <div className={`popup ${isPopupOpen ? 'open' : 'closed'}`}>
       <div className="popup-content">
         <button className="close-btn" onClick={closePopup}>X</button>
-        <h2 className="titulo-adicionar-treinamento">Adicionar Treinamento</h2>  
-        <Treino capaTreino={imgs.upImage} empresaFT={imgs.empresa} titTreino={'exemplo: titulo'} tag1={'tag 1'} tag2={'tag 2'} autorFt={imgs.tabEduardo} autorNome={'eduardo pinto'}/>     
+        <h2 className="titulo-adicionar-treinamento">Adicionar Treinamento</h2>
+
+      
+        <Treino
+          capaTreino={media.capaTreino} 
+          empresaFT={media.empresaFT}   
+          titTreino="exemplo: titulo"
+          tag1="tag 1"            
+          tag2="tag 2"                  
+          autorFt={media.autorFt}       
+          autorNome="eduardo pinto" 
+        />
         <div className="separator"></div>
 
         <div className="inputs-container">
@@ -73,8 +103,8 @@ const App = () => {
 
         {error && <p className="error">{error}</p>}
 
-        {media && mediaType === 'image' && <img src={media} alt="Preview" className="media-preview" />}
-        {media && mediaType === 'video' && <video src={media} controls className="media-preview" />}
+        {media && mediaType === 'image' && <img src={media.capaTreino} alt="Preview" className="media-preview" />}
+        {media && mediaType === 'video' && <video src={media.capaTreino} controls className="media-preview" />}
       </div>
     </div>
   );

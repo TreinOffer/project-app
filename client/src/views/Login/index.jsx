@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './login.estilo.css';
 import imgs from '../../imgs/arrayImagens.jsx';
 import { Link, useNavigate } from 'react-router-dom';
@@ -15,9 +15,8 @@ const msg = {
 
 function Login() {
     const [popState, setPopState] = useState(null);
+    const alreadyLogged = useNavigate();
 
-    // const [currentMsg, setCurrentMsg] = useState(msg.login);
-    // const [isEmpresa, setIsEmpresa] = useState(false);
     const navigate = useNavigate();
 
     const [login, setLogin] = useState();
@@ -71,21 +70,13 @@ function Login() {
             );
         }
     };
-        
 
-    // const handleOptionChange = (event) => {
-    //     const selectedValue = event.target.value;
-    //     setIsEmpresa(selectedValue === 'empresa');
-    //     if (selectedValue === 'empresa') {
-    //         setCurrentMsg('Login - Empresa');
-    //         navigate('/login/empresa');
-    //     } else if (selectedValue === 'funcionario') {
-    //         setCurrentMsg('Login - Funcionário');
-    //         navigate('/login/funcionario');
-    //     } else {
-    //         setCurrentMsg(msg.login);
-    //     }
-    // };
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+          return alreadyLogged("/treinos");  
+        };
+    }, []);
 
     return (
         <>

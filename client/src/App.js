@@ -18,7 +18,6 @@ import Notificacao from './components/notificacao/notificacao.module';
 import Treino from './views/tela-treino/telaModule';
 import Confirmacao from './components/confirmar/confirmacao';
 import Redefinir from './components/resetSenha/reset';
-import Colaborador from './views/colaborador/indexColab';
 // import ProtectedRoute from './protectRoute';
 
   function App() {
@@ -45,7 +44,6 @@ import Colaborador from './views/colaborador/indexColab';
           <Route path='/treino' element={<Treino />}></Route>
           <Route path='/confirmar' element={<Confirmacao />}></Route>
           <Route path='/redefinir' element={<Redefinir />}></Route>
-          <Route path='/colaborador' element={<Colaborador />}></Route>
         </Routes>
       </BrowserRouter>
     );

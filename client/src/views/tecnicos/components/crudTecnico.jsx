@@ -26,9 +26,11 @@ class CrudUser {
         };
     };
 
-    async read() {
+    async read(unique) {
+        // const url = unique.trim() === '' ?
         try {
-            const resposta = await fetch('http://localhost:5000/tecnicos', {
+            const resposta = await fetch(
+                `http://localhost:5000/tecnicos?Unique=${unique}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

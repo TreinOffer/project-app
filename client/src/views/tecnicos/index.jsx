@@ -6,6 +6,7 @@ import NewFunc from './components/NewFunc';
 
 import './estiloTecnico.css';
 import CrudUser from './components/crudTecnico';
+import { RequestToken } from '../../components/fetchToken/token.function';
 
 const g = 25;
 const m = 15;
@@ -15,10 +16,17 @@ const CRUD = new CrudUser();
 
 function Tecnicos() {
   const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useState('');
 
   const [tecnicos, setTecnicos] = useState([]);
   const [click, setClick] = useState(false);
   const [buscar, setBuscar] = useState('');
+
+  async function handleUsername(nome) {
+    setUser(prev => {
+      return nome
+    });
+  };
 
   const handleAddFunc = () => {
     setClick(!click);
@@ -39,6 +47,7 @@ function Tecnicos() {
   const handleDelete = async (id) => {
     await CRUD.delete(id);
   };
+
   const handleRefresh = async () => {
     setIsLoading(true);
     let read = Array();
@@ -57,6 +66,15 @@ function Tecnicos() {
     handleRefresh();
   }, [buscar]);
 
+  useEffect(() => {
+    async function getUsername() {
+      let username = await RequestToken();
+      username = username.user;
+      await handleUsername(username);
+    };
+    getUsername();
+  }, []);
+
   return (
     <>
       <Cabecalho />
@@ -64,7 +82,7 @@ function Tecnicos() {
       <section className='tab_func'>
 
         <div className="tit_tab">
-          <h2>Tabela de técnicos - Agro Indústria Polpa de Fruta</h2>
+          <h2>Tabela de técnicos - {user}</h2>
         </div>
 
         <div className='funcoes_func'>

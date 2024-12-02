@@ -107,43 +107,45 @@ const Destino = ({ modulos }) => {
     });
 
     return (
-        <section
-            className='dropSection'
-            style={{
-                backgroundColor: isOver ? "lightgreen" : "hsl(0,0%,97%)",
-                display: 'flex', flexDirection: 'column', alignItems: 'center'
-            }}
-            ref={drop}
-        >
-            {
-                itens[modulos]?.map((item, index) => {
-                    switch (item.tipo) {
-                        case 'imagem':
-                            return <Containers.Imagem deletar={handleDelete} handleImage={handleChanges} isHovered={item.isHovered}
-                                index={item.index} key={index} imagem={item.src} setItens={[modulos, setItens]} isFlipped={item.isOpen} />
+        <>
+            <section
+                className='dropSection'
+                style={{
+                    backgroundColor: isOver ? "lightgreen" : "hsl(0,0%,97%)",
+                    display: 'flex', flexDirection: 'column', alignItems: 'center'
+                }}
+                ref={drop}
+            >
+                {
+                    itens[modulos]?.map((item, index) => {
+                        switch (item.tipo) {
+                            case 'imagem':
+                                return <Containers.Imagem deletar={handleDelete} handleImage={handleChanges} isHovered={item.isHovered}
+                                    index={item.index} key={index} imagem={item.src} setItens={[modulos, setItens]} isFlipped={item.isOpen} />
 
-                        case 'parag':
-                            return <Containers.Prgf deletar={handleDelete} index={item.index} setItens={[modulos, setItens]}
-                                key={index} mensagem={item.src} updateParag={handleChanges} isEditting={item.isOpen} />
+                            case 'parag':
+                                return <Containers.Prgf deletar={handleDelete} index={item.index} setItens={[modulos, setItens]}
+                                    key={index} mensagem={item.src} updateParag={handleChanges} isEditting={item.isOpen} />
 
-                        case 'video':
-                            return <Containers.Video isFlipped={item.isOpen} deletar={handleDelete}
-                                setItens={[modulos, setItens]} index={item.index} key={index}
-                                url={item.src} isUrl={item.isUrl} handleVideo={handleChanges} />
-                        case 'tit':
-                            return <Containers.Tit key={index} index={item.index} mensagem={item.src} setItens={[modulos, setItens]}
-                                deletar={handleDelete} updateTit={handleChanges} isEditting={item.isOpen} />
+                            case 'video':
+                                return <Containers.Video isFlipped={item.isOpen} deletar={handleDelete}
+                                    setItens={[modulos, setItens]} index={item.index} key={index}
+                                    url={item.src} isUrl={item.isUrl} handleVideo={handleChanges} />
+                            case 'tit':
+                                return <Containers.Tit key={index} index={item.index} mensagem={item.src} setItens={[modulos, setItens]}
+                                    deletar={handleDelete} updateTit={handleChanges} isEditting={item.isOpen} />
 
-                        default:
-                            alert(`Tipo de item não existe ${item}`);
-                            break;
-                    };
-                })
-            }
+                            default:
+                                alert(`Tipo de item não existe ${item}`);
+                                break;
+                        };
+                    })
+                }
+            </section>
             <button
                 style={{
                     position: "fixed",
-                    bottom: "40px",
+                    bottom: "2px",
                     padding: "10px 20px",
                     backgroundColor: "#4CAF50",
                     color: "white",
@@ -155,12 +157,11 @@ const Destino = ({ modulos }) => {
             >
                 Enviar Treinamento
             </button>
-
             <button
                 style={{
                     position: "fixed",
                     right: "350px",
-                    bottom: "40px",
+                    bottom: "2px",
                     padding: "10px 10px",
                     backgroundColor: "#1E90FF",
                     border: "none",
@@ -169,8 +170,9 @@ const Destino = ({ modulos }) => {
                     color: "white"
                 }}
             >
-                Enviar Capa de Treinamento</button>
-        </section>
+                Enviar Capa de Treinamento
+            </button>
+        </>
     )
 };
 

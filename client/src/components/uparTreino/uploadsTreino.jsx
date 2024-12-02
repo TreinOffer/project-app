@@ -5,9 +5,9 @@ import imgs from '../../imgs/arrayImagens';
 
 const App = () => {
   const [media, setMedia] = useState({
-    capaTreino: imgs.upImage,
-    empresaFT: imgs.empresa,
-    autorFt: imgs.tabEduardo,
+    capaTreino: imgs.upImage, 
+    empresaFT: imgs.empresa,   
+    autorFt: imgs.tabEduardo,  
   });
   const [mediaType, setMediaType] = useState('');
   const [error, setError] = useState('');
@@ -18,13 +18,12 @@ const App = () => {
     if (file) {
       const fileType = file.type.split('/')[0];
       if (fileType === 'image') {
-        
         const newImage = URL.createObjectURL(file);
         setMedia((prevMedia) => ({
           ...prevMedia,
           capaTreino: newImage, 
         }));
-        setMediaType(fileType);
+        setMediaType(fileType); 
         setError('');
       } else {
         setError('Apenas imagens são permitidas.');
@@ -36,15 +35,15 @@ const App = () => {
     }
   };
 
-  
   const handleVideoChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const fileType = file.type.split('/')[0];
       if (fileType === 'video') {
+        const videoUrl = URL.createObjectURL(file);
         setMedia((prevMedia) => ({
           ...prevMedia,
-          capaTreino: URL.createObjectURL(file), 
+          capaTreino: videoUrl, 
         }));
         setMediaType(fileType);
         setError('');
@@ -54,11 +53,10 @@ const App = () => {
     }
   };
 
- 
   const closePopup = () => {
     setIsPopupOpen(false);
     setMedia({
-      capaTreino: imgs.upImage,
+      capaTreino: imgs.upImage, 
       empresaFT: imgs.empresa,
       autorFt: imgs.tabEduardo,
     });
@@ -66,45 +64,45 @@ const App = () => {
   };
 
   return (
-    <div className={`popup ${isPopupOpen ? 'open' : 'closed'}`}>
-      <div className="popup-content">
-        <button className="close-btn" onClick={closePopup}>X</button>
-        <h2 className="titulo-adicionar-treinamento">Adicionar Treinamento</h2>
+    <div className={`popup-modal ${isPopupOpen ? 'open' : 'closed'}`}>
+      <div className="popup-modal-content">
+        <button className="close-button" onClick={closePopup}>X</button>
+        <h2 className="training-title">Adicionar Treinamento</h2>
 
-      
         <Treino
-          capaTreino={media.capaTreino} 
-          empresaFT={media.empresaFT}   
-          titTreino="exemplo: titulo"
-          tag1="tag 1"            
-          tag2="tag 2"                  
-          autorFt={media.autorFt}       
-          autorNome="eduardo pinto" 
+          capaTreino={media.capaTreino}  
+          empresaFT={media.empresaFT}    
+          titTreino="exemplo: titulo"    
+          tag1="tag 1"                   
+          tag2="tag 2"                   
+          autorFt={media.autorFt}        
+          autorNome="Eduardo Pinto"      
+          className="treinamento-info"   
         />
-        <div className="separator"></div>
+        <div className="separator-line"></div>
 
-        <div className="inputs-container">
-          <h2 className="input-title">Escolha uma Imagem</h2>
+        <div className="file-inputs">
+          <h2 className="file-input-title">Escolha uma Imagem</h2>
           <input
             type="file"
             accept="image/*"
-            onChange={handleImageChange}
-            className="styled-input"
+            onChange={handleImageChange} 
+            className="file-input"
           />
 
-          <h2 className="input-title">Escolha um Vídeo</h2>
+          <h2 className="file-input-title">Escolha um Vídeo</h2>
           <input
             type="file"
             accept="video/*"
             onChange={handleVideoChange}
-            className="styled-input"
+            className="file-input"
           />
         </div>
 
-        {error && <p className="error">{error}</p>}
-
-        {media && mediaType === 'image' && <img src={media.capaTreino} alt="Preview" className="media-preview" />}
-        {media && mediaType === 'video' && <video src={media.capaTreino} controls className="media-preview" />}
+        {error && <p className="error-message">{error}</p>}
+       
+        {mediaType === 'image' && <img src={media.capaTreino} alt="Preview" className="media-preview" />}
+        {mediaType === 'video' && <video src={media.capaTreino} controls className="media-preview" />}
       </div>
     </div>
   );

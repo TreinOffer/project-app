@@ -10,7 +10,8 @@ import Tecnicos from './views/tecnicos';
 import UploadTreino from './views/uploadTreino/uploadPainel';
 import Ed from './views/test/ed';
 import Graficos from './views/graficos/estatisticas';
-import  UparTreino from './components/uparTreino/uploadsTreino';
+import UparTreino from './components/uparTreino/uploadsTreino';
+import Envio from './components/popUpTreino/envio';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       <Route path='/test' element={<Ed/>}></Route>
       <Route path='/graficos' element={<Graficos />}></Route>
       <Route path='/uparTreino' element={<UparTreino />}></Route>
+      <Route path='/popUpenvio' element={<Envio />}></Route>
     </Routes>
     </BrowserRouter>
   );

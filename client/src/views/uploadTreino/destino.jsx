@@ -1,10 +1,8 @@
 import { useDrop } from "react-dnd";
 import { useEffect, useState } from "react";
-
 import Containers from "./Destinos/indexContainers";
 
 const Destino = ({ modulos }) => {
-
     const [itens, setItens] = useState([]);
 
     useEffect(() => console.log("useffect: ", itens[modulos]), [itens]);
@@ -15,7 +13,7 @@ const Destino = ({ modulos }) => {
             const itens = [...prevItens];
             itens[modulos].map((item, i) =>
                 i === index ? item.src = state : item
-            )
+            );
             return itens;
         });
     };
@@ -71,12 +69,30 @@ const Destino = ({ modulos }) => {
         setItens((prevItens) => {
             const novosItens = [...prevItens];
 
-            novosItens[modulos] = novosItens[modulos].filter(item => {
-                // console.log(`itemIndexArray: ${item.index}, itemIndexClickado: ${imagem}, isTrue?: ${item.index !== imagem}`);
-                return item.index !== imagem;
-            });
+            novosItens[modulos] = novosItens[modulos].filter(item => item.index !== imagem);
             return novosItens;
         });
+    };
+
+    const handleEnviarTreinamento = () => {
+        // Aqui você pode adicionar a lógica para enviar os dados para a API ou processá-los como desejar
+        console.log("Enviando treinamento com os itens: ", itens);
+        // Exemplo de envio para uma API (por exemplo, usando fetch ou axios)
+        // fetch('/api/enviarTreinamento', {
+        //     method: 'POST',
+        //     body: JSON.stringify(itens),
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // }).then(response => {
+        //     if (response.ok) {
+        //         alert("Treinamento enviado com sucesso!");
+        //     } else {
+        //         alert("Erro ao enviar treinamento");
+        //     }
+        // }).catch(error => {
+        //     console.error("Erro ao enviar treinamento:", error);
+        // });
     };
 
     const [{ isOver }, drop] = useDrop({
@@ -84,28 +100,13 @@ const Destino = ({ modulos }) => {
         drop: (item) => {
             console.log('qual o item: ', item);
             handlePost(item);
-
-            //Fora usado para diferenciar div drop filho para pai
-            // if (isOver) {
-            //     if (item.tipo === "imagem") {
-            //         onDrop( item );
-            //     } else if (item.tipo === "parag") {
-            //         onDrop({ "parag": item });
-            //     } else {
-            //         onDrop({ "video": item });
-            //     };
-            //     console.log("onDrop", item);
-            // };
         },
         collect: (monitor) => ({
             isOver: monitor.isOver({ shallow: true }),
         })
     });
 
-    console.log("ARRAY: ", itens);
-
     return (
-
         <section
             className='dropSection'
             style={{
@@ -116,7 +117,6 @@ const Destino = ({ modulos }) => {
         >
             {
                 itens[modulos]?.map((item, index) => {
-                    console.log("TIPO DO ITEM,", item.index);
                     switch (item.tipo) {
                         case 'imagem':
                             return <Containers.Imagem deletar={handleDelete} handleImage={handleChanges} isHovered={item.isHovered}
@@ -124,24 +124,39 @@ const Destino = ({ modulos }) => {
 
                         case 'parag':
                             return <Containers.Prgf deletar={handleDelete} index={item.index} setItens={[modulos, setItens]}
-                            key={index} mensagem={item.src} updateParag={handleChanges} isEditting={item.isOpen} />
+                                key={index} mensagem={item.src} updateParag={handleChanges} isEditting={item.isOpen} />
 
                         case 'video':
                             return <Containers.Video isFlipped={item.isOpen} deletar={handleDelete}
-                            setItens={[modulos, setItens]} index={item.index} key={index}
-                            url={item.src} isUrl={item.isUrl} handleVideo={handleChanges}/>
+                                setItens={[modulos, setItens]} index={item.index} key={index}
+                                url={item.src} isUrl={item.isUrl} handleVideo={handleChanges} />
                         case 'tit':
                             return <Containers.Tit key={index} index={item.index} mensagem={item.src} setItens={[modulos, setItens]}
-                            deletar={handleDelete} updateTit={handleChanges} isEditting={item.isOpen} />
+                                deletar={handleDelete} updateTit={handleChanges} isEditting={item.isOpen} />
 
                         default:
                             alert(`Tipo de item não existe ${item}`);
                             break;
                     };
                 })
-            }
+            }            
+            <button
+                style={{
+                    position: "fixed", 
+                    bottom: "40px",                   
+                    padding: "10px 20px",
+                    backgroundColor: "#4CAF50",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer"
+                }}
+                onClick={handleEnviarTreinamento}
+            >
+                Enviar Treinamento
+            </button>
         </section>
     )
 };
 
-export default Destino
+export default Destino;

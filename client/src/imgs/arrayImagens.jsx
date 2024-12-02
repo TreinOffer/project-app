@@ -1,4 +1,5 @@
 import TreinOffer from './logoTreinOffer.png';
+import TreinOff from './logoTreinOff.png';
 
 import voltar from './voltarMenu.png';
 import upload from './uploadIcon.png';
@@ -16,7 +17,16 @@ import empresa from './logoEmpresa.jpeg';
 import opcoes from "./optionsIcon.png";
 import addFunc from "./addFuncIcon.png";
 import removFunc from "./removFuncIcon.png";
-import arrowUp from "./arrowUpward.svg";
+import arrowUp from "./arrowUpward.svg";;
+import notificao from "./notificacao.png";
+import editar from "./editNote.png";
+
+import certificado from "./lading-page/certificado.png"
+import crescimento from "./lading-page/crescimento.png"
+import ensino from "./lading-page/ensino.png"
+import modulos from "./lading-page/modulos.png"
+import suporte from "./lading-page/suporte.png"
+import monitorar from "./monitorar.png";
 
 import treino1 from "./treinos/treino_capa1.png";
 import treino2 from "./treinos/treino_capa2.png";
@@ -35,9 +45,14 @@ import trash from "./trashCan.png";
 
 import upImage from "./SubirTreino/image_placeholder.png";
 import upVideo from "./SubirTreino/video_placeholder.jpg";
+import TreinOfferblack from "./logoTreinOfferblack.png";
+
+import Livro from "./livro.png";
+
 
 const imgs = {
     TreinOffer,
+    TreinOff,
 
     voltar,
     upload,
@@ -51,11 +66,13 @@ const imgs = {
     sair,
     git,
     financas,
+    monitorar,
     opcoes,
     addFunc,
     removFunc,
     confirmar,
     deletar,
+    editar,
     trash,
     arrowUp,
 
@@ -72,6 +89,16 @@ const imgs = {
 
     upImage,
     upVideo,
+    notificao,
+    
+    certificado,
+    crescimento,
+    ensino,
+    modulos,
+    suporte,
+    TreinOfferblack,
+    Livro,
+    
 
     empresa
 };

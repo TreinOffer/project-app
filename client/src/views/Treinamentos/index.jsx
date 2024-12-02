@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./estilo.css"
-import cabecalho from '../cabecalho'
+import Cabecalho from '../cabecalho/cabecalho';
 import imgs from '../../imgs/arrayImagens';
 import Treino from './functions/treino.treinamento';
 
@@ -9,8 +9,7 @@ function Treinamentos() {
   return (
 
     <>
-
-      {cabecalho()}
+      <Cabecalho />
 
       <section className="grid_treinos">
 
@@ -49,7 +48,7 @@ function Treinamentos() {
         {Treino(
           imgs.treino5,
           imgs.empresa,
-          "Congelamento de Frutas",
+          "Armazenagem de Polpas de Fruta",
           "Despensa","Básico",
           imgs.tabLeila, "Leila Pereira"
         )}

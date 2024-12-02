@@ -41,13 +41,13 @@ table tr td label{
     border-radius: 50px;
     background-color: hsl(220,100%,98%);
 }
-.campo_matricula,.campo_senha{
+.campo_matricula,.campo_pass{
     display: flex;
     flex-direction: column;
     margin-bottom: 5%;
     width: auto;
 }
-.login_dados #matricula, .login_dados #senha{
+.login_dados #matricula, .login_dados #pass{
     padding-left: 14px;
     border: none;
     outline: none;
@@ -57,10 +57,10 @@ table tr td label{
     width: calc(100% - 14px);
     margin-bottom: 15px;
 }
-.login_dados #matricula::placeholder, .login_dados #senha::placeholder{
+.login_dados #matricula::placeholder, .login_dados #pass::placeholder{
     padding: 10% 5% 10% 5%;
 }
-.campo_submit{
+.campo_entrar{
     cursor: pointer;
     position: relative;
     margin-left: 30%;
@@ -104,6 +104,25 @@ table tr td label{
     top: 36%; left: 58%;
     width: 40%;
 }
+
+.opcoes_selecao {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+}
+
+.opcoes_selecao label {
+    display: flex; 
+    align-items: center; 
+    margin: 0 12px;     
+    cursor: pointer;
+}
+
+.opcoes_selecao_texto {
+    text-align: center; 
+    margin-bottom: 10px; 
+}
+
 @media (max-width: 760px) {
 
     .main_login{

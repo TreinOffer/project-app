@@ -1,11 +1,11 @@
 import React from 'react'
 import './estilo.css'
-import cabecalho from '../cabecalho'
+import Cabecalho from '../cabecalho/cabecalho';
 
 function cursoInfo() {
     return (
     <>
-            {cabecalho()}
+            <Cabecalho />
 
                             <main className='main_curso'>
                                 <section className="informacoes">

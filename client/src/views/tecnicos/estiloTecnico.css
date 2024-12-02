@@ -119,11 +119,6 @@
     
 }
 
-.foto_func{
-
-}
-
-
 .info_pessoal .nome_func{
     width: calc(((100% - 128px) - 8px) - 25px);
 }
@@ -138,6 +133,12 @@
 .tab_func .bot_opcoes:hover{
     cursor: pointer;
 }
+
+.func .desabilitado{
+    position: absolute;
+    top: 35%;
+    right: 38%;
+};
 
 @media (max-width: 1770px) {
     .tab_func .foto_func{
@@ -181,6 +182,9 @@
     }
     .tab_func .sec_func #nome{
         width: calc(100% - (25px + 34px));
+    }
+    .func .desabilitado{
+        right: 28%;
     }
 }
 .tab_func .func .sec_func input{

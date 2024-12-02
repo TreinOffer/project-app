@@ -1,0 +1,260 @@
+.inicial {
+    text-align: center;
+    font-size: 16px;
+    background-color: #f9f9f9;
+
+    & .navegacao {
+        background-image: linear-gradient(hsl(155, 100%, 95%), hsl(220, 100%, 90%));
+        text-decoration: none;
+        padding: 10px 0;
+    }
+
+    & .menu-area {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 1220px;
+        margin: 0 auto;
+
+        & .menu {
+            padding: 20px 0;
+
+            & a {
+                text-decoration: none;
+                padding: 5px 15px;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+                color: #000;
+            }
+
+            & a:hover {
+                background-color: #ccddff;
+            }
+
+            & .dropdown-toggle {
+                background-color: transparent;
+                color: #3498db;
+                border: 2px solid #3498db;
+                border-radius: 5px;
+                padding: 10px 15px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s, color 0.3s;
+    
+                &:hover {
+                    background-color: #3498db;
+                    color: white;
+                }
+            }
+    
+            & .dropdown {
+                position: relative;
+    
+                & .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    background-color: white;
+                    min-width: 160px;
+                    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                    z-index: 1;
+    
+                    & a {
+                        color: black;
+                        padding: 12px 16px;
+                        text-decoration: none;
+                        display: block;
+                    }
+                }
+    
+                &:hover .dropdown-content {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    & .logo-central {
+        margin: 40px auto;
+        text-align: center;
+
+        & img {
+            width: 45%;
+            margin-left: 10%;
+        }
+    }
+
+    & .titulo-principal {
+        text-align: center;
+        padding: 10px;
+        font-family: "Roboto", "Montserrat", sans-serif;
+        font-weight: bold;
+    }
+
+    & .linha-separadora {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        margin: 0 auto 0.5em;
+        padding: 0.9em 20%;
+    }
+
+    & .bloqueio {
+        padding: 10%;
+        background-image: linear-gradient(to top, #c4e8ff, #1399ec);
+        color: #fff;
+        border-radius: 8px;
+    }
+
+    & .destaque {
+        font-size: 80px;
+        position: relative;
+        color: white;
+        top: -20px;
+        font-family: "Roboto", "Montserrat", sans-serif;
+    }
+
+    & .servicos {
+        margin-top: 20px;
+    }
+
+    & .contato {
+        padding: 40px;
+        background: linear-gradient(to top, #f0f9ff, #c0e7ff);
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 40px auto;
+        font-size: 25px;
+    }
+
+    & .titulo-contato {
+        text-align: center;
+        color: #2c3e50;
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    & .formulario {
+        display: flex;
+        flex-direction: column;
+
+        & .campo {
+            margin-bottom: 15px;
+        }
+
+        & label {
+            font-weight: bold;
+            color: #3c5670;
+        }
+
+        & .input-texto,
+        & .input-telefone,
+        & .input-email,
+        & .select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+
+            &:focus {
+                border-color: #3498db;
+                outline: none;
+            }
+        }
+
+        & .botao-enviar {
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: #2980b9;
+            }
+        }
+
+        
+    }
+
+    & .carousel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px 0;
+
+        & .carousel-button {
+            background: none;
+            border: none;
+            font-size: 2em;
+            cursor: pointer;
+            padding: 10px;
+            color: #007bff;
+        }
+
+        & .carousel-item {
+            display: flex;
+            transition: transform 0.3s ease;
+            width: 100%;
+            justify-content: center;
+        }
+
+        & .card {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            max-width: 300px;
+            margin: 0 10px;
+            box-shadow: rgba(48, 46, 46, 0.2) 10px 8px 4px;
+
+            & .card-image {
+                width: 100%;
+                height: auto;
+                border-radius: 10px 10px 0 0;
+            }
+        }
+
+        & .indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+
+            & .indicator {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background-color: #ccc;
+                margin: 0 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+
+                &.active {
+                    background-color: #007bff;
+                }
+            }
+        }
+    }
+
+    & .footer {
+        background-color: #007BFF;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+    }
+
+    & .texto-justificado {
+        text-align: justify;
+    }
+
+    & h2 {
+        font-size: 50px;
+        font-family: "Roboto", "Montserrat", sans-serif;
+    }
+}

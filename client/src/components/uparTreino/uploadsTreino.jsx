@@ -82,27 +82,18 @@ const App = () => {
         <div className="separator-line"></div>
 
         <div className="file-inputs">
-          <h2 className="file-input-title">Escolha uma Imagem</h2>
+          <h2 className="file-input-title">Escolha uma Capa</h2>
           <input
             type="file"
             accept="image/*"
             onChange={handleImageChange} 
             className="file-input"
-          />
-
-          <h2 className="file-input-title">Escolha um Vídeo</h2>
-          <input
-            type="file"
-            accept="video/*"
-            onChange={handleVideoChange}
-            className="file-input"
-          />
+          />          
         </div>
 
         {error && <p className="error-message">{error}</p>}
        
-        {mediaType === 'image' && <img src={media.capaTreino} alt="Preview" className="media-preview" />}
-        {mediaType === 'video' && <video src={media.capaTreino} controls className="media-preview" />}
+        {mediaType === 'image' && <img src={media.capaTreino} alt="Preview" className="media-preview" />}        
       </div>
     </div>
   );

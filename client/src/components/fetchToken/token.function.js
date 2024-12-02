@@ -5,7 +5,7 @@ export async function RequestToken() {
             return false;
         };
 
-        const request = await fetch(`http://localhost:5000/treinos`, {
+        const request = await fetch(`${process.env.REACT_APP_BACKEND}/treinos`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,

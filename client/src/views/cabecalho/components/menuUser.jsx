@@ -40,7 +40,7 @@ const MenuUser = ({ handleClick, handleAside }) => {
 
     async function updateUser(id) {
         try {
-            const response = await fetch(`http://localhost:5000/cadastro/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND}/cadastro/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ const MenuUser = ({ handleClick, handleAside }) => {
     async function submitUser(id, user) {
         console.log("user: ", user);
         try {
-            const consulta = await fetch(`http://localhost:5000/cadastro`, {
+            const consulta = await fetch(`${process.env.REACT_APP_BACKEND}/cadastro`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(user)

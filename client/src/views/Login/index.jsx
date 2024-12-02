@@ -27,7 +27,7 @@ function Login() {
         setPopState(null);        
 
         try {
-            const request = await fetch(`http://localhost:5000/login`, {
+            const request = await fetch(`${process.env.REACT_APP_BACKEND}/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

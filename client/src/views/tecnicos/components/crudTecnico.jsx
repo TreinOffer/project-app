@@ -6,7 +6,7 @@ class CrudUser {
     async create(user) {
         console.log(user);
         try {
-            const resposta = await fetch('http://localhost:5000/tecnicos', {
+            const resposta = await fetch('${process.env.REACT_APP_BACKEND}/tecnicos', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${CrudUser.token}`
@@ -30,7 +30,7 @@ class CrudUser {
         // const url = unique.trim() === '' ?
         try {
             const resposta = await fetch(
-                `http://localhost:5000/tecnicos?Unique=${unique}`, {
+                `${process.env.REACT_APP_BACKEND}/tecnicos?Unique=${unique}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ class CrudUser {
         console.log(user);
         try {
             console.log(idTecnico)
-            const response = await fetch(`http://localhost:5000/tecnicos/${idTecnico}`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND}/tecnicos/${idTecnico}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${CrudUser.token}`
@@ -72,7 +72,7 @@ class CrudUser {
 
     async delete( idTecnico ) {
         try {
-            const response = await fetch(`http://localhost:5000/tecnicos/${idTecnico}/inativar`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND}/tecnicos/${idTecnico}/inativar`, {
                 method: 'PUT',
                 headers:{
                     'Content-Type':'application/json',

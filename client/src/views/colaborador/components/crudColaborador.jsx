@@ -6,7 +6,7 @@ class CrudUser {
     async create(colaborador) {
         console.log(colaborador);
         try {
-            const resposta = await fetch('http://localhost:5000/colaboradores', {
+            const resposta = await fetch('${process.env.REACT_APP_BACKEND}/colaboradores', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${CrudUser.token}`
@@ -28,7 +28,7 @@ class CrudUser {
 
     async read() {
         try {
-            const resposta = await fetch('http://localhost:5000/colaboradores', {
+            const resposta = await fetch('${process.env.REACT_APP_BACKEND}/colaboradores', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ class CrudUser {
         console.log(colaborador);
         try {
             console.log(idColaborador)
-            const response = await fetch(`http://localhost:5000/colaboradores/${idColaborador}`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND}/colaboradores/${idColaborador}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${CrudUser.token}`
@@ -70,7 +70,7 @@ class CrudUser {
 
     async delete(idColaborador) {
         try {
-            const response = await fetch(`http://localhost:5000/colaboradores/${idColaborador}/inativar`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND}/colaboradores/${idColaborador}/inativar`, {
                 method: 'PUT',
                 headers:{
                     'Content-Type':'application/json',

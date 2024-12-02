@@ -1,7 +1,7 @@
 async function fetchCep(cep) {
   console.log(cep);
   try {
-    const request = await fetch(`http://localhost:5000/buscarCep/${cep}`, {
+    const request = await fetch(`${process.env.REACT_APP_BACKEND}/buscarCep/${cep}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

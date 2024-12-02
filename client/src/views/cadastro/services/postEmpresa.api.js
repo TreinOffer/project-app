@@ -1,7 +1,7 @@
 export const submitEmpresa = async (empresa) => {
     console.log("Empresa: ", empresa);
     try {
-        const consulta = await fetch(`http://localhost:5000/cadastro`, {
+        const consulta = await fetch(`${process.env.REACT_APP_BACKEND}/cadastro`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(empresa)

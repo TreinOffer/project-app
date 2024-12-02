@@ -139,11 +139,11 @@ const Destino = ({ modulos }) => {
                             break;
                     };
                 })
-            }            
+            }
             <button
                 style={{
-                    position: "fixed", 
-                    bottom: "40px",                   
+                    position: "fixed",
+                    bottom: "40px",
                     padding: "10px 20px",
                     backgroundColor: "#4CAF50",
                     color: "white",
@@ -155,6 +155,21 @@ const Destino = ({ modulos }) => {
             >
                 Enviar Treinamento
             </button>
+
+            <button
+                style={{
+                    position: "fixed",
+                    right: "350px",
+                    bottom: "40px",
+                    padding: "10px 10px",
+                    backgroundColor: "#1E90FF",
+                    border: "none",
+                    cursor: "pointer",
+                    borderRadius: "5px",
+                    color: "white"
+                }}
+            >
+                Enviar Capa de Treinamento</button>
         </section>
     )
 };

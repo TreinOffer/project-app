@@ -30,7 +30,7 @@ const CartaoTit = ({ index, mensagem, deletar, updateTit, isEditting, setItens }
                 ) : (
                     <>
                         <textarea style={{ width: '100%', height: "50px", resize: 'none'}}
-                            autoCapitalize='on' name="" id={`Titulo${index}`}
+                            autoCapitalize='on' name="´Paragrafos" id={`Titulo${index}`}
                             onChange={onChange} value={mensagem}></textarea>
                         <div className='actions-parag'>
                             <button onClick={actionEdit} className='button-ok' type="button">OK</button>

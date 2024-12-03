@@ -75,24 +75,12 @@ const Destino = ({ modulos }) => {
     };
 
     const handleEnviarTreinamento = () => {
-        // Aqui você pode adicionar a lógica para enviar os dados para a API ou processá-los como desejar
         console.log("Enviando treinamento com os itens: ", itens);
-        // Exemplo de envio para uma API (por exemplo, usando fetch ou axios)
-        // fetch('/api/enviarTreinamento', {
-        //     method: 'POST',
-        //     body: JSON.stringify(itens),
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     }
-        // }).then(response => {
-        //     if (response.ok) {
-        //         alert("Treinamento enviado com sucesso!");
-        //     } else {
-        //         alert("Erro ao enviar treinamento");
-        //     }
-        // }).catch(error => {
-        //     console.error("Erro ao enviar treinamento:", error);
-        // });
+    };
+
+    const handleEnviarCapaTreinamento = () => {        
+        console.log("Enviando capa de treinamento com os itens: ", itens); 
+        
     };
 
     const [{ isOver }, drop] = useDrop({
@@ -115,18 +103,18 @@ const Destino = ({ modulos }) => {
                     display: 'flex', flexDirection: 'column', alignItems: 'center'
                 }}
                 ref={drop}
-            >
+            >                
+                <form action="/action_page.php" method="get" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}></form>
+
                 {
                     itens[modulos]?.map((item, index) => {
                         switch (item.tipo) {
                             case 'imagem':
                                 return <Containers.Imagem deletar={handleDelete} handleImage={handleChanges} isHovered={item.isHovered}
                                     index={item.index} key={index} imagem={item.src} setItens={[modulos, setItens]} isFlipped={item.isOpen} />
-
                             case 'parag':
                                 return <Containers.Prgf deletar={handleDelete} index={item.index} setItens={[modulos, setItens]}
                                     key={index} mensagem={item.src} updateParag={handleChanges} isEditting={item.isOpen} />
-
                             case 'video':
                                 return <Containers.Video isFlipped={item.isOpen} deletar={handleDelete}
                                     setItens={[modulos, setItens]} index={item.index} key={index}
@@ -134,7 +122,6 @@ const Destino = ({ modulos }) => {
                             case 'tit':
                                 return <Containers.Tit key={index} index={item.index} mensagem={item.src} setItens={[modulos, setItens]}
                                     deletar={handleDelete} updateTit={handleChanges} isEditting={item.isOpen} />
-
                             default:
                                 alert(`Tipo de item não existe ${item}`);
                                 break;
@@ -169,11 +156,12 @@ const Destino = ({ modulos }) => {
                     borderRadius: "5px",
                     color: "white"
                 }}
+                onClick={handleEnviarCapaTreinamento}
             >
                 Enviar Capa de Treinamento
             </button>
         </>
-    )
+    );
 };
 
 export default Destino;

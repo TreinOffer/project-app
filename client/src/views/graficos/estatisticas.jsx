@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Bar, Line } from "react-chartjs-2";
 import Cabecalho from "../cabecalho";
@@ -19,6 +19,19 @@ defaults.plugins.title.color = '#ffffff';
 export default function App() {
   const [showStats, setShowStats] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    const idColaborador = 1;
+
+    fetch(`http://localhost:5000/pontuacoes/${idColaborador}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar os dados do gráfico", error);
+      });
+  }, []);
 
   const toggleStats = () => {
     setShowStats(!showStats);
@@ -183,13 +196,13 @@ export default function App() {
                       font: {
                         size: 12,
                       },
-                      callback: function (value) {                        
-                        const limitedValue = Math.min(value, 1440);                      
+                      callback: function (value) {
+                        const limitedValue = Math.min(value, 1440);
                         const hours = Math.floor(limitedValue / 60);
-                        const minutes = limitedValue % 60;                        
+                        const minutes = limitedValue % 60;
                         if (hours === 24) {
                           return `00:${minutes < 10 ? '0' : ''}${minutes}`;
-                        }                        
+                        }
                         return `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
                       },
                     },

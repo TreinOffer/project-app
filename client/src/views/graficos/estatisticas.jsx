@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Bar, Line } from "react-chartjs-2";
-import Cabecalho from "../cabecalho";
+import Cabecalho from "../cabecalho/cabecalho";
 import "./App.css";
 import revenueData from "../../data/revenueData.json";
 import sourceData from "../../data/sourceData.json";
@@ -19,18 +19,26 @@ defaults.plugins.title.color = '#ffffff';
 export default function App() {
   const [showStats, setShowStats] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedColab, setSelectedColab] = useState(null);
+  const [Colaboradores, setColaboradores] = useState([]);
+
+  const fetchColaborador = async () => {
+    try {
+      const request = await fetch(`${process.env.REACT_APP_BACKEND}/tecnicos`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      })
+      console.log(await request.json())
+      return await request.json()
+    } catch (error) {
+      console.log(error)
+    }
+
+    
+  };
 
   useEffect(() => {
-    const idColaborador = 1;
-
-    fetch(`http://localhost:5000/pontuacoes/${idColaborador}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("Erro ao buscar os dados do gráfico", error);
-      });
+    fetchColaborador();
   }, []);
 
   const toggleStats = () => {
@@ -74,9 +82,11 @@ export default function App() {
             margin: '0.5em 0',
           }} />
 
-          <div className="perfil-section">
+          {Colaboradores?.map()}
+
+          <div className="perfil-section" onClick={() => fetchColaborador(1)}>
             <img
-              src="http://localhost:3000/static/media/perfilEduardoTest.574b9d49835217977ba4.jpg"
+              src={imgs.tabEduardo}
               alt="Perfil Eduardo"
               style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '1em', marginLeft: '0.5em', cursor: 'pointer', marginTop: '10px' }}
             />
@@ -91,9 +101,9 @@ export default function App() {
             width: '70%',
           }} />
 
-          <div className="perfil-section">
+          <div className="perfil-section" onClick={() => fetchColaborador(2)}>
             <img
-              src="http://localhost:3000/static/media/perfilLeilaTest.8c8aa3515d4022ceb34d.jpg"
+              src={imgs.tabLeila}
               alt="Perfil Leila"
               style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '1em', marginLeft: '0.5em', cursor: 'pointer' }}
             />
@@ -112,7 +122,7 @@ export default function App() {
         <section className="quadrado-grafico">
           <div className="perf-colab">
             <div className="foto-colab">
-              <img src={imgs.tabEmpty} alt="colab-foto" />
+              <img src={`${process.env.REACT_APP_BACKEND}/${selectedColab}`} alt="colab-foto" />
             </div>
             <div className="mat-filtro">
               <div className="materia-filtra">

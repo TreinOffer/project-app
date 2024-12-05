@@ -1,23 +1,24 @@
-import { criarPontuacao, lerPontuacao } from '../models/grafico.model.js';
 
-export async function criarPontuacaoController(req, res) {
-    const {
-        idColaborador,
-        idTreino,
-        pontuacao
-    } = req.body;
+// export async function criarPontuacao(req, res) {
+//     const {
+//         idColaborador,
+//         idTreino,
+//         pontuacao
+//     } = req.body;
 
-    if (!idColaborador || !idTreino || !pontuacao) {
-        return res.status(400).json({ message: "Faltam dados para criar a pontuação" });
-    }
+import { readPontuacao } from "../models/graficos/grafico.model";
 
-    const [statusCode, resultado] = await criarPontuacao(
-        idColaborador,
-        idTreino,
-        pontuacao);
+//     if (!idColaborador || !idTreino || !pontuacao) {
+//         return res.status(400).json({ message: "Faltam dados para criar a pontuação" });
+//     }
 
-    return res.status(statusCode).json(resultado);
-}
+//     const [statusCode, resultado] = await readPontuacao(
+//         idColaborador,
+//         idTreino,
+//         pontuacao);
+
+//     return res.status(statusCode).json(resultado);
+// }
 
 export async function mostrarPontuacoes(req, res) {
     const { idColaborador } = req.params;
@@ -26,7 +27,7 @@ export async function mostrarPontuacoes(req, res) {
         return res.status(400).json({ message: "idColaborador é necessário" });
     }
 
-    const [statusCode, resultado] = await lerPontuacao(idColaborador);
+    const [statusCode, resultado] = await readPontuacao(idColaborador);
 
     if (statusCode === 200) {
         const dadosGrafico = {

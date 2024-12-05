@@ -12,6 +12,7 @@ import { atualizarTecnico, criarTecnico, inativarTecnico, listarTecnicos } from 
 import { upload } from "./services/apiImagem.js";
 import { apiCep } from "./services/apiCEP.js";
 import { corsOptions } from "./config/cors.options.js";
+import { mostrarPontuacoes } from "./controllers/grafico.controller.js";
 
 const server = express({ limit: '10mb' });
 const porta = 5000;
@@ -32,6 +33,10 @@ server.get('/treinos', authenticateToken
         res.status(202).send(token);
     }
 );
+
+// Rota para graficos
+    // server.post("/pontuacoes", );
+    server.get("/pontuacoes/:idColaborador", mostrarPontuacoes);    
 
 // Rota empresa
     //Rota Tecnicos

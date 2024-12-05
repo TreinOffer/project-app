@@ -2,15 +2,18 @@ import erro from "../validations/common/erro.message.js";
 import conexao from "../conexao.model.js";
 import { returnId } from "./return.sql.js";
 
-export async function createTreino(entidade, Titulo, Paragrafos) {
+export async function createTreino(entidade, Titulo, Paragrafos, imagens, videos) {
     console.log("Treinamento::: Model");
     try {
         const idTreino = await returnId(entidade[0],'idTreino');
         const sql = `INSERT INTO ${entidade[1]} (
-            idTreino, Titulo, Paragrafos
-        ) VALUES (?,?,?)`;
+            idTreino, Titulo, Paragrafos,
+            Videos, Imagens
+        ) VALUES (?,?,?,?,?)`;
 
-        await conexao.query(sql, [idTreino, Titulo, Paragrafos]);
+        const paragrafosJoin = Paragrafos.join(', ');
+
+        await conexao.query(sql, [idTreino, Titulo, paragrafosJoin, videos, imagens]);
         return [201, { message: `Modulo Criado` }];
     } catch (error) {
         console.log(error);

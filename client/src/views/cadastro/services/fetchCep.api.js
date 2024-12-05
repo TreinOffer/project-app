@@ -1,5 +1,6 @@
 async function fetchCep(cep) {
   console.log(cep);
+  console.log("",process.env.REACT_APP_BACKEND);
   try {
     const request = await fetch(`${process.env.REACT_APP_BACKEND}/buscarCep/${cep}`, {
       method: "GET",

@@ -9,7 +9,10 @@ async function returnFiles(imagens, videos) {
             console.log("sim: ", filename);
             return filename;
         });
-        arrayFiles.push(arrayImagemTreino);
+        //Transforma o array em string para insert no query
+        const toStringImagens = arrayImagemTreino.join(', '); 
+
+        arrayFiles.push(toStringImagens);
         console.log("eduardo: ", await arrayImagemTreino);
     };
 
@@ -19,6 +22,7 @@ async function returnFiles(imagens, videos) {
             console.log("sim: ", filename);
             return filename;
         });
+        arrayVideoTreino.join(', '); //Transforma o array em string para insert no query
         arrayFiles.push(arrayVideoTreino);
         console.log("eduardo2: ", await arrayVideoTreino);
     };
@@ -47,42 +51,46 @@ export async function criarTreinamento(req, res) {
     const { ImagemTreino, VideoTreino } = req.files;
     const { Titulo, Paragrafos } = req.body;
     
-    console.log("Treinamento::: Controller ", Titulo, Paragrafos);
-    
+    console.log("Treinamento::: Controller ");
+    console.log("titulo: ", Titulo, "parag: ",Paragrafos);
+    const [imagens, videos] = await returnFiles(ImagemTreino, VideoTreino);
+
     const [statusCodeModulo, resposta] = await createTreino(
         entidade,
-        Titulo, Paragrafos
+        Titulo, Paragrafos,
+        imagens, videos
     );
+    res.status(statusCodeModulo).json("sim");
     
-    if (statusCodeModulo === 500) {
-        //Encerra a resposta
-        res.status(statusCodeModulo).json(resposta);
-    }else{
-        //Retorna o status, porém, passa para a próxima função
-        res.status(statusCodeModulo);
-        const arquivos = await returnFiles(ImagemTreino, VideoTreino);
+//     if (statusCodeModulo === 500) {
+//         //Encerra a resposta
+//         res.status(statusCodeModulo).json(resposta);
+//     }else{
+//         //Retorna o status, porém, passa para a próxima função
+//         res.status(statusCodeModulo);
+//         
 
-        // Criar forma de passar o id do modulo
-        // Se existir imagens em ArrayImagens
-        if (arquivos[0].length > 0) {
-            const [statusCodeImagens, resposta] = await criarImagemRegistro(entidade[2], arquivos[0], idModulo);
-            res.status(statusCodeImagens).json(resposta);
-        };
+//         // Criar forma de passar o id do modulo
+//         // Se existir imagens em ArrayImagens
+//         if (arquivos[0].length > 0) {
+//             const [statusCodeImagens, resposta] = await criarImagemRegistro(entidade[2], arquivos[0], idModulo);
+//             res.status(statusCodeImagens).json(resposta);
+//         };
 
-        if (arquivos[1]. length > 0) {
-            const [statusCodeVideos, resposta] = await criarVideoRegistro(entidade[3], arquivos[1], idModulo);
-            res.status(statusCodeVideos, resposta);   
-        };
-        res.status().json({ message: `Modulo Criado`, status: 204 });
-    };
-};
+//         if (arquivos[1]. length > 0) {
+//             const [statusCodeVideos, resposta] = await criarVideoRegistro(entidade[3], arquivos[1], idModulo);
+//             res.status(statusCodeVideos, resposta);   
+//         };
+//         res.status().json({ message: `Modulo Criado`, status: 204 });
+//     };
+// };
 
-async function criarImagemRegistro(entidade, imagens, idModulo) {
-    const [ statusCode, resposta ] = await createImagemRegistro(entidade, imagens, idModulo);
-    return [statusCode, resposta];
-};
+// async function criarImagemRegistro(entidade, imagens, idModulo) {
+//     const [ statusCode, resposta ] = await createImagemRegistro(entidade, imagens, idModulo);
+//     return [statusCode, resposta];
+// };
 
-async function criarVideoRegistro() {
-    const [ statusCode, resposta ] = await createVideoRegistro(entidade, videos, idModulo);
-    return [statusCode, resposta];
+// async function criarVideoRegistro() {
+//     const [ statusCode, resposta ] = await createVideoRegistro(entidade, videos, idModulo);
+//     return [statusCode, resposta];
 };

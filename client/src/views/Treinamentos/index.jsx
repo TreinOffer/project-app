@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./estilo.css"
-import Cabecalho from '../cabecalho'
+import Cabecalho from '../cabecalho/cabecalho';
 import imgs from '../../imgs/arrayImagens';
 import CoresRGB from '../../components/coresRGB';
 
@@ -72,7 +72,6 @@ function Treinamentos() {
   return (
 
     <>
-
       <Cabecalho />
 
       <section className="grid_treinos">

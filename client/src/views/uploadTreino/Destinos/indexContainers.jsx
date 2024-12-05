@@ -1,10 +1,11 @@
-import DropImagem from "./components/tiposDrop/dropImagem";
+import DropImagem from "./components/dropImagem";
+import DropParag from "./Cartoes/CartaoParag"
 
 const Containers = {
     
     Imagem : DropImagem,
     // Video : DestinoVideo,
-    // Prgf : DestinoParag
+    Prgf : DropParag
 }
 
 export default Containers;

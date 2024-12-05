@@ -12,7 +12,7 @@
     transition: 0.3s ease-out;
 }
 .logoNavBar{
-    background-image: linear-gradient(white,hsl(205,100%,80%));
+    background-image: linear-gradient(#ffffff,#99d5ff);
 }
 .menuNav{
     display: flex;

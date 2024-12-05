@@ -1,7 +1,16 @@
-const ArrasVideo = ({ video, arrastar }) => {
+const ArrasVideo = ({ imagem, arrastar }) => {
     return(
         <>
-            <video ref={arrastar} controls src={video}></video>
+            <section id="DragVideo">  
+                <div className="div-border">
+                    <div>
+                        <div >
+                            <img src={imagem} alt="video" />
+                        </div>
+                    </div>
+                </div>
+                <h4>Vídeo</h4>
+            </section>
         </>
     )
 };

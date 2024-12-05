@@ -8,14 +8,13 @@ const p = 10;
 
 const CRUD = new CrudUser();
 
-function NewFunc({ atualizaPag, click }) {
+function NewFunc({ atualizaPag, click, transForm }) {
 
   const [ user, setUser ] = useState({
     Matricula: "",
     Imagem: "",
     Nome: "",
     Especializacao: "",
-    Colaboradores: "0",
     Senha: ""
   });
 
@@ -40,18 +39,19 @@ function NewFunc({ atualizaPag, click }) {
             reader.onloadend = () => {
                 imagem = reader.result;
                 document.getElementsByClassName("foto_func")[0].src = imagem;
-                onChangeImg('Imagem', imagem);
+                onChangeImg('Imagem', file);
             };
             reader.readAsDataURL(file);
         };
   };
 
   return (
-    <form method="POST" enctype='multipart/form-data' onSubmit={async (e) => {
-      e.preventDefault(); //not rerender the page
-      click(false); // Closes the newFunc tab
-      CRUD.create(user); // Post the new user to the database
-      atualizaPag(); //Triggers a rerender by calling useEffect
+    <form action='/tecnicos' method="POST" enctype='multipart/form-data' onSubmit={async (e) => {
+      e.preventDefault();
+      click(false); 
+      const form = await transForm(user);
+      CRUD.create(form); 
+      atualizaPag(); 
     }}>
       <section className="func">
         <div className='sec_func info_pessoal' style={{ width: `${g}%` }}>
@@ -61,7 +61,7 @@ function NewFunc({ atualizaPag, click }) {
             } alt='*' />
 
             <div className="botao_div">
-              <input className='addFotoFuncBt' onChange={handleUploadImagem} accept='.jpg,.png,.jpeg' multiple={false} type="file" name="foto" id="foto" />
+              <input className='addFotoFuncBt' onChange={handleUploadImagem} accept='.jpg,.png,.jpeg' multiple={false} type="file" name="Imagem" id="foto" />
               <label id='forFoto' htmlFor="foto">Escolher imagem</label>
             </div>
           </div>
@@ -72,15 +72,15 @@ function NewFunc({ atualizaPag, click }) {
           <input onChange={onChange('Especializacao')} type="text" name="espec" id="tarefa" />
         </div>
 
-        <div className="sec_func" style={{ width: `${p}%` }}>
+        {/* <div className="sec_func" style={{ width: `${p}%` }}>
           <input readOnly value="0" name="colab" id="colaboradores" />
-        </div>
+        </div> */}
 
         <div className='sec_func' style={{ width: `${m}%` }}>
           <input required onChange={onChange('Senha')} type="password" name="senha" id="senha" />
         </div>
 
-        <div className='sec_func' style={{ width: `${m}%` }}>
+        <div className='sec_func' style={{ width: `${g}%` }}>
           <input onChange={onChange('Matricula')} required type="text" name="matricula" id="matricula" />
         </div>
 

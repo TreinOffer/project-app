@@ -19,22 +19,33 @@ defaults.plugins.title.color = '#ffffff';
 export default function App() {
   const [showStats, setShowStats] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedColab, setSelectedColab] = useState(null);
-  const [Colaboradores, setColaboradores] = useState([]);
+  const [Colaboradores, setColaboradores] = useState([]); // Initialized as empty array
+
+  async function fetchColabState(dados) {
+    if (Array.isArray(dados)) {
+      setColaboradores(dados); // Ensure that the data is an array
+    } else {
+      console.error("Invalid data format for colaboradores", dados);
+    }
+  }
 
   const fetchColaborador = async () => {
+    const token = localStorage.getItem('token')
     try {
-      const request = await fetch(`${process.env.REACT_APP_BACKEND}/tecnicos`, {
+      const request = await fetch(`${process.env.REACT_APP_BACKEND}/colaboradores`, {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
-      })
-      console.log(await request.json())
-      return await request.json()
-    } catch (error) {
-      console.log(error)
-    }
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
 
-    
+      });
+      const data = await request.json();
+      console.log('eduardo ', data);
+      await fetchColabState(data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
@@ -76,32 +87,35 @@ export default function App() {
             />
           </div>
 
-          <div style={{
-            height: '1px',
-            backgroundColor: '#ccc',
-            margin: '0.5em 0',
-          }} />
+          <div style={{ height: '1px', backgroundColor: '#ccc', margin: '0.5em 0' }} />
 
-          {Colaboradores?.map()}
+          {Colaboradores.map((colab) => (
+            <>
+              <div className="perfil-section" key={colab.Matricula} >
+                <img
+                  src={colab.Imagem}
+                  alt={`Perfil ${colab.Nome}`}
+                  style={{
+                    width: '50px',
+                    height: '50px',
+                    borderRadius: '50%',
+                    marginRight: '1em',
+                    marginLeft: '0.5em',
+                    cursor: 'pointer',
+                    marginTop: '10px',
+                  }}
+                />
+              </div>
+              <div className="nome-colab-graf">
+                <span>{colab.Nome}</span>
+              </div>
+              <div style={{ height: '1px', backgroundColor: '#ccc', margin: '1.5em auto', width: '70%' }} />
+            </>
+          ))}
 
-          <div className="perfil-section" onClick={() => fetchColaborador(1)}>
-            <img
-              src={imgs.tabEduardo}
-              alt="Perfil Eduardo"
-              style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '1em', marginLeft: '0.5em', cursor: 'pointer', marginTop: '10px' }}
-            />
-            <div className="nome-colab-graf">
-              <span>Eduardo Pereira</span>
-            </div>
-          </div>
-          <div style={{
-            height: '1px',
-            backgroundColor: '#ccc',
-            margin: '1.5em auto',
-            width: '70%',
-          }} />
 
-          <div className="perfil-section" onClick={() => fetchColaborador(2)}>
+
+          {/* <div className="perfil-section" onClick={() => fetchColaborador(2)}>
             <img
               src={imgs.tabLeila}
               alt="Perfil Leila"
@@ -111,18 +125,13 @@ export default function App() {
               <span>Leila Pereira</span>
             </div>
           </div>
-          <div style={{
-            height: '1px',
-            backgroundColor: '#ccc',
-            margin: '1.5em auto',
-            width: '70%',
-          }} />
+          <div style={{ height: '1px', backgroundColor: '#ccc', margin: '1.5em auto', width: '70%' }} /> */}
         </section>
 
         <section className="quadrado-grafico">
           <div className="perf-colab">
             <div className="foto-colab">
-              <img src={`${process.env.REACT_APP_BACKEND}/${selectedColab}`} alt="colab-foto" />
+              <img src={imgs.tabEmpty} alt="colab-foto" />
             </div>
             <div className="mat-filtro">
               <div className="materia-filtra">
@@ -147,7 +156,6 @@ export default function App() {
               <li>Modulo 3</li>
             </ul>
           </div>
-
 
           <div className="dataCard revenueCard">
             <Line

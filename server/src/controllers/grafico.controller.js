@@ -1,24 +1,4 @@
-
-// export async function criarPontuacao(req, res) {
-//     const {
-//         idColaborador,
-//         idTreino,
-//         pontuacao
-//     } = req.body;
-
-import { readPontuacao } from "../models/graficos/grafico.model";
-
-//     if (!idColaborador || !idTreino || !pontuacao) {
-//         return res.status(400).json({ message: "Faltam dados para criar a pontuação" });
-//     }
-
-//     const [statusCode, resultado] = await readPontuacao(
-//         idColaborador,
-//         idTreino,
-//         pontuacao);
-
-//     return res.status(statusCode).json(resultado);
-// }
+import { readPontuacao } from "../models/graficos/grafico.model.js";
 
 export async function mostrarPontuacoes(req, res) {
     const { idColaborador } = req.params;

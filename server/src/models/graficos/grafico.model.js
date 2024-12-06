@@ -1,28 +1,13 @@
-import conexao from "../conexao.model";
-
-// export async function createPontuacao(idColaborador, idTreino, pontuacao) {
-//     const sql = `
-//         INSERT INTO Pontuacao (idColaborador, idTreino, Pontuacao)
-//         VALUES (?, ?, ?)
-//     `;
-//     try {
-//         await conexao.query(sql, [idColaborador, idTreino, pontuacao]);
-//         return [200, { message: 'Pontuação criada com sucesso!' }];
-//     } catch (error) {
-//         console.error("Erro ao criar pontuação:", error);
-//         return [500, { message: "Erro ao criar pontuação", error }];
-//     }
-// }
-
+import conexao from "../conexao.model.js";
 
 export async function readPontuacao(idColaborador) {
     const sql = `
-        SELECT T.idTreino, AVG(P.Pontuacao) AS media_pontuacao
+        SELECT T.idPontuacao, AVG(P.Pontuacao) AS media_pontuacao
         FROM Pontuacao P
-        JOIN Treino T ON P.idTreino = T.idTreino
+        JOIN pontuacao T ON P.idPontuacao = T.idPontuacao
         WHERE P.idColaborador = ?
-        GROUP BY T.idTreino
-        ORDER BY T.idTreino
+        GROUP BY T.idPontuacao
+        ORDER BY T.idPontuacao
     `;
     try {
         const [resultado] = await conexao.query(sql, [idColaborador]);

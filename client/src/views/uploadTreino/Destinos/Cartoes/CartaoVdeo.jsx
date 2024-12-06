@@ -92,4 +92,10 @@ const CartaoVdeo = ({ deletar, index, url, setItens, isFlipped, isUrl, handleVid
     );
 }
 
+
+
+
+  
+
+
 export default CartaoVdeo;

@@ -56,12 +56,14 @@ const Ed = () => {
 
   return (
     <>
-
-      <form action="POST" encType='multipart/form-data'>
-        <input type='file' nome='eduardo' />
-        <button type="submit">Enviar</button>
-        {alert("enviei")}
-      </form>
+      <div>
+        <input
+          type="checkbox"
+          id="subscribeNews"
+          name="subscribe"
+          value="newsletter" />
+        <label for="subscribeNews"> Subscreva a newsletter? </label>
+      </div>
     </>
   );
 };

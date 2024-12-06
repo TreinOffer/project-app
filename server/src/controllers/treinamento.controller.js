@@ -34,6 +34,7 @@ const entidade = ['treinamentos', 'modulos', 'imagens', 'videos'];
 
 export async function criarCapaTreino(req, res) {
     const { primKey } = req.user;
+    console.log("idTecnico: ",primKey)
     const { fieldname } = req.file;
     const { Titulo, Tipo, Tags } = req.body;
 

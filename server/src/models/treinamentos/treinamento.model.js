@@ -5,7 +5,9 @@ import { returnId } from "./return.sql.js";
 export async function createTreino(entidade, Titulo, Paragrafos, imagens, videos) {
     console.log("Treinamento::: Model");
     try {
+        // É preciso validar se há uma capa antes de chamar o sql abaixo
         const idTreino = await returnId(entidade[0],'idTreino');
+
         const sql = `INSERT INTO ${entidade[1]} (
             idTreino, Titulo, Paragrafos,
             Videos, Imagens
@@ -27,7 +29,7 @@ export async function createCapaTreino(
     Tipo, FotoCapa, Tags) {
         console.log("TreinoCapa::: Model");
         try {
-            const sql = `INSERT INTO ${entidade[0]}
+            const sql = `INSERT INTO ${entidade}
             (Titulo, Tipo, FotoCapa, Tags, idTecnico)
             VALUES (?,?,?,?,?)`;
 

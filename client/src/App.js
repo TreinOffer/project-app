@@ -19,6 +19,7 @@ import Treino from './views/tela-treino/telaModule';
 import Confirmacao from './components/confirmar/confirmacao';
 import Redefinir from './components/resetSenha/reset';
 import UpCapa from './components/uparTreino/uploadsTreino';
+import Youtuber from './components/popUpurl/uparUrl';
 // import ProtectedRoute from './protectRoute';
 
   function App() {
@@ -45,6 +46,7 @@ import UpCapa from './components/uparTreino/uploadsTreino';
           <Route path='/treino' element={<Treino />}></Route>
           <Route path='/confirmar' element={<Confirmacao />}></Route>
           <Route path='/redefinir' element={<Redefinir />}></Route>
+          <Route path='/popUPurl' element={<Youtuber />}></Route>
         </Routes>
       </BrowserRouter>
     );

@@ -37,7 +37,10 @@ export async function logar_se(user, senha) {
     const { role } = destruturacao[0];
 
     // Verifica se user está desabilitado
-    if (await idDisabled(id, `${role}s`)) return userDisabled(id);
+    const tabela = role === 'tecnico' ? 'tecnicos' :
+    role === 'colaborador' ? 'colaboradores' : 'empresas';
+
+    if (await idDisabled(id, tabela)) return userDisabled(id);
 
     // Verifica se há retorno do banco
     const payload = {

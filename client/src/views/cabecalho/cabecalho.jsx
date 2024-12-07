@@ -38,21 +38,21 @@ const Cabecalho = () => {
     };
 
     
-    // useEffect(() => {
-    //     const getRole = async() => {
-    //         const cargo = await Sessao();
-    //         // console.log("SESSAO DEPOIS::: ",cargo);
-    //         setRole(cargo);
-    //         // console.log("SECTION STATE::: ",role)
-    //     };
-    //     getRole();
-    //     // console.log("getRole: ",getRole);
-    //     // console.log("SECTION STATE DEPOIS::: ",role);
-    // }, []);
+    useEffect(() => {
+        const getRole = async() => {
+            const cargo = await Sessao();
+            // console.log("SESSAO DEPOIS::: ",cargo);
+            setRole(cargo);
+            // console.log("SECTION STATE::: ",role)
+        };
+        getRole();
+        // console.log("getRole: ",getRole);
+        // console.log("SECTION STATE DEPOIS::: ",role);
+    }, []);
     
-    // if (role === null) {
-    //     return <div>Loading...</div>;
-    // }
+    if (role === null) {
+        return <div>Loading...</div>;
+    }
 
     // O problema é que aqui está retornando um valor null
     return (

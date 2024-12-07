@@ -102,6 +102,7 @@ const UparCapa = ({ closePopUp, itens }) => {
                 value={formData.titulo}
                 onChange={handleFormChange}
                 className="form-input"
+                placeholder="Exemplo: Título do Treinamento"
               />
             </div>
 
@@ -114,6 +115,7 @@ const UparCapa = ({ closePopUp, itens }) => {
                 value={formData.fname}
                 onChange={handleFormChange}
                 className="form-input"
+                placeholder="Exemplo: Fitness"
               />
             </div>
 
@@ -126,6 +128,7 @@ const UparCapa = ({ closePopUp, itens }) => {
                 value={formData.lname}
                 onChange={handleFormChange}
                 className="form-input"
+                placeholder="Exemplo: Treinamento, Avançado"
               />
             </div>
             <input type="submit" value="Enviar" className="submit-button" />

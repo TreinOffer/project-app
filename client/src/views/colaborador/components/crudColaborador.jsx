@@ -28,7 +28,7 @@ class CrudUser {
 
     async read() {
         try {
-            const resposta = await fetch('${process.env.REACT_APP_BACKEND}/colaboradores', {
+            const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/colaboradores`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

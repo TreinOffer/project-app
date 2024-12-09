@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import imgs from "../../../imgs/arrayImagens";
-import CrudUser from './crudColaborador';  
-import './Colaborador.css';  
+import CrudUser from './crudColaborador';   
 
 const g = 25;
 const m = 15;
@@ -9,12 +8,15 @@ const p = 10;
 
 const CRUD = new CrudUser();
 
-function Colaborador({ colabFt, colabNome, tarefa, numColab, senha, matricula, disabled, handleDelete, atualizaPag, transForm }) {
+function Colaborador({ colabFt, colabNome, tecnico, senha, matricula, disabled, handleDelete, atualizaPag, transForm }) {
+    const [dropdownTec, setDropdownTec] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const dropdownTecRef = useRef(null);
     const dropdownRef = useRef(null);
+    const [isEditingTec, setIsEditingTec] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [editedNome, setEditedNome] = useState(colabNome);  
-    const [editedTarefa, setEditedTarefa] = useState(tarefa);
+    const [editedResponsavel, setEditedResponsavel] = useState(tecnico);
     const [editedSenha, setEditedSenha] = useState(senha);
     const [editedMatricula, setEditedMatricula] = useState(matricula);
     const [editedImage, setEditedImage] = useState(colabFt);  
@@ -26,7 +28,7 @@ function Colaborador({ colabFt, colabNome, tarefa, numColab, senha, matricula, d
             Matricula: editedMatricula,
             Imagem: editedImage,
             Nome: editedNome,
-            Especializacao: editedTarefa,
+            Especializacao: editedResponsavel,
             Senha: editedSenha
         });
         await CRUD.update(matricula, form);
@@ -153,21 +155,7 @@ function Colaborador({ colabFt, colabNome, tarefa, numColab, senha, matricula, d
                         opacity: isDisabled ? `0.3` : `1`,
                         width: `${g}%`, display: 'flex', alignItems: 'center'
                     }}>
-                        {isEditing ? (
-                            <input
-                                type="text"
-                                value={editedTarefa}
-                                onChange={(e) => setEditedTarefa(e.target.value)}
-                                required
-                                className="custom-input"
-                            />
-                        ) : (
-                            tarefa.split(",").map((tarf, index) => (
-                                <span key={index} className='letraQuebra' style={{ display: "block" }}>
-                                    {tarf}
-                                </span>
-                            ))
-                        )}
+                        OLA
                     </div>
 
                     <div className='sec_func' style={{ opacity: isDisabled ? `0.3` : `1`, width: `${m}%` }}>

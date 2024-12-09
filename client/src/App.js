@@ -7,6 +7,7 @@ import Pagamento from './views/pagamento';
 import UploadCurso from './views/uploadCurso';
 import CursoInfo from './views/cursoInfo';
 import Tecnicos from './views/tecnicos';
+import Colaboradores from "./views/colaborador/indexColab";
 import UploadTreino from './views/uploadTreino/uploadPainel';
 import Ed from './views/test/ed';
 import Graficos from './views/graficos/estatisticas';
@@ -32,8 +33,13 @@ import Redefinir from './components/resetSenha/reset';
           <Route path='/fatura'element={ <Fatura />} />
           <Route path='/pagamento' element={<Pagamento />}></Route>
           <Route path='/uploadCurso' element={<UploadCurso />}></Route>
+
           <Route path='/tecnicos' element={<Tecnicos />}></Route>
           <Route path='/tecnicos/:matricula' element={<Tecnicos />}></Route>
+
+          <Route path='/colaboradores' element={<Colaboradores />}></Route>
+          <Route path='/colaboradores/:matricula' element={<Colaboradores />}></Route>
+
           <Route path='/uploadTreino' element={<UploadTreino />}></Route>
           <Route path='/test' element={<Ed />}></Route>
           <Route path='/graficos' element={<Graficos />}></Route>

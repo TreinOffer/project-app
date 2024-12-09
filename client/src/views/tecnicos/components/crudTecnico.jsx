@@ -6,7 +6,7 @@ class CrudUser {
     async create(user) {
         console.log(user);
         try {
-            const resposta = await fetch('${process.env.REACT_APP_BACKEND}/tecnicos', {
+            const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/tecnicos`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${CrudUser.token}`

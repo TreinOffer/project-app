@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Cabecalho from "../cabecalho/cabecalho";
 import imgs from '../../imgs/arrayImagens';
 import Colaborador from './components/Colaborador';
-import FuncColab from './components/FuncColab';
+import NewFunc from './components/FuncColab';
 
-import './estiloColaborador.css';  
-import CrudUser from './components/crudColaborador';  
+import CrudUser from './components/crudColaborador';
+import { RequestToken } from '../../components/fetchToken/token.function';
 
 const g = 25;
 const m = 15;
@@ -14,9 +14,18 @@ const p = 10;
 const CRUD = new CrudUser();
 
 function Colaboradores() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useState('');
 
-  const [colaboradores, setColaboradores] = useState([]); 
+  const [colaboradores, setColaboradores] = useState([]);
   const [click, setClick] = useState(false);
+  const [buscar, setBuscar] = useState('');
+
+  async function handleUsername(nome) {
+    setUser(prev => {
+      return nome
+    });
+  };
 
   const handleAddFunc = () => {
     setClick(!click);
@@ -39,12 +48,30 @@ function Colaboradores() {
   };
 
   const handleRefresh = async () => {
-    const read = await CRUD.read();
-    setColaboradores(read);  
+    setIsLoading(true);
+    let read = Array();
+    if (buscar.length > 0) {
+      read = await CRUD.read(buscar);
+    } else {
+      read = await CRUD.read('');
+    };
+    setColaboradores((...prev) => {
+      return read;
+    });
+    setIsLoading(false);
   };
 
   useEffect(() => {
     handleRefresh();
+  }, [buscar]);
+
+  useEffect(() => {
+    async function getUsername() {
+      let username = await RequestToken();
+      username = username.user;
+      await handleUsername(username);
+    };
+    getUsername();
   }, []);
 
   return (
@@ -54,12 +81,13 @@ function Colaboradores() {
       <section className='tab_func'>
 
         <div className="tit_tab">
-          <h2>Tabela de colaboradores - Agro Indústria Polpa de Fruta</h2>  
+          <h2>Tabela de técnicos - {user}</h2>
         </div>
 
         <div className='funcoes_func'>
           <div>
-            <input type="text" name='' id='func_mat' placeholder='Buscar colaborador' />  
+            <input type="text" value={buscar} onChange={(e) => setBuscar(e.target.value)}
+              name='' id='func_mat' placeholder='Buscar técnico' />
             <button className='buscar_func' type="button">
               <img src={imgs.buscar} alt="buscar" />
             </button>
@@ -73,13 +101,12 @@ function Colaboradores() {
               alt="add" onClick={handleAddFunc} />
           </button>
         </div>
-
         <div className='tit_cabec'>
           <h4 style={{ width: `${g}%` }}>
             Nome
           </h4>
           <h4 style={{ width: `${g}%` }}>
-            Especialização
+            Responsável
           </h4>
           <h4 style={{ width: `${m}%` }}>
             Senha
@@ -91,21 +118,25 @@ function Colaboradores() {
             Ações
           </h4>
         </div>
+        {
+          isLoading ? <h4>Carregando...</h4> : (
+            <section className="funcs">
+              {click && (<NewFunc atualizaPag={handleRefresh} click={setClick} transForm={createForm} />)}
+              {
+                colaboradores?.map((tecnico, chave) =>
+                (<Colaborador key={chave} tecFt={tecnico.Imagem} tecNome={tecnico.Nome}
+                  tecnico={tecnico.Responsavel} senha={tecnico.Senha}
+                  matricula={tecnico.Matricula} disabled={tecnico.Disabled}
+                  handleDelete={handleDelete} atualizaPag={handleRefresh} transForm={createForm}
+                />)
+                )}
+            </section>
+          )
+        }
 
-        <section className="funcs">
-          {click && (<FuncColab atualizaPag={handleRefresh} click={setClick} transForm={createForm} />)}
-          {
-            colaboradores?.map((colaborador, chave) =>  
-              (<Colaborador key={chave} colabFt={colaborador.Imagem} colabNome={colaborador.Nome} 
-                tarefa={colaborador.Especializacao} numColab={colaborador.Colaboradores}
-                senha={colaborador.Senha} matricula={colaborador.Matricula} disabled={colaborador.Disabled}
-                handleDelete={handleDelete} atualizaPag={handleRefresh} transForm={createForm}
-              />)
-            )}
-        </section>
       </section>
     </>
   )
 }
 
-export default Colaboradores; 
+export default Colaboradores;

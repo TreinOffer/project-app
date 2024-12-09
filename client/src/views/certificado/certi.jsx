@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './estCerti.css';
+import imgs from '../../imgs/arrayImagens'
 
 function Certificado() {
   const handlePrint = () => {
@@ -20,7 +21,14 @@ function Certificado() {
   return (
     <>
       <div className="certificado-container">
+
         <div className="certificado">
+        <img
+              src={imgs.TreinOffer}
+              alt="Logo do TreinOffer"
+              className="logo-treino"
+              style={{ width: '300px', height: 'auto' }}
+            />
           <h1>Certificado</h1>
           <p className="subtitulo">Este certificado é concedido a:</p>
           <h2 className="nome-participante">Nome do Participante</h2>
@@ -38,5 +46,6 @@ function Certificado() {
     </>
   );
 }
+
 
 export default Certificado;

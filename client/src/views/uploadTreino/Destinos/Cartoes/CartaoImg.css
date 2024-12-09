@@ -35,7 +35,7 @@
 
             & > img{
                 position: absolute;
-                background-color: hsl(200, 71%, 38%);
+                background-color: hsl(192, 66%, 70%);
                 left: 48%;
                 z-index: 2;
 
@@ -52,7 +52,7 @@
                 flex-direction: row;
                 position: relative;
                 
-                background-color: rgb(166, 208, 248);
+                background-color: rgb(117, 195, 240);
 
                 overflow: hidden;
                 width: 100%;
@@ -79,7 +79,7 @@
 
                 & .div-selecionar{
                     position: relative;
-                    background-color: rgb(245, 245, 245);
+                    background-color: rgb(113, 186, 245);
                     left: 12%;
                     
                     display: inherit;

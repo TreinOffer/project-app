@@ -10,7 +10,7 @@ const CRUD = new CrudUser();
 
 function NewColab({ atualizaPag, click, transForm }) {
   const [tecnicos, setTecnicos] = useState([]);
-
+  const [isEditing, setIsEditing] = useState(false);
   const [colaborador, setColaborador] = useState({
     Matricula: "",
     Imagem: "",
@@ -20,15 +20,13 @@ function NewColab({ atualizaPag, click, transForm }) {
   });
 
   function onChangeImg(tipo, imagem) {
-    return (
-      setColaborador((prev) => ({ ...prev, [tipo]: imagem }))
-    )
+    setColaborador((prev) => ({ ...prev, [tipo]: imagem }));
   };
 
   function onChange(tipo) {
-    return (e) => (
-      setColaborador((prev) => ({ ...prev, [tipo]: e.target.value }))
-    )
+    return (e) => {
+      setColaborador((prev) => ({ ...prev, [tipo]: e.target.value }));
+    };
   };
 
   let imagem = null;
@@ -43,13 +41,13 @@ function NewColab({ atualizaPag, click, transForm }) {
         onChangeImg('Imagem', file);
       };
       reader.readAsDataURL(file);
-    };
+    }
   };
 
   useEffect(() => {
-    async function getTecnicos(){
+    async function getTecnicos() {
       const token = localStorage.getItem('token');
-      const request = await fetch(`${process.env.REACT_APP_BACKEND}/tecnicos`,{
+      const request = await fetch(`${process.env.REACT_APP_BACKEND}/tecnicos`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -58,26 +56,29 @@ function NewColab({ atualizaPag, click, transForm }) {
       });
       const resposta = await request.json();
       setTecnicos(resposta);
-    };
-    await getTecnicos();
-    console.log("tecnicos: ",tecnicos);
-  } ,[]);
+    }
+    getTecnicos();
+  }, []);
 
   return (
-    <form action='/colaboradores' method="POST" enctype='multipart/form-data' onSubmit={async (e) => {
-      e.preventDefault();
-      click(false);
-      const form = await transForm(colaborador);
-      CRUD.create(form);
-      atualizaPag();
-    }}>
+    <form
+      action='/colaboradores'
+      method="POST"
+      encType='multipart/form-data'
+      onSubmit={async (e) => {
+        e.preventDefault();
+        click(false);
+        const form = await transForm(colaborador);
+        CRUD.create(form);
+        atualizaPag();
+      }}
+    >
       <section className="func">
         <div className='sec_func info_pessoal' style={{ width: `${g}%` }}>
           <div className="func_foto">
             <img className='foto_func addFotoFunc' src={
               imagem ? imagem : imgs.tabEmpty
             } alt='*' />
-
             <div className="botao_div">
               <input className='addFotoFuncBt' onChange={handleUploadImagem} accept='.jpg,.png,.jpeg' multiple={false} type="file" name="Imagem" id="foto" />
               <label id='forFoto' htmlFor="foto">Escolher imagem</label>
@@ -87,16 +88,69 @@ function NewColab({ atualizaPag, click, transForm }) {
         </div>
 
         <div className='sec_func' style={{ width: `${g}%` }}>
-          <>
-            <div onChange={onChange('Responsavel')} type="text" name="responsavel" id="tarefa" />
-            <div className="dropdown-menu">
-              {isEditing && (
-                <>
-                  <div className='dropwdown-item'>Ola</div>
-                </>
-              )}
-            </div>
-          </>
+          <div style={{ position: 'relative' }}>
+            <button
+              type="button"
+              onClick={() => setIsEditing(!isEditing)}
+              style={{
+                padding: '8px 16px',
+                backgroundColor: 'white',
+                color: 'black',
+                border: '1px solid #ddd',
+                borderRadius: '5px',                
+                fontSize: '16px',
+                display: 'inline-flex',
+                alignItems: 'center',                
+                cursor: 'pointer',
+                transition: 'background-color 0.3s ease'
+              }}
+            >
+              {colaborador.Responsavel || 'Selecione:'}
+            </button>
+            {isEditing && (
+              <div style={{
+                position: 'absolute',
+                top: '100%',
+                left: '0',
+                width: '100%',
+                backgroundColor: 'white',                
+                border: '1px solid #ddd',
+                borderRadius: '5px',
+                maxHeight: '200px',
+                overflowY: 'auto',
+                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                zIndex: '10'
+              }}>
+                {tecnicos.length > 0 ? (
+                  tecnicos.map((tecnico) => (
+                    <div
+                      key={tecnico.id}
+                      style={{
+                        padding: '8px 16px',
+                        cursor: 'pointer'
+                      }}
+                      onClick={() => {
+                        setColaborador((prev) => ({ ...prev, Responsavel: tecnico.Nome }));
+                        setIsEditing(false);
+                      }}
+                    >
+                      <img src={`${process.env.REACT_APP_BACKEND}/imgs/${tecnico.Imagem}`} alt=""
+                        style={{
+                          width: '20px',
+                          cursor: 'pointer'
+                        }} />
+                      {tecnico.Nome}
+                    </div>
+                  ))
+                ) : (
+                  <div style={{
+                    padding: '8px 16px',
+                    cursor: 'not-allowed'
+                  }}>Responsável não existe...</div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
 
         <div className='sec_func' style={{ width: `${m}%` }}>
@@ -114,7 +168,7 @@ function NewColab({ atualizaPag, click, transForm }) {
         </div>
       </section>
     </form>
-  )
+  );
 };
 
-export default NewColab;  
+export default NewColab;

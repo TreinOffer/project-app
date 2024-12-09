@@ -19,38 +19,60 @@ defaults.plugins.title.color = '#ffffff';
 export default function App() {
   const [showStats, setShowStats] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [Colaboradores, setColaboradores] = useState([]); // Initialized as empty array
+  const [Colaboradores, setColaboradores] = useState([]);
+  const [colabDetails, setColabDetails] = useState({
+    imagem: imgs.tabEmpty,
+    pontuacao: 'Pontuação',
+    materia: '',
+    modulo: '',
+  });
 
-  async function fetchColabState(dados) {
-    if (Array.isArray(dados)) {
-      setColaboradores(dados); // Ensure that the data is an array
+  const handleRefresh = async (buscar) => {
+    let read = Array();
+    if (buscar.length > 0) {
+      read = await fetchColaborador(buscar);
     } else {
-      console.error("Invalid data format for colaboradores", dados);
-    }
-  }
+      read = await fetchColaborador('');
+    };
+    setColaboradores((...prev) => {
+      return read;
+    });
+  };
 
-  const fetchColaborador = async () => {
+  const fetchColaborador = async (unique) => {
     const token = localStorage.getItem('token')
     try {
-      const request = await fetch(`${process.env.REACT_APP_BACKEND}/colaboradores`, {
+      const request = await fetch(`${process.env.REACT_APP_BACKEND}/colaboradores?Unique=${unique}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         }
-
       });
       const data = await request.json();
       console.log('eduardo ', data);
-      await fetchColabState(data);
+      return data;
     } catch (error) {
       console.error(error);
     }
   };
 
   useEffect(() => {
-    fetchColaborador();
-  }, []);
+    async function getColab(){
+      await handleRefresh(searchTerm);
+    };
+    getColab();
+    console.log(colabDetails);
+  }, [searchTerm, colabDetails]);
+
+  async function getFoto(image) {
+    const imagem = `${process.env.REACT_APP_BACKEND}/imgs/${image}`;
+    setColabDetails(prev => ({
+      ...prev,
+      imagem: imagem
+    }));
+    console.log("simImagem", image, "return: ", imagem);
+  };
 
   const toggleStats = () => {
     setShowStats(!showStats);
@@ -90,48 +112,38 @@ export default function App() {
           <div style={{ height: '1px', backgroundColor: '#ccc', margin: '0.5em 0' }} />
 
           {Colaboradores.map((colab) => (
-            <>
-              <div className="perfil-section" key={colab.Matricula} >
-                <img
-                  src={colab.Imagem}
-                  alt={`Perfil ${colab.Nome}`}
-                  style={{
-                    width: '50px',
-                    height: '50px',
-                    borderRadius: '50%',
-                    marginRight: '1em',
-                    marginLeft: '0.5em',
-                    cursor: 'pointer',
-                    marginTop: '10px',
-                  }}
-                />
+            <div key={colab.Matricula} className="perfil-section"
+              onClick={async () => await getFoto(colab.Imagem)}
+            >
+              <div className="colab-informations">
+                <div style={{ width: '100%' }} >
+                  <img
+                    src={`${process.env.REACT_APP_BACKEND}/imgs/${colab.Imagem}`}
+                    alt={`${colab.Nome}`}
+                    style={{
+                      width: '96px',
+                      height: '96px',
+                      borderRadius: '50%',
+                      marginRight: '1em',
+                      marginLeft: '0.5em',
+                      cursor: 'pointer',
+                      marginTop: '10px',
+                    }}
+                  />
+                </div>
+                <div className="nome-colab-graf">
+                  <span>{colab.Nome}</span>
+                </div>
               </div>
-              <div className="nome-colab-graf">
-                <span>{colab.Nome}</span>
-              </div>
-              <div style={{ height: '1px', backgroundColor: '#ccc', margin: '1.5em auto', width: '70%' }} />
-            </>
-          ))}
-
-
-
-          {/* <div className="perfil-section" onClick={() => fetchColaborador(2)}>
-            <img
-              src={imgs.tabLeila}
-              alt="Perfil Leila"
-              style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '1em', marginLeft: '0.5em', cursor: 'pointer' }}
-            />
-            <div className="nome-colab-graf">
-              <span>Leila Pereira</span>
+              <div style={{ height: '1px', backgroundColor: '#ccc', margin: '1.5em auto', width: '96%', borderRadius: '50px' }} />
             </div>
-          </div>
-          <div style={{ height: '1px', backgroundColor: '#ccc', margin: '1.5em auto', width: '70%' }} /> */}
+          ))}
         </section>
 
         <section className="quadrado-grafico">
           <div className="perf-colab">
             <div className="foto-colab">
-              <img src={imgs.tabEmpty} alt="colab-foto" />
+              <img src={colabDetails.imagem} alt="colab-foto" />
             </div>
             <div className="mat-filtro">
               <div className="materia-filtra">

@@ -1,6 +1,9 @@
 import conexao from "../conexao.model.js";
 import erro from "../validations/common/erro.message.js";
 import { returnSQL } from "../tecnicos/return.sql.js";
+import properties from "./properties.colaborador.js";
+import {isEmptyField, mensagem} from "../validations/common/emptyFields.validation.js";
+import {duplicateId, duplicado} from "../validations/common/duplicateId.validation.js";
 
 async function getEmpresaId(primaryTecnico) {
   const sql = `SELECT idEmpresa FROM tecnicos
@@ -17,8 +20,8 @@ export async function getColaboradores(entidade, idTecnico, unique) {
 
     const [params, sql] = await returnSQL(entidade, idEmpresa, unique);
     console.log(sql)
-    const [Colaboradors] = await conexao.query(sql, params);
-    return [200, Colaboradors];
+    const [ retorno ] = await conexao.query(sql, params);
+    return [200, retorno];
 
   } catch (error) {
     console.log("deu erro: ", error);
@@ -34,8 +37,8 @@ export async function postColaborador(Colaborador, entidade, idEmpresa, nomeImag
       return duplicado("Matricula");
 
     const sql = `INSERT INTO ${entidade} (
-      Matricula, Nome, Especializacao,
-      Senha, idEmpresa, Imagem
+      Matricula, Nome, Senha,
+      idEmpresa, idTecnico, Imagem
       ) VALUES(
           ?,?,?,?,?,?
       )`;
@@ -43,9 +46,9 @@ export async function postColaborador(Colaborador, entidade, idEmpresa, nomeImag
     const params = [
       Colaborador.Matricula,
       Colaborador.Nome,
-      Colaborador.Especializacao,
       Colaborador.Senha,
       idEmpresa,
+      Colaborador.idTecnico,
       nomeImagem,
     ];
 
@@ -66,13 +69,14 @@ export async function updateColaborador(Colaborador, entidade, idColaborador, id
       return mensagem;
 
     const sql = `UPDATE ${entidade}
-      SET Matricula = ?, Nome = ?, Especializacao = ?,
+      SET Matricula = ?, Nome = ?, idTecnico = ?,
       Senha = ?, idEmpresa = ?, Imagem = ?
       WHERE Matricula = ? AND idEmpresa = ?`;
 
     const params = [
-      Colaborador.Matricula, Colaborador.Nome, Colaborador.Especializacao,
-      Colaborador.Senha, idEmpresa, nomeImagem,
+      Colaborador.Matricula, Colaborador.Nome,
+      Colaborador.idTecnico, Colaborador.Senha,
+      idEmpresa, nomeImagem,
       idColaborador, idEmpresa
     ];
 

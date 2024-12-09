@@ -26,8 +26,6 @@ export async function criarColaborador(req, res) {
   const Colaborador = req.body;
   const idEmpresa = req.user.primKey;
   const filename = req.file?.filename;
-  console.log(Colaborador);
-  console.log("imagemNome: ",Colaborador.Imagem);
   console.log("File ::: ",filename)
 
   console.log("ColaboradorPOST :: Controller");

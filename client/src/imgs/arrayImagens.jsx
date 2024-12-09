@@ -17,7 +17,7 @@ import empresa from './logoEmpresa.jpeg';
 import opcoes from "./optionsIcon.png";
 import addFunc from "./addFuncIcon.png";
 import removFunc from "./removFuncIcon.png";
-import filter from "./filter.svg";;
+import filter from "./filter.svg";
 import notificao from "./notificacao.png";
 import editar from "./editNote.png";
 

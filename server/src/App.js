@@ -12,7 +12,7 @@ import { atualizarTecnico, criarTecnico, inativarTecnico, listarTecnicos } from 
 import { upload } from "./services/apiImagem.js";
 import { apiCep } from "./services/apiCEP.js";
 import { corsOptions } from "./config/cors.options.js";
-import { criarCapaTreino, criarTreinamento } from "./controllers/treinamento.controller.js";
+import { criarCapaTreino, criarTreinamento, listarTreinamentos } from "./controllers/treinamento.controller.js";
 
 const server = express({ limit: '10mb' });
 const porta = 5000;
@@ -48,15 +48,16 @@ server.post ("/test", upload.single("eduardo"), function(req,res){
     }
     res.status(400).send("Sem arquivo")
 })
+// Rota Tecnico
+    //uploadTreino
+        server.post("/capaTreino", upload.single("capaTreino"), authenticateToken, criarCapaTreino)
+        server.post("/uploadTreino", upload.fields([
+            { name: "ImagemTreino", maxCount: 20 },
+            { name: "VideoTreino", maxCount: 20 }
+        ]),
+        authenticateToken, criarTreinamento);
 
-server.post("/capaTreino", upload.single("capaTreino"), authenticateToken, criarCapaTreino)
-
-server.post("/uploadTreino", upload.fields([
-    { name: "ImagemTreino", maxCount: 20 },
-    { name: "VideoTreino", maxCount: 20 }
-]),
-authenticateToken, criarTreinamento);
-
+server.get("/treinamentos", authenticateToken, listarTreinamentos);
 server.get("/buscarCep/:cep", apiCep);
 
 server.listen(porta, () => {

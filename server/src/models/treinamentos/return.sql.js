@@ -10,4 +10,15 @@ export async function returnId(entidade, column) {
     const { idTreino } = destruturacao2;
     console.log("idTreino: ",idTreino);
     return idTreino;
-}
+};
+
+export async function returnSqlByCargo(entidade, cargo) {
+    let sql = String();
+
+    // Mostra todos os treinos de seus tecnicos na visão da empresa
+    if (cargo === 'empresa') {
+        return sql = `SELECT ${entidade}.* FROM ${entidade}
+        INNER JOIN tecnicos ON ${entidade}.idTecnico
+        = tecnicos.Matricula WHERE idEmpresa = ?;`;
+    };
+};

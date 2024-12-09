@@ -1,4 +1,4 @@
-import { createCapaTreino, createImagemRegistro, createTreino, createVideoRegistro } from "../models/treinamentos/treinamento.model.js";
+import { createCapaTreino, createImagemRegistro, createTreino, createVideoRegistro, readTreinamentos } from "../models/treinamentos/treinamento.model.js";
 
 async function returnFiles(imagens, videos) {
     let arrayFiles = [];
@@ -32,24 +32,38 @@ async function returnFiles(imagens, videos) {
 
 const entidade = ['treinamentos', 'modulos', 'imagens', 'videos'];
 
+export async function listarTreinamentos(req,res) {
+    console.log("ListarTreinamentos ::: Controller");
+    const { primKey, cargo } = req.user;
+    console.log("idUser: ",primKey);
+
+    const [ statusCode, resposta ] = await readTreinamentos(
+        entidade[0],
+        primKey, cargo,
+    );
+
+    res.status(statusCode).json(resposta);
+};
+
 export async function criarCapaTreino(req, res) {
     const { primKey } = req.user;
-    const { fieldname } = req.file;
+    console.log("idTecnico: ",primKey)
+    const { filename } = req.file;
     const { Titulo, Tipo, Tags } = req.body;
 
-    console.log("TreinoCapa::: Controller ", Titulo, Tipo, fieldname, Tags, primKey);
+    console.log("TreinoCapa::: Controller ", Titulo, Tipo, filename, Tags, primKey);
 
     const [statusCode, resposta] = await createCapaTreino(
         entidade[0],
         primKey,
-        Titulo, Tipo, fieldname, Tags
+        Titulo, Tipo, filename, Tags
     );
     res.status(statusCode).json(resposta);
 };
 
 export async function criarTreinamento(req, res) {
     const { ImagemTreino, VideoTreino } = req.files;
-    const { Titulo, Paragrafos } = req.body;
+    const { Titulo, Paragrafos, Ordem } = req.body;
     
     console.log("Treinamento::: Controller ");
     console.log("titulo: ", Titulo, "parag: ",Paragrafos);
@@ -58,9 +72,9 @@ export async function criarTreinamento(req, res) {
     const [statusCodeModulo, resposta] = await createTreino(
         entidade,
         Titulo, Paragrafos,
-        imagens, videos
+        imagens, videos, Ordem
     );
-    res.status(statusCodeModulo).json("sim");
+    res.status(statusCodeModulo).json(resposta);
     
 //     if (statusCodeModulo === 500) {
 //         //Encerra a resposta

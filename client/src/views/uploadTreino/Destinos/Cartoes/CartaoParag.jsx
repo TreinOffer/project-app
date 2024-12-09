@@ -30,7 +30,7 @@ const CartaoParag = ({ index, mensagem, deletar, updateParag, isEditting, setIte
                 ) : (
                     <>
                         <textarea style={{ width: '100%', height: "300px" , color: "red"}}
-                            autoCapitalize='on' name="" id={`paragrafo${index}`}
+                            autoCapitalize='on' name="Paragrafos" id={`paragrafo${index}`}
                             onChange={onChange} value={mensagem}></textarea>
                         <div className='actions-parag'>
                             <button onClick={actionEdit} className='button-ok' type="button">OK</button>

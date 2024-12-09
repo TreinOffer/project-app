@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./estilo.css"
 import Cabecalho from '../cabecalho/cabecalho';
 import imgs from '../../imgs/arrayImagens';
@@ -6,11 +6,34 @@ import Treino from './functions/treino.treinamento';
 
 function Treinamentos() {
   
+  const [treinamentos, setTreinamentos] = useState([]);
+
+  async function fetchTreinamentos() {
+    const token = localStorage.getItem('token');
+    const request = await fetch(`${process.env.REACT_APP_BACKEND}/treinamentos`,{
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    const resposta = await request.json();
+    return resposta;
+  };
+
+  useEffect(() => {
+    async function getTreinos() {
+      const tecnicos = await fetchTreinamentos();
+      setTreinamentos(tecnicos);
+    };
+    getTreinos();
+    console.log("treinos: ",treinamentos);
+  }, []);
+
   return (
 
     <>
       <Cabecalho />
-
       <section className="grid_treinos">
 
         {Treino(
@@ -52,7 +75,17 @@ function Treinamentos() {
           "Despensa","Básico",
           imgs.tabLeila, "Leila Pereira"
         )}
-
+        {
+          treinamentos?.map(treino => (
+            <>
+            {console.log("treino ",treino)}
+            <Treino capaTreino={treino.FotoCapa} empresaFT={imgs.tabEmpty}
+            titTreino={treino.Titulo} tag1={treino.Tags} tag2={treino.Tipo}
+            autorFt={treino.imagem} autorNome={treino.Nome}
+            />
+            </>
+          ))
+        }
       </section>
     </>
   )

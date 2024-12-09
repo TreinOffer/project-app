@@ -17,7 +17,7 @@ import empresa from './logoEmpresa.jpeg';
 import opcoes from "./optionsIcon.png";
 import addFunc from "./addFuncIcon.png";
 import removFunc from "./removFuncIcon.png";
-import arrowUp from "./arrowUpward.svg";;
+import arrowUp from "./arrowUpward.svg";
 import notificao from "./notificacao.png";
 import editar from "./editNote.png";
 

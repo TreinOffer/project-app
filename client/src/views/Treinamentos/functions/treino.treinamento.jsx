@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import CoresRGB from '../../../components/coresRGB';
 
-export default function Treino(capaTreino, empresaFT, titTreino, tag1, tag2='ok', autorFt, autorNome) {
-  console.log("capatreino: ",capaTreino);
+export default function Treino({capaTreino, empresaFT, titTreino, tag1="N/A", tag2='N/A', autorFt, autorNome, toTreino, idTreino}) {
     function corTag(tag){
         if(tag === "Segurança"){
           return "hsl(225,80%,87.5%)";
@@ -24,9 +23,11 @@ export default function Treino(capaTreino, empresaFT, titTreino, tag1, tag2='ok'
       };
     };
 
+  useEffect(() => { console.log("insideOut: ",capaTreino) }, [])
+
   return (
     <div className="treino">
-        <div className="treino_capa">
+        <div className="treino_capa" onClick={() => toTreino(idTreino)}>
           <div className="treino_ft">
             <img src={`${process.env.REACT_APP_BACKEND}/imgs/${capaTreino}`} alt="a" />
           </div>

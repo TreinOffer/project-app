@@ -19,5 +19,19 @@ export async function returnSqlByCargo(entidade, cargo) {
         return sql = `SELECT ${entidade}.*, t.Nome,t.Imagem
         FROM ${entidade} INNER JOIN tecnicos t
         ON ${entidade}.idTecnico = t.Matricula WHERE idEmpresa = ?;`;
+    }
+    else if(cargo === 'tecnico'){
+        // Mostra todos os treinos do técnico logado
+        return sql = `SELECT ${entidade}.*, t.Nome, t.Imagem
+        FROM ${entidade} INNER JOIN tecnicos t ON
+        ${entidade}.idTecnico = t.Matricula
+        WHERE t.Matricula = ?;`;
+    }
+    else{
+        //Mostra todos os treinos cujo colaborador está ligado ao tecnico
+        return sql = `SELECT ${entidade}.*, t.Nome, t.Imagem
+        FROM ${entidade} INNER JOIN tecnicos t ON ${entidade}.idTecnico
+        = t.Matricula INNER JOIN colaboradores p ON p.idTecnico =
+        t.Matricula WHERE p.Matricula = ?;`;
     };
 };

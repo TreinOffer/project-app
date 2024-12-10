@@ -12,7 +12,7 @@ import { atualizarTecnico, criarTecnico, inativarTecnico, listarTecnicos } from 
 import { upload } from "./services/apiImagem.js";
 import { apiCep } from "./services/apiCEP.js";
 import { corsOptions } from "./config/cors.options.js";
-import { criarCapaTreino, criarTreinamento, listarTreinamentos } from "./controllers/treinamento.controller.js";
+import { criarCapaTreino, criarTreinamento, listarModulo, listarTreinamentos } from "./controllers/treinamento.controller.js";
 
 const server = express({ limit: '10mb' });
 const porta = 5000;
@@ -58,6 +58,7 @@ server.post ("/test", upload.single("eduardo"), function(req,res){
         authenticateToken, criarTreinamento);
 
 server.get("/treinamentos", authenticateToken, listarTreinamentos);
+server.get("/treino/:idTreino", authenticateToken, listarModulo);
 server.get("/buscarCep/:cep", apiCep);
 
 server.listen(porta, () => {

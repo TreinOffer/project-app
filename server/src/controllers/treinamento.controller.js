@@ -1,4 +1,4 @@
-import { createCapaTreino, createImagemRegistro, createTreino, createVideoRegistro, readTreinamentos } from "../models/treinamentos/treinamento.model.js";
+import { createCapaTreino, createImagemRegistro, createTreino, createVideoRegistro, readModulos, readTreinamentos } from "../models/treinamentos/treinamento.model.js";
 
 async function returnFiles(imagens, videos) {
     let arrayFiles = [];
@@ -107,4 +107,15 @@ export async function criarTreinamento(req, res) {
 // async function criarVideoRegistro() {
 //     const [ statusCode, resposta ] = await createVideoRegistro(entidade, videos, idModulo);
 //     return [statusCode, resposta];
+};
+
+export async function listarModulo(req,res) {
+    console.log("ListarModulo ::: Controller");
+    const { idTreino } = req.params
+    
+    const [statusCode, resposta] = await readModulos(
+        entidade[1], idTreino
+    );
+
+    res.status(statusCode).json(resposta);
 };

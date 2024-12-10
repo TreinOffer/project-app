@@ -85,7 +85,19 @@ export async function createCapaTreino(
     console.log(error);
     return erro(error);
   }
-}
+};
+
+export async function readModulos(entidade, idTreino) {
+  console.log("ReadModulos ::: Model");
+  try {
+    const sql = `SELECT * FROM ${entidade} WHERE idTreino = ?;`;
+    const [ response ] = await conexao.query(sql, [idTreino]);
+    return [200, response];
+  } catch (error) {
+    console.log(error);
+    erro(error);
+  };
+};
 
 export async function createImagemRegistro(entidade, imagens, idModulo) {
   try {

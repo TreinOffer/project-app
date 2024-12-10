@@ -31,7 +31,18 @@ export async function returnSqlByCargo(entidade, cargo) {
         //Mostra todos os treinos cujo colaborador está ligado ao tecnico
         return sql = `SELECT ${entidade}.*, t.Nome, t.Imagem
         FROM ${entidade} INNER JOIN tecnicos t ON ${entidade}.idTecnico
-        = t.Matricula INNER JOIN colaboradores p ON p.idTecnico =
-        t.Matricula WHERE p.Matricula = ?;`;
+        = t.Matricula INNER JOIN colaboradores c ON c.idTecnico =
+        t.Matricula WHERE c.Matricula = ?;`;
     };
+};
+
+export async function getNumColabs(entidade, idTreino) {
+    // Seleciona os idTreino onde
+    const sql = `SELECT idTreino FROM ${entidade}
+    INNER JOIN tecnicos t ON ${entidade}.idTecnico =
+    t.Matricula INNER JOIN colaboradores c ON
+    t.Matricula = c.idTecnico WHERE ${entidade}.idTreino = ?;`;
+    
+    const [retorno] = await conexao.query(sql, [idTreino]);
+    return retorno.length;
 };

@@ -43,7 +43,7 @@ import Youtuber from './components/popUpurl/uparUrl';
           <Route path='/cadastro' element={<Cadastro />}></Route>
           <Route path='/popup' element={<PopUp />}></Route>
           <Route path='/notificacao' element={<Notificacao />}></Route>
-          <Route path='/treino' element={<Treino />}></Route>
+          <Route path='/treino/:idTreino' element={<Treino />}></Route>
           <Route path='/confirmar' element={<Confirmacao />}></Route>
           <Route path='/redefinir' element={<Redefinir />}></Route>
           <Route path='/popUPurl' element={<Youtuber />}></Route>

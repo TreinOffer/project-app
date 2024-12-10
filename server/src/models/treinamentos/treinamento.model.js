@@ -1,14 +1,26 @@
 import erro from "../validations/common/erro.message.js";
 import conexao from "../conexao.model.js";
-import { returnId, returnSqlByCargo } from "./return.sql.js";
+import { getNumColabs, returnId, returnSqlByCargo } from "./return.sql.js";
 
 export async function readTreinamentos(entidade, idUser, tipoUser) {
   console.log("listarTreinamentos ::: Model");
   try {
     const sql = await returnSqlByCargo(entidade, tipoUser);
 
-    const [ treinamentos ] = await conexao.query(sql, [idUser]);
-    return [200, treinamentos];
+    const [treinamentos] = await conexao.query(sql, [idUser]);
+
+    async function treinamentosFormatado() {
+      return await Promise.all(
+        treinamentos.map(async (treinamento) => {
+          const numColabs = await getNumColabs(entidade, treinamento.idTreino);
+          return {...treinamento, numColabs}
+        })
+      );
+    };
+
+    const treinamentosComColabs = await treinamentosFormatado();
+    
+    return [200, treinamentosComColabs];
   } catch (error) {
     console.log(error);
     erro(error);
@@ -42,7 +54,7 @@ export async function createTreino(
       paragrafosJoin,
       videos,
       imagens,
-      Ordem
+      Ordem,
     ]);
     return [201, { message: `Modulo Criado` }];
   } catch (error) {
@@ -51,7 +63,14 @@ export async function createTreino(
   }
 }
 
-export async function createCapaTreino(entidade, idTecnico, Titulo, Tipo, FotoCapa, Tags) {
+export async function createCapaTreino(
+  entidade,
+  idTecnico,
+  Titulo,
+  Tipo,
+  FotoCapa,
+  Tags
+) {
   console.log("TreinoCapa::: Model");
   try {
     const sql = `INSERT INTO ${entidade}

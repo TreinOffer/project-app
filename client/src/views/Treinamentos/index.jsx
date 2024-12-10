@@ -27,7 +27,7 @@ function Treinamentos() {
   };
 
   function handleVerTreino(idTreino) {
-    alert("idTreino: ",idTreino)
+    // alert("idTreino: ",idTreino);
     navegar(`/treino/${idTreino}`);
   };
 
@@ -49,8 +49,9 @@ function Treinamentos() {
             <>
               {/* {console.log("treino ", treino)} */}
               <Treino key={treino.id} capaTreino={treino.FotoCapa} empresaFT={imgs.tabEmpty}
-                titTreino={treino.Titulo} tag1={treino.Tags} tag2={treino.Tipo}
-                autorFt={treino.Imagem} autorNome={treino.Nome} toTreino={handleVerTreino} idTreino={treino.id}
+                titTreino={treino.Titulo} tag1={treino.Tags} tag2={treino.Tipo} 
+                autorFt={treino.Imagem} autorNome={treino.Nome}
+                toTreino={handleVerTreino} idTreino={treino.idTreino} numColab={treino.numColabs}
               />
             </>
           ))

@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react'
 import CoresRGB from '../../../components/coresRGB';
 
-export default function Treino({capaTreino, empresaFT, titTreino, tag1="N/A", tag2='N/A', autorFt, autorNome, toTreino, idTreino}) {
+export default function Treino({
+  capaTreino, empresaFT, titTreino,
+  tag1="N/A", tag2='N/A',
+  autorFt, autorNome,
+  toTreino, idTreino, numColab
+}) {
     function corTag(tag){
         if(tag === "Segurança"){
           return "hsl(225,80%,87.5%)";
@@ -20,20 +25,20 @@ export default function Treino({capaTreino, empresaFT, titTreino, tag1="N/A", ta
       }
       else if(tag === "Avançado"){
         return "hsl(0,50%,60%)"
+      }else{
+        return "hsl(0,0%,85%)"
       };
     };
-
-  useEffect(() => { console.log("insideOut: ",capaTreino) }, [])
 
   return (
     <div className="treino">
         <div className="treino_capa" onClick={() => toTreino(idTreino)}>
           <div className="treino_ft">
-            <img src={`${process.env.REACT_APP_BACKEND}/imgs/${capaTreino}`} alt="a" />
+            <img src={`${process.env.REACT_APP_BACKEND}/imgs/${capaTreino}`} alt="fotoTreino" />
           </div>
           <div className="treino_info">
             <div className="treino_emp">
-              <img src={empresaFT} alt="b" />
+              <img src={empresaFT} alt="fotoEmpresa" />
             </div>
             <div className="treino_cab">
               <h3 className="treino_tit quebra">
@@ -50,13 +55,13 @@ export default function Treino({capaTreino, empresaFT, titTreino, tag1="N/A", ta
                 </dl>
               </div>
               <div className='treino_autor'>
-                <img src={`${process.env.REACT_APP_BACKEND}/imgs/${autorFt}`} alt="" />
+                <img src={`${process.env.REACT_APP_BACKEND}/imgs/${autorFt}`} alt="fotoAutor" />
                 <h4 className='quebra'>{autorNome}</h4>
               </div>
             </div>
           </div>
           <p className="colab_rel quebra" style={{ color: CoresRGB() }}>
-            4 Colaboradores
+            {`${numColab} ${numColab > 1 ? 'Colaboradores' : 'Colaborador'}`} 
           </p>
         </div>
       </div>

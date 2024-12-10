@@ -24,6 +24,8 @@ const Arrastavel = ({ opcoes }) => {
             return <TiposArras.Tit mensagem={opcoes.src} arrastar={drag} />
         case "video":
             return <TiposArras.Video imagem={opcoes.placeHolder} arrastar={drag}/>
+            case "checkbox":
+            return <TiposArras.Checkbox mensagem={opcoes.src} arrastar={drag} />
         default:
             return console.log("unreachable: ", opcoes);
     };

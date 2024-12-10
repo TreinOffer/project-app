@@ -50,7 +50,8 @@ const UploadPainel = () => {
                         */
                         placeHolder: imgs.upVideo, tipo: "video" },
                     { src: "Exemplo parágrafo", tipo: "parag" },
-                    { src: "Exemplo título", tipo: "tit" }
+                    { src: "Exemplo título", tipo: "tit" },
+                    { src: "Checkbox", tipo: "checkbox" }
                 ]);
             // case 1:
             //     return setItens([

@@ -125,6 +125,9 @@ const Destino = ({ modulos }) => {
                             case 'tit':
                                 return <Containers.Tit key={index} index={item.index} mensagem={item.src} setItens={[modulos, setItens]}
                                     deletar={handleDelete} updateTit={handleChanges} isEditting={item.isOpen} />;
+                                    case 'checkbox':
+                                        return <Containers.Checkbox key={index} index={item.index} mensagem={item.src} arrastar={item.arrastar} 
+                                        deletar={handleDelete} />;
                             default:
                                 alert(`Tipo de item não existe ${item}`);
                                 break;

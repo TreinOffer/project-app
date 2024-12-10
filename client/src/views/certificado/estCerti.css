@@ -8,14 +8,14 @@
 }
 
 .certificado {    
-  border-radius: 10px;
+  border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 200px;
+  padding: 30px;
   text-align: center;
-  width: 1200px;
+  width: 850px;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(199, 27, 27, 0.226) 50%, transparent 50%);
+  background-color: #9ec6e9; /* Cor de fundo do certificado */
   font-family: 'Courier New', Courier, monospace;
 }
 
@@ -77,6 +77,8 @@
   position: absolute;
   top: 20px;
   left: 100%;
+  margin-bottom: 20px;
+  text-align: center;
 
 }
 

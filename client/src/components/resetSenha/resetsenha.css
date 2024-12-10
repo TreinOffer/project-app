@@ -30,6 +30,19 @@
     margin-bottom: 20px;
 }
 
+.input::placeholder {
+    color: #bbb;
+    font-style: italic;
+}
+
+.aviso-primeiro-login {
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
 
 .campo {
     margin-bottom: 20px;
@@ -53,6 +66,19 @@
     box-sizing: border-box;
 }
 
+.senha-container {
+    position: relative;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 40%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 15px;  
+    color: #555;  
+}
 
 .botoes {
     display: flex;
@@ -86,7 +112,6 @@
     background-color: #e53935;
 }
 
-
 .mensagem {
     text-align: center;
     font-size: 16px;
@@ -94,11 +119,9 @@
     margin-top: 10px;
 }
 
-
 .mensagem.erro {
     color: #f44336;
 }
-
 
 .mensagem.sucesso {
     color: #4CAF50;

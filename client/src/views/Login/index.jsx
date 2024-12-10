@@ -3,6 +3,7 @@ import './login.estilo.css';
 import imgs from '../../imgs/arrayImagens.jsx';
 import { Link, useNavigate } from 'react-router-dom';
 import { popUp } from "../../components/popUp/services/popUp.classes.js";
+import ResetSenha from "../../components/resetSenha/reset.jsx"; 
 
 const msg = {
     login: 'Login',
@@ -15,14 +16,16 @@ const msg = {
 
 function Login() {
     const [popState, setPopState] = useState(null);
+    const [canLogin, setCanLogin] = useState(true); 
     const alreadyLogged = useNavigate();
-
     const navigate = useNavigate();
-
     const [login, setLogin] = useState();
     const [senha, setSenha] = useState();
+    const [showResetSenha, setShowResetSenha] = useState(false);
 
-    async function logar_se(){
+    async function logar_se() {
+        if (!canLogin) return;
+
         const dados = { login, senha };
         setPopState(null);        
 
@@ -34,14 +37,14 @@ function Login() {
                 },
                 body: JSON.stringify(dados)
             });
-        
-            console.log("request é: ", request);        
-           
+
+            console.log("request é: ", request);
+
             if (request.status === 203) {
                 setPopState(
                     popUp.erro("Nome ou senha não conferem")
                 );        
-            
+
             } else if (request.status === 202) {
                 const { token } = await request.json();
                 console.log("sim ", token);
@@ -49,21 +52,28 @@ function Login() {
                 setPopState(
                     popUp.aviso("Login realizado")
                 );
+                
                 setTimeout(() => {
-                    navigate('/treinos');
+                    setPopState(null); 
+
+                    if (senha === "123*abc") {
+                        setShowResetSenha(true);
+                    } else {
+                        navigate('/treinos');
+                    }
                 }, 2000);        
-            
+
             } else if (request.status === 401) {
                 setPopState(
                     popUp.erro("Usuário indisponível")
                 );        
-            
+
             } else {
                 setPopState(
                     popUp.erro("Não foi possível processar sua solicitação")
                 );
             }
-        
+
         } catch (error) {
             setPopState(
                 popUp.erro("Não foi possível conectar ao servidor")
@@ -74,13 +84,13 @@ function Login() {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-          return alreadyLogged("/treinos");  
+            return alreadyLogged("/treinos");  
         };
-    }, []);
+    }, [alreadyLogged]);
 
     return (
         <>
-            {true && popState}
+            {popState && popState} 
             <main className='main_login'>
                 <section className="secao_dados">
                     <div className='login_dados'>
@@ -128,21 +138,24 @@ function Login() {
                     <a href="/">
                         <img id="logo" src={imgs.TreinOfferblack} alt="Logo" />
                     </a>
-                    {/* <div className="opcoes_selecao_texto">
-                        <strong style={{ display: 'block', marginTop: '530px', fontSize: '24px', fontWeight: 'bold' }}>Eu sou:</strong>
-                    </div>
-                    <div className="opcoes_selecao">
-                        <label>
-                            <input type="radio" name="tipo" value="empresa"onChange={handleOptionChange} />
-                            Empresa
-                        </label>
-                        <label>
-                            <input type="radio" name="tipo" value="funcionario" onChange={handleOptionChange} />
-                            Funcionário
-                        </label>
-                    </div> */}
                 </section>
             </main>
+
+            {showResetSenha && 
+                <ResetSenha 
+                    onSave={() => {
+                        setShowResetSenha(false); 
+                        navigate('/treinos'); 
+                    }}
+                    onCancel={() => {
+                        
+                        localStorage.removeItem('token');
+                        setPopState(popUp.erro("Operação cancelada, você precisa redefinir sua senha."));
+                        setCanLogin(false); 
+                        navigate('/login'); 
+                    }}
+                />
+            }
         </>
     );
 }

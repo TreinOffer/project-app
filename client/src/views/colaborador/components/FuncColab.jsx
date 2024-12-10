@@ -97,15 +97,28 @@ function NewColab({ atualizaPag, click, transForm }) {
                 backgroundColor: 'white',
                 color: 'black',
                 border: '1px solid #ddd',
-                borderRadius: '5px',                
+                borderRadius: '5px',
                 fontSize: '16px',
                 display: 'inline-flex',
-                alignItems: 'center',                
+                alignItems: 'center',
                 cursor: 'pointer',
                 transition: 'background-color 0.3s ease'
               }}
             >
-              {colaborador.Responsavel || 'Selecione:'}
+              {colaborador.Responsavel || 'Selecione'}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                style={{
+                  marginLeft: '8px',
+                  transition: 'transform 0.3s ease',
+                  transform: isEditing ? 'rotate(180deg)' : 'rotate(0deg)'
+                }}
+              >
+                <path d="M7 10l5 5 5-5z" />
+              </svg>
             </button>
             {isEditing && (
               <div style={{
@@ -113,7 +126,7 @@ function NewColab({ atualizaPag, click, transForm }) {
                 top: '100%',
                 left: '0',
                 width: '100%',
-                backgroundColor: 'white',                
+                backgroundColor: 'white',
                 border: '1px solid #ddd',
                 borderRadius: '5px',
                 maxHeight: '200px',
@@ -137,7 +150,8 @@ function NewColab({ atualizaPag, click, transForm }) {
                       <img src={`${process.env.REACT_APP_BACKEND}/imgs/${tecnico.Imagem}`} alt=""
                         style={{
                           width: '20px',
-                          cursor: 'pointer'
+                          borderRadius: '5px',
+                          cursor: 'pointer'                                                                             
                         }} />
                       {tecnico.Nome}
                     </div>

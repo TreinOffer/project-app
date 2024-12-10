@@ -134,6 +134,10 @@ const App = () => {
               <option value="neutro">Neutro</option>
               <option value="outro">Prefiro não informar</option>
             </select>
+            <div className="campo">
+            <label htmlFor="mensagem">Mensagem</label>
+            <input className="input-mensagem" type="" name="mensagem" id="mensagem" placeholder="Digite sua mensagem aqui.." rows="1" required />
+          </div>
           </div>
           <button type="submit" className="botao-enviar">Enviar</button>
         </form>

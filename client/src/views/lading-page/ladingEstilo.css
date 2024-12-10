@@ -145,6 +145,14 @@
             color: #3c5670;
         }
 
+        & .input-mensagem{
+            width: 100%;
+            padding: 12px;
+             border: 1px solid #bdc3c7;
+             border-radius: 5px;
+             transition: border-color 0.3s;
+        }
+
         & .input-texto,
         & .input-telefone,
         & .input-email,
@@ -175,6 +183,7 @@
                 background-color: #2980b9;
             }
         }
+        
 
         
     }

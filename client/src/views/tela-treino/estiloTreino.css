@@ -116,37 +116,6 @@
   flex: 0 0 auto;
 }
 
-.h1,
-.h2,
-.h3 {
-  font-family: cursive;
-}
-
-body[onload] {
-  transform: scale(1.5);
-  transform-origin: center top;
-}
-
-body[onload] .leaf:nth-child(1) {
-  transform: rotate3d(0, 1, 0, -128deg) !important;
-}
-
-body[onload] .leaf:nth-child(2) {
-  transform: rotate3d(0, 1, 0, -70deg) !important;
-}
-
-body[onload] .leaf:nth-child(3) {
-  transform: rotate3d(0, 1, 0, -40deg) !important;
-}
-
-body[onload] div.leaf:nth-child(4)>div:nth-child(1) {
-  background-color: #e76f51;
-}
-
-.cd__intro {
-  background-color: #c0e;
-}
-
 .pagination-button {
   width: 120px;
   padding: 12px 20px;

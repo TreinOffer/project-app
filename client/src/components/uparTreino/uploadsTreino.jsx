@@ -7,54 +7,26 @@ import { useNavigate } from 'react-router-dom';
 const UparCapa = ({ closePopUp, itens }) => {
   const navegar = useNavigate();
 
+  const [formData, setFormData] = useState({
+    titulo: itens[0].Titulo,
+    Tags: itens[0].Tags,
+    Tipo: itens[0].Tipo,
+    capaTreino: itens[0].capaTreino,
+  });
+
+  const onChange = (field) => (e) => {
+    const { value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
   function onChangeImg(tipo, imagem) {
-    return (
-      itens[1]((prev) => ({ ...prev, [tipo]: imagem }))
-    )
+    return itens[1]((prev) => ({ ...prev, [tipo]: imagem }));
   };
-
-  function onChange(tipo) {
-    return (e) => (
-      itens[1]((prev) => ({ ...prev, [tipo]: e.target.value }))
-    )
-  };
-
-  useState(() => {console.log(itens[0])}, [itens[0]]);
-
-  // const [media, setMedia] = useState({
-  //   capaTreino: imgs.upImage,
-  //   empresaFT: imgs.empresa,
-  //   autorFt: imgs.tabEduardo,
-  //   colaboradorFoto: null,
-  // });
-
-  // const [mediaType, setMediaType] = useState('');
-  // const [error, setError] = useState('');
-
-  // const handleImageChange = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file) {
-  //     const fileType = file.type.split('/')[0];
-  //     if (fileType === 'image') {
-  //       const newImage = URL.createObjectURL(file);
-  //       setMedia((prevMedia) => ({
-  //         ...prevMedia,
-  //         capaTreino: newImage,
-  //       }));
-  //       setMediaType(fileType);
-  //       setError('');
-  //     } else {
-  //       setError('Apenas imagens são permitidas.');
-  //       setMedia((prevMedia) => ({
-  //         ...prevMedia,
-  //         capaTreino: imgs.upImage,
-  //       }));
-  //     }
-  //   }
-  // };
 
   let imagem = null;
-
   const handleUploadImagem = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -69,14 +41,6 @@ const UparCapa = ({ closePopUp, itens }) => {
     };
   };
 
-  // const handleFormChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }));
-  // };
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted with data:', formData);
@@ -87,8 +51,8 @@ const UparCapa = ({ closePopUp, itens }) => {
   };
 
   function toTreino() {
-    navegar("/uploadTreino")
-  };
+    navegar("/uploadTreino");
+  }
 
   return (
     <div className={`popup-modal open`}>
@@ -99,11 +63,11 @@ const UparCapa = ({ closePopUp, itens }) => {
         <h2 className="training-title">Adicionar Treinamento</h2>
         <div className="capa-preview">
           <Treino
-            capaTreino={itens[0].capaTreino}
+            capaTreino={formData.capaTreino}
             empresaFT={imgs.tabEmpty}
-            titTreino={itens[0].Titulo}
-            tag1={itens[0].Tipo}
-            tag2={itens[0].Tags}
+            titTreino={formData.titulo}
+            tag1={formData.Tipo}
+            tag2={formData.Tags}
             autorFt={null}
             autorNome="autor x"
             toTreino={toTreino}
@@ -112,7 +76,6 @@ const UparCapa = ({ closePopUp, itens }) => {
         </div>
         <div className="separator-line"></div>
 
-        {/* <form enctype="multipart/form-data" onSubmit={handleFormSubmit}> */}
         <div className="file-inputs">
           <h2 className="file-input-title">Escolha uma Capa</h2>
           <input
@@ -131,8 +94,8 @@ const UparCapa = ({ closePopUp, itens }) => {
               type="text"
               id="titulo"
               name="titulo"
-              value={itens[0].Titulo}
-              onChange={onChange('Titulo')}
+              value={formData.titulo}
+              onChange={onChange('titulo')}
               className="form-input"
               placeholder="Exemplo: Título do Treinamento"
             />
@@ -144,7 +107,7 @@ const UparCapa = ({ closePopUp, itens }) => {
               type="text"
               id="fname"
               name="fname"
-              value={itens[0].Tags}
+              value={formData.Tags}
               onChange={onChange('Tags')}
               className="form-input"
               placeholder="Exemplo: Industrial"
@@ -157,7 +120,7 @@ const UparCapa = ({ closePopUp, itens }) => {
               type="text"
               id="lname"
               name="lname"
-              value={itens[0].Tipo}
+              value={formData.Tipo}
               onChange={onChange('Tipo')}
               className="form-input"
               placeholder="Exemplo: Básico, Médio, Avançado"
@@ -165,7 +128,6 @@ const UparCapa = ({ closePopUp, itens }) => {
           </div>
           <input type="button" value="OK" className="submit-button" onClick={() => closePopUp()} />
         </div>
-        {/* </form> */}
       </div>
     </div>
   );

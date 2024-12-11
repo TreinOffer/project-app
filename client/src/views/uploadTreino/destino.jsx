@@ -21,59 +21,29 @@ const Destino = ({ modulos }) => {
         console.log("handleChanges: ", index, state);
         setItens(prevItens => {
             const itens = [...prevItens];
-            itens[modulos].map((item, i) => {
-                i === index ? item.src = state[0] : item
-                i === index ? item.render = state[1] : item
-        });
+            itens[modulos].forEach((item, i) => {
+                if (i === index) {
+                    item.src = state[0];
+                    item.render = state[1];
+                }
+            });
             return itens;
         });
     };
 
     const handlePost = (item) => {
-        if (item.tipo === 'imagem' ||
-            item.tipo === 'parag' ||
-            item.tipo === 'tit'
-        ) {
-            setItens((prevItens) => {
-                const novosItens = [...prevItens];
+        setItens((prevItens) => {
+            const novosItens = [...prevItens];
 
-                const novoItem = {
-                    ...item,
-                    index: (novosItens[modulos]?.length || 0),
-                    isOpen: false
-                };
+            const novoItem = {
+                ...item,
+                index: (novosItens[modulos]?.length || 0),
+                isOpen: false
+            };
 
-                novosItens[modulos] = [...(novosItens[modulos] || []), novoItem];
-                return novosItens;
-            });
-        } else if (item.tipo === "video") {
-            setItens((prevItens) => {
-                const novosItens = [...prevItens];
-
-                const novoItem = {
-                    ...item,
-                    index: (novosItens[modulos]?.length || 0),
-                    isOpen: false,
-                    isUrl: true,
-                    isHovered: false
-                };
-
-                novosItens[modulos] = [...(novosItens[modulos] || []), novoItem];
-                return novosItens;
-            });
-        } else {
-            setItens((prevItens) => {
-                const novosItens = [...prevItens];
-
-                const novoItem = {
-                    ...item,
-                    index: (novosItens[modulos]?.length || 0),
-                };
-
-                novosItens[modulos] = [...(novosItens[modulos] || []), novoItem];
-                return novosItens;
-            });
-        };
+            novosItens[modulos] = [...(novosItens[modulos] || []), novoItem];
+            return novosItens;
+        });
     };
 
     const handleDelete = (imagem) => {
@@ -106,19 +76,15 @@ const Destino = ({ modulos }) => {
 
     return (
         <>
-            <form enctype="multipart/form-data" onSubmit={async(e) => {
+            <form enctype="multipart/form-data" onSubmit={async (e) => {
                 e.preventDefault();
                 const capaForm = await createForm(capa);
                 await submitCapa(capaForm);
                 for (const modulo of itens) {
-                    console.log("eunaoseimaisdeNADA: ",modulo, "itens: ",itens)
+                    console.log("eunaoseimaisdeNADA: ", modulo, "itens: ", itens)
                     const treinoForm = await createFormTreino(modulo);
                     await submitTreino(treinoForm);
                 };
-                // itens.forEach( async(it) => {
-                //     const treinoForm = await createFormTreino([itens]);
-                //     await submitTreino(treinoForm);
-                // });
             }}>
                 <section
                     className='dropSection'

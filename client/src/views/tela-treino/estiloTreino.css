@@ -9,84 +9,13 @@
   background-color: hsl(0, 0%, 97%);
 }
 
-.flipbook {
-  margin: 3em auto;
-  width: 900px;
-  height: 600px;
-  position: relative;
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  cursor: pointer;
-}
-
-.flipbook .leaf {
-  position: absolute;
-  transform-style: preserve-3d;
-  height: 100%;
-  width: 50%;
-  left: 30%;
-  transition: transform 1s;
-  transform: rotate3d(0, 1, 0, 0deg);
-  transform-origin: left 0px;
-}
-
-.flipbook .leaf .page {
-  transform-style: preserve-3d;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-}
-
-.flipbook .leaf .page.front {
-  transform: rotate3d(0, 1, 0, 0deg) translate3d(0, 0, 0.1px);
-}
-
-.flipbook .leaf .page.front:not(.external) {
-  box-shadow: inset 5px 0px 5px -5px #000 5;
-}
-
-.flipbook .leaf .page.back {
-  transform: rotate3d(0, 1, 0, 180deg) translate3d(0, 0, 0.1px);
-}
-
-.flipbook .leaf .page.back:not(.external) {
-  box-shadow: inset -5px 0px 5px -5px #000 5;
-}
-
-.title {
-  text-align: center;
-  width: 100%;
-  padding: 0em !important;
-  padding-top: 2em;
-}
-
-.page {
-  padding: 1em;
-}
-
-.page.front {
-  border-radius: 0em 1em 1em 0;
-}
-
-.page.back {
-  border-radius: 1em 0em 0em 1em;
-}
-
-.leaf {
-  background-color: #000 0 !important;
-}
-
-.pageNumber {
-  font-size: 0.75em;
-  position: absolute;
-  bottom: 0.5em;
-}
-
-.front .pageNumber {
-  right: 0.75em;
-}
-
-.back .pageNumber {
-  left: 0.75em;
+.quadradinho {
+  border-radius: 20px;
+  border: 2px solid black;
+  width: 80em;
+  margin-left: 580px;
+  box-sizing: content-box;
+  height: 75vh;
+  box-shadow: inset 0 0 6px black;
+  padding-top: 40px;
 }

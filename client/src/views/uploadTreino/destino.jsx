@@ -85,18 +85,24 @@ const Destino = ({ modulos, setPop }) => {
                 const capaForm = await createForm(capa);
                 const resposta = await submitCapa(capaForm);
                 if (resposta === 400) {
-                    setPop(
-                        popUp.erro("Campos obrigatórios da capa estão vazios")
-                    );
+                    setPop(popUp.erro("Campos obrigatórios da capa estão vazios"));
                 } else {
+                    let isThereErro = false;
                     for (const modulo of itens) {
                         console.log("eunaoseimaisdeNADA: ", modulo, "itens: ", itens)
                         const treinoForm = await createFormTreino(modulo);
                         const resposta = await submitTreino(treinoForm);
-                        resposta === 400 ? setPop(
-                            popUp.erro("O módulo precisa ter um título"))
-                            : null;
+                        if (resposta === 400) {
+                            isThereErro = true;
+                            setPop(popUp.erro("O módulo precisa ter um título"))
+                        };
                     };
+                    if (!isThereErro) {
+                        setPop(popUp.aviso("Treinamento cadastrado"));
+                        setTimeout(() => {
+                            navegar("/treinos");
+                        }, 1000);
+                    }
                 };
             }}>
                 <section

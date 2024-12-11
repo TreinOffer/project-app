@@ -35,10 +35,6 @@ const UparCapa = ({ closePopUp, itens }) => {
       reader.readAsDataURL(file);
     };
   };
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted with data:', formData);
-  };
 
   const closePopupHandler = () => {
     closePopUp();

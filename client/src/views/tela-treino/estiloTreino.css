@@ -9,11 +9,6 @@
   background-color: hsl(0, 0%, 97%);
 }
 
-.centered {
-  margin: auto;
-  width: max-content;
-}
-
 .flipbook {
   margin: 3em auto;
   width: 900px;
@@ -59,11 +54,6 @@
   box-shadow: inset -5px 0px 5px -5px #000 5;
 }
 
-.disabled {
-  user-select: none;
-  opacity: 0.6;
-}
-
 .title {
   text-align: center;
   width: 100%;
@@ -99,70 +89,4 @@
 
 .back .pageNumber {
   left: 0.75em;
-}
-
-.contents-row {
-  display: flex;
-  flex-flow: row nowrap;
-}
-
-.contents-row .spacer {
-  flex: 1 1;
-  height: 1em;
-  border-bottom: 1px dashed #000;
-}
-
-.contents-row .text {
-  flex: 0 0 auto;
-}
-
-.pagination-button {
-  width: 120px;
-  padding: 12px 20px;
-  border-radius: 25px;
-  text-decoration: none;
-  border: none;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: inline-block;
-  text-align: center;
-  margin-right: 30px;
-}
-
-.pagination-button:last-child {
-  margin-right: 0;
-}
-
-.module-button {
-  background-color: #2a9d8f;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin: 10px;
-}
-
-.module-button:hover {
-  background-color: #1d6f60;
-  transform: translateY(-3px);
-}
-
-.module-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(72, 161, 147, 0.5);
-}
-
-.checkbox-container {
-  margin-top: 10px;
-  text-align: center;
-}
-
-.checkbox-container input {
-  margin-right: 5px;
 }

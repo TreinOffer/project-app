@@ -4,9 +4,9 @@ export function sortByOrder(modulo) {
     console.log(modulo);
     const { Ordem, Titulo, Paragrafos, Imagens } = modulo;
 
-    // Dividir os parágrafos e imagens conforme o delimitador
-    const paragrafosArray = Paragrafos.split('&&*');
-    const imagensArray = Imagens.split(',');
+    // Garantir que Paragrafos e Imagens não sejam null ou undefined
+    const paragrafosArray = (Paragrafos ?? '').split('&&*');
+    const imagensArray = (Imagens ?? '').split(',');
 
     const novoObjeto = {};
     const resultado = [];
@@ -25,6 +25,6 @@ export function sortByOrder(modulo) {
             resultado.push({ Imagem: imagem });
         }
     });
-    console.log("Sim Murray: ",resultado);
+    console.log("Sim Murray: ", resultado);
     return resultado;
 }

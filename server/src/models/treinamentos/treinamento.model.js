@@ -1,6 +1,8 @@
 import erro from "../validations/common/erro.message.js";
 import conexao from "../conexao.model.js";
 import { getNumColabs, returnId, returnParams, returnSqlByCargo } from "./return.sql.js";
+import { propertiesCapa, propertiesTreino } from "./properties.treino.js";
+import { isEmptyField, mensagem } from "../validations/common/emptyFields.validation.js";
 
 export async function readTreinamentos(entidade, idUser, tipoUser) {
   console.log("listarTreinamentos ::: Model");
@@ -37,6 +39,9 @@ export async function createTreino(
 ) {
   console.log("Treinamento::: Model");
   try {
+    // Mensagem de erro retornada se não houver titulo no modulo
+    if (await isEmptyField({Titulo: Titulo}, propertiesTreino)) return mensagem;
+
     // É preciso validar se há uma capa antes de chamar o sql abaixo
     const idTreino = await returnId(entidade[0], "idTreino");
 
@@ -63,16 +68,18 @@ export async function createTreino(
 export async function createCapaTreino(
   entidade,
   idTecnico,
-  Titulo,
-  Tipo,
+  capa,
   FotoCapa,
-  Tags
 ) {
   console.log("TreinoCapa::: Model");
   try {
+    if(await isEmptyField(capa, propertiesCapa)) return mensagem;
+    
     const sql = `INSERT INTO ${entidade}
             (Titulo, Tipo, FotoCapa, Tags, idTecnico)
             VALUES (?,?,?,?,?)`;
+
+    const { Titulo, Tipo, Tags } = capa;
 
     const params = [Titulo, Tipo, FotoCapa, Tags, idTecnico];
 

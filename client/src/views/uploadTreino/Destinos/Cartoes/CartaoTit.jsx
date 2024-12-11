@@ -17,7 +17,7 @@ const CartaoTit = ({ index, mensagem, deletar, updateTit, isEditting, setItens }
     const onChange = (e) => {
         e.preventDefault();
         const texto = e.target.value;
-        return updateTit(index, texto);
+        return updateTit(index, [texto]);
     };
 
     return (

@@ -12,7 +12,7 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
 const UploadPainel = () => {
-
+    const [pop, setPop] = useState(null);
     const [click, setClick] = useState(0);
     const [modulo, setModulo] = useState(1);
     const [itens, setItens] = useState([])
@@ -71,6 +71,7 @@ const UploadPainel = () => {
 
     return (
         <>
+            {true && pop}
             <Cabecalho />
             <main className="contentUpTreino">
                 <DndProvider backend={HTML5Backend}>
@@ -114,7 +115,7 @@ const UploadPainel = () => {
                                 type="button"> {'>'} </button>
 
                         </div>
-                        <Destino modulos={(modulo - 1)} />
+                        <Destino modulos={(modulo - 1)} setPop={setPop} />
                     </div>
                 </DndProvider>
             </main>

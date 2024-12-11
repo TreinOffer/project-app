@@ -1,6 +1,6 @@
 function isEmpty(campo) {
     console.log("isEmpty? ",campo);
-    return campo === null || campo.trim() === '' || campo === undefined;
+    return campo === null || campo === undefined || campo.trim() === '';
 };
 
 export function isEmptyField(campo, propriedades) {

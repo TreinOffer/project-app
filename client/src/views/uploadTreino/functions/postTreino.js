@@ -11,10 +11,14 @@ export async function submitCapa(capa) {
       body: capa,
     });
 
-    const resposta = request.json();
+    const resposta = await request.json();
     console.log("respostaCapa: ",resposta);
 
-    return resposta;
+    if (resposta.status === 400) {
+      return 400;
+    }else{
+      return 201;
+    };
   } catch (error) {
     console.log(error);
   };
@@ -33,10 +37,14 @@ export async function submitTreino(treino) {
       body: treino,
     });
 
-    const resposta = request.json();
+    const resposta = await request.json();
     console.log("respostaCapa: ",resposta);
 
-    return resposta;
+    if (resposta.status === 400) {
+      return 400;
+    };
+
+    return 201;
   } catch (error) {
     console.log(error);
   };

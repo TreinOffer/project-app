@@ -17,7 +17,7 @@ const CartaoParag = ({ index, mensagem, deletar, updateParag, isEditting, setIte
     const onChange = (e) => {
         e.preventDefault();
         const texto = e.target.value;
-        return updateParag(index, texto);
+        return updateParag(index, [texto]);
     };
 
     return (

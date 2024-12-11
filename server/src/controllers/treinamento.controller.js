@@ -47,16 +47,18 @@ export async function listarTreinamentos(req,res) {
 
 export async function criarCapaTreino(req, res) {
     const { primKey } = req.user;
-    console.log("idTecnico: ",primKey)
-    const { filename } = req.file;
-    const { Titulo, Tipo, Tags } = req.body;
+    console.log("idTecnico: ",primKey);
 
-    console.log("TreinoCapa::: Controller ", Titulo, Tipo, filename, Tags, primKey);
+    const capa = req.body;
+    const filename = req.file ? req.file.filename : null
+    capa.capaTreino = filename;
+
+    console.log("TreinoCapa::: Controller ", capa, filename, primKey);
 
     const [statusCode, resposta] = await createCapaTreino(
         entidade[0],
         primKey,
-        Titulo, Tipo, filename, Tags
+        capa, filename
     );
     res.status(statusCode).json(resposta);
 };

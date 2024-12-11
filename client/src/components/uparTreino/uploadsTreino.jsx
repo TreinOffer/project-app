@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import './estilo.css';
 import Treino from '../../views/Treinamentos/functions/treino.treinamento';
 import imgs from '../../imgs/arrayImagens';
@@ -6,26 +6,21 @@ import { useNavigate } from 'react-router-dom';
 
 const UparCapa = ({ closePopUp, itens }) => {
   const navegar = useNavigate();
-
-  const [formData, setFormData] = useState({
-    titulo: itens[0].Titulo,
-    Tags: itens[0].Tags,
-    Tipo: itens[0].Tipo,
-    capaTreino: itens[0].capaTreino,
-  });
-
-  const onChange = (field) => (e) => {
-    const { value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
-  };
-
+  
   function onChangeImg(tipo, imagem) {
-    return itens[1]((prev) => ({ ...prev, [tipo]: imagem }));
+    return (
+      itens[1]((prev) => ({ ...prev, [tipo]: imagem }))
+    )
   };
 
+  function onChange(tipo) {
+    return (e) => (
+      itens[1]((prev) => ({ ...prev, [tipo]: e.target.value }))
+    )
+  };
+
+  useEffect(() => { console.log(itens[0]) }, [itens[0]]);
+  
   let imagem = null;
   const handleUploadImagem = (e) => {
     const file = e.target.files[0];
@@ -40,7 +35,6 @@ const UparCapa = ({ closePopUp, itens }) => {
       reader.readAsDataURL(file);
     };
   };
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted with data:', formData);
@@ -51,9 +45,8 @@ const UparCapa = ({ closePopUp, itens }) => {
   };
 
   function toTreino() {
-    navegar("/uploadTreino");
-  }
-
+    navegar("/uploadTreino")
+  };
   return (
     <div className={`popup-modal open`}>
       <div className="popup-modal-content">
@@ -63,11 +56,11 @@ const UparCapa = ({ closePopUp, itens }) => {
         <h2 className="training-title">Adicionar Treinamento</h2>
         <div className="capa-preview">
           <Treino
-            capaTreino={formData.capaTreino}
+            capaTreino={itens[0].capaTreino}
             empresaFT={imgs.tabEmpty}
-            titTreino={formData.titulo}
-            tag1={formData.Tipo}
-            tag2={formData.Tags}
+            titTreino={itens[0].Titulo}
+            tag1={itens[0].Tipo}
+            tag2={itens[0].Tags}
             autorFt={null}
             autorNome="autor x"
             toTreino={toTreino}
@@ -75,7 +68,6 @@ const UparCapa = ({ closePopUp, itens }) => {
           />
         </div>
         <div className="separator-line"></div>
-
         <div className="file-inputs">
           <h2 className="file-input-title">Escolha uma Capa</h2>
           <input
@@ -86,7 +78,6 @@ const UparCapa = ({ closePopUp, itens }) => {
             name="capaTreino"
           />
         </div>
-
         <div className="form-section">
           <div className="input-group">
             <label htmlFor="titulo">Título:</label>
@@ -94,33 +85,31 @@ const UparCapa = ({ closePopUp, itens }) => {
               type="text"
               id="titulo"
               name="titulo"
-              value={formData.titulo}
-              onChange={onChange('titulo')}
+              value={itens[0].Titulo}
+              onChange={onChange('Titulo')}
               className="form-input"
               placeholder="Exemplo: Título do Treinamento"
             />
           </div>
-
           <div className="input-group">
             <label htmlFor="fname">Tags:</label>
             <input
               type="text"
               id="fname"
               name="fname"
-              value={formData.Tags}
+              value={itens[0].Tags}
               onChange={onChange('Tags')}
               className="form-input"
               placeholder="Exemplo: Industrial"
             />
           </div>
-
           <div className="input-group">
             <label htmlFor="lname">Tipo:</label>
             <input
               type="text"
               id="lname"
               name="lname"
-              value={formData.Tipo}
+              value={itens[0].Tipo}
               onChange={onChange('Tipo')}
               className="form-input"
               placeholder="Exemplo: Básico, Médio, Avançado"

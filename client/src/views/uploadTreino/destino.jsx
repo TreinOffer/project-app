@@ -4,8 +4,11 @@ import Containers from "./Destinos/indexContainers";
 import UparCapa from "../../components/uparTreino/uploadsTreino";
 import { submitCapa, submitTreino } from "./functions/postTreino";
 import { createForm, createFormTreino } from "./functions/submits.tipos";
+import { popUp } from "../../components/popUp/services/popUp.classes";
+import { useNavigate } from "react-router-dom";
 
-const Destino = ({ modulos }) => {
+const Destino = ({ modulos, setPop }) => {
+    const navegar = useNavigate();
     const [capa, setCapa] = useState({
         capaTreino: '',
         Tags: '',
@@ -78,12 +81,22 @@ const Destino = ({ modulos }) => {
         <>
             <form enctype="multipart/form-data" onSubmit={async (e) => {
                 e.preventDefault();
+
                 const capaForm = await createForm(capa);
-                await submitCapa(capaForm);
-                for (const modulo of itens) {
-                    console.log("eunaoseimaisdeNADA: ", modulo, "itens: ", itens)
-                    const treinoForm = await createFormTreino(modulo);
-                    await submitTreino(treinoForm);
+                const resposta = await submitCapa(capaForm);
+                if (resposta === 400) {
+                    setPop(
+                        popUp.erro("Campos obrigatórios da capa estão vazios")
+                    );
+                } else {
+                    for (const modulo of itens) {
+                        console.log("eunaoseimaisdeNADA: ", modulo, "itens: ", itens)
+                        const treinoForm = await createFormTreino(modulo);
+                        const resposta = await submitTreino(treinoForm);
+                        resposta === 400 ? setPop(
+                            popUp.erro("O módulo precisa ter um título"))
+                            : null;
+                    };
                 };
             }}>
                 <section

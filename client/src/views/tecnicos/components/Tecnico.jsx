@@ -120,7 +120,7 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, disabled,
                     <div className='sec_func info_pessoal' style={{ opacity: isDisabled ? `0.3` : `1`, width: `${g}%`, display: 'flex', alignItems: 'center', position: 'relative' }}>
                         <div style={{ position: 'relative' }}>
                             <img className='foto_func' src={imagem ? imagem :
-                            `http://localhost:5000/imgs/${editedImage}`} alt="" />
+                            `${process.env.REACT_APP_BACKEND}/imgs/${editedImage}`} alt="" />
                             {isEditing && (
                                 <div className="botao_div">
                                     <input

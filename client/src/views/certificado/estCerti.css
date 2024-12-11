@@ -15,8 +15,8 @@
   width: 1200px;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(199, 27, 27, 0.226) 50%, transparent 50%);
   font-family: 'Courier New', Courier, monospace;
+  background-color: #98c2f0;
 }
 
 .certificado h1 {

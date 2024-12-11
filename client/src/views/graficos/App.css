@@ -1,45 +1,174 @@
-.App {
+/* .App {
   display: flex;
   padding-top: 4em; 
   width: 80rem; 
+} */
+.divBuscarTecGraf {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 40px);
+  box-sizing: content-box;
+
+  & .buscarTecGraf {
+    margin-left: -80px;
+    border-left: 1px solid black;
+    height: 100%;
+    font-size: 1.5em;
+    padding-left: 20px;
+  }
+}
+
+.filtro-modulo {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 20px;
 }
 
 .content-wrapper {
-  width: 900px;
+  margin: 30px 30px 0 30px;
   display: flex;
-  justify-content: flex-end; 
+  justify-content: flex-start;
+  flex-direction: row;
+  column-gap: 30px;
 }
 
 .quadrado-perfil {
-  width: 250px;          
-  height: 770px;       
-  border: 2px solid black;  
+  /* width: 250px;           */
+  width: 500px;
+  flex: 1;
+  /* Adiciona elemento peso 1 dentro de container */
+  /* min-height: 100%;     */
+  box-shadow: 0 0 10px black;
   border-radius: 10px;
-  margin-right: 20px; 
 }
 
 .quadrado-grafico {
-  width: 400px; 
-  height: 48.1rem;     
-  border: 2px solid black;
+  flex: 3;
+  /* Adiciona elemento peso 3 dentro de container */
+  /* width: 400px;  */
+  /* height: 48.1rem;      */
+  box-shadow: 0 0 10px black;
   border-radius: 10px;
-  margin-top: 1px; 
-  display: flex;         
-  flex-direction: column; 
-  align-items: center;  
+  /* margin-top: 1px;  */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  &>div {
+    box-shadow: 0 0 10px hsl(210, 50%, 50%);
+    background-color: hsl(0, 0%, 25%);    
+    margin: 20px;
+    border-radius: 10px;  
+  }
+}
+
+.perf-colab {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: content-box;
+}
+
+.perf-colab .foto-colab {
+  width: 256px;
+  margin: 15px;
+  background-color: white;
+  border-radius: 100%;
+  padding: 14px;
+  box-sizing: content-box;
+}
+
+.perf-colab .foto-colab img {
+  width: 100%;
+  border-radius: 100%;
+}
+
+.perf-colab .mat-filtro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  margin: 0 20px;
+}
+
+.perf-colab .mat-filtro .materia-filtra {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+
+  & img {
+    width: 2rem;
+  }
+
+  & ul {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    color: hsl(200, 100%, 80%);
+    overflow-y: scroll;
+    padding: 0 10px;
+
+    & li:nth-child(odd) {
+      cursor: pointer;
+      padding: 4px;
+      background-color: hsl(0, 0%, 40%);
+    }
+
+    & li:nth-child(even) {
+      cursor: pointer;
+      padding: 4px;
+    }
+  }
+}
+
+.perf-colab .mat-filtro .mat-pontuacao {
+  color: hsl(200, 100%, 80%);
+
+  & p {
+    text-align: center;
+    color: hsl(150, 100%, 70%);
+    margin-top: 10px;
+    padding: 10px;
+    background-color: hsl(0, 0%, 40%);
+  }
+}
+
+.perfil-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  & .colab-informations{
+    display: flex;
+    flex-direction: row;
+  }
+  & .nome-colab-graf {
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    align-items: center;
+    text-align: center;
+    margin: auto 0;
+  }
 }
 
 .dataCard {
   background-color: #efefef;
-  border-radius: 0.5em;    
+  border-radius: 0.5em;
   box-shadow: rgba(48, 46, 46, 0.2) 0px 8px 24px;
-  padding: 1em;       
+  padding: 1em;
   margin-bottom: 10px;
-  height: 21.9rem; 
+  height: 21.9rem;
 }
 
 .estatisticas-button {
-  margin: 2px 0; 
+  margin: 2px 0;
   padding: 0.5em 1em;
   background-color: #064FF0;
   color: white;
@@ -47,9 +176,36 @@
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
-  transition: background-color 0.3s; 
+  transition: background-color 0.3s;
 }
 
 .estatisticas-button:hover {
   background-color: #0538b1;
+}
+
+.circle {
+  border-radius: 20px;
+}
+
+.filtro-modulo {
+  & ul {
+    color: hsl(200, 100%, 80%);
+    margin: 0 auto;
+    display: flex;
+    padding: 0 10px;
+    flex-direction: column;
+    overflow-y: scroll;
+
+  }
+
+  & li:nth-child(odd) {
+    cursor: pointer;
+    background-color: hsl(0, 0%, 40%);
+    padding: 4px;
+  }
+
+  & li:nth-child(even) {
+    cursor: pointer;
+    padding: 4px;
+  }
 }

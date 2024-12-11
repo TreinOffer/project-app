@@ -1,7 +1,7 @@
 import conexao from "../conexao.model.js";
 
 export async function idDisabled(id, tabela) {
-
+    console.log("éa tab: ",tabela);
     const coluna = tabela === 'empresas' ? `CNPJ` : `Matricula`;
 
     const whereClause = `WHERE ${coluna} = ? AND Disabled = 1`;

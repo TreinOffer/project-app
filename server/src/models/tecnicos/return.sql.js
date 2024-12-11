@@ -3,7 +3,7 @@ export async function returnSQL(entidade, idEmpresa, query) {
 
   if (query) {
     return [
-      [idEmpresa, `${query}%`, `${query}%`],
+      [idEmpresa, `%${query}%`, `%${query}%`],
       (sql = `SELECT * FROM ${entidade}
       WHERE idEmpresa = ? AND (Matricula like ? OR Nome like ?)
       ORDER BY Disabled ASC`),

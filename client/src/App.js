@@ -19,40 +19,94 @@ import Notificacao from './components/notificacao/notificacao.module';
 import Treino from './views/tela-treino/telaModule';
 import Confirmacao from './components/confirmar/confirmacao';
 import Redefinir from './components/resetSenha/reset';
-// import ProtectedRoute from './protectRoute';
+import ProtectedRoute from './protectRoute';
 
-  function App() {
-    return (
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<LadingPage />}></Route>
-          <Route path='/treinos' element={<Treinamentos />}></Route>
-          <Route path='/login' element={<Login />}></Route>
-          <Route path='/cursoInfo' element={<CursoInfo />}></Route>
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
 
-          <Route path='/fatura'element={ <Fatura />} />
-          <Route path='/pagamento' element={<Pagamento />}></Route>
-          <Route path='/uploadCurso' element={<UploadCurso />}></Route>
+        <Route path='/' element={<LadingPage />}></Route>
+        <Route path='/treinos' element={<Treinamentos />}></Route>
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/cursoInfo' element={<CursoInfo />}></Route>
+        {/* Rotas Empresa */}
+          <Route path='/fatura'
+            element={
+              <ProtectedRoute
+                element={<Fatura />}
+                allowedRoles={'empresa'}/>
+              }
+          />
+          <Route path='/pagamento'
+          element={
+            <ProtectedRoute
+              element={<Pagamento />}
+              allowedRoles={'empresa'}/>
+            }
+        />
+        <Route path='/tecnicos'
+          element={
+            <ProtectedRoute
+              element={<Tecnicos />}
+              allowedRoles={'empresa'}/>
+            }
+        />
+        <Route path='/tecnicos/:matricula'
+          element={
+            <ProtectedRoute
+              element={<Tecnicos />}
+              allowedRoles={'empresa'}/>
+            }
+        />
+        <Route path='/colaboradores'
+          element={
+            <ProtectedRoute
+              element={<Colaboradores />}
+              allowedRoles={'empresa'}/>
+            }
+        />
+        <Route path='/colaboradores/:matricula'
+          element={
+            <ProtectedRoute
+              element={<Colaboradores />}
+              allowedRoles={'empresa'}/>
+            }
+        />
+        {/* Rotas Tecnicos */}
+        <Route path='/uploadCurso'
+          element={
+            <ProtectedRoute
+              element={<UploadCurso />}
+              allowedRoles={'tecnico'}/>
+            }
+        />
+        <Route path='/uploadTreino'
+          element={
+            <ProtectedRoute
+              element={<UploadTreino />}
+              allowedRoles={'tecnico'}/>
+            }
+        />
+        <Route path='/graficos'
+          element={
+            <ProtectedRoute
+              element={<Graficos />}
+              allowedRoles={'tecnico'}/>
+            }
+        />
+        
+        <Route path='/test' element={<Ed />}></Route>
+        <Route path='/certificado' element={<Certificado />}></Route>
+        <Route path='/cadastro' element={<Cadastro />}></Route>
+        <Route path='/popup' element={<PopUp />}></Route>
+        <Route path='/notificacao' element={<Notificacao />}></Route>
+        <Route path='/treino' element={<Treino />}></Route>
+        <Route path='/confirmar' element={<Confirmacao />}></Route>
+        <Route path='/redefinir' element={<Redefinir />}></Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
-          <Route path='/tecnicos' element={<Tecnicos />}></Route>
-          <Route path='/tecnicos/:matricula' element={<Tecnicos />}></Route>
-
-          <Route path='/colaboradores' element={<Colaboradores />}></Route>
-          <Route path='/colaboradores/:matricula' element={<Colaboradores />}></Route>
-
-          <Route path='/uploadTreino' element={<UploadTreino />}></Route>
-          <Route path='/test' element={<Ed />}></Route>
-          <Route path='/graficos' element={<Graficos />}></Route>
-          <Route path='/certificado' element={<Certificado />}></Route>
-          <Route path='/cadastro' element={<Cadastro />}></Route>
-          <Route path='/popup' element={<PopUp />}></Route>
-          <Route path='/notificacao' element={<Notificacao />}></Route>
-          <Route path='/treino' element={<Treino />}></Route>
-          <Route path='/confirmar' element={<Confirmacao />}></Route>
-          <Route path='/redefinir' element={<Redefinir />}></Route>
-        </Routes>
-      </BrowserRouter>
-    );
-  }
-
-  export default App;
+export default App;

@@ -16,7 +16,7 @@ const msg = {
 
 function Login() {
     const [popState, setPopState] = useState(null);
-    const [canLogin, setCanLogin] = useState(true); 
+    // const [canLogin, setCanLogin] = useState(true); 
     const alreadyLogged = useNavigate();
     const navigate = useNavigate();
     const [login, setLogin] = useState();
@@ -24,7 +24,7 @@ function Login() {
     const [showResetSenha, setShowResetSenha] = useState(false);
 
     async function logar_se() {
-        if (!canLogin) return;
+        // if (!canLogin) return;
 
         const dados = { login, senha };
         setPopState(null);        
@@ -52,16 +52,10 @@ function Login() {
                 setPopState(
                     popUp.aviso("Login realizado")
                 );
-                
                 setTimeout(() => {
                     setPopState(null); 
-
-                    if (senha === "123*abc") {
-                        setShowResetSenha(true);
-                    } else {
-                        navigate('/treinos');
-                    }
-                }, 2000);        
+                    navigate('/treinos');
+                }, 2000);  
 
             } else if (request.status === 401) {
                 setPopState(
@@ -72,7 +66,7 @@ function Login() {
                 setPopState(
                     popUp.erro("Não foi possível processar sua solicitação")
                 );
-            }
+            };
 
         } catch (error) {
             setPopState(
@@ -141,7 +135,7 @@ function Login() {
                 </section>
             </main>
 
-            {showResetSenha && 
+            {/* {showResetSenha && 
                 <ResetSenha 
                     onSave={() => {
                         setShowResetSenha(false); 
@@ -155,7 +149,7 @@ function Login() {
                         navigate('/login'); 
                     }}
                 />
-            }
+            } */}
         </>
     );
 }

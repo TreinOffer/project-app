@@ -64,6 +64,7 @@ export async function criarCapaTreino(req, res) {
 export async function criarTreinamento(req, res) {
     const { ImagemTreino, VideoTreino } = req.files;
     const { Titulo, Paragrafos, Ordem } = req.body;
+    console.log("imagem: ",ImagemTreino, "video: ", VideoTreino);
     
     console.log("Treinamento::: Controller ");
     console.log("titulo: ", Titulo, "parag: ",Paragrafos);

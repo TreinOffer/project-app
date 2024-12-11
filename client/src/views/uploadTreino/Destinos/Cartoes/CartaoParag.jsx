@@ -24,7 +24,7 @@ const CartaoParag = ({ index, mensagem, deletar, updateParag, isEditting, setIte
         <div id={`paragrafo${index}`} className='cartao-parag'>
             {
                 isEditting ? (
-                    <p onClick={actionEdit} style={{ textAlign: 'center' }}>
+                    <p onClick={actionEdit} style={{ fontSize: '1.4em', padding: '4%', textAlign: 'center' }}>
                         {mensagem}
                     </p>
                 ) : (

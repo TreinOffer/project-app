@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import imgs from "../../../../imgs/arrayImagens";
 import './CartaoImg.css';
 
-const CartaoImg = ({ imagem, index, deletar, handleImage, setItens, isFlipped, isHovered }) => {
+const CartaoImg = ({ imagem, index, deletar, handleImage, setItens, isFlipped, isHovered, render }) => {
 
     const [newImagem, setNewImagem] = useState();
 
@@ -21,20 +21,19 @@ const CartaoImg = ({ imagem, index, deletar, handleImage, setItens, isFlipped, i
         console.log("handleUploadImagem: ", handleImage);
         const file = e.target.files[0];
         if (file) {
-            const url = URL.createObjectURL(file)
+            const url = URL.createObjectURL(file);
             setNewImagem(() => {
-                handleImage(index, url);
+                handleImage(index, [file, url]);
                 return newImagem;
             });
         };
     };
-
     return (
 
         <div className='cartaoImagem' >
             <div className='div-imagem'>
                 <img style={{ height: isFlipped ? 'calc(100% - 200px)' : '100%' }}
-                    src={imagem} alt={`Imagem${index}`} />
+                    src={typeof imagem === 'string' ? imagem : render} alt={`Imagem${index}`} />
                 <div className='btn-expanse'
                 >
                     <hr />

@@ -1,6 +1,6 @@
 import erro from "../validations/common/erro.message.js";
 import conexao from "../conexao.model.js";
-import { getNumColabs, returnId, returnSqlByCargo } from "./return.sql.js";
+import { getNumColabs, returnId, returnParams, returnSqlByCargo } from "./return.sql.js";
 
 export async function readTreinamentos(entidade, idUser, tipoUser) {
   console.log("listarTreinamentos ::: Model");
@@ -45,18 +45,15 @@ export async function createTreino(
             Videos, Imagens, Ordem
         ) VALUES (?,?,?,?,?,?)`;
 
-    // Separador para cada parag
-    const paragrafosJoin = Paragrafos.join("&&* ");
+    const params = await returnParams(
+      Titulo, Paragrafos,
+      imagens, videos, idTreino, Ordem
+    );
 
-    await conexao.query(sql, [
-      idTreino,
-      Titulo,
-      paragrafosJoin,
-      videos,
-      imagens,
-      Ordem,
-    ]);
-    return [201, { message: `Modulo Criado` }];
+    console.log("os params: ",params);
+
+    await conexao.query(sql, params);
+    return [201, { message: `Modulo Criado`, status: 201 }];
   } catch (error) {
     console.log(error);
     erro(error);

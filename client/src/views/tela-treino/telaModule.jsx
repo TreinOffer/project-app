@@ -148,14 +148,14 @@ function TelaModule() {
           {modulosForm?.map((modulo, key) => (
             <div className="leaf" key={key}>
               <div
-                className="page front"
+                className="page back"
                 style={{
                   backgroundImage: 'linear-gradient(to right, rgb(163, 218, 245), white)',
                   boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
                 }}
               />
               <div
-                className="page back"
+                className="page front"
                 style={{
                   backgroundImage: 'linear-gradient(to right, rgb(163, 218, 245), white)',
                   boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',

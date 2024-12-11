@@ -5,7 +5,7 @@ export default function Treino({
   capaTreino, empresaFT, titTreino,
   tag1="N/A", tag2='N/A',
   autorFt, autorNome,
-  toTreino, idTreino, numColab
+  toTreino, idTreino, numColab='0'
 }) {
     function corTag(tag){
         if(tag === "Segurança"){

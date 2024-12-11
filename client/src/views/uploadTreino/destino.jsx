@@ -2,8 +2,16 @@ import { useDrop } from "react-dnd";
 import { useEffect, useState } from "react";
 import Containers from "./Destinos/indexContainers";
 import UparCapa from "../../components/uparTreino/uploadsTreino";
+import { submitCapa, submitTreino } from "./functions/postTreino";
+import { createForm, createFormTreino } from "./functions/submits.tipos";
 
 const Destino = ({ modulos }) => {
+    const [capa, setCapa] = useState({
+        capaTreino: '',
+        Tags: '',
+        Titulo: '',
+        Tipo: ''
+    });
     const [itens, setItens] = useState([]);
     const [mostrarPopUp, setMostrarPopUp] = useState(false);
 
@@ -13,9 +21,10 @@ const Destino = ({ modulos }) => {
         console.log("handleChanges: ", index, state);
         setItens(prevItens => {
             const itens = [...prevItens];
-            itens[modulos].map((item, i) =>
-                i === index ? item.src = state : item
-            );
+            itens[modulos].map((item, i) => {
+                i === index ? item.src = state[0] : item
+                i === index ? item.render = state[1] : item
+        });
             return itens;
         });
     };
@@ -76,10 +85,6 @@ const Destino = ({ modulos }) => {
         });
     };
 
-    const handleEnviarTreinamento = () => {
-        console.log("Enviando treinamento com os itens: ", itens);
-    };
-
     const handleEnviarCapaTreinamento = () => {
         setMostrarPopUp(true);
     };
@@ -101,7 +106,20 @@ const Destino = ({ modulos }) => {
 
     return (
         <>
-            <form enctype="multipart/form-data">
+            <form enctype="multipart/form-data" onSubmit={async(e) => {
+                e.preventDefault();
+                const capaForm = await createForm(capa);
+                await submitCapa(capaForm);
+                for (const modulo of itens) {
+                    console.log("eunaoseimaisdeNADA: ",modulo, "itens: ",itens)
+                    const treinoForm = await createFormTreino(modulo);
+                    await submitTreino(treinoForm);
+                };
+                // itens.forEach( async(it) => {
+                //     const treinoForm = await createFormTreino([itens]);
+                //     await submitTreino(treinoForm);
+                // });
+            }}>
                 <section
                     className='dropSection'
                     style={{
@@ -114,7 +132,7 @@ const Destino = ({ modulos }) => {
                         switch (item.tipo) {
                             case 'imagem':
                                 return <Containers.Imagem deletar={handleDelete} handleImage={handleChanges} isHovered={item.isHovered}
-                                    index={item.index} key={index} imagem={item.src} setItens={[modulos, setItens]} isFlipped={item.isOpen} />;
+                                    index={item.index} key={index} imagem={item.src} render={item.render} setItens={[modulos, setItens]} isFlipped={item.isOpen} />;
                             case 'parag':
                                 return <Containers.Prgf deletar={handleDelete} index={item.index} setItens={[modulos, setItens]}
                                     key={index} mensagem={item.src} updateParag={handleChanges} isEditting={item.isOpen} />;
@@ -125,55 +143,50 @@ const Destino = ({ modulos }) => {
                             case 'tit':
                                 return <Containers.Tit key={index} index={item.index} mensagem={item.src} setItens={[modulos, setItens]}
                                     deletar={handleDelete} updateTit={handleChanges} isEditting={item.isOpen} />;
-                                    case 'checkbox':
-                                        return <Containers.Checkbox key={index} index={item.index} mensagem={item.src} arrastar={item.arrastar} 
-                                        deletar={handleDelete} />;
+                            case 'checkbox':
+                                return <Containers.Checkbox key={index} index={item.index} mensagem={item.src} arrastar={item.arrastar}
+                                    deletar={handleDelete} />;
                             default:
                                 alert(`Tipo de item não existe ${item}`);
                                 break;
                         };
                     })}
                 </section>
+                <div style={{ display: 'flex', gap: '5%', justifyContent: 'center', marginTop: '10px' }}>
+                    <button
+                        style={{
+                            padding: "10px 20px",
+                            backgroundColor: "#4CAF50",
+                            color: "white",
+                            border: "none",
+                            borderRadius: "5px",
+                            cursor: "pointer"
+                        }}
+                        type="submit"
+                    >
+                        Enviar Treinamento
+                    </button>
+                    <button
+                        style={{
+                            padding: "10px 10px",
+                            backgroundColor: "#1E90FF",
+                            border: "none",
+                            cursor: "pointer",
+                            borderRadius: "5px",
+                            color: "white"
+                        }}
+                        onClick={handleEnviarCapaTreinamento}
+                        type="button"
+                    >
+                        Personalizar Capa
+                    </button>
+                </div>
             </form>
-
-            <button
-                style={{
-                    position: "fixed", 
-                    right: "40%",    
-                    bottom: "2px",    
-                    padding: "10px 20px",
-                    backgroundColor: "#4CAF50",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "5px",
-                    cursor: "pointer"
-                }}
-                onClick={handleEnviarTreinamento}
-            >
-                Enviar Treinamento
-            </button>
-
-            <button
-                style={{
-                    position: "fixed",
-                    right: "450px",
-                    bottom: "2px",
-                    padding: "10px 10px",
-                    backgroundColor: "#1E90FF",
-                    border: "none",
-                    cursor: "pointer",
-                    borderRadius: "5px",
-                    color: "white"
-                }}
-                onClick={handleEnviarCapaTreinamento}
-            >
-                Enviar Capa de Treinamento
-            </button>
 
             {mostrarPopUp && (
                 <UparCapa
                     closePopUp={fecharPopUp}
-                    itens={itens}
+                    itens={[capa, setCapa]}
                 />
             )}
         </>

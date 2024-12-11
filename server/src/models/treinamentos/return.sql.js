@@ -46,3 +46,24 @@ export async function getNumColabs(entidade, idTreino) {
     const [retorno] = await conexao.query(sql, [idTreino]);
     return retorno.length;
 };
+
+function isArray(item) {
+    if (Array.isArray(item)) {
+        return item.join("&&*");
+    }else{
+        return item;
+    };
+};
+
+// Unir o array para string com separador único
+export async function returnParams(tit, parag, imagem, video, idTreino, Ordem) {
+    const params = [idTreino];
+
+    params.push(isArray(tit));
+    params.push(isArray(parag));
+    params.push(imagem);
+    params.push(video);
+    params.push(Ordem);
+
+    return params;
+};

@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import './estCerti.css';
 
-function Certificado() {
+
+function Certificado(  ) {
   const handlePrint = () => {
     window.print();
   };
@@ -20,7 +21,9 @@ function Certificado() {
   return (
     <>
       <div className="certificado-container">
+
         <div className="certificado">
+        
           <h1>Certificado</h1>
           <p className="subtitulo">Este certificado é concedido a:</p>
           <h2 className="nome-participante">Nome do Participante</h2>
@@ -38,5 +41,6 @@ function Certificado() {
     </>
   );
 }
+
 
 export default Certificado;

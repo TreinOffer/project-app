@@ -1,172 +1,105 @@
-import React, { useEffect } from 'react';
-import './estiloTreino.css';
+import React, { useEffect, useRef, useState } from 'react';
+// import './estiloTreino.css';
+import '../uploadTreino/estiloDestino.css';
 import Cabecalho from '../cabecalho/cabecalho';
-import imgs from '../../imgs/arrayImagens';
+import { useParams } from 'react-router-dom';
+import { sortByOrder } from './functions/sortByOrder';
+import ImagemComponent from './components/imagem.component';
+import TituloComponent from './components/titulo.component';
+import ParagrafoComponent from './components/paragrafo.component';
+import VideoComponent from './components/video.component';
 
 function TelaModule() {
+  const [modulosForm, setModulosForm] = useState([]);
+  const [numModulo, setNumModulo] = useState(1);
+  const { idTreino } = useParams();
+
+  async function fetchModules(idTreino) {
+    const token = localStorage.getItem('token');
+    const request = await fetch(`${process.env.REACT_APP_BACKEND}/treino/${idTreino}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+    });
+    const resposta = await request.json();
+    console.log("resposta: ", resposta);
+    return resposta;
+  }
+
+  const handleModulo = (valor) => {
+    if (!valor) {
+      setNumModulo(prevModulo => (prevModulo - 1))
+      console.log(numModulo);
+    } else {
+      setNumModulo(prevModulo => (prevModulo + 1))
+      console.log(numModulo);
+    }
+  };
+
   useEffect(() => {
-    class FlipBook {
-      constructor(bookElem) {
-        this.elems = {
-          book: bookElem,
-          leaves: bookElem.querySelectorAll(".leaf"),
-        };
-        this.currentPagePosition = 0;
-        this.turnPage(0); 
-        this.setupEvents();
-      }
+    async function getModules() {
+      let modulos = await fetchModules(idTreino);
+      modulos = modulos.map(modulo => {
+        return [modulo];
+      });
+      console.log(modulos);
 
-      setPagePosition(page, position, index) {
-        let transform = "";
+      const [moduloFormatado] = modulos[numModulo - 1] ?
+      modulos[numModulo - 1].map(
+        modulo => sortByOrder(modulo)) : [];
         
-        transform = "translate3d(0,0," + (position < 0 ? 1 : -1) * Math.abs(index) + "px)";
-
-        if (position < 0) {
-          transform += "rotate3d(0,1,0,-180deg)"; 
-          page.classList.add("turned");
-        } else {
-          page.classList.remove("turned");
-        }
-
-        if (page.style.transform !== transform) {
-          page.style.transform = transform;
-        }
-      }
-
-      turnPage(delta) {
-        this.currentPagePosition += delta;
-        if (this.currentPagePosition < 0) {
-          this.currentPagePosition = 0;
-          return;
-        }
-        if (this.currentPagePosition >= this.elems.leaves.length) {
-          this.currentPagePosition = this.elems.leaves.length - 1;
-          return;
-        }
-
-        this.elems.leaves.forEach((page, index) => {
-          const pageNumber = index;
-          this.setPagePosition(page, pageNumber - this.currentPagePosition, index);
-        });
-      }
-
-      setupEvents() {        
-        const pages = this.elems.book.querySelectorAll(".leaf");
-
-        pages.forEach((page, index) => {
-          const front = page.querySelector(".page.front");
-          const back = page.querySelector(".page.back");
-
-          front.addEventListener("click", () => {
-            this.turnPage(1);
-          });
-          
-          back.addEventListener("click", () => {
-            this.turnPage(-1);
-          });
-        });
-      }
+      console.log(moduloFormatado);
+      setModulosForm(moduloFormatado || []);
     }
+    getModules();
+  }, [idTreino, numModulo]);
 
-    const flipBookElem = document.getElementById("flipbook");
-    if (flipBookElem) {
-      new FlipBook(flipBookElem);
-    }
-  }, []);
+  useEffect(() => { console.log("mudou modulo: ", modulosForm) }, []);
 
   return (
     <>
       <Cabecalho />
-      <section className="grid_module">
-        <button id="module1" className="module-button">Módulo 1</button>
-        <button id="module2" className="module-button">Módulo 2</button>
-        <button id="module3" className="module-button">Módulo 3</button>
+      <main className="contentUpTreino">
+        <div className='wrap-section-destino'>
+          <div className='botao-modulo'>
 
-        
-        <div className="checkbox-container">
-          <label>
-            <input type="checkbox" id="acceptTerms" />
-            Eu nao sou um robo!
-          </label>
+            <button onClick={numModulo > 1 ? () => handleModulo(false) : null}
+              type="button"> {'<'} </button>
+
+            <span>{`Modulo ${numModulo}`}</span>
+
+            <button onClick={() => handleModulo(true)}
+              type="button"> {'>'} </button>
+
+          </div>
+          <section className='dropSection'
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+          >
+            {modulosForm.map((item, index) => {
+              const chave = Object.keys(item)[0];
+              const valor = item[chave];
+
+              if (chave === 'tit') {
+                return <TituloComponent key={index} titulo={valor} />
+
+              } else if (chave === 'parag') {
+                return <ParagrafoComponent key={index} paragrafo={valor} />;
+
+              } else if (chave === 'imagem') {
+                return <ImagemComponent key={index} imagem={valor} />
+
+              } else if (chave === 'video') {
+                return <VideoComponent key={index} url={valor} />;
+
+              } else {
+                return null; // Caso a chave não seja reconhecida
+              }
+            })}
+          </section>
         </div>
-
-        <div className="modules-controls centered"></div>        
-        <div className="flipbook centered" id="flipbook">
-          <div className="leaf">
-            <div
-              className="page front title external"
-              style={{
-                backgroundImage: 'linear-gradient(to right, rgb(163, 218, 245), white)',
-                width: '106%',
-                height: '628px',
-                boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-              }}
-            >
-              <img src={imgs.TreinOffer} alt="" style={{ width: '300px', height: 'auto' }} />
-              <img
-                src={imgs.empresa}
-                alt="Logo da empresa"
-                style={{
-                  width: '400px',
-                  height: 'auto',
-                  borderRadius: '25px',
-                  transition: '0.3s ease-in',
-                  border: '1px solid rgba(0, 0, 0, 0.4)',
-                  marginTop: '100px',
-                }}
-              />
-            </div>
-            <div className="page back" style={{
-              backgroundImage: 'linear-gradient(to right, rgb(163, 218, 245), white)',
-              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-            }}>
-              <div className="pageNumber">1</div>
-            </div>
-          </div>
-          <div className="leaf">
-            <div className="page front" style={{
-              backgroundImage: 'linear-gradient(to right, rgb(163, 218, 245), white)',
-              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-            }}>
-              <div className="pageNumber">2</div>
-            </div>
-            <div className="page back" style={{
-              backgroundImage: 'linear-gradient(to right, rgb(163, 218, 245), white)',
-              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-            }}>
-              <div className="pageNumber">1</div>
-            </div>
-          </div>
-          <div className="leaf">
-            <div className="page front" style={{
-              backgroundImage: 'linear-gradient(to right, rgb(163, 218, 245), white)',
-              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-            }}>
-              <div className="pageNumber">3</div>
-            </div>
-            <div className="page back" style={{
-              backgroundImage: 'linear-gradient(to right, rgb(163, 218, 245), white)',
-              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-            }}>
-              <div className="pageNumber">4</div>
-            </div>
-          </div>
-          <div className="leaf">
-            <div className="page front" style={{
-              backgroundImage: 'linear-gradient(to right, rgb(163, 218, 245), white)',
-              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-            }}>
-              <div className="pageNumber">5</div>
-            </div>
-            <div className="page back" style={{
-              backgroundImage: 'linear-gradient(to right, rgb(163, 218, 245), white)',
-              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-            }}>
-              <div className="pageNumber">6</div>
-            </div>
-          </div>
-        </div>        
-      </section>
+      </main>
     </>
   );
 }

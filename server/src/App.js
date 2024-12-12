@@ -14,6 +14,7 @@ import { apiCep } from "./services/apiCEP.js";
 import { corsOptions } from "./config/cors.options.js";
 import { mostrarPontuacoes } from "./controllers/grafico.controller.js";
 import { atualizarColaborador, criarColaborador, inativarColaborador, listarColaboradors as listarColaboradores } from "./controllers/colaborador.controller.js";
+import { criarCapaTreino, criarTreinamento, listarModulo, listarTreinamentos } from "./controllers/treinamento.controller.js";
 
 const server = express({ limit: '10mb' });
 const porta = 5000;
@@ -46,10 +47,10 @@ server.get('/treinos', authenticateToken
         server.put("/tecnicos/:idTecnico/inativar", authenticateToken, inativarTecnico);
     
     // Rota colaboradores
-    server.get("/colaboradores", authenticateToken, listarColaboradores)
-    server.post("/colaboradores", upload.single("Imagem"), authenticateToken, criarColaborador);
-    server.put("/colaboradores/:idColaborador", upload.single("Imagem"), authenticateToken, atualizarColaborador);
-    server.put("/colaboradores/:idColaborador/inativar", authenticateToken, inativarColaborador);
+        server.get("/colaboradores", authenticateToken, listarColaboradores)
+        server.post("/colaboradores", upload.single("Imagem"), authenticateToken, criarColaborador);
+        server.put("/colaboradores/:idColaborador", upload.single("Imagem"), authenticateToken, atualizarColaborador);
+        server.put("/colaboradores/:idColaborador/inativar", authenticateToken, inativarColaborador);
 
 
 server.post ("/test", upload.single("eduardo"), function(req,res){
@@ -59,7 +60,17 @@ server.post ("/test", upload.single("eduardo"), function(req,res){
     }
     res.status(400).send("Sem arquivo")
 })
+// Rota Tecnico
+    //uploadTreino
+        server.post("/capaTreino", upload.single("capaTreino"), authenticateToken, criarCapaTreino)
+        server.post("/uploadTreino", upload.fields([
+            { name: "ImagemTreino", maxCount: 20 },
+            { name: "VideoTreino", maxCount: 20 }
+        ]),
+        authenticateToken, criarTreinamento);
 
+server.get("/treinamentos", authenticateToken, listarTreinamentos);
+server.get("/treino/:idTreino", authenticateToken, listarModulo);
 server.get("/buscarCep/:cep", apiCep);
 
 server.listen(porta, () => {

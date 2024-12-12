@@ -1,15 +1,13 @@
 const ArrasImg = ({ imagem, arrastar }) => {
     return (
         <>
-            <section id="DragImagem">  
+            <section id="DragImagem">
+                <h4>Imagem</h4>
                 <div className="div-border">
                     <div>
-                        <div>
-                            <img src={imagem} alt="Imagem" ref={arrastar}/>
-                        </div>
+                        <img src={imagem} alt="Imagem" ref={arrastar} />
                     </div>
                 </div>
-                <h4>Imagem</h4>
             </section>
         </>
     )

@@ -9,6 +9,7 @@
 .isImagem{
     display: flex;
     justify-content: space-around;
+
 }
 .isImagemSingle{
     display: flex;
@@ -19,7 +20,7 @@
     perspective: 1000px;
 }
 .contentUpTreino .dragSection{
-    margin: auto 0;
+    margin: 20px auto 0 auto;
     width: 132px;
     /* border: 2px solid black; */
     display: grid;
@@ -31,7 +32,7 @@
     transform-style: preserve-3d;
 }
 
-.contentUpTreino .dragSection::before {
+/* .contentUpTreino .dragSection::before {
     content: "";
     position: absolute;
     top: -4px; 
@@ -42,53 +43,40 @@
     transition: width 0.4s ease, height 0.4s ease; 
     transform-origin: center; 
     z-index: -1; 
-    }
+    } */
 
-
-
-.contentUpTreino .dragSection:hover::before {
+/* .contentUpTreino .dragSection:hover::before {
     width: calc(100% + 4px);
     height: calc(100% + 4px); 
     transform: scale(1.1);
-}
-
-
-/* @keyframes animate {
-    0% {
-        transform: translateY(0); 
-    }
-    50% {
-        transform: translateY(30px); 
-    }
-    100% {
-        transform: translateY(0); 
-    }
 } */
 
 .contentUpTreino .dragSection .bt-mudar{
     display: flex;
-    border: 1px solid black;
+    border: 1px solid rgb(17, 16, 16);
     height: 100%;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    background-color: aquamarine;
 }
-.contentUpTreino .dropSection{
+.contentUpTreino .wrap-section-destino{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
 
-.contentUpTreino .dragSection:hover::before,
+/* .contentUpTreino .dragSection:hover::before,
 .contentUpTreino .dragSection:hover img {
     transform: scale(1.1); 
-}
+} */
 .contentUpTreino .dragSection img{
     margin: 0 auto;
     width: 128px;
     cursor: grab;
     transition: transform 0.6s ease;
+
    
 }
 

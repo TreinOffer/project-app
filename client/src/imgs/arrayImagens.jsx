@@ -18,14 +18,15 @@ import opcoes from "./optionsIcon.png";
 import addFunc from "./addFuncIcon.png";
 import removFunc from "./removFuncIcon.png";
 import filter from "./filter.svg";
+import arrowUp from "./arrowUpward.svg";
 import notificao from "./notificacao.png";
 import editar from "./editNote.png";
 
-import certificado from "./lading-page/certificado.png"
-import crescimento from "./lading-page/crescimento.png"
-import ensino from "./lading-page/ensino.png"
-import modulos from "./lading-page/modulos.png"
-import suporte from "./lading-page/suporte.png"
+import certificado from "./lading-page/certificado.png";
+import crescimento from "./lading-page/crescimento.png";
+import ensino from "./lading-page/ensino.png";
+import modulos from "./lading-page/modulos.png";
+import suporte from "./lading-page/suporte.png";
 import monitorar from "./monitorar.png";
 
 import treino1 from "./treinos/treino_capa1.png";
@@ -41,6 +42,7 @@ import tabLeila from "./tabelas/perfilLeilaTest.jpg";
 
 import confirmar from "./tabelas/Verificado.png";
 import deletar from "./tabelas/Remover.png";
+import trash from "./trashCan.png";
 
 import upImage from "./SubirTreino/image_placeholder.png";
 import upVideo from "./SubirTreino/video_placeholder.jpg";
@@ -73,6 +75,8 @@ const imgs = {
     deletar,
     filter,
     editar,
+    trash,
+    arrowUp,
 
     treino1,
     treino2,

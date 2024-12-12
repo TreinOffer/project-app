@@ -42,6 +42,7 @@ const App = () => {
             <a href="#">Quem Somos</a>
             <a href="#">Serviços</a>
             <a href="#">Contato</a>
+            
             <div className="dropdown">
               <button className="dropdown-toggle">Já tem uma conta?</button>
               <div className="dropdown-content">
@@ -135,7 +136,7 @@ const App = () => {
             </select>
             <div className="campo">
             <label htmlFor="mensagem">Mensagem</label>
-            <input className="input-mensagem" type="mensagem" name="mensagem" id="mensagem" placeholder="mensagem" required />
+            <input className="input-mensagem" type="text" name="mensagem" id="mensagem" placeholder="Digite sua mensagem aqui.." rows="1" required />
           </div>
           </div>
           <button type="submit" className="botao-enviar">Enviar</button>

@@ -1,49 +1,45 @@
 import { useDrop } from "react-dnd";
 import Cartao from "../Cartoes/CartaoImg";
 
-const DropImagem = ({ itens, setItens, index }) => {  
+const DropImagem = ({ imagem
+    // , itens, setItens
+    , index, deletar, handleImage, setItens, isFlipped, isHovered, render}) => {
 
-    const onDropFilho = (item) => {
-        setItens(prevItens => {
-          const updated = [...prevItens];
-          
-          updated[index] = [...updated[index], item];
-          return updated;
-        });
-      };
+    // const onDropFilho = (item) => {
+    //     setItens(prevItens => {
+    //         const updated = [...prevItens];
 
-    const [{ isOver },dropFilho_img] = useDrop({
-        accept: "item",
-        drop: ( objeto ) => {
-            onDropFilho({ "imagem": objeto });
-        },
-        collect: (monitor) => ({
-            isOver: monitor.isOver()
-        })
-    });
+    //         updated[index] = [...updated[index], item];
+    //         return updated;
+    //     });
+    // };
 
-    return(
-        <div ref={ dropFilho_img }
-        style={{
-            backgroundColor: isOver ? "red" : null,
-            width: "100%",
-            height: "500px",
-            display: "grid",
-            gridAutoFlow: "row",
-            gridTemplateColumns: "repeat(2,1fr)",
-            justifyItems: "center",
-            alignItems: "center",
-        }}
-        >
-            {
-                itens.map((item,index) => {
-                    return (
-                        <Cartao key={index} index={index} imagem={item.imagem.src}></Cartao>
-                    )
-                })
-            }   
-        </div>
-    ) 
+    // const [{ isOver }, dropFilho_img] = useDrop({
+    //     accept: "item",
+    //     drop: (objeto) => {
+    //         onDropFilho({ "imagem": objeto });
+    //     },
+    //     collect: (monitor) => ({
+    //         isOver: monitor.isOver()
+    //     })
+    // });
+
+    return (
+        // <div ref={dropFilho_img}
+        //     style={{
+        //         backgroundColor: isOver ? "red" : null,
+        //         width: "100%",
+        //         height: "500px",
+        //         display: "grid",
+        //         gridAutoFlow: "row",
+        //         gridTemplateColumns: "repeat(2,1fr)",
+        //         justifyItems: "center",
+        //         alignItems: "center",
+        //     }}
+        // >
+        <Cartao deletar={deletar} isHovered={isHovered} isFlipped={isFlipped} setItens={setItens} handleImage={handleImage} key={index} index={index} imagem={imagem} render={render}></Cartao>
+        // </div>
+    )
 };
 
 export default DropImagem

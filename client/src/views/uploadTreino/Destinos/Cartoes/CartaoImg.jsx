@@ -1,78 +1,67 @@
-import React, { useState, createRef } from 'react';
+import React, { useState } from 'react';
 import imgs from "../../../../imgs/arrayImagens";
 import './CartaoImg.css';
 
-let trava = false;
+const CartaoImg = ({ imagem, index, deletar, handleImage, setItens, isFlipped, isHovered, render }) => {
 
-const CartaoImg = ({ imagem, index }) => {
-    const refImage = createRef();
-    const refCartao = createRef();
-    const refCartaoTras = createRef();
-    const refCartaoFrente = createRef();
-    const refFileName = createRef();
+    const [newImagem, setNewImagem] = useState();
 
-    const [ newImagem, setNewImagem ] = useState();
+    function actionExpanse() {
 
-    function flipAction() {
-
-        if (refCartao.current.className.includes("flip")) {
-            const frente = refCartaoFrente.current;
-            frente.classList.add("efeitoFrente");
-            setTimeout(() => {
-                frente.classList.remove("efeitoFrente");
-            }, 500);
-        };
-        
-        if (!trava) {
-            const traseira = refCartaoTras.current;
-            traseira.classList.toggle("efeitoTras");
-
-            setTimeout(() => {
-                const cartao = refCartao.current;
-                cartao.classList.toggle("flip");
-            }, 300);
-        }
-
-        trava = false;
+        setItens[1](prevItens => {
+            const itens = [...prevItens];
+            itens[setItens[0]].map((item, i) =>
+                i === index ? item.isOpen = !isFlipped : item
+            )
+            return itens;
+        });
     };
 
-    const handleUploadImagem = (event) => {
-        const file = event.target.files[0];
-        const fileName = file ? file.name : "Nenhum";
-        refFileName.current.innerText = fileName;
+    const handleUploadImagem = (e) => {
+        console.log("handleUploadImagem: ", handleImage);
+        const file = e.target.files[0];
         if (file) {
-            setNewImagem(URL.createObjectURL(file));
-            let imagem = refImage.current.src;
-            imagem = newImagem;
-            trava = false;
+            const url = URL.createObjectURL(file);
+            setNewImagem(() => {
+                handleImage(index, [file, url]);
+                return newImagem;
+            });
         };
     };
-
     return (
-        <div ref={ refCartao } className="cartaoImagem" onClick={ flipAction } >
-            <div ref={ refCartaoTras }  className="cartaoTras">
-                <label className='uploadTitle'  id={`imagemTreino${index}`} htmlFor="ImagemTreino">Escolher imagem</label>
-                <div
-                    style={{ display: "flex", flexDirection: "row" }}
+
+        <div className='cartaoImagem' >
+            <div className='div-imagem'>
+                <img style={{ height: isFlipped ? 'calc(100% - 200px)' : '100%' }}
+                    src={typeof imagem === 'string' ? imagem : render} alt={`Imagem${index}`} />
+                <div className='btn-expanse'
                 >
-                    <div id='inputButton' style={{ display: "flex", flexDirection: "row", position: "relative" }}>
-                        <input onClick={() => { trava = true }} onChange={handleUploadImagem} accept='.jpg,.png,.jpeg' multiple={false} type="file" name="ImagemTreino" className='buttonUpload' id={`IimagemTreino${index}`} />
-                        <input type="button" value="Selecionar" />
+                    <hr />
+                    <img src={imgs.arrowUp} alt="arrow" onClick={actionExpanse}
+                        style={{
+                            transition: '1.6s ease-in-out',
+                            transform: isFlipped ? 'rotate(180deg)' : 'rotate(0deg)'
+                        }}
+                    />
+                    <div className='actions' style={{ 
+                        maxHeight: isFlipped ? '200px' : '0px',
+                        borderBottom: isFlipped ? '1px solid black' : '0px solid black'
+                     }} >
+                        <div className='div-rem'>
+                            <img onClick={() => deletar(index)} src={imgs.trash} alt="Remover" style={{color: 'black'}}/>
+                        </div>
+                        <div className='div-selecionar'>
+                            <input onChange={handleUploadImagem} accept='.jpg,.png,.jpeg'
+                                multiple={false} type="file" name="ImagemTreino"
+                                className='buttonUpload' id={`IimagemTreino${index}`} />
+
+                            <h4 className='selector-text'>Selecionar</h4>
+                        </div>
+                        {/* <div onClick={() => console.log("era pra tirar a imagem")} className="div-limpar">
+                            <h4>X</h4>
+                        </div> */}
                     </div>
                 </div>
-                <div className='confirmed'
-                    style={{
-                        backgroundColor: newImagem ? "green" : "red"
-                    }}
-                >
-                    <img src={newImagem ? imgs.confirmar : imgs.deletar} alt="confirmar" />
-                </div>
-                <span id='fileName' ref={refFileName}>
-                    Nenhum
-                </span>
-            </div>
-            <div ref={ refCartaoFrente } className="cartaoFrente">
-                <img ref={ refImage } src={newImagem ? newImagem : imagem} alt="Imagem" />
             </div>
         </div>
     );

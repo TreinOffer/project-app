@@ -1,0 +1,21 @@
+.cartaoVideo{
+    .div-video{
+        width: 660px !important;
+        height: 295px !important;
+    }    
+}
+
+.actions{
+    & .div-change-type{
+        position: absolute;
+        right: 18px;
+        top: 39%;
+        
+      
+    }
+} 
+    
+.video-thumbnail {
+    width: 100%;
+    height: auto;  
+}

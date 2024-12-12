@@ -47,7 +47,7 @@ export async function logar_se(user, senha) {
       user: user,
       cargo: role,
       primKey: id,
-      exp: Math.floor(Date.now() / 1000) + 60 * 60,
+      exp: Math.floor(Date.now() / 1000) + 3 * 60 * 60,
     };
 
     //Cria token autenticacao

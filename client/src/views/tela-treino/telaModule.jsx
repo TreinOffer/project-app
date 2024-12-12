@@ -6,6 +6,7 @@ import { sortByOrder } from './functions/sortByOrder';
 
 function TelaModule() {
   const [modulosForm, setModulosForm] = useState([]);
+  const [modulo, setModulo] = useState(1);
   const { idTreino } = useParams();
   const flipbookRef = useRef(null); 
 
@@ -31,12 +32,42 @@ function TelaModule() {
       setModulosForm(moduloFormatado || []);
     }
     getModules();
-  }, [idTreino]);
+  }, [idTreino]);  
+
+  const handleModulo = (valor) => {
+    if (!valor) {
+        setModulo(prevModulo => (prevModulo - 1))
+        console.log(modulo);
+    } else {
+        setModulo(prevModulo => (prevModulo + 1))
+        console.log(modulo);
+    }
+};
 
   return (
     <>
       <Cabecalho />
       <section className="grid_module">
+        <div className="modules-treino">
+          <div className="botao-modules">
+            <button
+              onClick={modulo > 1 ? () => handleModulo(false) : null}
+              type="button"
+            >
+              {'<'}
+            </button>
+
+            <span>{`Modulos ${modulo}`}</span>
+
+            <button
+              onClick={() => handleModulo(true)}
+              type="button"
+            >
+              {'>'}
+            </button>
+          </div>
+        </div>
+
         <section
           className="quadradinho"
           style={{
@@ -56,7 +87,7 @@ function TelaModule() {
               position: 'absolute',
               top: 0,
               bottom: 0,
-              left: '51%',
+              left: '50%',
               width: '3px',
               backgroundColor: 'black',
               boxShadow: 'inset 0 0 6px black'

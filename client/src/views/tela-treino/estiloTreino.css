@@ -1,21 +1,70 @@
 .grid_module {
-  margin: 20px;
-  padding-top: 10px;
-  padding-bottom: 20px;
-  grid-template-columns: 1fr 1fr 1fr;
-  row-gap: 100px;
-  column-gap: 20px;
-  border: 2px solid hsl(0, 0%, 90%);
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  padding: 20px;
   background-color: hsl(0, 0%, 97%);
+  border: 2px solid hsl(0, 0%, 90%);
+  box-sizing: border-box; 
 }
+
 
 .quadradinho {
   border-radius: 20px;
   border: 2px solid black;
-  width: 80em;
-  margin-left: 580px;
+  width: 80em; 
   box-sizing: content-box;
-  height: 75vh;
+  height: 70vh;
   box-shadow: inset 0 0 6px black;
   padding-top: 40px;
+}
+
+
+.modules-treino{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.modules-treino {
+  display: flex;
+  flex-direction: column;
+  min-width: 50%;  
+}
+
+.modules-treino .botao-modules {
+  display: flex;
+  margin: 20px 0 0 0;
+  border: 1mm ridge rgb(8, 8, 8);
+  border-radius: 20px; 
+  width: 10rem;
+  column-gap: 8px;
+  box-shadow: inset 0 0 6px black;
+}
+
+.modules-treino .botao-modules > * {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.modules-treino .botao-modules button {
+  flex: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: ease-out 0.2s;
+}
+
+.modules-treino .botao-modules button:hover {
+  background-color: hsl(0, 0%, 90%);
+  color: rgb(87, 79, 79);
+  border-radius: 20px;
+}
+
+.modules-treino .botao-modules button:active {
+  background-color: black;
+  color: white;
+  border-radius: 20px;
 }

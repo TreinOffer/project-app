@@ -1,14 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './estiloTreino.css';
+// import './estiloTreino.css';
+import '../uploadTreino/estiloDestino.css';
 import Cabecalho from '../cabecalho/cabecalho';
 import { useParams } from 'react-router-dom';
 import { sortByOrder } from './functions/sortByOrder';
+import ImagemComponent from './components/imagem.component';
+import TituloComponent from './components/titulo.component';
+import ParagrafoComponent from './components/paragrafo.component';
+import VideoComponent from './components/video.component';
 
 function TelaModule() {
   const [modulosForm, setModulosForm] = useState([]);
-  const [modulo, setModulo] = useState(1);
+  const [numModulo, setNumModulo] = useState(1);
   const { idTreino } = useParams();
-  const flipbookRef = useRef(null); 
 
   async function fetchModules(idTreino) {
     const token = localStorage.getItem('token');
@@ -20,81 +24,82 @@ function TelaModule() {
       },
     });
     const resposta = await request.json();
+    console.log("resposta: ", resposta);
     return resposta;
   }
 
+  const handleModulo = (valor) => {
+    if (!valor) {
+      setNumModulo(prevModulo => (prevModulo - 1))
+      console.log(numModulo);
+    } else {
+      setNumModulo(prevModulo => (prevModulo + 1))
+      console.log(numModulo);
+    }
+  };
+
   useEffect(() => {
     async function getModules() {
-      const modulos = await fetchModules(idTreino);
-      const [moduloFormatado] = modulos?.map(modulo => {
-        return sortByOrder(modulo);
+      let modulos = await fetchModules(idTreino);
+      modulos = modulos.map(modulo => {
+        return [modulo];
       });
+      console.log(modulos);
+
+      const [moduloFormatado] = modulos[numModulo - 1] ?
+      modulos[numModulo - 1].map(
+        modulo => sortByOrder(modulo)) : [];
+        
+      console.log(moduloFormatado);
       setModulosForm(moduloFormatado || []);
     }
     getModules();
-  }, [idTreino]);  
+  }, [idTreino, numModulo]);
 
-  const handleModulo = (valor) => {
-    if (!valor) {
-        setModulo(prevModulo => (prevModulo - 1))
-        console.log(modulo);
-    } else {
-        setModulo(prevModulo => (prevModulo + 1))
-        console.log(modulo);
-    }
-};
+  useEffect(() => { console.log("mudou modulo: ", modulosForm) }, []);
 
   return (
     <>
       <Cabecalho />
-      <section className="grid_module">
-        <div className="modules-treino">
-          <div className="botao-modules">
-            <button
-              onClick={modulo > 1 ? () => handleModulo(false) : null}
-              type="button"
-            >
-              {'<'}
-            </button>
+      <main className="contentUpTreino">
+        <div className='wrap-section-destino'>
+          <div className='botao-modulo'>
 
-            <span>{`Modulos ${modulo}`}</span>
+            <button onClick={numModulo > 1 ? () => handleModulo(false) : null}
+              type="button"> {'<'} </button>
 
-            <button
-              onClick={() => handleModulo(true)}
-              type="button"
-            >
-              {'>'}
-            </button>
+            <span>{`Modulo ${numModulo}`}</span>
+
+            <button onClick={() => handleModulo(true)}
+              type="button"> {'>'} </button>
+
           </div>
+          <section className='dropSection'
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+          >
+            {modulosForm.map((item, index) => {
+              const chave = Object.keys(item)[0];
+              const valor = item[chave];
+
+              if (chave === 'tit') {
+                return <TituloComponent key={index} titulo={valor} />
+
+              } else if (chave === 'parag') {
+                return <ParagrafoComponent key={index} paragrafo={valor} />;
+
+              } else if (chave === 'imagem') {
+                return <ImagemComponent key={index} imagem={valor} />
+
+              } else if (chave === 'video') {
+                return <VideoComponent key={index} url={valor} />;
+
+              } else {
+                return null; // Caso a chave não seja reconhecida
+              }
+            })}
+          </section>
         </div>
-
-        <section
-          className="quadradinho"
-          style={{
-            display: 'flex',
-            flexDirection: 'row', 
-            justifyContent: 'center', 
-            alignItems: 'center',
-            backgroundColor: "hsl(0,0%,97%)", 
-            position: 'relative', 
-          }}
-          ref={flipbookRef}
-        >
-          <div style={{ flex: 1, padding: '20px' }}>
-          </div>
-          <div
-            style={{
-              position: 'absolute',
-              top: 0,
-              bottom: 0,
-              left: '50%',
-              width: '3px',
-              backgroundColor: 'black',
-              boxShadow: 'inset 0 0 6px black'
-            }}
-          />
-        </section>
-      </section>
+      </main>
     </>
   );
 }

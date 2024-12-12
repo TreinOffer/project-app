@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './style.css';
 import imgs from '../../imgs/arrayImagens';
 
-function UparUrl({ setYoutubeUrl, setIsPopupVisible }) {
+function UparUrl({ setYoutubeUrl, setIsPopupVisible, handleUrl, index }) {
     const [url, setUrl] = useState('');
 
     const convertToEmbedUrl = (url) => {
@@ -17,13 +17,14 @@ function UparUrl({ setYoutubeUrl, setIsPopupVisible }) {
             const youtubeEmbedUrl = convertToEmbedUrl(url);
             setYoutubeUrl(youtubeEmbedUrl);
             setIsPopupVisible(false);
+            handleUrl(index, [youtubeEmbedUrl]);
         }
     };
 
     return (
         <div className="popupUrl">
-            <div className="telinhaUrl">
-                <img src={imgs.TreinOfferblack} alt="" className='logo-trein'/>
+            <div className="telinhaUrl" style={{ display: 'flex', flexDirection: 'column', justifyContent: "space-around" }}>
+                <img src={imgs.TreinOfferblack} alt="logo_TreinOffer" className='logo-trein' style={{ transform: 'scale(1.2)', margin: '0 auto', paddingLeft: '34px' }}/>
                 <button className='close-red' onClick={() => setIsPopupVisible(false)}>X</button>
                 <input
                     type="url"

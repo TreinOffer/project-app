@@ -103,7 +103,8 @@ const CartaoVdeo = ({ deletar, index, url, setItens, isFlipped, isUrl, handleVid
                 </div>
             </div>
 
-            {isPopupVisible && <UparUrl setYoutubeUrl={setYoutubeUrl} setIsPopupVisible={setIsPopupVisible} />}
+            {isPopupVisible && <UparUrl handleUrl={handleVideo} index={index}
+                setYoutubeUrl={setYoutubeUrl} setIsPopupVisible={setIsPopupVisible} />}
         </div>
     );
 }

@@ -1,30 +1,38 @@
 import TituloComponent from "../components/titulo.component";
 
 export function sortByOrder(modulo) {
-    console.log(modulo);
-    const { Ordem, Titulo, Paragrafos, Imagens } = modulo;
+        // Separar a ordem especificada
+        const ordem = modulo.Ordem.split(',');
 
-    // Garantir que Paragrafos e Imagens não sejam null ou undefined
-    const paragrafosArray = (Paragrafos ?? '').split('&&*');
-    const imagensArray = (Imagens ?? '').split(',');
+        // Separar os parágrafos com base no delimitador "&&*"
+        const paragrafos = modulo.Paragrafos ? modulo.Paragrafos.split('&&*') : [];
 
-    const novoObjeto = {};
-    const resultado = [];
+    // Garantir que 'Videos' seja um array ou string e tratá-lo corretamente
+    const videos = Array.isArray(modulo.Videos) ? modulo.Videos : (modulo.Videos ? modulo.Videos.split(',') : []);
 
-    // Itera sobre a Ordem para gerar a saída conforme a sequência
-    const sortOrder = Ordem.split(',');
-
-    sortOrder.forEach((item, index) => {
-        if (item === 'Titulo') {
-            resultado.push({ Titulo });
-        } else if (item === 'Paragrafos' && paragrafosArray.length > 0) {
-            const paragrafo = paragrafosArray.shift();
-            resultado.push({ Paragrafo: paragrafo });
-        } else if (item === 'ImagemTreino' && imagensArray.length > 0) {
-            const imagem = imagensArray.shift();
-            resultado.push({ Imagem: imagem });
-        }
-    });
-    console.log("Sim Murray: ", resultado);
-    return resultado;
+    // Garantir que 'Imagens' seja um array ou string e tratá-lo corretamente
+    const imagens = Array.isArray(modulo.Imagens) ? modulo.Imagens : (modulo.Imagens ? modulo.Imagens.split(',') : []);
+        console.log("verificacao: ",paragrafos,imagens,videos);
+    
+        // Inicializar a lista de saída
+        const saida = [];
+    
+        // Processar cada item na ordem
+        ordem.forEach(item => {
+            // item = item.trim(); // Remover espaços extras
+    
+            if (item === 'tit') {
+                saida.push({ tit: modulo.Titulo });
+            } else if (item === 'imagem' && imagens.length > 0) {
+                saida.push({ imagem: imagens.shift() });
+            } else if (item === 'video' && videos.length > 0){
+                saida.push({ video: videos.shift() });
+            }else if(item === 'parag' && paragrafos.length > 0){
+                saida.push({ parag: paragrafos.shift() });
+            }else{
+                console.log("triste demais");
+            };
+        });
+        console.log("triste: ",saida)
+        return saida;
 }

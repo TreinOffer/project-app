@@ -1,10 +1,10 @@
 import React from 'react';
 
-const TituloComponent = ({titulo}) => {
+const TituloComponent = ({ titulo }) => {
     return (
-        <h4>
+        <h1 style={{ textAlign: 'left' }}>
             {titulo}
-        </h4>
+        </h1>
     );
 };
 

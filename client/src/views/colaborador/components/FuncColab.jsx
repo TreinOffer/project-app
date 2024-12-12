@@ -8,14 +8,14 @@ const p = 10;
 
 const CRUD = new CrudUser();
 
-function NewColab({ atualizaPag, click, transForm }) {
-  const [tecnicos, setTecnicos] = useState([]);
+function NewColab({ atualizaPag, click, transForm, tecnicos }) {
   const [isEditing, setIsEditing] = useState(false);
   const [colaborador, setColaborador] = useState({
     Matricula: "",
     Imagem: "",
     Nome: "",
     Responsavel: "",
+    ResponsavelNome: "",
     Senha: ""
   });
 
@@ -43,22 +43,6 @@ function NewColab({ atualizaPag, click, transForm }) {
       reader.readAsDataURL(file);
     }
   };
-
-  useEffect(() => {
-    async function getTecnicos() {
-      const token = localStorage.getItem('token');
-      const request = await fetch(`${process.env.REACT_APP_BACKEND}/tecnicos`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      const resposta = await request.json();
-      setTecnicos(resposta);
-    }
-    getTecnicos();
-  }, []);
 
   return (
     <form
@@ -105,7 +89,7 @@ function NewColab({ atualizaPag, click, transForm }) {
                 transition: 'background-color 0.3s ease'
               }}
             >
-              {colaborador.Responsavel || 'Selecione'}
+              {colaborador.ResponsavelNome || 'Selecione'}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -143,7 +127,7 @@ function NewColab({ atualizaPag, click, transForm }) {
                         cursor: 'pointer'
                       }}
                       onClick={() => {
-                        setColaborador((prev) => ({ ...prev, Responsavel: tecnico.Nome }));
+                        setColaborador((prev) => ({ ...prev, ResponsavelNome: tecnico.Nome, Responsavel: tecnico.Matricula }));
                         setIsEditing(false);
                       }}
                     >

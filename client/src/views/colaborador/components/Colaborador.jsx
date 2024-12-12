@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
+import '../../tecnicos/components/Tecnico.css';
 import imgs from "../../../imgs/arrayImagens";
-import CrudUser from './crudColaborador';   
+import CrudUser from './crudColaborador';
 
 const g = 25;
 const m = 15;
@@ -8,18 +9,23 @@ const p = 10;
 
 const CRUD = new CrudUser();
 
-function Colaborador({ colabFt, colabNome, tecnico, senha, matricula, disabled, handleDelete, atualizaPag, transForm }) {
+function Colaborador({ colabFt, colabNome, tecnico, senha, matricula, disabled, handleDelete, atualizaPag, transForm, tecnicos }) {
+    console.log(tecnicos);
     const [dropdownTec, setDropdownTec] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownTecRef = useRef(null);
     const dropdownRef = useRef(null);
     const [isEditingTec, setIsEditingTec] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
+
+    const [editedResponsavelNome, setEditedResponsavelNome] = useState(null);
+
     const [editedNome, setEditedNome] = useState(colabNome);  
     const [editedResponsavel, setEditedResponsavel] = useState(tecnico);
     const [editedSenha, setEditedSenha] = useState(senha);
     const [editedMatricula, setEditedMatricula] = useState(matricula);
-    const [editedImage, setEditedImage] = useState(colabFt);  
+    const [editedImage, setEditedImage] = useState(colabFt);
+
     const [showPopUp, setShowPopUp] = useState(false);
     const [divDisabled, setDivDisabled] = useState(null);
 
@@ -28,7 +34,7 @@ function Colaborador({ colabFt, colabNome, tecnico, senha, matricula, disabled, 
             Matricula: editedMatricula,
             Imagem: editedImage,
             Nome: editedNome,
-            Especializacao: editedResponsavel,
+            idTecnico: editedResponsavel,
             Senha: editedSenha
         });
         await CRUD.update(matricula, form);
@@ -68,7 +74,7 @@ function Colaborador({ colabFt, colabNome, tecnico, senha, matricula, disabled, 
             const reader = new FileReader();
             reader.onloadend = () => {
                 imagem = reader.result;
-                document.getElementsByClassName("foto_colab")[0].src = reader.result;  
+                document.getElementsByClassName("foto_func")[0].src = reader.result;  
                 setEditedImage(file);
             };
             reader.readAsDataURL(file);
@@ -76,6 +82,17 @@ function Colaborador({ colabFt, colabNome, tecnico, senha, matricula, disabled, 
     };
 
     const isDisabled = disabled === 1 ? true : false;
+
+    function getTecName(id){
+        const tecnico = 
+        tecnicos?.find(tecnico => tecnico.Matricula === id)
+        return tecnico?.Nome;
+    };
+
+    useEffect(() => {
+        const responsavelNome = getTecName(tecnico);
+        setEditedResponsavelNome(responsavelNome);
+    }, [editedResponsavelNome]);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -120,7 +137,7 @@ function Colaborador({ colabFt, colabNome, tecnico, senha, matricula, disabled, 
                     {true && divDisabled}
                     <div className='sec_func info_pessoal' style={{ opacity: isDisabled ? `0.3` : `1`, width: `${g}%`, display: 'flex', alignItems: 'center', position: 'relative' }}>
                         <div style={{ position: 'relative' }}>
-                            <img className='foto_colab' src={imagem ? imagem : `http://localhost:5000/imgs/${editedImage}`} alt="" />  {/* Alterado para refletir novo nome */}
+                            <img className='foto_func' src={imagem ? imagem : `${process.env.REACT_APP_BACKEND}/imgs/${editedImage}`} alt="" />
                             {isEditing && (
                                 <div className="botao_div">
                                     <input
@@ -155,7 +172,7 @@ function Colaborador({ colabFt, colabNome, tecnico, senha, matricula, disabled, 
                         opacity: isDisabled ? `0.3` : `1`,
                         width: `${g}%`, display: 'flex', alignItems: 'center'
                     }}>
-                        OLA
+                        {editedResponsavelNome}
                     </div>
 
                     <div className='sec_func' style={{ opacity: isDisabled ? `0.3` : `1`, width: `${m}%` }}>

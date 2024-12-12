@@ -6,17 +6,19 @@ import {isEmptyField, mensagem} from "../validations/common/emptyFields.validati
 import {duplicateId, duplicado} from "../validations/common/duplicateId.validation.js";
 
 async function getEmpresaId(primaryTecnico) {
+  console.log("eee ",primaryTecnico)
   const sql = `SELECT idEmpresa FROM tecnicos
     WHERE Matricula = ?`;
    const [ resposta ] = await conexao.query(sql, primaryTecnico);
+   console.log("é vdd: ",resposta)
    const desestruturacao = resposta[0];
    const { idEmpresa } = desestruturacao;
    return idEmpresa;
 }
 
-export async function getColaboradores(entidade, idTecnico, unique) {
+export async function getColaboradores(entidade, idEmpresa, unique) {
   try {
-    const idEmpresa = await getEmpresaId(idTecnico);
+    // console.log("ee ",idTecnico);
 
     const [params, sql] = await returnSQL(entidade, idEmpresa, unique);
     console.log(sql)
@@ -48,7 +50,7 @@ export async function postColaborador(Colaborador, entidade, idEmpresa, nomeImag
       Colaborador.Nome,
       Colaborador.Senha,
       idEmpresa,
-      Colaborador.idTecnico,
+      Colaborador.Responsavel,
       nomeImagem,
     ];
 

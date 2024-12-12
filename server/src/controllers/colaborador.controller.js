@@ -8,14 +8,15 @@ import {
 const entidade = "colaboradores";
 
 export async function listarColaboradors(req, res) {
-  const idTecnico = req.user.primKey;
+  const { primKey } = req.user;
   const { Unique } = req.query;
+  console.log("e ",primKey);
 
   console.log("ColaboradorGET :: Controller");
 
   const [statusCode, Colaboradores] = await getColaboradores(
     entidade,
-    idTecnico,
+    primKey,
     Unique
   );
 

@@ -3,6 +3,7 @@ import Cabecalho from "../cabecalho/cabecalho";
 import imgs from '../../imgs/arrayImagens';
 import Colaborador from './components/Colaborador';
 import NewFunc from './components/FuncColab';
+import '../tecnicos/estiloTecnico.css';
 
 import CrudUser from './components/crudColaborador';
 import { RequestToken } from '../../components/fetchToken/token.function';
@@ -16,6 +17,7 @@ const CRUD = new CrudUser();
 function Colaboradores() {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState('');
+  const [tecnicos, setTecnicos] = useState([]);
 
   const [colaboradores, setColaboradores] = useState([]);
   const [click, setClick] = useState(false);
@@ -74,6 +76,22 @@ function Colaboradores() {
     getUsername();
   }, []);
 
+  useEffect(() => {
+    async function getTecnicos() {
+      const token = localStorage.getItem('token');
+      const request = await fetch(`${process.env.REACT_APP_BACKEND}/tecnicos`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      const resposta = await request.json();
+      setTecnicos(resposta);
+    }
+    getTecnicos();
+  }, []);
+
   return (
     <>
       <Cabecalho />
@@ -81,7 +99,7 @@ function Colaboradores() {
       <section className='tab_func'>
 
         <div className="tit_tab">
-          <h2>Tabela de técnicos - {user}</h2>
+          <h2>Tabela de Colaboradores - {user}</h2>
         </div>
 
         <div className='funcoes_func'>
@@ -121,13 +139,14 @@ function Colaboradores() {
         {
           isLoading ? <h4>Carregando...</h4> : (
             <section className="funcs">
-              {click && (<NewFunc atualizaPag={handleRefresh} click={setClick} transForm={createForm} />)}
+              {click && (<NewFunc atualizaPag={handleRefresh} click={setClick} transForm={createForm} tecnicos={tecnicos} />)}
               {
-                colaboradores?.map((tecnico, chave) =>
-                (<Colaborador key={chave} tecFt={tecnico.Imagem} tecNome={tecnico.Nome}
-                  tecnico={tecnico.Responsavel} senha={tecnico.Senha}
-                  matricula={tecnico.Matricula} disabled={tecnico.Disabled}
+                colaboradores?.map((colaborador, chave) =>
+                (<Colaborador key={chave} colabFt={colaborador.Imagem} colabNome={colaborador.Nome}
+                  tecnico={colaborador.idTecnico} senha={colaborador.Senha}
+                  matricula={colaborador.Matricula} disabled={colaborador.Disabled}
                   handleDelete={handleDelete} atualizaPag={handleRefresh} transForm={createForm}
+                  tecnicos={tecnicos}
                 />)
                 )}
             </section>

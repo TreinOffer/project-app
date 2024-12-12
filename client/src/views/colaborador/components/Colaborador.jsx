@@ -236,7 +236,7 @@ function Colaborador({ colabFt, colabNome, tecnico, senha, matricula, disabled, 
                                 </div>
                             </div>
                         ) : (
-                            <span className="letraQuebra" style={{ textAlign: '' }}>
+                            <span className="letraQuebra" style={{ opacity: isDisabled ? '0.3' : '1',textAlign: '' }}>
                                 <img style={{ width: '32px', borderRadius: '25px' }} src={`${process.env.REACT_APP_BACKEND}/imgs/${editedResponsavelFoto}`}/>
                                 {editedResponsavelNome}
                             </span>

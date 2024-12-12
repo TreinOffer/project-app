@@ -26,9 +26,9 @@ class CrudUser {
         };
     };
 
-    async read() {
+    async read(unique) {
         try {
-            const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/colaboradores`, {
+            const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/colaboradores?Unique=${unique}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

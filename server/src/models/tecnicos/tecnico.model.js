@@ -15,7 +15,7 @@ import { returnSQL } from "./return.sql.js";
 export async function getTecnicos(entidade, idEmpresa, unique) {
   try {
     const [params, sql] = await returnSQL(entidade, idEmpresa, unique);
-    
+    console.log(sql);
     const [ tecnicos ] = await conexao.query(sql,params);
     return [200, tecnicos];
 

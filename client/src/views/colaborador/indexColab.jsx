@@ -105,7 +105,7 @@ function Colaboradores() {
         <div className='funcoes_func'>
           <div>
             <input type="text" value={buscar} onChange={(e) => setBuscar(e.target.value)}
-              name='' id='func_mat' placeholder='Buscar técnico' />
+              name='' id='func_mat' placeholder='Buscar Colaborador' />
             <button className='buscar_func' type="button">
               <img src={imgs.buscar} alt="buscar" />
             </button>

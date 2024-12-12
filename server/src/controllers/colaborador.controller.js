@@ -8,7 +8,7 @@ import {
 const entidade = "colaboradores";
 
 export async function listarColaboradors(req, res) {
-  const { primKey } = req.user;
+  const { primKey, cargo } = req.user;
   const { Unique } = req.query;
   console.log("e ",primKey);
 
@@ -17,7 +17,7 @@ export async function listarColaboradors(req, res) {
   const [statusCode, Colaboradores] = await getColaboradores(
     entidade,
     primKey,
-    Unique
+    Unique, cargo
   );
 
   return res.status(statusCode).json(Colaboradores);

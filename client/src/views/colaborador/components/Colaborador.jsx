@@ -10,10 +10,12 @@ const p = 10;
 const CRUD = new CrudUser();
 
 function Colaborador({ colabFt, colabNome, tecnico, senha, matricula, disabled, handleDelete, atualizaPag, transForm, tecnicos }) {
+    console.log(tecnicos);
     const [isEditing, setIsEditing] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [editedResponsavelNome, setEditedResponsavelNome] = useState(null);
     const [editedResponsavel, setEditedResponsavel] = useState(tecnico);
+    const [editedResponsavelFoto, setEditedResponsavelFoto] = useState(null);
     const [editedNome, setEditedNome] = useState(colabNome);
     const [editedSenha, setEditedSenha] = useState(senha);
     const [editedMatricula, setEditedMatricula] = useState(matricula);
@@ -61,8 +63,6 @@ function Colaborador({ colabFt, colabNome, tecnico, senha, matricula, disabled, 
         }
     };
 
-    
-
     const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
     const confirmar = () => setShowPopUp(true);
@@ -73,11 +73,12 @@ function Colaborador({ colabFt, colabNome, tecnico, senha, matricula, disabled, 
 
     function getTecName(id) {
         const tecnico = tecnicos?.find(tecnico => tecnico.Matricula === id);
-        return tecnico?.Nome;
+        return [tecnico?.Nome, tecnico?.Imagem];
     }
 
     useEffect(() => {
-        setEditedResponsavelNome(getTecName(tecnico));
+        setEditedResponsavelNome(getTecName(tecnico)[0]);
+        setEditedResponsavelFoto(getTecName(tecnico)[1]);
     }, [tecnico]);
 
     useEffect(() => {
@@ -235,8 +236,12 @@ function Colaborador({ colabFt, colabNome, tecnico, senha, matricula, disabled, 
                                 </div>
                             </div>
                         ) : (
-                            <span className="letraQuebra">{editedResponsavelNome}</span>
-                        )}
+                            <span className="letraQuebra" style={{ textAlign: '' }}>
+                                <img style={{ width: '32px', borderRadius: '25px' }} src={`${process.env.REACT_APP_BACKEND}/imgs/${editedResponsavelFoto}`}/>
+                                {editedResponsavelNome}
+                            </span>
+                        )
+                        }
                     </div>
 
                     <div className="sec_func" style={{ opacity: isDisabled ? '0.3' : '1', width: `${m}%` }}>

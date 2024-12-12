@@ -5,23 +5,28 @@ import properties from "./properties.colaborador.js";
 import {isEmptyField, mensagem} from "../validations/common/emptyFields.validation.js";
 import {duplicateId, duplicado} from "../validations/common/duplicateId.validation.js";
 
-async function getEmpresaId(primaryTecnico) {
-  console.log("eee ",primaryTecnico)
+async function getEmpresaId(id, cargo) {
+
+  if (cargo === 'empresa') {
+    return id;
+  };
+
   const sql = `SELECT idEmpresa FROM tecnicos
     WHERE Matricula = ?`;
-   const [ resposta ] = await conexao.query(sql, primaryTecnico);
-   console.log("é vdd: ",resposta)
+
+   const [ resposta ] = await conexao.query(sql, id);
    const desestruturacao = resposta[0];
    const { idEmpresa } = desestruturacao;
    return idEmpresa;
 }
 
-export async function getColaboradores(entidade, idEmpresa, unique) {
+export async function getColaboradores(entidade, idUser, unique, cargo) {
   try {
-    // console.log("ee ",idTecnico);
+
+    const idEmpresa = await getEmpresaId(idUser, cargo);
 
     const [params, sql] = await returnSQL(entidade, idEmpresa, unique);
-    console.log(sql)
+    
     const [ retorno ] = await conexao.query(sql, params);
     return [200, retorno];
 

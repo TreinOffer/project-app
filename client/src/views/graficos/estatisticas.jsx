@@ -28,12 +28,13 @@ export default function App() {
   });
 
   const handleRefresh = async (buscar) => {
-    let read = Array();
+    let read = [];
     if (buscar.length > 0) {
       read = await fetchColaborador(buscar);
     } else {
       read = await fetchColaborador('');
     };
+    console.log("verdade ",read)
     setColaboradores((...prev) => {
       return read;
     });

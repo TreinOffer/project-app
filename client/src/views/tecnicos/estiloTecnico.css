@@ -3,6 +3,10 @@
     text-align: center;
     word-wrap: break-word;
     font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 .tab_func .func * > *{
     cursor: default;

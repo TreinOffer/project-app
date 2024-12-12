@@ -16,16 +16,16 @@ async function returnFiles(imagens, videos) {
         console.log("eduardo: ", await arrayImagemTreino);
     };
 
-    if (videos) {
-        let arrayVideoTreino = videos.map(video => {
-            const { filename } = video;
-            console.log("sim: ", filename);
-            return filename;
-        });
-        arrayVideoTreino.join(', '); //Transforma o array em string para insert no query
-        arrayFiles.push(arrayVideoTreino);
-        console.log("eduardo2: ", await arrayVideoTreino);
-    };
+    // if (videos) {
+    //     let arrayVideoTreino = videos.map(video => {
+    //         const { filename } = video;
+    //         console.log("sim: ", filename);
+    //         return filename;
+    //     });
+    //     arrayVideoTreino.join(', '); //Transforma o array em string para insert no query
+    //     arrayFiles.push(arrayVideoTreino);
+    //     console.log("eduardo2: ", await arrayVideoTreino);
+    // };
     console.log("array de arquivos: ",arrayFiles);
     return arrayFiles;
 };
@@ -64,18 +64,19 @@ export async function criarCapaTreino(req, res) {
 };
 
 export async function criarTreinamento(req, res) {
-    const { ImagemTreino, VideoTreino } = req.files;
-    const { Titulo, Paragrafos, Ordem } = req.body;
+    const { ImagemTreino } = req.files;
+    const { Titulo, Paragrafos, Ordem, VideoTreino } = req.body;
     console.log("imagem: ",ImagemTreino, "video: ", VideoTreino);
     
     console.log("Treinamento::: Controller ");
     console.log("titulo: ", Titulo, "parag: ",Paragrafos);
     const [imagens, videos] = await returnFiles(ImagemTreino, VideoTreino);
+    console.log("img ",imagens,"vdo", videos);
 
     const [statusCodeModulo, resposta] = await createTreino(
         entidade,
         Titulo, Paragrafos,
-        imagens, videos, Ordem
+        imagens, VideoTreino, Ordem
     );
     res.status(statusCodeModulo).json(resposta);
     

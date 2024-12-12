@@ -61,9 +61,8 @@ export async function returnParams(tit, parag, imagem, video, idTreino, Ordem) {
 
     params.push(isArray(tit));
     params.push(isArray(parag));
-    params.push(imagem);
     params.push(video);
+    params.push(imagem);
     params.push(Ordem);
-
     return params;
 };

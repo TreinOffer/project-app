@@ -31,7 +31,7 @@ export async function rotasCabecalho(cargo) {
       },
       {
         tit: "Fatura",
-        rota: "/fatura",
+        rota: "",
         imagem: imgs.financas,
       },
     ];

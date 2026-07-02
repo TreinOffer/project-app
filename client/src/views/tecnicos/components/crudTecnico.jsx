@@ -1,6 +1,6 @@
 class CrudUser {
     static get token () {
-        return localStorage.getItem('token');
+        return sessionStorage.getItem('token');
     };
 
     async create(user) {

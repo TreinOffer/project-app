@@ -1,8 +1,71 @@
-*{
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: "Roboto", Arial, sans-serif;
 }
-h1, h2, h3, h4, h5, h6{
+
+:root {
+    --baby-blue: #bfe9ff;
+    --baby-blue-soft: #edf9ff;
+    --baby-blue-strong: #6fc8f2;
+    --white: #ffffff;
+    --contrast-green: #29b875;
+    --contrast-green-dark: #168a56;
+    --profile-tech: #ff9f43;
+    --profile-company: #ef4444;
+    --profile-employee: #8bdcff;
+    --ink: #102033;
+    --muted: #587086;
+    --line: rgba(16, 32, 51, 0.12);
+    --shadow: 0 18px 50px rgba(20, 75, 112, 0.14);
+    --radius: 8px;
+}
+
+html {
+    min-height: 100%;
+    background: var(--baby-blue-soft);
+}
+
+body {
+    min-height: 100%;
+    color: var(--ink);
+    background:
+        linear-gradient(180deg, var(--baby-blue-soft) 0%, var(--white) 42%, #f7fcff 100%);
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button,
+input[type="button"],
+input[type="submit"] {
+    min-height: 40px;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: "Montserrat", Arial, sans-serif;
+    letter-spacing: 0;
+}
+
+::selection {
+    background: var(--contrast-green);
+    color: var(--white);
 }

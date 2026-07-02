@@ -1,39 +1,68 @@
-section .menu{
+section .menu {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 50px;
-}
-.menu .tarefas{
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-}
-.menu .navegacao{
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
+    width: min(1280px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 10px 0;
     align-items: center;
-    padding: 0 4px;
-    border-top: none;
-    border-bottom: none;
-    width: 100%;
+    justify-content: flex-start;
+    gap: 10px;
+    overflow-x: auto;
+    list-style: none;
 }
-.routes_cabecalho{
+
+.routes_cabecalho {
+    flex: 0 0 auto;
+    color: var(--ink);
     text-decoration: none;
-    color: hsl(0,0%,100%);
-    font-weight: bold;
+    font-weight: 800;
 }
-.navegacao{
-    & > img{
-        width: 44px;
-    }
-    & > span{
-        font-size: 1.15rem;
-    }
+
+.menu .navegacao {
+    display: flex;
+    min-height: 48px;
+    align-items: center;
+    gap: 10px;
+    padding: 0 14px;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    color: var(--ink);
+    background: rgba(255, 255, 255, 0.58);
+    transition: 160ms ease;
 }
-    
-aside .navegacao:hover{
-    background-image: linear-gradient(hsl(205,40%,80%),hsl(205,70%,80%));
-    transform: scale(1.2);
+
+.navegacao > img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+}
+
+.navegacao > span {
+    white-space: nowrap;
+    font-size: 0.98rem;
+}
+
+.menu .navegacao:hover {
+    border-color: rgba(41, 184, 117, 0.28);
+    background: var(--white);
+    color: var(--contrast-green-dark);
+    transform: translateY(-1px);
+}
+
+.menu .navegacao[style*="border-bottom"] {
+    border: 1px solid rgba(41, 184, 117, 0.42) !important;
+    border-bottom: 1px solid rgba(41, 184, 117, 0.42) !important;
+    background: var(--white);
+    box-shadow: 0 10px 24px rgba(41, 184, 117, 0.12);
+}
+
+@media (max-width: 620px) {
+    section .menu {
+        width: calc(100% - 20px);
+        padding: 8px 0;
+    }
+
+    .menu .navegacao {
+        min-height: 44px;
+        padding: 0 12px;
+    }
 }

@@ -9,7 +9,6 @@ import CrudUser from './components/crudColaborador';
 import { RequestToken } from '../../components/fetchToken/token.function';
 
 const g = 25;
-const m = 15;
 const p = 10;
 
 const CRUD = new CrudUser();
@@ -22,6 +21,7 @@ function Colaboradores() {
   const [colaboradores, setColaboradores] = useState([]);
   const [click, setClick] = useState(false);
   const [buscar, setBuscar] = useState('');
+  const showSenhaColumn = click;
 
   async function handleUsername(nome) {
     setUser(prev => {
@@ -78,7 +78,7 @@ function Colaboradores() {
 
   useEffect(() => {
     async function getTecnicos() {
-      const token = localStorage.getItem('token');
+      const token = sessionStorage.getItem('token');
       const request = await fetch(`${process.env.REACT_APP_BACKEND}/tecnicos`, {
         method: 'GET',
         headers: {
@@ -96,7 +96,7 @@ function Colaboradores() {
     <>
       <Cabecalho />
 
-      <section className='tab_func'>
+      <section className={`tab_func ${showSenhaColumn ? 'has-senha' : 'sem-senha'}`}>
 
         <div className="tit_tab">
           <h2>Tabela de Colaboradores - {user}</h2>
@@ -126,9 +126,11 @@ function Colaboradores() {
           <h4 style={{ width: `${g}%` }}>
             Responsável
           </h4>
-          <h4 style={{ width: `${m}%` }}>
-            Senha
-          </h4>
+          {showSenhaColumn && (
+            <h4 style={{ width: `${g}%` }}>
+              Senha
+            </h4>
+          )}
           <h4 style={{ width: `${g}%` }}>
             Matricula
           </h4>
@@ -143,8 +145,10 @@ function Colaboradores() {
               {
                 colaboradores?.map((colaborador, chave) =>
                 (<Colaborador key={chave} colabFt={colaborador.Imagem} colabNome={colaborador.Nome}
-                  tecnico={colaborador.idTecnico} senha={colaborador.Senha}
+                  tecnico={colaborador.idTecnico}
+                  senha={colaborador.Senha}
                   matricula={colaborador.Matricula} disabled={colaborador.Disabled}
+                  showSenhaColumn={showSenhaColumn}
                   handleDelete={handleDelete} atualizaPag={handleRefresh} transForm={createForm}
                   tecnicos={tecnicos}
                 />)

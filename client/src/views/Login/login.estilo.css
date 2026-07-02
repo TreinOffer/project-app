@@ -1,167 +1,217 @@
-.main_login{
-    display: flex;
-    flex: 1 1 100%;
-    flex-direction: row;
-    height: 100vh;
+.main_login {
+    display: grid;
+    grid-template-columns: minmax(380px, 0.92fr) minmax(420px, 1.08fr);
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--baby-blue-soft), var(--white));
 }
-.secao_dados{
-    background: radial-gradient(hsl(155,100%,95%),hsl(220,100%,90%));
-    width: 50%;
-}
-section h1{
-    padding-bottom: 5%;
-}
-td{
-    padding-bottom: 4%;    
-}
-table tr td label{
-    display: block;
-    font-weight: 500;
+
+.secao_dados {
+    display: grid;
+    place-items: center;
     width: 100%;
-    box-shadow: inset -1px -2px 0 hsl(20,60%,70%);
-    background-color: hsl(20,60%,95%);
-    padding: 2%;
-    border-radius: 25px;
-    color: hsl(20,60%,20%);
-    width: auto;
+    padding: clamp(28px, 5vw, 72px);
+    background: linear-gradient(180deg, rgba(191, 233, 255, 0.78), rgba(255, 255, 255, 0.94));
 }
-.faixa{
-    width: 0.8%;
-    background-color: black;
+
+.login_dados {
+    display: grid;
+    width: min(100%, 430px);
+    gap: 22px;
+    padding: clamp(28px, 5vw, 46px);
+    border: 1px solid rgba(111, 200, 242, 0.38);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: var(--shadow);
 }
-.login_dados{
-    max-width: 40%;
-    display: flex;
-    flex: 1 1 100%;
-    flex-direction: column;
-    filter: drop-shadow(2px 6px 2px rgba(0,0,0,0.3));
-    margin: 15% 15% 15% 15%;
-    padding: 8% 10%;
-    border: 2px solid hsl(220,50%,80%);
-    border-radius: 50px;
-    background-color: hsl(220,100%,98%);
+
+.login_dados h1 {
+    padding: 0;
+    color: var(--ink);
+    font-size: clamp(2rem, 4vw, 3rem);
 }
-.campo_matricula,.campo_pass{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 5%;
-    width: auto;
+
+.login_dados h1::after {
+    content: "";
+    display: block;
+    width: 72px;
+    height: 5px;
+    margin-top: 14px;
+    border-radius: 999px;
+    background: var(--contrast-green);
 }
-.login_dados #matricula, .login_dados #pass{
-    padding-left: 14px;
-    border: none;
+
+.login_dados table,
+.login_dados tbody,
+.login_dados tr,
+.login_dados td {
+    display: block;
+    width: 100%;
+}
+
+.login_dados td {
+    padding: 0;
+}
+
+.campo_matricula,
+.campo_pass {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.login_dados label {
+    display: inline-block;
+    color: var(--ink);
+    font-weight: 800;
+}
+
+.login_dados #matricula,
+.login_dados #pass {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    border: 1px solid rgba(88, 112, 134, 0.22);
+    border-radius: var(--radius);
     outline: none;
-    border-radius: 20px;
-    filter: drop-shadow(1px 6px 2px rgba(0,0,0,0.3));
-    height: 32px;
-    width: calc(100% - 14px);
-    margin-bottom: 15px;
+    background: #fbfdff;
+    color: var(--ink);
+    box-shadow: none;
+    transition: 160ms ease;
 }
-.login_dados #matricula::placeholder, .login_dados #pass::placeholder{
-    padding: 10% 5% 10% 5%;
+
+.login_dados #matricula:focus,
+.login_dados #pass:focus {
+    border-color: var(--contrast-green);
+    box-shadow: 0 0 0 4px rgba(41, 184, 117, 0.14);
 }
-.campo_entrar{
+
+.campo_entrar {
+    width: 100%;
+    height: 48px;
+    margin: 8px 0 0;
+    border: 0;
+    border-radius: var(--radius);
+    background: var(--contrast-green);
+    color: var(--white);
     cursor: pointer;
-    position: relative;
-    margin-left: 30%;
-    width: 40%; height: 3vh;
-    border-style: none;
-    background-color: hsl(220,50%,98%);
-    filter: drop-shadow(0 3px 2px rgba(0,0,0,0.3));
+    font-weight: 800;
+    box-shadow: none;
+    transition: 160ms ease;
 }
-.campo_submit:hover{
-    background-color: hsl(220,50%,95%);
+
+.campo_entrar:hover {
+    background: var(--contrast-green-dark);
+    transform: translateY(-1px);
 }
-.campo_submit:active{
-    background-color: hsl(220,50%,90%);
+
+.campo_cadastrar {
+    display: grid;
+    justify-items: center;
+    gap: 8px;
+    margin-top: 4px;
+    color: var(--muted);
 }
-.campo_cadastrar{
-    max-width: 100%;
-    /* margin: 10% 10% 10% 30.5%; */
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.redirecter{
+
+.redirecter {
+    color: var(--contrast-green-dark);
     cursor: pointer;
-    color: hsl(155,40%,60%);
-    transition: 0.2s ease-in;
+    font-weight: 800;
+    transition: 160ms ease;
 }
-.redirecter:hover{
+
+.redirecter:hover {
+    color: var(--contrast-green);
     text-decoration: underline;
-    color: hsl(155,100%,30%);
 }
-.redirecter:active{
-    color: hsl(155,100%,60%);    
+
+.faixa {
+    display: none;
 }
-.secao_logo{
-    width: 49.2%;
-    background-image:linear-gradient(hsl(155,100%,92%),rgba(60,60,60,0.2));
+
+.secao_logo {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background:
+        linear-gradient(135deg, rgba(191, 233, 255, 0.92), rgba(255, 255, 255, 0.72)),
+        radial-gradient(circle at 72% 28%, rgba(41, 184, 117, 0.14), transparent 32%);
 }
-#logo{
+
+.secao_logo a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-decoration: none;
+}
+
+.secao_logo::before,
+.secao_logo::after {
+    content: "";
     position: absolute;
-    top: 36%; left: 58%;
-    width: 40%;
+    border-radius: 999px;
+    border: 1px solid rgba(41, 184, 117, 0.22);
+}
+
+.secao_logo::before {
+    width: 62%;
+    aspect-ratio: 1;
+}
+
+.secao_logo::after {
+    width: 42%;
+    aspect-ratio: 1;
+    background: rgba(255, 255, 255, 0.24);
+}
+
+#logo {
+    position: relative;
+    z-index: 1;
+    top: auto;
+    left: auto;
+    display: block;
+    width: min(560px, 72%);
+    max-width: 560px;
+    margin: 0 auto;
+    filter: drop-shadow(0 24px 34px rgba(16, 32, 51, 0.16));
 }
 
 .opcoes_selecao {
     display: flex;
     justify-content: center;
-    margin-top: 20px; 
+    gap: 16px;
+    margin-top: 20px;
 }
 
 .opcoes_selecao label {
-    display: flex; 
-    align-items: center; 
-    margin: 0 12px;     
+    display: flex;
+    align-items: center;
+    gap: 8px;
     cursor: pointer;
 }
 
 .opcoes_selecao_texto {
-    text-align: center; 
-    margin-bottom: 10px; 
+    text-align: center;
+    margin-bottom: 10px;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 860px) {
+    .main_login {
+        grid-template-columns: 1fr;
+    }
 
-    .main_login{
-        flex-direction: column;
+    .secao_dados {
+        min-height: 60vh;
     }
-    .secao_dados{
-        width: 100%;
-        height: 50%;
+
+    .secao_logo {
+        min-height: 40vh;
     }
-    .login_dados{
-        margin: 10% 20%;
-        padding: 5% 10% 0 10%;
-    }
-    .campo_cadastrar{
-        margin-top: auto;
-        padding-bottom: 24px;
-    }
-    .faixa{
-        width: 100%;
-        height: 0.8%;
-    }
-    .secao_logo{
-        width: 100%;
-        height: 49.2%;
-    }
-    #logo{
-        top: 69%;
-        left: 8%;
-        width: 100%;
-    }
-}
-@media (max-width: 350px) {
-    #logo{
-        top: 74%;
-    }
-}
-@media (max-width: 222px){
-    .login_dados{
-        min-width: 60%;
-        margin: 20% 10%;
+
+    #logo {
+        width: min(420px, 78%);
     }
 }

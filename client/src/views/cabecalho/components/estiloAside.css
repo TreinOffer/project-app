@@ -1,176 +1,325 @@
 .nav_bar {
     position: fixed;
-    z-index: 1;
-    position: fixed;
-    left: calc(0% - 500px);
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    width: 400px;
+    inset: 0 auto 0 0;
+    z-index: 30;
+    width: min(420px, 92vw);
     height: 100vh;
-    filter: drop-shadow(4px 0 10px black);
-    transition: 0.3s ease-out;
+    transform: translateX(-102%);
+    transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    pointer-events: none;
 }
 
-.logoNavBar {
-    background-image: linear-gradient(hsl(220, 50%, 80%), hsl(220, 50%, 70%));
+.nav_bar.is-open {
+    transform: translateX(0);
+    pointer-events: auto;
 }
 
-.menuNav {
+.sidebar-shell {
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto auto auto 1fr auto;
+    overflow: hidden;
+    border-right: 1px solid rgba(255, 255, 255, 0.7);
+    background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.45), transparent 35%),
+        linear-gradient(180deg, rgba(245, 250, 255, 0.98) 0%, rgba(225, 239, 250, 0.98) 44%, rgba(203, 225, 242, 0.98) 100%);
+    box-shadow: 20px 0 42px rgba(19, 44, 72, 0.24);
+    backdrop-filter: blur(18px) saturate(1.08);
+    -webkit-backdrop-filter: blur(18px) saturate(1.08);
+}
+
+.sidebar-header {
+    padding: 14px 16px 10px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 1%;
+    align-items: center;
+    gap: 15%;
+    background: linear-gradient(135deg, hsl(214, 46%, 18%) 0%, hsl(210, 40%, 12%) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
 }
 
-.escape,
-.opcoes {
+.sidebar-close {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
     cursor: pointer;
-    width: 10%;
+    transition: transform 160ms ease, background-color 160ms ease;
+}
+
+.sidebar-close:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.escape {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
 }
 
 .logoTreinOffer {
-    padding: 4% 8%;
-    width: 100%;
+    width: min(240px, 64vw);
+    object-fit: contain;
 }
 
-.secaoUser {
-    background-color: hsl(220, 50%, 70%);
-}
-
-form table {
-    width: 100%;
+.user-card {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 14px;
     align-items: center;
-
-    & input {
-        outline: none;
-        border: none;
-        border-top-right-radius: 20px;
-        padding: 2px 2px 2px 4px;
-        height: 1.7em;
-        box-shadow: inset -2px -2px 2px hsl(20, 100%, 85%);
-    }
-}
-
-.user {
-    background-image: linear-gradient(hsl(20, 100%, 90%), hsl(220, 50%, 70%));
-    box-shadow: inset 0 5px 0px hsl(20, 100%, 92%);
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
-    display: flex;
-    flex: 0 1 auto;
-    flex-direction: row;
-    gap: 5%;
-    align-items: center;
-    padding: 7% 5% 3% 5%;
-    /* border-bottom: 4px solid hsl(205,100%,85%); */
+    padding: 20px 18px;
+    margin: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 24px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.74), rgba(220, 236, 248, 0.92));
+    box-shadow: 0 14px 28px rgba(33, 62, 95, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .imgUser {
-    filter: drop-shadow(0px 0px 10px hsl(25, 100%, 95%));
-    padding-right: 5%;
-    border-right: 2px solid hsla(205, 20%, 10%, 0.5);
+    display: grid;
+    gap: 8px;
+    justify-items: center;
+    padding-right: 14px;
+    border-right: 1px solid rgba(62, 88, 116, 0.18);
 }
 
 .imgUser img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50px;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.96);
+    box-shadow: 0 10px 20px rgba(25, 44, 66, 0.16);
+}
+
+.profile-clickable {
+    cursor: pointer;
 }
 
 .editLabel {
-    display: block;
+    display: inline-flex;
+    justify-content: center;
     text-align: center;
-    color: #000000;
-    margin-top: 3px;
+    color: hsl(210, 45%, 16%);
     cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 .nomeUser {
     font-family: "Montserrat", Arial;
-    font-size: 120%;
-    color: hsl(205, 40%, 10%);
-    font-weight: 500;
+    font-size: 1.05rem;
+    line-height: 1.35;
+    color: hsl(210, 45%, 16%);
+    font-weight: 700;
 }
 
-.campo_update>label {
-    border-radius: 0;
-    border-top-left-radius: 50px;
-    padding: 2% 14px;
-}
-.aside form table{
-    align-items: center;
+.sidebar-actions {
+    display: grid;
+    gap: 12px;
+    padding: 0 16px 12px;
 }
 
-td > #estado{
-    width: 168px;
-    background-color: hsl(0,0%,95%);
-    outline: none;
-    border: none;
-    border-top-right-radius: 20px;
-    padding: 2px 2px 2px 4px;
-    height: 1.7em;
-    box-shadow: inset -2px -2px 2px hsl(20, 100%, 92%);
-}
-
-table .actions-menuUser .campo-reset {
+.sidebar-action {
     display: flex;
-    flex-direction: center;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 52px;
+    border: 0;
+    border-radius: 16px;
+    color: #ffffff;
+    font-weight: 800;
+    letter-spacing: 0.2px;
     cursor: pointer;
-    position: relative;
-    border-style: none;
-    filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.3));
-
-    & > button{
-        cursor: pointer;
-        width: 40%;
-        height: 3vh;
-        margin: 0 auto;
-        background-color: hsl(220,50%,98%);
-        filter: drop-shadow(0 3px 2px rgba(0,0,0,0.3));
-        border-style: none;
-        border-top-left-radius: 50px;
-        padding: 0 14px;
-        box-shadow: inset -2px -2px 0 hsl(20, 100%, 90%);
-    }
-    & > button:hover{
-        background-color: hsl(220,50%,95%);
-    }
+    box-shadow: 0 12px 22px rgba(24, 64, 102, 0.14);
+    transition: transform 160ms ease, filter 160ms ease;
 }
 
-footer {
-    background-color: hsl(220, 40%, 75%);
-    border-top: 2px solid rgba(0, 0, 0, 0.1);
-    padding: 4% 10%;
+.sidebar-action:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.03);
 }
 
-footer p {
+.edit-action {
+    background: linear-gradient(135deg, hsl(209, 73%, 56%), hsl(206, 65%, 44%));
+}
+
+.disable-action {
+    background: linear-gradient(135deg, hsl(0, 63%, 70%), hsl(0, 55%, 56%));
+}
+
+.sidebar-action img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+.sidebar-form-wrap {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 280ms ease, opacity 220ms ease, transform 280ms ease;
+    transform: translateY(-8px);
+}
+
+.sidebar-form-wrap.open {
+    max-height: 1000px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sidebar-form {
+    height: 100%;
+    width: 100%;
+    padding: 0 16px 18px;
+}
+
+.sidebar-form table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.sidebar-form td {
+    vertical-align: middle;
+}
+
+.sidebar-form input,
+.sidebar-form select {
+    width: 100%;
+    min-height: 42px;
+    box-sizing: border-box;
+    border: 1px solid rgba(81, 113, 140, 0.22);
+    border-radius: 14px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.85);
+    color: hsl(210, 40%, 18%);
+    outline: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85), 0 8px 18px rgba(35, 59, 90, 0.08);
+}
+
+.sidebar-form input:focus,
+.sidebar-form select:focus {
+    border-color: rgba(93, 152, 209, 0.95);
+    box-shadow: 0 0 0 4px rgba(124, 175, 223, 0.22), 0 10px 22px rgba(35, 59, 90, 0.1);
+}
+
+.sidebar-form input::placeholder {
+    color: rgba(73, 92, 115, 0.72);
+}
+
+.sidebar-form input[type="file"] {
+    display: none;
+}
+
+.campo_update > label {
+    display: flex;
+    align-items: center;
+    min-height: 42px;
+    padding: 0 14px;
+    border-radius: 14px 0 0 14px;
+    background: rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    color: hsl(210, 40%, 22%);
+    font-weight: 700;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.actions-menuUser .campo-reset {
+    padding-right: 8px;
+}
+
+.actions-menuUser .campo-reset button,
+.campo_submit {
+    width: 100%;
+    min-height: 42px;
+    border: 0;
+    border-radius: 14px;
+    cursor: pointer;
+    font-weight: 800;
+    transition: transform 160ms ease, filter 160ms ease;
+}
+
+.actions-menuUser .campo-reset button {
+    color: hsl(210, 45%, 18%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(232, 242, 251, 0.95));
+    box-shadow: 0 10px 20px rgba(35, 59, 90, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.campo_submit {
+    color: #ffffff;
+    background: linear-gradient(180deg, hsl(208, 68%, 55%), hsl(208, 58%, 46%));
+    box-shadow: 0 12px 24px rgba(28, 86, 135, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.actions-menuUser .campo-reset button:hover,
+.campo_submit:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.03);
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding: 18px 16px 22px;
+    background: linear-gradient(180deg, rgba(205, 225, 243, 0.35), rgba(191, 218, 237, 0.92));
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.sidebar-footer p {
     text-align: center;
-    font-size: 110%;
-    padding: 2% 0;
+    font-size: 1rem;
+    padding-top: 10px;
+    color: hsl(210, 45%, 18%);
+    font-weight: 700;
 }
 
-footer a {
-    margin: 0 0 0 35%;
-}
-
-footer p::after,
-footer p::before {
-    content: '•';
-    font-size: 120%;
-    margin: 0 2% 0 2%;
+.sidebar-footer a {
+    display: grid;
+    place-items: center;
+    text-decoration: none;
 }
 
 .boxGit {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .gitLink {
-    transition: 0.25s ease-out;
+    width: 30px;
+    height: 30px;
+    transition: transform 0.2s ease;
 }
 
 .gitLink:hover {
-    transform: translateY(-10%) scale(1.1);
+    transform: translateY(-2px) scale(1.08);
+}
+
+@media (max-width: 720px) {
+    .nav_bar {
+        width: 100vw;
+    }
+
+    .user-card {
+        grid-template-columns: 72px 1fr;
+        margin: 12px;
+        padding: 16px;
+    }
+
+    .sidebar-form {
+        padding: 0 12px 16px;
+    }
+
+    .sidebar-actions,
+    .sidebar-header,
+    .sidebar-footer {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
 }

@@ -4,18 +4,16 @@ import CrudUser from './crudTecnico';
 import './Tecnico.css';
 
 const g = 25;
-const m = 15;
 const p = 10;
 
 const CRUD = new CrudUser();
 
-function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, disabled, handleDelete, atualizaPag, transForm }) {
+function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, disabled, showSenhaColumn, handleDelete, atualizaPag, transForm }) {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
     const [isEditing, setIsEditing] = useState(false);
     const [editedNome, setEditedNome] = useState(tecNome);
     const [editedTarefa, setEditedTarefa] = useState(tarefa);
-    const [editedSenha, setEditedSenha] = useState(senha);
     const [editedMatricula, setEditedMatricula] = useState(matricula);
     const [editedImage, setEditedImage] = useState(tecFt);
     const [showPopUp, setShowPopUp] = useState(false);
@@ -28,7 +26,6 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, disabled,
             Nome: editedNome,
             Especializacao: editedTarefa,
             // Colaboradores: numColab,
-            Senha: editedSenha
         });
         await CRUD.update(matricula, form);
         setIsEditing(false);
@@ -124,16 +121,13 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, disabled,
                             {isEditing && (
                                 <div className="botao_div">
                                     <input
+                                        className="addFotoFuncBt"
                                         onChange={handleUploadImagem}
                                         accept='.jpg,.png,.jpeg'
                                         type="file"
                                         name="Imagem"
-                                        id="foto"
-                                        style={{ display: 'none' }}
+                                        id={`foto-tecnico-${matricula}`}
                                     />
-                                    <label id='forFoto' htmlFor="foto" className="label-foto escolher-imagem">
-                                        Escolher imagem
-                                    </label>
                                 </div>
                             )}
                         </div>
@@ -172,20 +166,11 @@ function Tecnico({ tecFt, tecNome, tarefa, numColab, senha, matricula, disabled,
                         )}
                     </div>
 
-                    <div className='sec_func' style={{ opacity: isDisabled ? `0.3` : `1`, width: `${m}%` }}>
-                        {isEditing ? (
-                            <input
-                                type="password"
-                                value={editedSenha}
-                                onChange={(e) => setEditedSenha(e.target.value)}
-                                required
-                                className="custom-input"
-                                disabled
-                            />
-                        ) : (
+                    {showSenhaColumn && (
+                        <div className='sec_func' style={{ opacity: isDisabled ? `0.3` : `1`, width: `${g}%` }}>
                             <span className='letraQuebra'>{senha}</span>
-                        )}
-                    </div>
+                        </div>
+                    )}
 
                     <div className='sec_func' style={{
                         opacity: isDisabled ? `0.3` : `1`,

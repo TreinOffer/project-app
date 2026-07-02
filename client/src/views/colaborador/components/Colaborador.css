@@ -1,202 +1,180 @@
 .dropdown {
     position: relative;
-    display: inline-block;
+    display: inline-grid;
+    place-items: center;
 }
 
 .dropdown-menu {
-    display: flex;
-    flex-direction: column;
     position: absolute;
-    background-color: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    margin-top: 5px;
-    border-radius: 5px;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 6;
+    display: grid;
+    gap: 4px;
+    min-width: 164px;
+    padding: 8px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--white);
+    box-shadow: var(--shadow);
 }
 
 .dropdown-item {
-    padding: 10px 15px;
-    border: none;
+    min-height: 38px;
+    padding: 0 10px;
+    border: 0;
+    border-radius: var(--radius);
     background: transparent;
+    color: var(--ink);
     cursor: pointer !important;
     text-align: left;
+    font-weight: 800;
 }
 
 .dropdown-item:hover {
-    background-color: #f0f0f0;
+    background: var(--baby-blue-soft);
+    color: var(--contrast-green-dark);
 }
 
-
-.bot_opcoes {
-    cursor: pointer;
+.func_foto,
+.foto_colab {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-
-.custom-input {
-    width: 150px; 
-    padding: 4px; 
-    margin: 3px 0; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    font-size: 12px; 
-    transition: border-color 0.2s; 
-}
-
-.custom-input:focus {
-    border-color: #007bff; 
-    outline: none; 
-}
-
-.custom-input::placeholder {
-    color: #aaa; 
-    opacity: 0.7; 
-}
-
-
-.custom-button {
-    background-color: #007bff;
-    color: white; 
-    border: none; 
-    border-radius: 5px; 
-    padding: 8px 12px; 
-    font-size: 14px; 
-    cursor: pointer !important; 
-    transition: background-color 0.3s, transform 0.2s; 
-    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
-}
-
-.custom-button:hover {
-    background-color: #0056b3; 
-    transform: scale(1.05);     
-}
-
-.custom-button:active {
-    transform: scale(0.95); 
-}
-
-
-.foto_colab { 
-    width: 60px;
-    height: 60px;
+.foto_colab {
+    width: 58px;
+    height: 58px;
+    border: 3px solid var(--profile-employee);
     border-radius: 50%;
     object-fit: cover;
 }
 
+.custom-input {
+    width: 100%;
+    min-height: 40px;
+    padding: 0 10px;
+    border: 1px solid rgba(88, 112, 134, 0.22);
+    border-radius: var(--radius);
+    outline: none;
+    background: #fbfdff;
+    color: var(--ink);
+    font-size: 0.95rem;
+    transition: 160ms ease;
+}
+
+.custom-input:focus {
+    border-color: var(--contrast-green);
+    box-shadow: 0 0 0 4px rgba(41, 184, 117, 0.12);
+}
 
 .label-foto {
-    color: white;
-    text-shadow: 
-        -1px -1px 0 #000,  
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000; 
-    cursor: pointer; 
+    display: none;
 }
 
-
-.sec_func {
-    margin-bottom: 10px;
+.botao_div {
+    position: absolute;
+    inset: 0;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    z-index: 2;
 }
 
+.addFotoFuncBt,
+#foto[type="file"] {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    cursor: pointer;
+}
+
+.dropdown img.bot_opcoes {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.dropdown-menu {
+    z-index: 10;
+}
 
 .desabilitado {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.desabilitado h1 {
-    font-size: 2em;
-    color: red;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius);
+    background: rgba(238, 56, 56, 0.18);
+    color: var(--profile-company);
+    font-weight: 900;
 }
 
 .box-confir {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    inset: 0;
+    z-index: 20;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background-color: rgba(16, 32, 51, 0.42);
 }
 
 .confir-container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
+    width: min(420px, 100%);
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--white);
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow);
 }
 
 .popup-body h2 {
-    margin: 20px 0;
+    margin: 18px 0;
+    color: var(--ink);
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
 }
 
 .popup-buttons button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    color: white;
+    min-width: 96px;
+    min-height: 42px;
+    border: 0;
+    border-radius: var(--radius);
+    background-color: var(--contrast-green);
+    color: var(--white);
     cursor: pointer;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: background-color 0.3s;
+    font-weight: 800;
+    transition: 160ms ease;
 }
 
 .popup-buttons button:hover {
-    background-color: #0056b3;
+    transform: translateY(-1px);
 }
 
 .popup-buttons .btn-nao {
-    background-color: #dc3545;
-}
-
-.popup-buttons .btn-nao:hover {
-    background-color: #c82333;
-}
-
-
-.func {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.info_pessoal {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.letraQuebra {
-    word-wrap: break-word;
-    word-break: break-word;
-}
-
-.custom-input {
-    width: 100%;
-    font-size: 14px;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.custom-input:focus {
-    border-color: #007bff;
+    background-color: var(--profile-company);
 }

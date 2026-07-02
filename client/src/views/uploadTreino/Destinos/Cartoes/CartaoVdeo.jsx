@@ -61,29 +61,25 @@ const CartaoVdeo = ({ deletar, index, url, setItens, isFlipped, isUrl, handleVid
                 )}
 
                 <div className='btn-expanse'>
-                    <hr />
-                    <img
-                        src={imgs.arrowUp}
-                        alt="arrow"
-                        onClick={actionExpanse}
-                        style={{
-                            transition: '1.6s ease-in-out',
-                            transform: isFlipped ? 'rotate(180deg)' : 'rotate(0deg)',
-                        }}
-                    />
+                    <button type='button' className='toggle-actions' onClick={actionExpanse} aria-expanded={isFlipped}>
+                        <img
+                            src={imgs.arrowUp}
+                            alt=""
+                            aria-hidden="true"
+                            style={{
+                                transform: isFlipped ? 'rotate(180deg)' : 'rotate(0deg)',
+                            }}
+                        />
+                    </button>
                     <div
-                        className='actions'
-                        style={{
-                            maxHeight: isFlipped ? '200px' : '0px',
-                            borderBottom: isFlipped ? '1px solid black' : '0px solid black',
-                        }}
+                        className={`actions actions-video ${isFlipped ? 'is-open' : ''}`}
                     >
-                        <div className='div-rem'>
-                            <img onClick={() => deletar(index)} src={imgs.trash} alt="Remover" style={{ color: 'black' }} />
-                        </div>
-                        <div className='div-selecionar'>
+                        <button type='button' className='div-rem' onClick={() => deletar(index)} aria-label='Remover vídeo'>
+                            <img src={imgs.trash} alt="" aria-hidden="true" />
+                        </button>
+                        <label className='div-selecionar' htmlFor={`Video${index}`}>
                             <input
-                                onChange={handleUploadVdo} 
+                                onChange={handleUploadVdo}
                                 accept='.mp4,.ogg,.webm'
                                 multiple={false}
                                 type="file"
@@ -91,12 +87,12 @@ const CartaoVdeo = ({ deletar, index, url, setItens, isFlipped, isUrl, handleVid
                                 className='buttonUpload'
                                 id={`Video${index}`}
                             />
-                            <h4 className='selector-text'>Selecionar</h4>
-                        </div>
+                            <span className='selector-text'>Selecionar vídeo</span>
+                        </label>
                         <div className="div-change-type">
                             <select onChange={actionTypeVideo} value={videoType}>
                                 <option value="youtube">YouTube</option>
-                                <option value="local">Video Local</option>
+                                <option value="local">Video local</option>
                             </select>
                         </div>
                     </div>

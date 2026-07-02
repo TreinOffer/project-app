@@ -1,73 +1,97 @@
-.barPesquisar{
-    display: flex;
-    flex-direction: row;
+.barPesquisar {
+    position: sticky;
+    top: 0;
+    z-index: 8;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
-    justify-content: space-between;
-    height: 80px;
-    background-image: linear-gradient(to right, hsl(0,0%,20%), hsl(0,0%,30%));
+    gap: 18px;
+    min-height: 74px;
+    padding: 0 22px;
+    background: linear-gradient(135deg, #12384f 0%, #0f2d40 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 14px 34px rgba(7, 27, 41, 0.24);
+    backdrop-filter: blur(14px);
 }
-.secEsq{
+
+.secEsq,
+.secMeio,
+.secDir {
     display: flex;
-    width: 100px;
     align-items: center;
-    padding-left: 16px;
+}
+
+.secEsq {
     gap: 14px;
 }
-.secMeio{
-    display: flex;
-    flex: 1;
-    align-items: center;
-    max-width: 380px;
+
+.secMeio {
+    justify-content: center;
 }
-.logo{
-    width: 300px;
+
+.secDir {
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.logo {
+    width: clamp(180px, 22vw, 300px);
     cursor: pointer;
-    filter: drop-shadow(0 0 0 black);
-    transform: scale(1);
-    transition: 0.3s ease-in-out;
+    filter: brightness(1.18) drop-shadow(0 12px 22px rgba(16, 32, 51, 0.16));
+    transition: 180ms ease;
 }
-.logo:hover{
-    filter: drop-shadow(0 0 2px hsl(20,50%,70%));
-    transform: scale(1.05);
+
+.logo:hover {
+    transform: translateY(-1px);
 }
-.secDir{
-    display: flex;
-    width: 130px;
-    align-items: center;
-    padding: 0 16px;
-    justify-content: space-between;
-    gap: 6px;
-    & .notf{
-        > img{
-            width: 50%;
-            cursor: pointer;
-        }
+
+.secMeio .gitDiv,
+.secEsq .menuPerfil,
+.secDir .menu,
+.secDir .notf {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    transition: 160ms ease;
+}
+
+.secMeio .gitDiv > img,
+.secDir .notf > img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.secEsq .menuPerfil {
+    border-color: rgba(255, 159, 67, 0.45);
+    object-fit: cover;
+}
+
+.secMeio .gitDiv:hover,
+.secEsq .menuPerfil:hover,
+.secDir .menu:hover,
+.secDir .notf:hover {
+    transform: translateY(-2px);
+    background: rgba(41, 184, 117, 0.72);
+    box-shadow: 0 12px 24px rgba(41, 184, 117, 0.18);
+}
+
+@media (max-width: 720px) {
+    .barPesquisar {
+        grid-template-columns: auto 1fr auto;
+        padding: 0 12px;
     }
-}
-.secMeio .gitDiv{
-    height: 32px; width: 32px;
-    box-sizing: border-box;
-    padding: 6px;
-    border-radius: 25px;
-    transition: 0.3s ease-in;
-    cursor: pointer;
-    background-color: hsl(0,0%,92%);
-}
-.secMeio .gitDiv > img{
-    width: 100%;
-}
-.secEsq .menuPerfil{
-    width: 44px; height: 44px;
-    border-radius: 25px;
-    transition: 0.3s ease-in;
-    cursor: pointer;
-    border: 1px solid rgba(0,0,0,0.4);
-}
-.secMeio .gitDiv:hover, .secDir .menu:hover{
-    box-shadow: 0 2px 10px hsl(25,40%,90%);
-    width: 48px; height: 48px;
-}
-.secEsq .menuPerfil:hover{
-    filter: drop-shadow(0px 0px 5px hsl(30, 17%, 2%));
-    border-color: rgba(0,0,0,0.1);
+
+    .logo {
+        width: clamp(150px, 42vw, 220px);
+    }
+
+    .secMeio .gitDiv {
+        display: none;
+    }
 }

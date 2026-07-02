@@ -61,9 +61,8 @@ function NewFunc({ atualizaPag, click, transForm }) {
             } alt='*' />
 
             <div className="botao_div">
-              <input className='addFotoFuncBt' onChange={handleUploadImagem} accept='.jpg,.png,.jpeg' multiple={false} type="file" name="Imagem" id="foto" />
-              <label id='forFoto' htmlFor="foto">Escolher imagem</label>
-            </div>
+              <input className='addFotoFuncBt' onChange={handleUploadImagem} accept='.jpg,.png,.jpeg' multiple={false} type="file" name="Imagem" id="foto-newfunc" />
+          </div>
           </div>
           <input spellCheck="true" onChange={onChange('Nome')} required type="text" name="username" id="nome" />
         </div>

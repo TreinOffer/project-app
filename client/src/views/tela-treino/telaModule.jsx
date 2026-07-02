@@ -15,7 +15,7 @@ function TelaModule() {
   const { idTreino } = useParams();
 
   async function fetchModules(idTreino) {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const request = await fetch(`${process.env.REACT_APP_BACKEND}/treino/${idTreino}`, {
       method: 'GET',
       headers: {

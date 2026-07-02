@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import imgs from "../../../../imgs/arrayImagens";
 import './CartaoImg.css';
 
 const CartaoImg = ({ imagem, index, deletar, handleImage, setItens, isFlipped, isHovered, render }) => {
-
-    const [newImagem, setNewImagem] = useState();
 
     function actionExpanse() {
 
@@ -18,48 +16,40 @@ const CartaoImg = ({ imagem, index, deletar, handleImage, setItens, isFlipped, i
     };
 
     const handleUploadImagem = (e) => {
-        console.log("handleUploadImagem: ", handleImage);
         const file = e.target.files[0];
         if (file) {
             const url = URL.createObjectURL(file);
-            setNewImagem(() => {
-                handleImage(index, [file, url]);
-                return newImagem;
-            });
+            handleImage(index, [file, url]);
         };
     };
     return (
 
         <div className='cartaoImagem' >
             <div className='div-imagem'>
-                <img style={{ height: isFlipped ? 'calc(100% - 200px)' : '100%' }}
+                <img className='media-preview'
                     src={typeof imagem === 'string' ? imagem : render} alt={`Imagem${index}`} />
-                <div className='btn-expanse'
-                >
-                    <hr />
-                    <img src={imgs.arrowUp} alt="arrow" onClick={actionExpanse}
-                        style={{
-                            transition: '1.6s ease-in-out',
-                            transform: isFlipped ? 'rotate(180deg)' : 'rotate(0deg)'
-                        }}
-                    />
-                    <div className='actions' style={{ 
-                        maxHeight: isFlipped ? '200px' : '0px',
-                        borderBottom: isFlipped ? '1px solid black' : '0px solid black'
-                     }} >
-                        <div className='div-rem'>
-                            <img onClick={() => deletar(index)} src={imgs.trash} alt="Remover" style={{color: 'black'}}/>
-                        </div>
-                        <div className='div-selecionar'>
+                <div className='btn-expanse'>
+                    <button type='button' className='toggle-actions' onClick={actionExpanse} aria-expanded={isFlipped}>
+                        <img
+                            src={imgs.arrowUp}
+                            alt=""
+                            aria-hidden="true"
+                            style={{
+                                transform: isFlipped ? 'rotate(180deg)' : 'rotate(0deg)'
+                            }}
+                        />
+                    </button>
+                    <div className={`actions actions-image ${isFlipped ? 'is-open' : ''}`}>
+                        <button type='button' className='div-rem' onClick={() => deletar(index)} aria-label='Remover imagem'>
+                            <img src={imgs.trash} alt="" aria-hidden="true" />
+                        </button>
+                        <label className='div-selecionar' htmlFor={`IimagemTreino${index}`}>
                             <input onChange={handleUploadImagem} accept='.jpg,.png,.jpeg'
                                 multiple={false} type="file" name="ImagemTreino"
                                 className='buttonUpload' id={`IimagemTreino${index}`} />
 
-                            <h4 className='selector-text'>Selecionar</h4>
-                        </div>
-                        {/* <div onClick={() => console.log("era pra tirar a imagem")} className="div-limpar">
-                            <h4>X</h4>
-                        </div> */}
+                            <span className='selector-text'>Selecionar imagem</span>
+                        </label>
                     </div>
                 </div>
             </div>

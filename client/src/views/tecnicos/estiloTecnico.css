@@ -1,260 +1,420 @@
-.letraQuebra{
-    width: 100%;
-    text-align: center;
-    word-wrap: break-word;
-    font-size: 1.2em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-.tab_func .func * > *{
-    cursor: default;
-}
-.sec_func{
-    display: flex;
-    align-items: center;
-    height: 128px;
-    justify-content: center;
-}
-.box_colab{
-    /* background-color: green; */
-    cursor: pointer;
-    padding: 8px;
-    width: 20px;
-    color: white;
-    border-radius: 4px;
-}
-.funcs{
-    margin: 14px 0 14px 8px;
-}
-.func{
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 10px;
+.tab_func {
+    width: min(1280px, calc(100% - 40px));
+    margin: 34px auto 80px;
+    border: 1px solid rgba(111, 200, 242, 0.28);
+    border-radius: var(--radius);
+    background: var(--white);
+    box-shadow: var(--shadow);
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
-.funcoes_func{
+.tab_func .tit_cabec,
+.tab_func .func {
+    display: grid;
+    grid-template-columns: minmax(220px, 1.6fr) minmax(220px, 1.6fr) minmax(180px, 1.2fr) 72px;
+    min-width: 760px;
+    align-items: center;
+    gap: 12px;
+}
+
+.tab_func.has-senha .tit_cabec,
+.tab_func.has-senha .func {
+    grid-template-columns: minmax(220px, 1.6fr) minmax(220px, 1.6fr) minmax(160px, 1fr) minmax(180px, 1.2fr) 72px;
+    min-width: 920px;
+}
+
+.tab_func > .tit_tab {
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(90deg, rgba(191, 233, 255, 0.7), rgba(255, 255, 255, 0.95));
+}
+
+.tab_func > .tit_tab h2 {
+    color: var(--ink);
+    font-size: clamp(1.4rem, 3vw, 2.3rem);
+}
+
+.tab_func > .tit_tab h2::after {
+    content: "";
+    display: block;
+    width: 76px;
+    height: 5px;
+    margin-top: 12px;
+    border-radius: 999px;
+    background: var(--profile-tech);
+}
+
+.funcoes_func {
     display: flex;
     justify-content: space-between;
-    margin: 8px 4px;
-    gap: 18px;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 28px;
+    border-bottom: 1px solid var(--line);
+    background: #fbfdff;
 }
-.tab_func > .tit_tab{
-    padding: 8px;
-    border-bottom: 4px solid black;
-}
-.funcoes_func > div{
+
+.funcoes_func > div {
     display: flex;
     flex: 1;
+    max-width: 520px;
     align-items: center;
-    max-width: 400px;
 }
-.buscar_func{
-    height: 36.33px; width: 39px;
-    cursor: pointer;
-    margin-right: -1px;
-    border-left: none;
-    border-top-right-radius: 12px;
-    border-bottom-right-radius: 12px;
-    border-top: 1px solid hsl(0,0%,70%);
-    border-right: 1px solid hsl(0,0%,70%);
-    border-bottom: 1px solid hsl(0,0%,70%);
-    background-color: hsl(25,30%,70%);
-}
-.buscar_func > img{
-    height: 28px; width: 28px
-}
-.funcoes_func #func_mat{
-    width: calc(100% - 38.7px);
-    height: 35px;
-    padding-left: 14px;
-    border-top-left-radius: 12px;
-    border-bottom-left-radius: 12px;
-    border-right: none;
-    outline: none;
-    border: 1px solid hsl(25,20%,60%);
-    box-shadow: inset 1px 1px 10px hsl(25,0%,80%);
-}
-.funcoes_func > button{
-    padding: 4px;
-    border: 1px solid hsl(25,0%,60%);
-    cursor: pointer;
-    transition: 0.25s ease-in-out;
-}
-.funcoes_func button > img{
-    height: 28px; width: 28px;
-}
-.funcoes_func > button:hover{
-    opacity: 0.75;
-    transform: scale(1.2);
-    margin: 7px;
-}
-.tab_func{
-    margin: 2.5% 20%;
-    border: 1px solid black;
-    box-shadow: 0px 0px 10px black;
-    background-color: hsl(200,10%,98%);
-    min-width: 468px;
-}
-.tab_func .tit_cabec{
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    /* justify-content: space-between; */
+
+.funcoes_func #func_mat {
     width: 100%;
-    padding: 8px 0;
-    background-image: linear-gradient(hsl(200,15%,70%),hsl(200,30%,90%));
-}
-.tab_func > .func{
-    display: flex;
-    flex-direction: row;
-    margin: 12px 0;
-}
-.info_pessoal{
-    flex-direction: row;
-}
-.info_pessoal .foto_func{
-    /* padding-left: 8px; */
-    width: 128px; height: 128px;
-    margin-right: 25px;
-    border-radius: 100%;
-    border: 1px solid hsl(0,0%,20%);
-    box-shadow: 2px 4px 1px hsl(200,10%,50%);
-    
-}
-
-.info_pessoal .nome_func{
-    width: calc(((100% - 128px) - 8px) - 25px);
-}
-.tab_func .sec_func #nome_dep{
-    display: flex;
-    flex-direction: column;
-    row-gap: 4px;
-}
-.tab_func .bot_opcoes{
-    width: 48px; height: 48px; 
-}
-.tab_func .bot_opcoes:hover{
-    cursor: pointer;
-}
-
-.func .desabilitado{
-    position: absolute;
-    top: 35%;
-    right: 38%;
-};
-
-@media (max-width: 1770px) {
-    .tab_func .foto_func{
-        width: 64px; height: 64px;
-    }
-    .info_pessoal .nome_func{
-        width: calc(((100% - 64px) - 8px) - 25px);
-    }
-    .addFotoFuncBt{
-        width: 0; height: 0;
-    }
-    #foto{
-        width: 62px; height: 40px;
-        margin: 31px 0 0 -8px;
-    }
-    #forFoto{
-        font-size: 10px;
-        margin: 38px 0 0 4px;
-    }
-    .tab_func .sec_func #nome{
-        width: calc(100% - (25px + 69px));
-    }
-}
-@media (max-width: 1275px) {
-    .tab_func .foto_func{
-        width: 32px; height: 32px;
-    }
-    .info_pessoal .nome_func{
-        width: calc(((100% - 32px) - 8px) - 25px);
-    }
-    .addFotoFuncBt{
-        width: 0; height: 0;
-        background-color: yellow;
-    }
-    #foto{
-        width: 32px; height: 21px;
-        margin: 50px 0 0 -10px;
-    }
-    #forFoto{
-        opacity: 0;
-    }
-    .tab_func .sec_func #nome{
-        width: calc(100% - (25px + 34px));
-    }
-    .func .desabilitado{
-        right: 28%;
-    }
-}
-.tab_func .func .sec_func input{
-    cursor: text;
-}
-.sec_func > input{
-    text-align: center;
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid rgba(88, 112, 134, 0.22);
+    border-right: 0;
+    border-radius: var(--radius) 0 0 var(--radius);
     outline: none;
-    width: 50%;
-    /* border: none; */
-    border-top-right-radius: 12px;
-    border-bottom-left-radius: 12px;
-    box-shadow: inset 0 0 10px hsl(200, 30%, 90%);
-    height: 20%;
+    background: var(--white);
+    color: var(--ink);
+    box-shadow: none;
 }
-.sec_func > input::placeholder{
-    margin: 4px;
+
+.funcoes_func #func_mat:focus {
+    border-color: var(--contrast-green);
+    box-shadow: 0 0 0 4px rgba(41, 184, 117, 0.12);
 }
-.addFotoFunc{
+
+.buscar_func,
+.funcoes_func > button {
+    display: grid;
+    place-items: center;
+    min-width: 46px;
+    height: 44px;
+    border: 1px solid rgba(88, 112, 134, 0.22);
+    background: var(--contrast-green);
+    cursor: pointer;
+    transition: 160ms ease;
+}
+
+.buscar_func {
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.funcoes_func > button {
+    border-radius: var(--radius);
+}
+
+.buscar_func:hover,
+.funcoes_func > button:hover {
+    transform: translateY(-1px);
+    background: var(--contrast-green-dark) !important;
+}
+
+.buscar_func > img,
+.funcoes_func button > img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.tab_func .tit_cabec {
+    display: grid !important;
+    width: 100%;
+    min-width: 760px;
+    padding: 12px 28px;
+    background: rgba(191, 233, 255, 0.42);
+    color: var(--muted);
+    text-align: left;
+}
+
+.tab_func.has-senha .tit_cabec {
+    min-width: 920px;
+}
+
+.tab_func .tit_cabec h4 {
+    width: auto !important;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+}
+
+.funcs {
+    display: grid;
+    gap: 10px;
+    padding: 14px 18px 22px;
+    overflow-x: auto;
+}
+
+.func {
+    display: grid !important;
+    min-width: 760px;
+    align-items: center;
+    min-height: 92px;
+    padding: 10px;
+    border: 1px solid rgba(111, 200, 242, 0.2);
+    border-radius: var(--radius);
+    background: var(--white);
+    transition: 160ms ease;
+}
+
+.tab_func.has-senha .func {
+    min-width: 920px;
+}
+
+.func:hover {
+    border-color: rgba(41, 184, 117, 0.28);
+    box-shadow: 0 12px 28px rgba(20, 75, 112, 0.08);
+}
+
+.func > .sec_func {
+    width: 100% !important;
+}
+
+.sec_func {
+    display: flex;
+    min-width: 0;
+    max-width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+    overflow: visible;
+}
+
+.func,
+.funcs,
+.tab_func .dropdown,
+.tab_func .dropdown-menu {
+    overflow: visible;
+}
+
+.tab_func .dropdown-menu {
+    z-index: 9999;
+}
+
+.info_pessoal {
+    justify-content: flex-start;
+    gap: 14px;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.func_foto {
     position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
-.botao_div{
-    width: 0;
-    position: absolute;
-    background-color: yellow;
-    margin: -76px 0 0 11px;
+
+.info_pessoal .foto_func {
+    flex: 0 0 auto;
+    width: 58px !important;
+    height: 58px !important;
+    margin: 0;
+    object-fit: cover;
+    border: 3px solid var(--profile-tech);
+    border-radius: 50%;
+    box-shadow: none;
 }
-.tab_func .func .botao_div > label{
-    position: absolute;
+
+.nome_colab,
+.nome_func,
+.letraQuebra {
     width: 100%;
-    margin: 22px 0 0 30px;
-    background-color: black;
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
+    color: var(--ink);
+    text-align: left;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    min-width: 0;
+    font-size: 1rem;
+    font-weight: 800;
 }
-.addFotoFuncBt{
-    width: 110px; height: 72px;
+
+.tab_func .bot_opcoes {
+    width: 38px;
+    min-width: 38px;
+    height: 38px;
+    padding: 8px;
+    border-radius: 50%;
+    background: var(--baby-blue-soft);
+    cursor: pointer;
+    transition: 160ms ease;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tab_func .bot_opcoes img,
+.tab_func .bot_opcoes {
+    display: inline-flex;
+}
+
+.tab_func .bot_opcoes {
+    object-fit: contain;
+}
+
+.tab_func .bot_opcoes:hover {
+    background: var(--contrast-green);
+    transform: translateY(-1px);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    min-height: 38px;
+}
+
+.sec_func > input,
+.custom-input {
+    width: 100%;
+    min-height: 40px;
+    padding: 0 10px;
+    border: 1px solid rgba(88, 112, 134, 0.22);
+    border-radius: var(--radius);
+    outline: none;
+    background: #fbfdff;
+    color: var(--ink);
+    text-align: center;
+    box-shadow: none;
+}
+
+.sec_func > input:focus,
+.custom-input:focus {
+    border-color: var(--contrast-green);
+    box-shadow: 0 0 0 4px rgba(41, 184, 117, 0.12);
+}
+
+.func_submit > button {
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--contrast-green);
+    box-shadow: none;
+    cursor: pointer;
+    transition: 160ms ease;
+}
+
+.func_submit > button:hover {
+    transform: translateY(-1px);
+    background: var(--contrast-green-dark);
+}
+
+.func_submit button > img {
+    width: 22px;
+    height: 22px;
+}
+
+.box_colab {
+    width: auto;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: var(--profile-employee);
+    color: var(--ink);
+    font-weight: 900;
+}
+
+.func .desabilitado {
     position: absolute;
-    /* overflow: hidden; */
-    background-color: hsla(0, 0%, 0%,0.3);
-    /* width: 100%; */
-    /* clip-path: circle(64px); */
-    border-radius: 100%;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(123, 27, 27, 0.9);
+    color: var(--white);
+    font-weight: 900;
 }
-#foto[type="file"]{
-    color: transparent;
-    font-size: 0;
+
+.botao_div {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    z-index: 1;
+}
+
+.tab_func .func .botao_div > label {
+    display: none;
+}
+
+.addFotoFuncBt,
+#foto[type="file"] {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.sec_func {
+    display: flex;
+    min-width: 0;
+    max-width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+    overflow: visible;
+}
+
+.tab_func .dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
     cursor: pointer;
 }
-.sec_func #nome{
-    width: calc(100% - (25px + 128px));
+
+.tab_func .dropdown img.bot_opcoes {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
-.func_submit > button{
-    width: 28px; height: 28px;
-    border: none;
-    box-shadow: inset -2px -2px 1px hsl(0,0%,20%);
-    background-color: hsl(150,50%,50%);
-    transition: ease-out 0.15s;
+
+.tab_func .dropdown-menu {
+    z-index: 20;
 }
-.func_submit > button:hover{
-    transform: scale(1.2);
-    background-color: hsl(150,50%,70%);
-}
-.func_submit button > img{
-    width: 100%; height: 100%;
+
+@media (max-width: 980px) {
+    .tab_func {
+        width: calc(100% - 24px);
+    }
+
+    .tab_func .tit_cabec {
+        display: none;
+    }
+
+    .func {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        align-items: stretch;
+    }
+
+    .func > .sec_func {
+        width: 100% !important;
+    }
+
+    .sec_func {
+        justify-content: flex-start;
+        padding: 0;
+    }
+
+    .funcoes_func {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .funcoes_func > div {
+        max-width: none;
+    }
 }

@@ -11,7 +11,7 @@ function Treinamentos() {
 
   async function fetchTreinamentos() {
     try {
-      const token = localStorage.getItem('token');
+      const token = sessionStorage.getItem('token');
       const request = await fetch(`${process.env.REACT_APP_BACKEND}/treinamentos`, {
         method: 'GET',
         headers: {
@@ -20,9 +20,10 @@ function Treinamentos() {
         }
       });
       const resposta = await request.json();
-      return resposta;
+      return Array.isArray(resposta) ? resposta : [];
     } catch (error) {
       console.log(error);
+      return [];
     }
   };
 
@@ -34,7 +35,7 @@ function Treinamentos() {
   useEffect(() => {
     async function getTreinos() {
       const tecnicos = await fetchTreinamentos();
-      setTreinamentos(tecnicos);
+      setTreinamentos(Array.isArray(tecnicos) ? tecnicos : []);
     };
     getTreinos();
   }, []);

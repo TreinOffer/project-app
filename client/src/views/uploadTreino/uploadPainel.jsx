@@ -61,7 +61,6 @@ const UploadPainel = () => {
             //             src: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
             //             tipo: "parag"
             //         },
-            //         // { src: imgs.tabLeila, tipo: "imagem" }
             //     ]);
             default:
                 setClick(0);

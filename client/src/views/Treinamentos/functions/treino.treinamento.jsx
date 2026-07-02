@@ -7,6 +7,11 @@ export default function Treino({
   autorFt, autorNome,
   toTreino, idTreino, numColab='0'
 }) {
+    const imagemSrc = typeof capaTreino === 'string' && capaTreino.startsWith('data:image')
+      ? capaTreino
+      : typeof capaTreino === 'string' && capaTreino
+        ? `${process.env.REACT_APP_BACKEND}/imgs/${capaTreino}`
+        : '';
     function corTag(tag){
         if(tag === "Segurança"){
           return "hsl(225,80%,87.5%)";
@@ -34,7 +39,7 @@ export default function Treino({
     <div className="treino">
         <div className="treino_capa" onClick={() => toTreino(idTreino)}>
           <div className="treino_ft">
-            <img src={`${process.env.REACT_APP_BACKEND}/imgs/${capaTreino}`} alt="fotoTreino" />
+            <img src={imagemSrc} />
           </div>
           <div className="treino_info">
             <div className="treino_emp">

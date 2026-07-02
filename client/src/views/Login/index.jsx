@@ -48,7 +48,7 @@ function Login() {
             } else if (request.status === 202) {
                 const { token } = await request.json();
                 console.log("sim ", token);
-                localStorage.setItem('token', token);
+                sessionStorage.setItem('token', token);
                 setPopState(
                     popUp.aviso("Login realizado")
                 );
@@ -76,7 +76,7 @@ function Login() {
     };
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
+        const token = sessionStorage.getItem('token');
         if (token) {
             return alreadyLogged("/treinos");  
         };
@@ -143,7 +143,7 @@ function Login() {
                     }}
                     onCancel={() => {
                         
-                        localStorage.removeItem('token');
+                        sessionStorage.removeItem('token');
                         setPopState(popUp.erro("Operação cancelada, você precisa redefinir sua senha."));
                         setCanLogin(false); 
                         navigate('/login'); 

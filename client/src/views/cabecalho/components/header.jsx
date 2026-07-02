@@ -14,7 +14,7 @@ const Header = ({ handleSecEsq }) => {
         );
 
         const exit = setTimeout(() => {
-            localStorage.removeItem('token');
+            sessionStorage.removeItem('token');
             navegar("/login");
         }, 2000);
 
@@ -26,7 +26,6 @@ const Header = ({ handleSecEsq }) => {
             {true && pop}
             <section className="barPesquisar">
                 <div className="secEsq">
-                    {/* <img className="menu" src={imgs.menu} alt="" onClick={handleMenuCabecalho} /> */}
                     <div className="fundoFoto">
                         <img onClick={handleSecEsq} className="menuPerfil" src={imgs.tabEmpty} alt="Menu" /></div>
                 </div>

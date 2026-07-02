@@ -29,8 +29,11 @@ const UparCapa = ({ closePopUp, itens }) => {
       reader.onloadend = () => {
         imagem = reader.result;
         const divImagem = document.getElementsByClassName("treino_ft")[0];
-        divImagem.querySelector('img').src = imagem;
+        if (divImagem?.querySelector('img')) {
+          divImagem.querySelector('img').src = imagem;
+        }
         onChangeImg('capaTreino', file);
+        onChangeImg('capaPreview', imagem);
       };
       reader.readAsDataURL(file);
     };
@@ -52,7 +55,7 @@ const UparCapa = ({ closePopUp, itens }) => {
         <h2 className="training-title">Adicionar Treinamento</h2>
         <div className="capa-preview">
           <Treino
-            capaTreino={itens[0].capaTreino}
+            capaTreino={itens[0].capaPreview || itens[0].capaTreino}
             empresaFT={imgs.tabEmpty}
             titTreino={itens[0].Titulo}
             tag1={itens[0].Tipo}

@@ -41,7 +41,7 @@ export default function App() {
   };
 
   const fetchColaborador = async (unique) => {
-    const token = localStorage.getItem('token')
+    const token = sessionStorage.getItem('token')
     try {
       const request = await fetch(`${process.env.REACT_APP_BACKEND}/colaboradores?Unique=${unique}`, {
         method: 'GET',

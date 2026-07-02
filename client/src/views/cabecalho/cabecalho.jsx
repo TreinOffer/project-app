@@ -16,19 +16,19 @@ const Cabecalho = () => {
     async function Sessao() {
         const sessao = await RequestToken();
         console.log(sessao);
-        if (!sessao || sessao.status === 403) {
+        if (sessao?.status === 401) {
             setPop(
-                popUp.erro("Acesso negado")
+                popUp.erro(sessao.message || "Não autorizado")
             );
             return setTimeout(() => {
-                navegar('/');
+                navegar('/login');
             }, 1500);
-        }else if(sessao.status === 401){
+        } else if (sessao?.status === 403) {
             setPop(
-                popUp.aviso("Sessão expirada")
+                popUp.erro(sessao.message || "Acesso negado")
             )
             return setTimeout(() => {
-                navegar('/login');
+                navegar('/');
             }, 1500);
         };
             

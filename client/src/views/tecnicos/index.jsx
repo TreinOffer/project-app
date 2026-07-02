@@ -9,7 +9,6 @@ import CrudUser from './components/crudTecnico';
 import { RequestToken } from '../../components/fetchToken/token.function';
 
 const g = 25;
-const m = 15;
 const p = 10;
 
 const CRUD = new CrudUser();
@@ -21,6 +20,7 @@ function Tecnicos() {
   const [tecnicos, setTecnicos] = useState([]);
   const [click, setClick] = useState(false);
   const [buscar, setBuscar] = useState('');
+  const showSenhaColumn = click;
 
   async function handleUsername(nome) {
     setUser(prev => {
@@ -79,7 +79,7 @@ function Tecnicos() {
     <>
       <Cabecalho />
 
-      <section className='tab_func'>
+      <section className={`tab_func ${showSenhaColumn ? 'has-senha' : 'sem-senha'}`}>
 
         <div className="tit_tab">
           <h2>Tabela de técnicos - {user}</h2>
@@ -109,14 +109,11 @@ function Tecnicos() {
           <h4 style={{ width: `${g}%` }}>
             Especialização
           </h4>
-          {
-            // <h4 style={{ width: `${p}%`, minWidth: 121 + 'px' }}>
-            //   Colaboradores
-            // </h4>
-          }
-          <h4 style={{ width: `${m}%` }}>
-            Senha
-          </h4>
+          {showSenhaColumn && (
+            <h4 style={{ width: `${g}%` }}>
+              Senha
+            </h4>
+          )}
           <h4 style={{ width: `${g}%` }}>
             Matricula
           </h4>
@@ -132,7 +129,9 @@ function Tecnicos() {
                 tecnicos?.map((tecnico, chave) =>
                 (<Tecnico key={chave} tecFt={tecnico.Imagem} tecNome={tecnico.Nome}
                   tarefa={tecnico.Especializacao} numColab={tecnico.Colaboradores}
-                  senha={tecnico.Senha} matricula={tecnico.Matricula} disabled={tecnico.Disabled}
+                  senha={tecnico.Senha}
+                  matricula={tecnico.Matricula} disabled={tecnico.Disabled}
+                  showSenhaColumn={showSenhaColumn}
                   handleDelete={handleDelete} atualizaPag={handleRefresh} transForm={createForm}
                 />)
                 )}

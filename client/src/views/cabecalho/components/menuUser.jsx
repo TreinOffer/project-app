@@ -74,24 +74,25 @@ const MenuUser = ({ handleClick, handleAside }) => {
     };
 
     return (
-        <aside className="nav_bar" id='nav' style={{ left: handleAside ? '0%' : null }} >
-            <section className="logoNavBar">
-                <section className="menuNav">
-                    <img src={imgs.voltar} onClick={handleClick} alt="Fechar" className="escape" />
-                </section>
-                <img className="logoTreinOffer" src={imgs.TreinOffer} alt="" />
-            </section>
-            <section className="secaoUser">
-                <section className="user">
+        <aside className={`nav_bar ${handleAside ? 'is-open' : ''}`} id='nav'>
+            <section className="sidebar-shell">
+                <header className="sidebar-header">
+                    <button type="button" className="sidebar-close" onClick={handleClick} aria-label="Fechar menu">
+                        <img src={imgs.voltar} alt="Fechar" className="escape" />
+                    </button>
+                    <img className="logoTreinOffer" src={imgs.TreinOffer} alt="TreinOffer" />
+                </header>
+
+                <section className="user-card">
                     <div className="imgUser">
                         <img
                             src={profileImage}
                             alt="N/A"
-                            style={{ cursor: isEditting === 1 ? 'pointer' : 'default' }}
+                            className={isEditting === 1 ? 'profile-clickable' : ''}
                             onClick={() => isEditting === 1 && document.getElementById("fileInput").click()}
                         />
                         {isEditting === 1 && (
-                            <label className="editLabel">
+                            <label className="editLabel" htmlFor="fileInput">
                                 <input
                                     type="file"
                                     accept="image/*"
@@ -99,10 +100,7 @@ const MenuUser = ({ handleClick, handleAside }) => {
                                     style={{ display: 'none' }}
                                     id="fileInput"
                                 />
-                                <span
-                                    style={{ cursor: 'pointer' }}
-                                    htmlFor="fileInput"
-                                >
+                                <span>
                                     Editar Imagem
                                 </span>
                             </label>
@@ -112,48 +110,36 @@ const MenuUser = ({ handleClick, handleAside }) => {
                         Agro Indústria Polpa de Fruta LTDA
                     </div>
                 </section>
-            </section>
 
-            {
-                isEditting === 0 && (
-                    <>
-                        <div style={{
-                            display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center',
-                            background: 'linear-gradient(hsl(220,50%,70%),hsl(220,40%,65%)', height: '100%'
-                        }} onClick={() => setIsEditting(1)}
-                        >
-                            <div style={{ display: 'flex', flexDirection: 'row', gap: '2%' }}>
-                                <img src={imgs.editar} alt="" style={{ width: '24px' }} />
-                                <h3 style={{ color: 'white', cursor: 'pointer' }} >Editar</h3>
-                            </div>
-                        </div>
-                        <div style={{
-                            display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center',
-                            background: 'linear-gradient(hsl(220,40%,65%),hsl(220,40%,60%)', height: '100%'
-                        }} onClick={() => setIsEditting(2)}
-                        >
-                            <div onClick={() => console.log("deletar")} style={{ display: 'flex', alignItems: 'center', gap: '2%', cursor: 'pointer' }}>
-                                <img style={{ width: '20%' }} src={imgs.deletar} />
-                                <span style={{ color: 'white' }}>Desabilitar conta</span>
-                            </div>
-                        </div>
-                    </>
-                )
-            }
+                <section className="sidebar-actions">
+                    {isEditting === 0 && (
+                        <>
+                            <button type="button" className="sidebar-action edit-action" onClick={() => setIsEditting(1)}>
+                                <img src={imgs.editar} alt="" />
+                                <span>Editar</span>
+                            </button>
+                            <button type="button" className="sidebar-action disable-action" onClick={() => setIsEditting(2)}>
+                                <img src={imgs.deletar} alt="" />
+                                <span>Desabilitar conta</span>
+                            </button>
+                        </>
+                    )}
+                </section>
 
-            <article style={{ height: isEditting ? "100%" : null, transition: '0.3s ease-in-out' }}>
-                {
-                    isEditting === 1 && (
-                        <form action="PUT" onSubmit={(e) => {
-                            e.preventDefault();
-                            submitUser(idUser, user);
-                        }}
-                            style={{ height: '100%', width: '100%', background: 'linear-gradient(hsl(220,50%,70%),hsl(220,40%,75%)' }}
+                <article className={`sidebar-form-wrap ${isEditting === 1 ? 'open' : ''}`}>
+                    {isEditting === 1 && (
+                        <form
+                            className="sidebar-form"
+                            action="PUT"
+                            onSubmit={(e) => {
+                                e.preventDefault();
+                                submitUser(idUser, user);
+                            }}
                         >
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td className='campo_update'><label htmlFor="nome_empresa">Nome da Empresa:</label ></td>
+                                        <td className='campo_update'><label htmlFor="nome_empresa">Nome da Empresa:</label></td>
                                         <td><input onChange={onChange('Fantasia')} placeholder='Inserir Nome da Empresa' type="text" name="nome_empresa" id="nome_empresa" /></td>
                                     </tr>
                                     <tr>
@@ -167,7 +153,7 @@ const MenuUser = ({ handleClick, handleAside }) => {
                                     <tr>
                                         <td className='campo_update'><label htmlFor="estados" id='estados'>Estado:</label></td>
                                         <td>
-                                            <select name="estado" id="estado" onChange={onChange('Estado')} >
+                                            <select name="estado" id="estado" onChange={onChange('Estado')}>
                                                 <option value="" id='select'>Selecionar Estado</option>
                                                 <option value="AC">Acre</option>
                                                 <option value="AL">Alagoas</option>
@@ -218,18 +204,18 @@ const MenuUser = ({ handleClick, handleAside }) => {
                                 </tbody>
                             </table>
                         </form>
-                    )
-                }
-            </article>
+                    )}
+                </article>
 
-            <footer>
-                <a href="https://github.com/TreinOffer">
-                    <div className="boxGit">
-                        <img className="gitLink" src={imgs.git} alt="Github" />
-                    </div>
-                </a>
-                <p>Siga-nos na página do projeto</p>
-            </footer>
+                <footer className="sidebar-footer">
+                    <a href="https://github.com/TreinOffer">
+                        <div className="boxGit">
+                            <img className="gitLink" src={imgs.git} alt="Github" />
+                        </div>
+                    </a>
+                    <p>Siga-nos na página do projeto</p>
+                </footer>
+            </section>
         </aside>
     );
 }

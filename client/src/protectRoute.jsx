@@ -2,7 +2,7 @@ import { Navigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 
 const ProtectedRoute = ({ element, allowedRoles }) => {
-  const token = localStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
   let cargo = null;
 
   if (token) {

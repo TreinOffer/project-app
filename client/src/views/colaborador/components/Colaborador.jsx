@@ -4,12 +4,11 @@ import imgs from "../../../imgs/arrayImagens";
 import CrudUser from './crudColaborador';
 
 const g = 25;
-const m = 15;
 const p = 10;
 
 const CRUD = new CrudUser();
 
-function Colaborador({ colabFt, colabNome, tecnico, senha, matricula, disabled, handleDelete, atualizaPag, transForm, tecnicos }) {
+function Colaborador({ colabFt, colabNome, tecnico, senha, matricula, disabled, showSenhaColumn, handleDelete, atualizaPag, transForm, tecnicos }) {
     console.log(tecnicos);
     const [isEditing, setIsEditing] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -17,7 +16,6 @@ function Colaborador({ colabFt, colabNome, tecnico, senha, matricula, disabled, 
     const [editedResponsavel, setEditedResponsavel] = useState(tecnico);
     const [editedResponsavelFoto, setEditedResponsavelFoto] = useState(null);
     const [editedNome, setEditedNome] = useState(colabNome);
-    const [editedSenha, setEditedSenha] = useState(senha);
     const [editedMatricula, setEditedMatricula] = useState(matricula);
     const [editedImage, setEditedImage] = useState(colabFt);
 
@@ -33,7 +31,6 @@ function Colaborador({ colabFt, colabNome, tecnico, senha, matricula, disabled, 
             Imagem: editedImage,
             Nome: editedNome,
             idTecnico: editedResponsavel,
-            Senha: editedSenha
         });
         await CRUD.update(matricula, form);
         setIsEditing(false);
@@ -124,8 +121,14 @@ function Colaborador({ colabFt, colabNome, tecnico, senha, matricula, disabled, 
                             <img className="foto_func" src={imagem ? imagem : `${process.env.REACT_APP_BACKEND}/imgs/${editedImage}`} alt="" />
                             {isEditing && (
                                 <div className="botao_div">
-                                    <input onChange={handleUploadImagem} accept=".jpg,.png,.jpeg" type="file" name="Imagem" id="foto" style={{ display: 'none' }} />
-                                    <label id="forFoto" htmlFor="foto" className="label-foto escolher-imagem">Escolher imagem</label>
+                                    <input
+                                        className="addFotoFuncBt"
+                                        onChange={handleUploadImagem}
+                                        accept=".jpg,.png,.jpeg"
+                                        type="file"
+                                        name="Imagem"
+                                        id={`foto-colab-${matricula}`}
+                                    />
                                 </div>
                             )}
                         </div>
@@ -236,28 +239,19 @@ function Colaborador({ colabFt, colabNome, tecnico, senha, matricula, disabled, 
                                 </div>
                             </div>
                         ) : (
-                            <span className="letraQuebra" style={{ opacity: isDisabled ? '0.3' : '1',textAlign: '' }}>
-                                <img style={{ width: '32px', borderRadius: '25px' }} src={`${process.env.REACT_APP_BACKEND}/imgs/${editedResponsavelFoto}`}/>
+                            <span className="letraQuebra" style={{ opacity: isDisabled ? '0.3' : '1', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                                <img style={{ width: '32px', height: '32px', borderRadius: '25px', objectFit: 'cover', flexShrink: 0 }} src={`${process.env.REACT_APP_BACKEND}/imgs/${editedResponsavelFoto}`}/>
                                 {editedResponsavelNome}
                             </span>
                         )
                         }
                     </div>
 
-                    <div className="sec_func" style={{ opacity: isDisabled ? '0.3' : '1', width: `${m}%` }}>
-                        {isEditing ? (
-                            <input
-                                type="password"
-                                value={editedSenha}
-                                onChange={(e) => setEditedSenha(e.target.value)}
-                                required
-                                className="custom-input"
-                                disabled
-                            />
-                        ) : (
+                    {showSenhaColumn && (
+                        <div className="sec_func" style={{ opacity: isDisabled ? '0.3' : '1', width: `${g}%` }}>
                             <span className="letraQuebra">{senha}</span>
-                        )}
-                    </div>
+                        </div>
+                    )}
 
                     <div className="sec_func" style={{ opacity: isDisabled ? '0.3' : '1', width: `${g}%`, display: 'flex', alignItems: 'center' }}>
                         {isEditing ? (

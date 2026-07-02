@@ -1,6 +1,6 @@
 export async function submitCapa(capa) {
   console.log("capinha: ", capa);
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   try {
     
     const request = await fetch(`${process.env.REACT_APP_BACKEND}/capaTreino`, {
@@ -26,7 +26,7 @@ export async function submitCapa(capa) {
 
 export async function submitTreino(treino) {
   console.log("treinin: ", treino);
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   try {
     
     const request = await fetch(`${process.env.REACT_APP_BACKEND}/uploadTreino`, {

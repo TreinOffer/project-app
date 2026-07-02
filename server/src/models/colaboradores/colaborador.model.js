@@ -72,8 +72,14 @@ export async function updateColaborador(Colaborador, entidade, idColaborador, id
   console.log("ColaboradorUPDATE ::: Model");
   try {
 
-    if (await isEmptyField(Colaborador, properties))
+    const propriedadesAtualizacao = properties.filter((prop) => prop !== "Senha");
+
+    if (await isEmptyField(Colaborador, propriedadesAtualizacao))
       return mensagem;
+
+    const senhaAtualSql = `SELECT Senha FROM ${entidade} WHERE Matricula = ? AND idEmpresa = ?`;
+    const [[senhaAtual]] = await conexao.query(senhaAtualSql, [idColaborador, idEmpresa]);
+    const senhaFinal = Colaborador.Senha ?? senhaAtual?.Senha;
 
     const sql = `UPDATE ${entidade}
       SET Matricula = ?, Nome = ?, idTecnico = ?,
@@ -82,7 +88,7 @@ export async function updateColaborador(Colaborador, entidade, idColaborador, id
 
     const params = [
       Colaborador.Matricula, Colaborador.Nome,
-      Colaborador.idTecnico, Colaborador.Senha,
+      Colaborador.idTecnico, senhaFinal,
       idEmpresa, nomeImagem,
       idColaborador, idEmpresa
     ];

@@ -1,5 +1,7 @@
+import dotenv from 'dotenv/config';
+
 export const corsOptions = {
-  origin: ["http://localhost:80", "https://brasilapi.com.br", "http://localhost", "https://play.google.com"],
+  origin: process.env.ALLOWED_ORIGINS.split(','),
   methods: ["GET", "POST", "PUT"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
